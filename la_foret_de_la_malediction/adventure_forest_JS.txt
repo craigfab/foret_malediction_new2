@@ -1,0 +1,41 @@
+Create a function roll a dice
+
+We must determine at the beginning of the adventure the base skill, base health and base chance of this character. 
+For skill: 6 face dice + 6, for health: 2 dice + 12 and for chance: one dice +6. 
+Skill, health and chance can change but base skill and base health are maximums (skill and health <= base skill and base health).
+Create an inventory (unorded list)
+Create an obeject character : baseskill, basehealth, skill, health, chance
+
+For battle with a monster, create a function.
+We must determine for each attack a attack_force : 2 dice +skill for the creature and for the character. 
+If the character win (attack_force character> attack_force monster), 2 damage for the creature, if the monster win, 2 damage for the character. 
+If attack_force character=attack_force monster, then there is no damage.
+And again until health character=0 (game over) or monster =0 (win). 
+After each attack, you can tempt your chance : loose --> character damage = 3, monster damage = 1, win --> character damage = 1, monster damage = 3
+
+Create a function "tempt_chance": throw 2 dices. 
+If the sum < or = chance --> win. 
+If the sum > chance --> loose.
+
+Create a function escape
+If the character choose to escape (if possible), damage character =2. The character can tempt his chance.
+
+Create a function "get item"
+If there is a potion or a object in the chapter, make a button in order to get it.
+
+Start of the loop : load chapter x. We must start on chapter one. 
+Import informations from json file by id: text et illustration, monster (skill, health), potions / objects, escape?, links
+
+Export to HTML : text, illustration, monster (battle button, escape button, get item button, links)
+
+if instructions --> ...
+If item --> button get item and put in inventory
+If monster :
+- If battle --> battle button, battle function, +/- tempt you chance, damage (character.health)
+- If escape --> button escape, damage
+If health >0, continue 
+If health =0, game over
+Links (label + links") --> go to chapter x
+
+
+

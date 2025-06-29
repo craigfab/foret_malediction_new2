@@ -1,0 +1,38 @@
+HTML:
+
+head
+
+header 
+la foret de la malediction
+défis fantastiques
+
+Navigation
+
+Main
+
+section text
+Text
++ get items
++ battle 
++/- escape
++ links 
+
+button dice + animation
+
+section feuille d'aventure (table)
+skill
+health
+chance 
+equipment 
+gold
+jewellery
+potions
+food
+
+section battle with monster
+button tempt yout chance
+
+section illustration (aside) (on the right)
+<img>
+
+footer copyright

@@ -1,0 +1,192 @@
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin: 8px; 
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../images/images_foret/dark_gloomy_forest.png");
+    background-size: cover; 
+    background-position: center; 
+    font-family: 'IM Fell DW Pica', serif;
+    font-size: 23px;
+    border: 8px solid rgb(146, 168, 148)
+}
+
+header {
+    background-color: rgba(243, 243, 243, 0.5);
+    font-size: 35px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    height: 150px;
+}
+
+nav #navbar {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: center;
+    padding: 0px;
+    color: white;
+}
+
+nav #navbar button, nav #navbar a {
+    color: black;
+    text-decoration: none;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 7px;
+}
+
+nav #navbar a:hover, nav #navbar button:hover {
+    background-color: #3e443e;
+}
+
+button {
+    font-family: 'IM Fell DW Pica', serif;
+    font-size: 23px;
+    background-color: white; 
+    color: black; 
+    padding: 10px 20px;
+    border: 3px solid #362a21; 
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+  
+button:hover {
+    background-color: #dad4d4; /* Légèrement gris pour le survol */
+    border-color: #30251d; /* Changement de couleur de bordure au survol */
+}
+
+button:disabled {
+    opacity: 0.5;
+}
+
+h2 {
+    padding: 5px;
+    margin: 0px;
+}
+  
+/* Flexbox pour organiser le contenu principal */
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+main {
+    flex: 5;
+    padding: 0px;
+}
+
+section{
+    padding: 10px;
+    margin: 8px;
+    background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url("../images/images_foret/oldparchemin3.JPG");
+    background-position: center;
+    background-size: cover;
+    border: 6px solid rgba(100, 76, 117, 0.582);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+aside {
+    display: flex;
+    flex: 3;
+    align-items: flex-start;
+    margin-right: 8px;
+    padding: 7px;
+}
+
+aside img {
+    width: 100%;
+    height: auto;
+    border: 5px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.container_aventure_combat {
+    display: flex;
+    flex-direction: row;
+}
+
+.aventure {
+    flex: 2;
+}
+
+.combat {
+    flex: 1;
+}
+
+/* Grid pour la feuille d'aventure */
+.feuille_aventure {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 90px 90px 90px 90px 90px 90px;
+    grid-gap: 10px;
+    }
+.box {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px
+    }
+.skill{
+    grid-column: 1 / 2 ;
+    grid-row: 1 / 2;
+}
+.health{
+    grid-column: 2 / 3 ;
+    grid-row: 1 / 2;
+}
+.chance{
+    grid-column: 3 / 4 ;
+    grid-row: 1 / 2;
+}
+.equipment{
+    grid-column: 1 / 3 ;
+    grid-row: 2 / 7;
+    overflow-y: auto;
+    align-items: flex-start;
+}
+.gold{
+    grid-column: 3 / 4 ;
+    grid-row: 2 / 3;
+    overflow-y: auto;
+    align-items: flex-start;
+}
+.jewelry{
+    grid-column: 3 / 4 ;
+    grid-row: 3 / 4;
+    overflow-y: auto;
+    align-items: flex-start;
+}
+.potions{
+    grid-column: 3 / 4 ;
+    grid-row: 4 / 6;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 5px;
+    align-items: flex-start;
+}
+.food{
+    grid-column: 3 / 4 ;
+    grid-row: 6 / 7;
+    overflow-y: auto;
+    align-items: flex-start;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    main, aside {
+        width: 100%;
+    }
+}
