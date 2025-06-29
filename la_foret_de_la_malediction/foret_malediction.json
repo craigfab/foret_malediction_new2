@@ -886,7 +886,7 @@
             "choices": [
                 {"text":"Si vous persistez à vouloir l'attaquer, rendez-vous au 399.", "nextId":399},
                 {"text":"Si vous changez d'avis en revanche, suivez-le en haut des marches en vous rendant au 261.", "nextId":261}],
-            "illustration":"../images/images_foret/mage_54.png",
+            "illustration":"../images/images_foret/mage_54_bis.png",
             "items":[]
         },
         {
@@ -1849,7 +1849,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/trifurcation_plain_forest_109.png"
         }, 
         {
             "id": 110,
@@ -2619,7 +2619,7 @@
               }
             ],
             "items":[],
-            "illustration":"../images/images_foret/hole_forest_157_4.png"
+            "illustration":"../images/images_foret/hole_forest_157_5.png"
         }, 
         {
             "id": 158,
@@ -5189,7 +5189,8 @@
                     "nextId": 197,
                     "doubleLuckCheck": false
                 }
-            ]
+            ], 
+            "illustration": "../images/images_foret/path_tall_grass_309.png"
         }, 
         {
             "id": 310,
