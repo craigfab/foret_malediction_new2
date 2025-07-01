@@ -167,13 +167,10 @@
     
     </div>
 
-    <script type="module">
-        import { applyChapterEffects } from './chapterEffects.js';
-        import { updateCharacterStats } from './character.js';
-        import { updateAdventureSheet } from './inventory.js';
-
-        // État du jeu de test
-        const testGameState = {
+    <script>
+        // Variables globales
+        let chaptersData = [];
+        let testGameState = {
             character: {
                 skill: 10,
                 health: 10,
@@ -217,8 +214,93 @@
         // Remplacer les références globales pour le test
         window.gameState = testGameState;
 
+        // Fonctions simplifiées pour le test
+        function updateCharacterStats() {
+            document.getElementById('skill').textContent = `Habileté: ${testGameState.character.skill}`;
+            document.getElementById('health').textContent = `Endurance: ${testGameState.character.health}`;
+            document.getElementById('chance').textContent = `Chance: ${testGameState.character.chance}`;
+        }
+
+        function updateAdventureSheet() {
+            const foodItem = testGameState.inventory.items.find(item => item.category === 'food');
+            const goldItem = testGameState.inventory.items.find(item => item.category === 'gold');
+            
+            document.getElementById('food').textContent = `Provisions: ${foodItem ? foodItem.quantity : 0}`;
+            document.getElementById('gold').textContent = `Or: ${goldItem ? goldItem.quantity : 0}`;
+        }
+
+        // Fonction simplifiée pour appliquer les effets
+        function applyChapterEffects(chapter) {
+            const effectMessageDiv = document.getElementById('effect_message');
+            effectMessageDiv.innerHTML = '';
+
+            if (chapter.effects) {
+                chapter.effects.forEach(effect => {
+                    let message = '';
+                    
+                    switch (effect.type) {
+                        case "reduceFood":
+                            message = reduceFood(effect.value);
+                            break;
+                        case "reduceGold":
+                            testGameState.inventory.removeItem('or', effect.value);
+                            message = `${effect.value} pièces d'or retirées.`;
+                            break;
+                        case "reduceHealth":
+                            testGameState.character.health -= effect.value;
+                            message = `Santé réduite de ${effect.value}.`;
+                            break;
+                        case "reduceSkill":
+                            testGameState.character.skill -= effect.value;
+                            message = `Habileté réduite de ${effect.value}.`;
+                            break;
+                        case "reduceChance":
+                            testGameState.character.chance -= effect.value;
+                            message = `Chance réduite de ${effect.value}.`;
+                            break;
+                        default:
+                            message = `Effet appliqué: ${effect.type}`;
+                    }
+                    
+                    if (message) {
+                        effectMessageDiv.innerHTML += `<p>${message}</p>`;
+                    }
+                });
+            }
+            
+            updateCharacterStats();
+            updateAdventureSheet();
+        }
+
+        // Fonction reduceFood pour le test
+        function reduceFood(value) {
+            const foodItems = testGameState.inventory.items.filter(item => item.category === 'food');
+            
+            if (foodItems.length === 0) {
+                return "Vous n'aviez aucune nourriture à perdre.";
+            }
+
+            if (value === "all" || value === "ALL") {
+                foodItems.forEach(item => {
+                    testGameState.inventory.removeItem(item.name, item.quantity);
+                });
+                return "Vous avez perdu toute votre nourriture.";
+            } else {
+                const quantityToRemove = parseInt(value);
+                let remainingToRemove = quantityToRemove;
+                
+                for (let item of foodItems) {
+                    if (remainingToRemove <= 0) break;
+                    const toRemove = Math.min(remainingToRemove, item.quantity);
+                    testGameState.inventory.removeItem(item.name, toRemove);
+                    remainingToRemove -= toRemove;
+                }
+                
+                return `Vous avez perdu ${quantityToRemove} nourriture(s).`;
+            }
+        }
+
         // Charger les données du jeu
-        let chaptersData = [];
         async function loadGameData() {
             try {
                 const response = await fetch('./foret_malediction.json');
@@ -231,14 +313,8 @@
             }
         }
 
-        // Charger un chapitre
-        window.loadChapter = async function() {
-            const chapterId = parseInt(document.getElementById('chapterId').value);
-            if (!chapterId) {
-                alert('Veuillez entrer un numéro de chapitre');
-                return;
-            }
-
+        // Charger un chapitre par ID (pour la navigation)
+        async function loadChapterById(chapterId) {
             if (chaptersData.length === 0) {
                 await loadGameData();
             }
@@ -249,11 +325,25 @@
                 return;
             }
 
+            // Mettre à jour le champ de saisie
+            document.getElementById('chapterId').value = chapterId;
+            
             testGameState.currentChapterId = chapterId;
             testGameState.currentChapter = chapter;
 
             displayChapter(chapter);
-        };
+        }
+
+        // Charger un chapitre depuis le champ de saisie
+        async function loadChapter() {
+            const chapterId = parseInt(document.getElementById('chapterId').value);
+            if (!chapterId) {
+                alert('Veuillez entrer un numéro de chapitre');
+                return;
+            }
+
+            await loadChapterById(chapterId);
+        }
 
         // Afficher un chapitre
         function displayChapter(chapter) {
@@ -281,14 +371,14 @@
                 button.textContent = choice.text;
                 button.onclick = () => {
                     console.log(`Choix sélectionné: ${choice.text} → Chapitre ${choice.nextId}`);
-                    // Ici vous pourriez naviguer vers le chapitre suivant
+                    // Naviguer vers le chapitre suivant
+                    loadChapterById(choice.nextId);
                 };
                 choicesDiv.appendChild(button);
             });
 
             // Appliquer les effets
             if (chapter.effects && chapter.effects.length > 0) {
-                // Appliquer réellement les effets
                 applyChapterEffects(chapter);
             }
 
@@ -298,7 +388,7 @@
         }
 
         // Fonctions de contrôle
-        window.resetCharacter = function() {
+        function resetCharacter() {
             testGameState.character.skill = 10;
             testGameState.character.health = 10;
             testGameState.character.chance = 10;
@@ -310,32 +400,40 @@
             updateAdventureSheet();
             document.getElementById('effect_message').innerHTML = '';
             console.log('🔄 Personnage réinitialisé');
-        };
+        }
 
-        window.addFood = function() {
+        function addFood() {
             testGameState.inventory.addItem('repas', 5, 'food');
             console.log('🍽️ +5 nourriture ajoutée');
-        };
+        }
 
-        window.addGold = function() {
+        function addGold() {
             testGameState.inventory.addItem('or', 5, 'gold');
             console.log('💰 +5 or ajouté');
-        };
+        }
 
-        window.healCharacter = function() {
+        function healCharacter() {
             testGameState.character.health = Math.min(20, testGameState.character.health + 5);
             updateCharacterStats();
             console.log('❤️ +5 santé ajoutée');
-        };
+        }
 
-        window.testRandomChapter = async function() {
+        async function testRandomChapter() {
             if (chaptersData.length === 0) {
                 await loadGameData();
             }
             const randomChapter = chaptersData[Math.floor(Math.random() * chaptersData.length)];
             document.getElementById('chapterId').value = randomChapter.id;
             loadChapter();
-        };
+        }
+
+        // Rendre les fonctions accessibles globalement
+        window.loadChapter = loadChapter;
+        window.resetCharacter = resetCharacter;
+        window.addFood = addFood;
+        window.addGold = addGold;
+        window.healCharacter = healCharacter;
+        window.testRandomChapter = testRandomChapter;
 
         // Initialiser
         window.addEventListener('load', async () => {
