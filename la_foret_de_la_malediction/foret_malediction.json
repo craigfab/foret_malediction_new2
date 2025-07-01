@@ -1248,7 +1248,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/path_tall_grass_309.png"
         },
         {
             "id": 78,
@@ -5175,9 +5175,11 @@
         {
             "id": 309,
             "text": "Le chemin coupe à travers les hautes herbes qui vous arrivent à peu près à la taille. Bien que la visibilité soit bonne et vous permette de surveiller les environs, vous vous sentez mal à l'aise, craignant qu'une quelconque créature vous guette d'un côté ou de l'autre du sentier. Soudain, l'herbe remue à votre gauche, et deux tubes de bois apparaissent, pointés droit sur vous.",
-            "effects":{
-                "doubleTemptChance": "tentez 2 fois votre chance, si chanceux à 2 reprises : rdv au 77."
-            },
+            "effects": [
+                {
+                    "type": "doubleRollDiceChance"
+                }
+            ],
             "choices": [
                 {
                     "text": "Si vous êtes chanceux à deux reprises, aucun projectile ne vous atteint : Rendez-vous au 77.",

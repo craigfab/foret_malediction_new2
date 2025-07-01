@@ -68,6 +68,9 @@ export function applyChapterEffects(chapter) {
                 case "rollDiceChance":
                     rollDiceChance();
                     break;
+                case "doubleRollDiceChance":
+                    doubleRollDiceChance();
+                    break;
 
                 case "tryLuckTrap":
                     const luckTestResult = tempt_chance(gameState.character.chance);
@@ -190,6 +193,88 @@ function checkConditionMet(conditionMet) {
 }
 
 
+// fonction doubleRollDiceChance pour 2 tests de chance consécutifs
+function doubleRollDiceChance() {
+    const actionMessageDiv = document.getElementById('action_message');
+    actionMessageDiv.innerHTML = 'Vous devez tenter votre chance deux fois. Premier test :<br>';
+    
+    // Initialiser luckResults pour les tests multiples
+    if (!gameState.luckResults) {
+        gameState.luckResults = [];
+    }
+    gameState.luckResults = []; // Réinitialiser pour ce nouveau test
+    
+    // Création du premier bouton pour tenter la chance
+    const chanceButton1 = document.createElement("button");
+    chanceButton1.innerText = "Premier test de chance";
+    chanceButton1.id = "chanceButton1";
+
+    // ajout bouton à la div
+    actionMessageDiv.appendChild(chanceButton1);
+
+    // Ajouter l'événement au clic du premier bouton
+    chanceButton1.addEventListener("click", () => {
+        // Lancer deux dés pour le premier test
+        const diceRoll1 = rollDice();
+        const diceRoll2 = rollDice();
+        const totalRoll1 = diceRoll1 + diceRoll2;
+
+        // Comparer la somme des dés avec la chance
+        const isLucky1 = totalRoll1 <= gameState.character.chance;
+
+        // Afficher le résultat du premier test
+        const resultMessage1 = isLucky1
+            ? `Premier test : ${diceRoll1} + ${diceRoll2} = ${totalRoll1}. <strong>Chanceux !</strong><br>`
+            : `Premier test : ${diceRoll1} + ${diceRoll2} = ${totalRoll1}. <strong>Malchanceux...</strong><br>`;
+        
+        actionMessageDiv.innerHTML = resultMessage1 + 'Deuxième test :<br>';
+
+        // Stocker le premier résultat
+        gameState.luckResults.push(isLucky1);
+
+        // Création du deuxième bouton pour tenter la chance
+        const chanceButton2 = document.createElement("button");
+        chanceButton2.innerText = "Deuxième test de chance";
+        chanceButton2.id = "chanceButton2";
+
+        // ajout bouton à la div
+        actionMessageDiv.appendChild(chanceButton2);
+
+        // Ajouter l'événement au clic du deuxième bouton
+        chanceButton2.addEventListener("click", () => {
+            // Lancer deux dés pour le deuxième test
+            const diceRoll3 = rollDice();
+            const diceRoll4 = rollDice();
+            const totalRoll2 = diceRoll3 + diceRoll4;
+
+            // Comparer la somme des dés avec la chance
+            const isLucky2 = totalRoll2 <= gameState.character.chance;
+
+            // Afficher le résultat du deuxième test
+            const resultMessage2 = isLucky2
+                ? `Deuxième test : ${diceRoll3} + ${diceRoll4} = ${totalRoll2}. <strong>Chanceux !</strong>`
+                : `Deuxième test : ${diceRoll3} + ${diceRoll4} = ${totalRoll2}. <strong>Malchanceux...</strong>`;
+            
+            actionMessageDiv.innerHTML = resultMessage1 + resultMessage2;
+
+            // Stocker le deuxième résultat
+            gameState.luckResults.push(isLucky2);
+
+            // Définir isLucky pour la compatibilité (résultat du dernier test)
+            gameState.isLucky = isLucky2;
+
+            // Met à jour les boutons de choix
+            updateChoiceButtons();
+
+            // Désactiver le bouton pour éviter un second test
+            chanceButton2.disabled = true;
+        });
+
+        // Désactiver le premier bouton
+        chanceButton1.disabled = true;
+    });
+}
+
 // fonction rollDiceChance
 function rollDiceChance() {
     const actionMessageDiv = document.getElementById('action_message');
@@ -221,6 +306,12 @@ function rollDiceChance() {
 
         // Stocker le résultat dans gameState pour référence ultérieure
         gameState.isLucky = isLucky;
+        
+        // Pour les tests multiples, initialiser luckResults si nécessaire
+        if (!gameState.luckResults) {
+            gameState.luckResults = [];
+        }
+        gameState.luckResults.push(isLucky);
 
         // Met à jour les boutons de choix
         updateChoiceButtons();
@@ -325,6 +416,16 @@ function updateChoiceButtons() {
             const hasItem = gameState.inventory.checkItem(itemName);
             button.disabled = !hasItem;
         }
+
+        // Mise à jour basée sur doubleLuckCheck
+        if (button.hasAttribute("data-doubleLuckCheck")) {
+             const doubleLuckRequired = button.getAttribute("data-doubleLuckCheck") === "true";
+             const bothLucky = gameState.luckResults && gameState.luckResults.length >= 2 && 
+                     gameState.luckResults[0] === true && gameState.luckResults[1] === true;
+             button.disabled = (doubleLuckRequired && !bothLucky) || (!doubleLuckRequired && bothLucky);
+}
+
+
     });
 }
 

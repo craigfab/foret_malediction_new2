@@ -155,7 +155,13 @@ function showChapter(chapters, chapterId) {
             choiceButton.setAttribute('data-skillCheckRequired', 'true');
             // Désactiver les boutons par défaut, ils seront activés après le test d'habileté
             choiceButton.disabled = true; 
-    }
+        }
+
+        // Mise à jour basée sur doubleLuckCheck
+        if (choice.doubleLuckCheck !== undefined) {
+            choiceButton.setAttribute('data-doubleLuckCheck', choice.doubleLuckCheck);
+            choiceButton.disabled = true; // Désactivé par défaut jusqu'aux jets de chance
+        }
 
         // Vérifie si un coût est associé au choix et passe au chapitre suivant
         choiceButton.addEventListener('click', () => {
