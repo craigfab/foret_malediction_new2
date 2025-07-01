@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles_forest.css">
+    <title>🧪 Test Réel - La Forêt de la Malédiction</title>
+    <style>
+        .test-controls {
+            background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url("../images/images_foret/oldparchemin3.JPG");
+            background-position: center;
+            background-size: cover;
+            border: 6px solid rgba(100, 76, 117, 0.582);
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+        }
+        .test-controls input {
+            background: white;
+            color: black;
+            border: 3px solid #362a21;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            font-family: 'IM Fell DW Pica', serif;
+            font-size: 16px;
+            width: 80px;
+        }
+        .test-controls button {
+            margin: 5px;
+            font-size: 16px;
+        }
+        .test-controls label {
+            font-size: 18px;
+            color: #362a21;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .reset-button {
+            background: #ff6b6b !important;
+            color: white !important;
+        }
+        .reset-button:hover {
+            background: #ff5252 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🧪 Test Réel - La Forêt de la Malédiction</h1>
+    </header>
+
+    <nav>
+        <div id="navbar">
+            <button onclick="resetCharacter()" class="reset-button">🔄 Reset Perso</button>
+            <button onclick="addFood()">+ Nourriture</button>
+            <button onclick="addGold()">+ Or</button>
+            <button onclick="healCharacter()">+ Santé</button>
+        </div>
+    </nav>
+
+    <div class="test-controls">
+        <h2>Contrôles de Test</h2>
+        <div>
+            <label for="chapterId">Chapitre:</label>
+            <input type="number" id="chapterId" placeholder="145" min="1">
+            <button onclick="loadChapter()">Charger Chapitre</button>
+            <button onclick="testRandomChapter()">🎲 Chapitre Aléatoire</button>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- MAIN -->    
+        <main>
+        
+        <!-- Section text + choices -->
+        <section class="texte"> 
+            <h2 id="chapter_title">Choisissez un chapitre à tester</h2>
+            <div id="text">Utilisez les contrôles ci-dessus pour charger un chapitre et voir les effets en temps réel.</div>
+            <div id="choices"> </div>
+
+        </section>
+
+        <!-- Section actions -->
+        <section class="actions">
+
+            <h2> Actions </h2>
+
+            <!-- get item button -->
+            <div id="get_item"> </div>
+
+            <!-- tempt chance button -->
+            <div id="tempt_chance_button" >
+            </div>
+
+            <!-- throw a dice button -->
+            <div> 
+                <button id="roll_dice" style="display: none"> Lancez le dé </button>
+                <div id="zone_result_dice"> </div> 
+            </div>
+
+            <!-- effect message... -->
+            <div id="effect_message">
+            </div>
+
+            <!-- vous avez effectué... -->
+            <div id="action_message">
+            </div>
+
+        </section>
+
+        <!-- FEUILLE AVENTURE -->
+
+        <div class="container_aventure_combat">
+
+            <!-- feuille d'aventure -->
+            <section class="aventure"> 
+                <h2> Feuille d'aventure </h2>
+                <div class="feuille_aventure">
+                    <div id="skill" class="box skill"> Habileté: 10 </div>
+                    <div id="health" class="box health"> Endurance: 10 </div>
+                    <div id="chance" class="box chance"> Chance: 10 </div>
+                    <div id="equipment" class="box equipment"> Equipement transporté </div>
+                    <div id="gold" class="box gold"> Or: 10 </div>
+                    <div id="jewelry" class="box jewelry"> Bijoux </div>
+                    <div id="potions" class="box potions"> Potions </div>
+                    <div id="food" class="box food"> Provisions: 10 </div>
+                    
+                </div>
+                <button id="useMealButton" style="display:none"> Prendre un repas (augmente endurance de 4 points) </button>
+                <div id="MealMessage"> </div>
+            </section>
+        
+        
+            <!-- combats -->
+            <section class="combat"> 
+                <h2> Combat </h2>
+                <div id="monsters"> Vous combattez : </div>
+                <br>
+                <div id="actual_monster" style="display:none" > </div>
+                <button id="attackButton" style="display:none"> Attaquer </button>  
+                <div id="attack_message"> </div>  
+                <button id="temptChanceButton" style="display:none"> Tenter ma chance ? </button>
+                <button id="no_temptChanceButton" style="display:none"> Ne pas tenter ma chance. </button>
+                <button id="escapeButton" style="display:none"> Choisir la fuite </button>
+            
+            </section>
+        
+        </div>
+
+        </main>
+
+        <!-- ASIDE -->
+        <aside>
+            <!-- illustration -->
+            <img id="illustration" src="../images/la_foret_de_la_malediction.JPG" alt="illustration du chapitre en pixelart">
+        
+        </aside>
+    
+    </div>
+
+    <script type="module">
+        import { applyChapterEffects } from './chapterEffects.js';
+        import { updateCharacterStats } from './character.js';
+        import { updateAdventureSheet } from './inventory.js';
+
+        // État du jeu de test
+        const testGameState = {
+            character: {
+                skill: 10,
+                health: 10,
+                chance: 10
+            },
+            inventory: {
+                items: [
+                    { name: 'repas', quantity: 10, category: 'food' },
+                    { name: 'or', quantity: 10, category: 'gold' }
+                ],
+                addItem: function(name, quantity, category) {
+                    const index = this.items.findIndex(item => item.name === name && item.category === category);
+                    if (index !== -1) {
+                        this.items[index].quantity += quantity;
+                    } else {
+                        this.items.push({ name, quantity, category });
+                    }
+                    updateAdventureSheet();
+                },
+                removeItem: function(name, quantity) {
+                    const index = this.items.findIndex(item => item.name === name);
+                    if (index !== -1 && this.items[index].quantity >= quantity) {
+                        this.items[index].quantity -= quantity;
+                        if (this.items[index].quantity === 0) {
+                            this.items.splice(index, 1);
+                        }
+                        updateAdventureSheet();
+                        return true;
+                    }
+                    return false;
+                },
+                checkItem: function(itemName) {
+                    const item = this.items.find(item => item.name === itemName);
+                    return item ? item.quantity : 0;
+                }
+            },
+            currentChapterId: null,
+            currentChapter: null
+        };
+
+        // Remplacer les références globales pour le test
+        window.gameState = testGameState;
+
+        // Charger les données du jeu
+        let chaptersData = [];
+        async function loadGameData() {
+            try {
+                const response = await fetch('./foret_malediction.json');
+                const data = await response.json();
+                chaptersData = data.chapters;
+                return data.chapters;
+            } catch (error) {
+                console.error('Erreur lors du chargement des données:', error);
+                return [];
+            }
+        }
+
+        // Charger un chapitre
+        window.loadChapter = async function() {
+            const chapterId = parseInt(document.getElementById('chapterId').value);
+            if (!chapterId) {
+                alert('Veuillez entrer un numéro de chapitre');
+                return;
+            }
+
+            if (chaptersData.length === 0) {
+                await loadGameData();
+            }
+
+            const chapter = chaptersData.find(c => c.id === chapterId);
+            if (!chapter) {
+                alert(`Chapitre ${chapterId} non trouvé`);
+                return;
+            }
+
+            testGameState.currentChapterId = chapterId;
+            testGameState.currentChapter = chapter;
+
+            displayChapter(chapter);
+        };
+
+        // Afficher un chapitre
+        function displayChapter(chapter) {
+            const chapterTitle = document.getElementById('chapter_title');
+            const textDiv = document.getElementById('text');
+            const choicesDiv = document.getElementById('choices');
+            const illustration = document.getElementById('illustration');
+
+            // Afficher le titre et le texte du chapitre
+            chapterTitle.textContent = `Chapitre ${chapter.id}`;
+            textDiv.innerHTML = chapter.text;
+
+            // Afficher l'illustration
+            if (chapter.illustration) {
+                illustration.src = chapter.illustration;
+                illustration.style.display = 'block';
+            } else {
+                illustration.style.display = 'none';
+            }
+
+            // Afficher les choix
+            choicesDiv.innerHTML = '';
+            chapter.choices.forEach((choice, index) => {
+                const button = document.createElement('button');
+                button.textContent = choice.text;
+                button.onclick = () => {
+                    console.log(`Choix sélectionné: ${choice.text} → Chapitre ${choice.nextId}`);
+                    // Ici vous pourriez naviguer vers le chapitre suivant
+                };
+                choicesDiv.appendChild(button);
+            });
+
+            // Appliquer les effets
+            if (chapter.effects && chapter.effects.length > 0) {
+                // Appliquer réellement les effets
+                applyChapterEffects(chapter);
+            }
+
+            // Mettre à jour l'affichage
+            updateCharacterStats();
+            updateAdventureSheet();
+        }
+
+        // Fonctions de contrôle
+        window.resetCharacter = function() {
+            testGameState.character.skill = 10;
+            testGameState.character.health = 10;
+            testGameState.character.chance = 10;
+            testGameState.inventory.items = [
+                { name: 'repas', quantity: 10, category: 'food' },
+                { name: 'or', quantity: 10, category: 'gold' }
+            ];
+            updateCharacterStats();
+            updateAdventureSheet();
+            document.getElementById('effect_message').innerHTML = '';
+            console.log('🔄 Personnage réinitialisé');
+        };
+
+        window.addFood = function() {
+            testGameState.inventory.addItem('repas', 5, 'food');
+            console.log('🍽️ +5 nourriture ajoutée');
+        };
+
+        window.addGold = function() {
+            testGameState.inventory.addItem('or', 5, 'gold');
+            console.log('💰 +5 or ajouté');
+        };
+
+        window.healCharacter = function() {
+            testGameState.character.health = Math.min(20, testGameState.character.health + 5);
+            updateCharacterStats();
+            console.log('❤️ +5 santé ajoutée');
+        };
+
+        window.testRandomChapter = async function() {
+            if (chaptersData.length === 0) {
+                await loadGameData();
+            }
+            const randomChapter = chaptersData[Math.floor(Math.random() * chaptersData.length)];
+            document.getElementById('chapterId').value = randomChapter.id;
+            loadChapter();
+        };
+
+        // Initialiser
+        window.addEventListener('load', async () => {
+            console.log('🧪 Système de test réel chargé');
+            await loadGameData();
+            updateCharacterStats();
+            updateAdventureSheet();
+        });
+    </script>
+</body>
+</html> 
