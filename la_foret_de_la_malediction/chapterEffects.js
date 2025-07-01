@@ -96,6 +96,9 @@ export function applyChapterEffects(chapter) {
                 case "reduceFiveGoldOrRemoveOneItem":
                     goldOrItem({ goldToRemove: 5, itemsToRemove: 1});
                     break;
+                case "reduceFood":
+                    message = reduceFood(effect.value);
+                    break;
                 default:
                     message = "Effet inconnu appliqué.";
             }
@@ -427,6 +430,38 @@ function updateChoiceButtons() {
 
 
     });
+}
+
+// Fonction pour réduire la nourriture du joueur
+function reduceFood(value) {
+    const foodItems = gameState.inventory.items.filter(item => item.category === 'food');
+    
+    if (foodItems.length === 0) {
+        return "Vous n'aviez aucune nourriture à perdre.";
+    }
+
+    if (value === "all" || value === "ALL") {
+        // Supprimer toute la nourriture
+        foodItems.forEach(item => {
+            gameState.inventory.removeItem(item.name, item.quantity);
+        });
+        updateAdventureSheet();
+        return "Vous avez perdu toute votre nourriture.";
+    } else {
+        // Supprimer une quantité spécifique
+        const quantity = parseInt(value);
+        let remaining = quantity;
+        
+        for (let item of foodItems) {
+            if (remaining <= 0) break;
+            const toRemove = Math.min(remaining, item.quantity);
+            gameState.inventory.removeItem(item.name, toRemove);
+            remaining -= toRemove;
+        }
+        
+        updateAdventureSheet();
+        return `Vous avez perdu ${quantity} nourriture(s).`;
+    }
 }
 
 

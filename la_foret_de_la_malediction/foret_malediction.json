@@ -1622,7 +1622,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/chair_moss_97.png"
+            "illustration": "../images/images_foret/old_wood_chair_97.png"
         }, 
         {
             "id": 98,
@@ -2445,9 +2445,13 @@
                 "nextId": 285
               }
             ],
-            "effects": {
-                "reduceFood": "all"
-            }
+            "effects": [
+                {
+                    "type": "reduceFood",
+                    "value": "all"
+                }
+            ],
+            "illustration": "../images/images_foret/boat_sinking_145_3.png"
         },
         {
             "id": 146,
@@ -5476,10 +5480,12 @@
         {
             "id": 328,
             "text": "Bien qu'elle soit taillée dans un bois de chêne particulièrement dur, la chaise est étonnamment confortable. Vous commencez alors à manger, mais au lieu de sentir vos forces revenir, vous éprouvez une impression de faiblesse. C'est que vous vous êtes assis sur une Chaise Dévoreuse de Vie qui vous fait perdre 4 points d'ENDURANCE en dépit de la nourriture que vous venez d'absorber. Si vous êtes toujours vivant, vous parvenez à vous relever lentement, et vous repartez en titubant le long du chemin en direction du nord. ",
-            "effects": {
-                "type": "reduceHealth",
-                "value": 4
-            },
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 4
+                }
+            ],
             "choices": [
                 {
                     "text": "Rendez-vous au 118.",
