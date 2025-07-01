@@ -2560,6 +2560,13 @@
         {
             "id": 153,
             "text": "La Femme Féline grogne et gronde en montrant les dents avant de bondir sur vous pour vous attaquer. Vous reculez d'un pas et vous vous préparez à combattre. FEMME FÉLINE HABILETÉ : 8 ENDURANCE : 5.",
+            "monsters": [
+                {
+                    "name": "Femme Féline",
+                    "skill": 8,
+                    "health": 5
+                }
+            ],
             "choices": [
               {
                 "text": "Si vous êtes vainqueur, rendez-vous au 202.",

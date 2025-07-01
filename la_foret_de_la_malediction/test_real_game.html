@@ -272,6 +272,123 @@
             updateAdventureSheet();
         }
 
+        // Système de combat simplifié
+        function manageMonsters(chapterMonsters) {
+            const monsterContainer = document.getElementById('monsters');
+            monsterContainer.innerHTML = '';
+
+            // Initialiser les monstres
+            testGameState.monsters = chapterMonsters.map(monsterData => ({
+                ...monsterData,
+                status: "vivant"
+            }));
+
+            updateMonsterList();
+            selectCurrentMonster(0);
+        }
+
+        function updateMonsterList() {
+            const monsterContainer = document.getElementById('monsters');
+            monsterContainer.innerHTML = '';
+
+            if (testGameState.monsters && testGameState.monsters.length > 0) {
+                testGameState.monsters.forEach((monster, index) => {
+                    let monsterInfo = document.createElement('div');
+                    monsterInfo.innerHTML = `<strong>${monster.name}</strong>, Habileté : ${monster.skill}, Endurance : ${monster.health}, Statut : ${monster.status}<br>`;
+                    monsterContainer.appendChild(monsterInfo);
+                });
+            } else {
+                monsterContainer.innerHTML = 'Aucun monstre à combattre';
+            }
+        }
+
+        function selectCurrentMonster(index) {
+            if (testGameState.monsters && index < testGameState.monsters.length) {
+                const currentMonster = testGameState.monsters[index];
+                const actualMonsterDiv = document.getElementById('actual_monster');
+                actualMonsterDiv.innerHTML = `Monstre actuel : ${currentMonster.name}, Habileté : ${currentMonster.skill}, Endurance : ${currentMonster.health}, Statut : ${currentMonster.status}`;
+                actualMonsterDiv.style.display = 'block';
+
+                // Mise à jour des boutons
+                const attackButton = document.getElementById('attackButton');
+                attackButton.innerText = `Attaquer ${currentMonster.name}`;
+                attackButton.style.display = 'block';
+                attackButton.onclick = () => performAttack(index);
+            }
+        }
+
+        function rollDice() {
+            return Math.floor(Math.random() * 6) + 1;
+        }
+
+        function performAttack(index) {
+            let character = testGameState.character;
+            let monster = testGameState.monsters[index];
+            let attackMessageDiv = document.getElementById("attack_message");
+
+            // Calcul des forces d'attaque
+            let charAttackForce = rollDice() + rollDice() + character.skill;
+            let monsterAttackForce = rollDice() + rollDice() + monster.skill;
+
+            // Calcul des dégâts
+            let potentialDamageToMonster = charAttackForce > monsterAttackForce ? 2 : 0;
+            let potentialDamageToCharacter = charAttackForce < monsterAttackForce ? 2 : 0;
+
+            // Rapport d'attaque
+            let attackReport = `Votre force d'attaque est de ${charAttackForce}.<br> La force d'attaque du ${monster.name} est de ${monsterAttackForce}.<br> `;
+            if (charAttackForce > monsterAttackForce) {
+                attackReport += `Vous infligez ${potentialDamageToMonster} points de dégâts à ${monster.name}.<br>`;
+                monster.health -= potentialDamageToMonster;
+            } else if (charAttackForce < monsterAttackForce) {
+                attackReport += `Le ${monster.name} vous inflige ${potentialDamageToCharacter} points de dégâts.<br>`;
+                character.health -= potentialDamageToCharacter;
+            } else {
+                attackReport += "<strong>Aucun de vous n'a infligé de dégâts.</strong>";
+            }
+            attackMessageDiv.innerHTML = attackReport;
+
+            // Mise à jour de l'affichage
+            updateCharacterStats();
+            updateMonsterList();
+
+            // Vérifier la fin du combat
+            checkEndOfBattle(character, monster);
+        }
+
+        function checkEndOfBattle(character, monster) {
+            if (monster.health <= 0) {
+                monster.status = "vaincu";
+                updateMonsterList();
+                
+                // Vérifier s'il y a d'autres monstres
+                const remainingMonsters = testGameState.monsters.filter(m => m.status === "vivant");
+                if (remainingMonsters.length === 0) {
+                    document.getElementById("attack_message").innerHTML += "<br><strong>Tous les monstres ont été vaincus!</strong>";
+                    document.getElementById("attackButton").style.display = "none";
+                    document.getElementById("actual_monster").style.display = "none";
+                    updateChoiceButtonsState();
+                } else {
+                    // Passer au monstre suivant
+                    const nextMonsterIndex = testGameState.monsters.findIndex(m => m.status === "vivant");
+                    selectCurrentMonster(nextMonsterIndex);
+                }
+            } else if (character.health <= 0) {
+                document.getElementById("attack_message").innerHTML += "<br><strong>Vous êtes mort! Game Over!</strong>";
+                document.getElementById("attackButton").style.display = "none";
+            }
+        }
+
+        function updateChoiceButtonsState() {
+            const allMonstersDefeated = testGameState.monsters && testGameState.monsters.every(monster => monster.status === "vaincu");
+            const choices = document.getElementById('choices').getElementsByTagName('button');
+
+            for (let choice of choices) {
+                if (choice.getAttribute('data-requiresAllMonstersDefeated') === 'true') {
+                    choice.disabled = !allMonstersDefeated;
+                }
+            }
+        }
+
         // Fonction reduceFood pour le test
         function reduceFood(value) {
             const foodItems = testGameState.inventory.items.filter(item => item.category === 'food');
@@ -364,11 +481,29 @@
                 illustration.style.display = 'none';
             }
 
+            // Gérer les monstres si présents
+            if (chapter.monsters && chapter.monsters.length > 0) {
+                manageMonsters(chapter.monsters);
+            } else {
+                // Réinitialiser la section combat
+                document.getElementById('monsters').innerHTML = 'Aucun monstre à combattre';
+                document.getElementById('actual_monster').style.display = 'none';
+                document.getElementById('attackButton').style.display = 'none';
+                document.getElementById('attack_message').innerHTML = '';
+            }
+
             // Afficher les choix
             choicesDiv.innerHTML = '';
             chapter.choices.forEach((choice, index) => {
                 const button = document.createElement('button');
                 button.textContent = choice.text;
+                
+                // Vérifier si le choix nécessite que tous les monstres soient vaincus
+                if (choice.requiresAllMonstersDefeated) {
+                    button.setAttribute('data-requiresAllMonstersDefeated', 'true');
+                    button.disabled = !(testGameState.monsters && testGameState.monsters.every(m => m.status === "vaincu"));
+                }
+                
                 button.onclick = () => {
                     console.log(`Choix sélectionné: ${choice.text} → Chapitre ${choice.nextId}`);
                     // Naviguer vers le chapitre suivant
