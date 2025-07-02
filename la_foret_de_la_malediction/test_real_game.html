@@ -62,6 +62,9 @@
             <button onclick="addFood()">+ Nourriture</button>
             <button onclick="addGold()">+ Or</button>
             <button onclick="healCharacter()">+ Santé</button>
+            <button onclick="addEquipment()">+ Équipement</button>
+            <button onclick="addPotion()">+ Potion</button>
+            <button onclick="addJewelry()">+ Bijoux</button>
         </div>
     </nav>
 
@@ -222,11 +225,56 @@
         }
 
         function updateAdventureSheet() {
-            const foodItem = testGameState.inventory.items.find(item => item.category === 'food');
-            const goldItem = testGameState.inventory.items.find(item => item.category === 'gold');
-            
-            document.getElementById('food').textContent = `Provisions: ${foodItem ? foodItem.quantity : 0}`;
-            document.getElementById('gold').textContent = `Or: ${goldItem ? goldItem.quantity : 0}`;
+            const equipmentDiv = document.getElementById('equipment');
+            const goldDiv = document.getElementById('gold');
+            const jewelryDiv = document.getElementById('jewelry');
+            const potionsDiv = document.getElementById('potions');
+            const foodDiv = document.getElementById('food');
+
+            // Réinitialiser le contenu des divs
+            equipmentDiv.innerHTML = '';
+            goldDiv.innerHTML = '';
+            jewelryDiv.innerHTML = '';
+            potionsDiv.innerHTML = '';
+            foodDiv.innerHTML = '';
+
+            // Initialiser les chaînes pour accumuler les descriptions
+            let equipmentItems = [];
+            let goldItems = [];
+            let jewelryItems = [];
+            let potionsItems = [];
+            let foodItems = [];
+
+            testGameState.inventory.items.forEach(i => {
+                // Préparation de la chaîne de description pour l'item
+                let itemDescription = i.quantity && i.quantity > 1 ? `${i.name} x ${i.quantity}` : `${i.name}`;
+
+                switch (i.category) {
+                    case 'equipment':
+                        equipmentItems.push(itemDescription);
+                        break;
+                    case 'gold':
+                        goldItems.push(itemDescription);
+                        break;
+                    case 'jewelry':
+                        jewelryItems.push(itemDescription);
+                        break;
+                    case 'potions':
+                        potionsItems.push(itemDescription);
+                        break;
+                    case 'food':
+                        foodItems.push(itemDescription);
+                        break;
+                    default:
+                        console.log(`Catégorie non reconnue pour l'objet : ${i.name}`);
+                }
+            });
+
+            equipmentDiv.innerHTML = equipmentItems.length > 0 ? `Équipement transporté = ${equipmentItems.join(', ')}` : 'Equipement';
+            goldDiv.innerHTML = goldItems.length > 0 ? `Or = ${goldItems.join(', ')}` : 'Or';
+            jewelryDiv.innerHTML = jewelryItems.length > 0 ? `Bijoux = ${jewelryItems.join(', ')}` : 'Bijoux';
+            potionsDiv.innerHTML = potionsItems.length > 0 ? `Potions = ${potionsItems.join(', ')}` : 'Potions';
+            foodDiv.innerHTML = foodItems.length > 0 ? `Nourriture = ${foodItems.join(', ')}` : 'Nourriture';
         }
 
         // Fonction simplifiée pour appliquer les effets
@@ -257,6 +305,40 @@
                         case "reduceChance":
                             testGameState.character.chance -= effect.value;
                             message = `Chance réduite de ${effect.value}.`;
+                            break;
+                        case "gainSkill":
+                            testGameState.character.skill += effect.value;
+                            message = `Habileté augmentée de ${effect.value}.`;
+                            break;
+                        case "gainHealth":
+                            testGameState.character.health += effect.value;
+                            message = `Santé augmentée de ${effect.value}.`;
+                            break;
+                        case "gainGold":
+                            testGameState.inventory.addItem('or', effect.value, 'gold');
+                            message = `${effect.value} pièces d'or ajoutées.`;
+                            break;
+                        case "gainChance":
+                            testGameState.character.chance += effect.value;
+                            message = `Chance augmentée de ${effect.value}.`;
+                            break;
+                        case "removeItem":
+                            testGameState.inventory.removeItem(effect.itemName, effect.quantity);
+                            message = `${effect.quantity} ${effect.itemName} retiré(s).`;
+                            break;
+                        case "takeItem":
+                            // Reproduire exactement le comportement du vrai jeu
+                            const actionMessageDiv = document.getElementById('action_message');
+                            
+                            // Si c'est un bijou avec valeur marchande, le convertir directement en or
+                            if (effect.category === 'jewelry' && effect.goldValue > 0) {
+                                testGameState.inventory.addItem('or', effect.goldValue, 'gold');
+                                actionMessageDiv.innerHTML = `Vous avez récupéré ${effect.quantity} ${effect.itemName} (converti en ${effect.goldValue} pièces d'or).`;
+                            } else {
+                                // Sinon, ajouter normalement
+                                testGameState.inventory.addItem(effect.itemName, effect.quantity, effect.category);
+                                actionMessageDiv.innerHTML = `Vous avez récupéré ${effect.quantity} ${effect.itemName}.`;
+                            }
                             break;
                         default:
                             message = `Effet appliqué: ${effect.type}`;
@@ -389,6 +471,37 @@
             }
         }
 
+        // Fonction takeItem pour le test (basée sur le vrai jeu)
+        function takeItem(item, buttonElement) {
+            const actionMessageDiv = document.getElementById("action_message");
+
+            // Vérifie si nous sommes au chapitre 0, l'objet est une potion, et si une potion est déjà dans l'inventaire
+            if (testGameState.currentChapterId === 0 && item.category === 'potions' && testGameState.inventory.items.some(i => i.category === 'potions')) {
+                actionMessageDiv.innerHTML = "Vous avez déjà une potion dans votre inventaire. Vous ne pouvez pas prendre une autre potion.";
+                return;
+            }
+
+            // Vérifie si l'objet a un coût et si le joueur a suffisamment d'or
+            if (item.price) {
+                const goldQuantity = testGameState.inventory.checkItem('or');
+                if (goldQuantity >= item.price) {
+                    testGameState.inventory.removeItem('or', item.price);
+                    testGameState.inventory.addItem(item.name, item.quantity || 1, item.category);
+                    actionMessageDiv.innerHTML = `Vous avez acheté ${item.name} pour ${item.price} pièces d'or.`;
+                    buttonElement.remove();
+                } else {
+                    actionMessageDiv.innerHTML = `Vous n'avez pas assez d'or pour acheter ${item.name}.`;
+                    return;
+                }
+            } else {
+                testGameState.inventory.addItem(item.name, item.quantity || 1, item.category);
+                actionMessageDiv.innerHTML = `Vous avez pris ${item.name}, du type ${item.category}.`;
+                buttonElement.remove();
+            }
+
+            updateAdventureSheet();
+        }
+
         // Fonction reduceFood pour le test
         function reduceFood(value) {
             const foodItems = testGameState.inventory.items.filter(item => item.category === 'food');
@@ -469,6 +582,15 @@
             const choicesDiv = document.getElementById('choices');
             const illustration = document.getElementById('illustration');
 
+            // Réinitialiser la section actions (comme dans le vrai jeu)
+            document.getElementById('action_message').innerHTML = '';
+            document.getElementById('attack_message').innerHTML = '';
+            document.getElementById('get_item').innerHTML = '';
+            document.getElementById('tempt_chance_button').innerHTML = '';
+            document.getElementById('roll_dice').style.display = 'none';
+            document.getElementById('zone_result_dice').innerHTML = '';
+            document.getElementById('effect_message').innerHTML = '';
+
             // Afficher le titre et le texte du chapitre
             chapterTitle.textContent = `Chapitre ${chapter.id}`;
             textDiv.innerHTML = chapter.text;
@@ -517,6 +639,19 @@
                 applyChapterEffects(chapter);
             }
 
+            // Création de boutons pour prendre les objets (comme dans le vrai jeu)
+            const itemsContainer = document.getElementById('get_item');
+            if (chapter.items && chapter.items.length > 0) {
+                chapter.items.forEach(item => {
+                    const itemButton = document.createElement('button');
+                    itemButton.innerText = `Prendre ${item.name}`;
+                    itemButton.addEventListener('click', function() {
+                        takeItem(item, this);
+                    });
+                    itemsContainer.appendChild(itemButton);
+                });
+            }
+
             // Mettre à jour l'affichage
             updateCharacterStats();
             updateAdventureSheet();
@@ -553,6 +688,31 @@
             console.log('❤️ +5 santé ajoutée');
         }
 
+        function addEquipment() {
+            const equipmentName = prompt('Nom de l\'équipement à ajouter:', 'épée');
+            if (equipmentName) {
+                testGameState.inventory.addItem(equipmentName, 1, 'equipment');
+                console.log(`⚔️ Équipement "${equipmentName}" ajouté`);
+            }
+        }
+
+        function addPotion() {
+            const potionName = prompt('Nom de la potion à ajouter:', 'potion de vigueur');
+            if (potionName) {
+                testGameState.inventory.addItem(potionName, 1, 'potions');
+                console.log(`🧪 Potion "${potionName}" ajoutée`);
+            }
+        }
+
+        function addJewelry() {
+            const jewelryName = prompt('Nom du bijou à ajouter:', 'anneau d\'or');
+            const goldValue = prompt('Valeur en or:', '5');
+            if (jewelryName) {
+                testGameState.inventory.addItem(jewelryName, 1, 'jewelry');
+                console.log(`💍 Bijou "${jewelryName}" ajouté`);
+            }
+        }
+
         async function testRandomChapter() {
             if (chaptersData.length === 0) {
                 await loadGameData();
@@ -568,6 +728,9 @@
         window.addFood = addFood;
         window.addGold = addGold;
         window.healCharacter = healCharacter;
+        window.addEquipment = addEquipment;
+        window.addPotion = addPotion;
+        window.addJewelry = addJewelry;
         window.testRandomChapter = testRandomChapter;
 
         // Initialiser

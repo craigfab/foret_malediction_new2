@@ -99,6 +99,9 @@ export function applyChapterEffects(chapter) {
                 case "reduceFood":
                     message = reduceFood(effect.value);
                     break;
+                case "takeItem":
+                    takeItem(effect.itemName, effect.quantity, effect.category, effect.goldValue);
+                    break;
                 default:
                     message = "Effet inconnu appliqué.";
             }
@@ -462,6 +465,23 @@ function reduceFood(value) {
         updateAdventureSheet();
         return `Vous avez perdu ${quantity} nourriture(s).`;
     }
+}
+
+// Fonction pour récupérer un objet avec conversion automatique en or si nécessaire
+function takeItem(itemName, quantity = 1, category = 'equipment', goldValue = 0) {
+    const actionMessageDiv = document.getElementById('action_message');
+    
+    // Si c'est un bijou avec valeur marchande, le convertir directement en or
+    if (category === 'jewelry' && goldValue > 0) {
+        gameState.inventory.addItem('or', goldValue, 'gold');
+        actionMessageDiv.innerHTML = `Vous avez récupéré ${quantity} ${itemName} (converti en ${goldValue} pièces d'or).`;
+    } else {
+        // Sinon, ajouter normalement
+        gameState.inventory.addItem(itemName, quantity, category);
+        actionMessageDiv.innerHTML = `Vous avez récupéré ${quantity} ${itemName}.`;
+    }
+    
+    updateAdventureSheet();
 }
 
 

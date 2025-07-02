@@ -359,7 +359,7 @@
         },
         {
             "id": 22,
-            "text": "C'est un gaz toxique et vos yeux se mettent à pleurer. Vous toussez et vous retenez votre souffle en courant dans la caverne, pour tenter d'échapper au nuage de gaz qui vous enveloppe la tête. Vous avez l'impression que vos poumons vont exploser et vous ne pouvez plus vous empêcher de respirer. Otez 2 points à votre total d'HABiLETÊ, et ôtez à votre total d'ENDURANCE le nombre de points que vous indiquera le dé lancé à cet effet. Si vous êtes toujours vivant, vous voyez avec soulagement le nuage de gaz se dissiper et vous rangez la boîte en argent dans votre sac à dos. Puis vous quittez aussitôt la caverne pour continuer en direction du nord.",
+            "text": "C'est un gaz toxique et vos yeux se mettent à pleurer. Vous toussez et vous retenez votre souffle en courant dans la caverne, pour tenter d'échapper au nuage de gaz qui vous enveloppe la tête. Vous avez l'impression que vos poumons vont exploser et vous ne pouvez plus vous empêcher de respirer. Otez 2 points à votre total d'HABiLETÉ, et ôtez à votre total d'ENDURANCE le nombre de points que vous indiquera le dé lancé à cet effet. Si vous êtes toujours vivant, vous voyez avec soulagement le nuage de gaz se dissiper et vous rangez la boîte en argent dans votre sac à dos. Puis vous quittez aussitôt la caverne pour continuer en direction du nord.",
             "choices": [
                 {
                     "text": "Rendez-vous au 358.",
@@ -1134,9 +1134,12 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "gainSkill": 2
-            },
+            "effects": [
+                {
+                    "type": "gainSkill",
+                    "value": 2
+                }
+            ],
             "illustration": "../images/images_foret/magic_sword_with_aura_70.png"
         },
         {
@@ -3322,13 +3325,14 @@
                 "nextId": 355
               }
             ],
-            "items": [
-              {
-                "name": "Boucles d'oreille en or",
-                "quantity": 2,
-                "value": 5,
-                "category": "jewelry"
-              }
+            "effects":[
+                {
+                    "type": "takeItem",
+                    "itemName": " boucles d'oreilles",
+                    "quantity": 2,
+                    "category": "jewelry",
+                    "goldValue": 10
+                  }
             ],
             "illustration": "../images/images_foret/gold_earrings_202.png"
         }, 
