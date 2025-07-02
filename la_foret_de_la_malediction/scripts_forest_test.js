@@ -1,8 +1,8 @@
 // Jeu d'aventure - Version Test
 import { manageMonsters } from "./battle.js";
 import { applyChapterEffects } from "./chapterEffects.js";
-import { updateCharacterStats } from "./character.js";
-import { Character } from "./character.js";
+import { updateCharacterStats } from "./character_test.js";
+import { Character } from "./character_test.js";
 import { takeItem } from "./inventory.js";
 import { updateAdventureSheet } from "./inventory.js";
 import { useMeal } from "./inventory.js";
