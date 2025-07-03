@@ -7,7 +7,7 @@ import { takeItem } from "./inventory.js";
 import { updateAdventureSheet } from "./inventory.js";
 import { useMeal } from "./inventory.js";
 import { Inventory } from "./inventory.js";
-import { loadRandomTrack } from "./music.js";
+import { loadRandomTrack, initializeSoundEffects } from "./music.js";
 
 // Chargement des données JSON
 async function loadChapters() {
@@ -24,9 +24,10 @@ export let gameState = {
     currentChapterId: 0,
 };
 
-// quand le DOM est chargé, choix aléatoire de piste musicale
+// quand le DOM est chargé, choix aléatoire de piste musicale et initialisation des effets sonores
 document.addEventListener('DOMContentLoaded', function() {
     loadRandomTrack();
+    initializeSoundEffects(); // Initialiser le système d'effets sonores
 });
 
 

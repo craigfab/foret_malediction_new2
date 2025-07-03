@@ -4005,7 +4005,7 @@
               {
                 "name": "OURS",
                 "skill": 7,
-                "endurance": 8
+                "health": 8
               }
             ],
             "illustration": "../images/images_foret/agressive_bear_in_the_forest_219.png"

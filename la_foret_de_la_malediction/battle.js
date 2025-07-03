@@ -1,6 +1,7 @@
 import { gameState } from "./scripts_forest.js";
 import { rollDice, tempt_chance } from "./chance.js";
 import { updateCharacterStats } from "./character.js";
+import { playAttackSound, playCriticalHitSound, playVictorySound, playDefeatSound } from "./music.js";
 
 
 //fonction manageMonsters
@@ -103,6 +104,9 @@ function performAttack(index) {
         attackModifier += 1;
     }
 
+    // Jouer le son d'attaque au début du combat
+    playAttackSound(true); // Son d'attaque du joueur
+
     // Calcul des forces d'attaque
     let charAttackForce = rollDice() + rollDice() + character.skill + attackModifier + (monster.attackModifier || 0);
     let monsterAttackForce = rollDice() + rollDice() + monster.skill;
@@ -163,10 +167,23 @@ function applyDamage(success, playerWon, character, monster, potentialDamageToMo
         let finalDamageToMonster = success ? potentialDamageToMonster + 1 : potentialDamageToMonster - 1; // Modifier les dégâts basés sur la chance
         monster.health -= Math.max(finalDamageToMonster, 0); // Assurer que les dégâts ne soient pas négatifs
         attackMessageDiv.innerHTML += `<strong>${monster.name} subit ${finalDamageToMonster} points de dégâts.</strong><br>`;
+        
+        // Jouer le son approprié selon le succès de la chance
+        if (success && finalDamageToMonster > potentialDamageToMonster) {
+            playCriticalHitSound(); // Coup critique avec bonus de chance
+        }
     } else {
         let finalDamageToCharacter = success ? potentialDamageToCharacter - 1 : potentialDamageToCharacter + 1;
         character.health -= Math.max(finalDamageToCharacter, 0);
         attackMessageDiv.innerHTML += `<strong>Vous subissez ${finalDamageToCharacter} points de dégâts.</strong><br>`;
+        
+        // Jouer le son d'attaque du monstre
+        playAttackSound(false);
+        
+        // Si l'échec de la chance aggrave les dégâts, jouer un son critique
+        if (!success && finalDamageToCharacter > potentialDamageToCharacter) {
+            playCriticalHitSound(); // Coup critique du monstre
+        }
     }
 
     // Mettre à jour l'affichage des caractéristiques du personnage et du monstre
@@ -189,6 +206,9 @@ function applyDirectDamage(character, monster, potentialDamageToMonster, potenti
         // Appliquer les dégâts au personnage
         character.health -= potentialDamageToCharacter;
         attackMessageDiv.innerHTML += `<strong>Le ${monster.name} vous inflige ${potentialDamageToCharacter} points de dégâts.</strong><br>`;
+        
+        // Jouer le son d'attaque du monstre
+        playAttackSound(false);
     }
 
     // Mettre à jour l'affichage des caractéristiques du personnage et du monstre
@@ -204,8 +224,10 @@ function checkEndOfBattle(character, monster) {
     let attackMessageDiv = document.getElementById("attack_message");
     if (character.health <= 0) {
         attackMessageDiv.innerHTML += "<strong> Vous avez été vaincu. Game Over.</strong>";
+        playDefeatSound(); // Son de défaite
     } else if (monster.health <= 0) {
         attackMessageDiv.innerHTML += `<strong> Vous avez vaincu ${monster.name}!</strong>`;
+        playVictorySound(); // Son de victoire
         updateMonsterList();
         updateChoiceButtonsState();
         selectNextMonster(); // Cette fonction doit gérer la sélection du prochain monstre à attaquer
