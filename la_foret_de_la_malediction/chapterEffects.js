@@ -122,7 +122,6 @@ export function applyChapterEffects(chapter) {
 function goldOrItem(options) {
     const { goldToRemove = 0, itemsToRemove = 0 } = options;
     const actionMessageDiv = document.getElementById('action_message');
-    let conditionMet = false; // Booléen pour indiquer si une condition est remplie
     actionMessageDiv.innerHTML = 'Que voulez-vous faire ?<br>';
 
     // Bouton pour retirer une quantité spécifique d'or
@@ -134,8 +133,7 @@ function goldOrItem(options) {
             if (gameState.inventory.getItemQuantity('or') >= goldToRemove) {
                 gameState.inventory.removeItem('or', goldToRemove);
                 actionMessageDiv.innerHTML = `<strong>Vous avez perdu ${goldToRemove} pièces d'or.</strong>`;
-                conditionMet = true; // Condition remplie
-                checkConditionMet(conditionMet); // Vérifie et agit sur la condition
+                gameState.conditionMet = true; // Directement dans gameState
             } else {
                 actionMessageDiv.innerHTML = `<strong>Vous n'avez pas assez de pièces d'or.</strong>`;
             }
@@ -158,8 +156,7 @@ function goldOrItem(options) {
             }
             actionMessageDiv.innerHTML = `Veuillez choisir ${itemsToRemove} équipement(s) à retirer:<br>`;
             displayEquipmentChoices(actionMessageDiv, itemsToRemove, () => {
-                conditionMet = true; // Condition remplie après sélection d'objets
-                checkConditionMet(conditionMet); // Vérifie et agit sur la condition
+                gameState.conditionMet = true; // Directement dans gameState
                 updateChoiceButtons();
             });
         });
@@ -167,7 +164,7 @@ function goldOrItem(options) {
     }
 }
 
-function displayEquipmentChoices(actionMessageDiv, itemsToRemove) {
+function displayEquipmentChoices(actionMessageDiv, itemsToRemove, callback) {
     let itemsRemoved = 0; // Compteur local pour suivre les retraits
     const equipment = gameState.inventory.items.filter(item => item.category === 'equipment');
 
@@ -183,20 +180,17 @@ function displayEquipmentChoices(actionMessageDiv, itemsToRemove) {
 
             if (itemsRemoved >= itemsToRemove) {
                 actionMessageDiv.innerHTML += `<br><strong>Vous avez retiré ${itemsRemoved} équipement(s).</strong>`;
+                // Appeler le callback quand tous les équipements sont retirés
+                if (callback) {
+                    callback();
+                }
             }
         });
         actionMessageDiv.appendChild(itemButton);
     });
 }
 
-function checkConditionMet(conditionMet) {
-    if (conditionMet) {
-        console.log("Une condition a été remplie !");
-        // Connecter cette information au JSON ou activer une action spécifique
-        // Exemple : mettre à jour une clé dans gameState ou activer un choix
-        gameState.conditionMet = true; 
-        }
-}
+
 
 
 // fonction doubleRollDiceChance pour 2 tests de chance consécutifs

@@ -161,6 +161,7 @@ function showChapter(chapters, chapterId) {
 
         // Gestion de conditionMet
         if (choice.requiresConditionMet) {
+            choiceButton.setAttribute('data-requiresConditionMet', 'true');
             choiceButton.disabled = !gameState.conditionMet;
         }
 

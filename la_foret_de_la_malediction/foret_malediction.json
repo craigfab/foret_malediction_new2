@@ -886,7 +886,7 @@
             "choices": [
                 {"text":"Si vous persistez à vouloir l'attaquer, rendez-vous au 399.", "nextId":399},
                 {"text":"Si vous changez d'avis en revanche, suivez-le en haut des marches en vous rendant au 261.", "nextId":261}],
-            "illustration":"../images/images_foret/mage_54_bis.png",
+            "illustration":"../images/images_foret/attack_yastromo_54_3.png",
             "items":[]
         },
         {
