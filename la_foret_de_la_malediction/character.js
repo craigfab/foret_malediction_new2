@@ -11,6 +11,7 @@ export class Character {
         this.skill = baseSkill; // Initial skill is the same as base skill
         this.health = baseHealth; // Initial health is the same as base health
         this.chance = baseChance; // Initial chance is the same as base chance
+        this.isInitialized = false; // Ajout de la propriété d'initialisation
     }
     initialize() {
         this.baseSkill = rollDice() + 6;

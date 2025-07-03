@@ -48,6 +48,7 @@ function showChapter(chapters, chapterId) {
     // Création du personnage et de l'inventaire au chapitre 0
     if (chapterId === 0) {
         gameState.character = new Character(0,0,0,0,0,0);
+        gameState.character.isInitialized = false;
         gameState.inventory = new Inventory();
         gameState.inventory.addItem("repas", 10,"food")
         updateCharacterStats()
@@ -67,7 +68,13 @@ function showChapter(chapters, chapterId) {
         // Attacher l'événement click pour initialiser le personnage
         createCharacterButton.onclick = function(){
             gameState.character.initialize();
+            gameState.character.isInitialized = true;
             updateCharacterStats();
+            // Réactiver les boutons de choix une fois le personnage créé
+            const buttons = document.getElementById('choices').getElementsByTagName('Button');
+            for (let button of buttons) {
+                button.disabled = false;
+            }
         };
     } else {
         createCharacterButton.style.display = 'none';
@@ -122,6 +129,12 @@ function showChapter(chapters, chapterId) {
         const choiceButton = document.createElement('Button');
         choiceButton.innerText = choice.text;
         
+        // Désactiver les boutons au chapitre 0 si le personnage n'est pas créé
+        if (chapterId === 0 && (!gameState.character || !gameState.character.isInitialized)) {
+            choiceButton.disabled = true;
+            choiceButton.title = "Créez votre personnage d'abord";
+        }
+
         // Vérifie si le choix requiert un item spécifique
         if (choice.requiresItem) {
             // Note : On extrait maintenant `name` et `category` de l'objet `requiresItem`
