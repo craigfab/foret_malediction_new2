@@ -1512,11 +1512,15 @@
                 },
                 {
                     "text": "Boire une Potion de Contrôle des Insectes ? (si vous en avez une, bien entendu). Rendez-vous au 100",
-                    "nextId": 100
+                    "nextId": 100,
+                    "requiresItem": {
+                        "name": "potion de contrôle des insectes",
+                        "category": "potions"
+                    }
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/swarm_of_giant_bees_92.png"
         },
         {
             "id": 93,
@@ -1670,9 +1674,13 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "useAndRemoveItem": "Potion de Contrôle des Insectes"
-            },
+            "effects": [
+                {
+                    "type": "useAndRemoveItem",
+                    "itemName": "potion de contrôle des insectes",
+                    "quantity": 1
+                }
+            ],
             "illustration": "../images/images_foret/map_foret.jpg"
         }, 
         {
@@ -2633,7 +2641,7 @@
               }
             ],
             "items":[],
-            "illustration":"../images/images_foret/hole_forest_157_5.png"
+            "illustration":"../images/images_foret/hole_in_the_soil_of_the_forest_157.png"
         }, 
         {
             "id": 158,
@@ -3237,7 +3245,10 @@
               {
                 "text": "Si vous avez une Potion Antipoison, rendez-vous au 24.",
                 "nextId": 24,
-                "requiresItem": "Potion Antipoison"
+                "requiresItem": {
+                    "name": "potion antipoison",
+                    "category": "potions"
+                }
               },
               {
                 "text": "Sinon, rendez-vous au 53.",
