@@ -132,8 +132,62 @@ aside img {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px
-    }
+    padding: 5px;
+    position: relative;
+}
+
+/* Padding spécifique pour les sections avec icônes */
+.skill, .health, .chance, .equipment {
+    padding-left: 35px;
+}
+
+/* Padding supplémentaire pour l'équipement */
+.equipment {
+    padding-left: 45px;
+}
+
+/* Alignement à gauche pour les sections sans icônes */
+.gold, .jewelry, .potions, .food {
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+/* Icônes simples pour la feuille d'aventure */
+.skill::before {
+    content: "⚔️";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 24px;
+}
+
+.health::before {
+    content: "❤️";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 24px;
+    color: #FF0000;
+}
+
+.chance::before {
+    content: "🍀";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 24px;
+}
+
+.equipment::before {
+    content: "🗡️";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 24px;
+}
+
+
+
 .skill{
     grid-column: 1 / 2 ;
     grid-row: 1 / 2;
