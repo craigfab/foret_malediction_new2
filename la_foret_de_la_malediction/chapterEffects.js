@@ -88,7 +88,7 @@ export function applyChapterEffects(chapter) {
                     break;
                 case "reduceAllGoldOrRemoveTwoItems":
                     goldOrItem({
-                        goldToRemove: gameState.inventory.getItemQuantity('or'),
+                        goldToRemove: gameState.inventory.checkItem('or'),
                         itemsToRemove: 2
                     });
                     message = `Choisir entre perdre tout l'or ou retirer 2 équipements.`;
@@ -122,7 +122,10 @@ export function applyChapterEffects(chapter) {
 function goldOrItem(options) {
     const { goldToRemove = 0, itemsToRemove = 0 } = options;
     const actionMessageDiv = document.getElementById('action_message');
-    let conditionMet = false; // Booléen pour indiquer si une condition est remplie
+    
+    // Réinitialiser la condition
+    gameState.conditionMet = false;
+    
     actionMessageDiv.innerHTML = 'Que voulez-vous faire ?<br>';
 
     // Bouton pour retirer une quantité spécifique d'or
@@ -131,11 +134,10 @@ function goldOrItem(options) {
         slashGold.innerText = `Perdre ${goldToRemove} pièces d'or`;
         slashGold.addEventListener('click', () => {
             console.log(`Clic sur perdre ${goldToRemove} pièces d'or`);
-            if (gameState.inventory.getItemQuantity('or') >= goldToRemove) {
+            if (gameState.inventory.checkItem('or') >= goldToRemove) {
                 gameState.inventory.removeItem('or', goldToRemove);
                 actionMessageDiv.innerHTML = `<strong>Vous avez perdu ${goldToRemove} pièces d'or.</strong>`;
-                conditionMet = true; // Condition remplie
-                checkConditionMet(conditionMet); // Vérifie et agit sur la condition
+                gameState.conditionMet = true; // Condition remplie directement
             } else {
                 actionMessageDiv.innerHTML = `<strong>Vous n'avez pas assez de pièces d'or.</strong>`;
             }
@@ -158,8 +160,7 @@ function goldOrItem(options) {
             }
             actionMessageDiv.innerHTML = `Veuillez choisir ${itemsToRemove} équipement(s) à retirer:<br>`;
             displayEquipmentChoices(actionMessageDiv, itemsToRemove, () => {
-                conditionMet = true; // Condition remplie après sélection d'objets
-                checkConditionMet(conditionMet); // Vérifie et agit sur la condition
+                gameState.conditionMet = true; // Condition remplie directement
                 updateChoiceButtons();
             });
         });
@@ -188,16 +189,6 @@ function displayEquipmentChoices(actionMessageDiv, itemsToRemove) {
         actionMessageDiv.appendChild(itemButton);
     });
 }
-
-function checkConditionMet(conditionMet) {
-    if (conditionMet) {
-        console.log("Une condition a été remplie !");
-        // Connecter cette information au JSON ou activer une action spécifique
-        // Exemple : mettre à jour une clé dans gameState ou activer un choix
-        gameState.conditionMet = true; 
-        }
-}
-
 
 // fonction doubleRollDiceChance pour 2 tests de chance consécutifs
 function doubleRollDiceChance() {
