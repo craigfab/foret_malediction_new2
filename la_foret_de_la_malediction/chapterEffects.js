@@ -168,7 +168,7 @@ function goldOrItem(options) {
     }
 }
 
-function displayEquipmentChoices(actionMessageDiv, itemsToRemove) {
+function displayEquipmentChoices(actionMessageDiv, itemsToRemove, callback) {
     let itemsRemoved = 0; // Compteur local pour suivre les retraits
     const equipment = gameState.inventory.items.filter(item => item.category === 'equipment');
 
@@ -184,6 +184,8 @@ function displayEquipmentChoices(actionMessageDiv, itemsToRemove) {
 
             if (itemsRemoved >= itemsToRemove) {
                 actionMessageDiv.innerHTML += `<br><strong>Vous avez retiré ${itemsRemoved} équipement(s).</strong>`;
+                // Appeler le callback quand tous les équipements sont retirés
+                if (callback) callback();
             }
         });
         actionMessageDiv.appendChild(itemButton);
