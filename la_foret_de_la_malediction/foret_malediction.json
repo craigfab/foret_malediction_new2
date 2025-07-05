@@ -5506,6 +5506,9 @@
                 {
                     "type": "reduceHealth",
                     "value": 4
+                },
+                {
+                    "type": "useMeal"
                 }
             ],
             "choices": [
@@ -5513,7 +5516,8 @@
                     "text": "Rendez-vous au 118.",
                     "nextId": 118
                 }
-            ]
+            ], 
+            "illustration":"../images/images_foret/forest_narrowed_field_of_view_328.png"
         },
         {
             "id": 329,

@@ -1,7 +1,7 @@
 import { gameState } from "./scripts_forest.js";
 import { rollDice, tempt_chance } from "./chance.js";
 import { updateCharacterStats } from "./character.js";
-import { updateAdventureSheet } from "./inventory.js";
+import { updateAdventureSheet, useMeal } from "./inventory.js";
 
 
 
@@ -101,6 +101,10 @@ export function applyChapterEffects(chapter) {
                     break;
                 case "takeItem":
                     takeItem(effect.itemName, effect.quantity, effect.category, effect.goldValue);
+                    break;
+                case "useMeal":
+                    useMeal();
+                    message = "Repas consommé (+4 endurance).";
                     break;
                 default:
                     message = "Effet inconnu appliqué.";
