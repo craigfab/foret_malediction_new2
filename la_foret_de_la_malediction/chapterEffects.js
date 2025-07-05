@@ -51,7 +51,7 @@ export function applyChapterEffects(chapter) {
                     break;
                 case "gainHealth":
                     gameState.character.health += effect.value;
-                    message = `Enduranceaugmentée de ${effect.value}.`;
+                    message = `Endurance augmentée de ${effect.value}.`;
                     break;
                 case "gainGold":
                     gameState.inventory.addItem('or', effect.value, 'gold');

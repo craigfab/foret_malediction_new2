@@ -383,7 +383,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/sunny_plain_evil_atmosphere_23.png"
         },
         {
             "id": 24,
@@ -6353,19 +6353,21 @@
             ],
             "items": [
               {
-                "name": "Or",
+                "name": "or",
                 "category": "gold",
                 "quantity": 2
               },
               {
-                "name": "Petit sifflet de bois",
+                "name": "petit sifflet de bois",
                 "category": "equipment"
               }
             ],
-            "effects": {
-                "gainHealth": 2,
-                "message": "vous gagnez 2 points d'endurance en mangeant le lièvre cuit"
-            },
+            "effects": [
+                {
+                    "type": "gainHealth",
+                    "value": 2                                
+                }
+            ],
             "illustration": "../images/images_foret/gold_coins_and_wooden_whistle_383.png"
         },
         {
