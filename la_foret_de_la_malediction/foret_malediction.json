@@ -218,9 +218,12 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceChance": 3
-            },
+            "effects": [
+                {
+                    "type": "reduceChance",
+                    "value": 3
+                }
+            ],
             "illustration":"../images/images_foret/map_foret.jpg"
         },
         {
@@ -233,11 +236,20 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceGold": 3,
-                "removeItem": "un objet magique",
-                "choice": true
-            },
+            "effects": [
+                {
+                    "type": "reduceGold",
+                    "value": 3
+                },
+                {
+                    "type": "removeItem",
+                    "itemName": "un objet magique"
+                },
+                {
+                    "type": "choice",
+                    "value": true
+                }
+            ],
             "illustration":"../images/images_foret/fur_trapper_14_2.png"
         },
         {
@@ -275,9 +287,12 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "poison": true
-            },
+            "effects": [
+                {
+                    "type": "poison",
+                    "value": true
+                }
+            ],
             "illustration":"../images/images_foret/map_foret.jpg"
         },
         {
@@ -1681,7 +1696,7 @@
                     "quantity": 1
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/giant_bees_sphere_safety_100.png"
         }, 
         {
             "id": 101,
@@ -4406,9 +4421,12 @@
         {
             "id": 262,
             "text": "Vous jetez un coup d'oeil à la bouteille que vous tenez à la main, et vous en avalez d'un trait le contenu. Vous attendez quelques secondes qu'une réaction se produise, mais rien ne se passe. Cependant, lorsque vous vous baissez pour ramasser votre épée que vous aviez posée par terre pendant que vous examiniez le sac, vous sentez soudain une nouvelle énergie vous parcourir le corps. Le liquide que vous venez de boire est une Potion d'Adresse au Combat qui vous permettra d'ajouter un point à votre Force d'Attaque lorsque vous devrez à nouveau affronter une créature. Mais attention ! les effets de la Potion ne dureront que pendant vos deux prochains combats.",
-            "effects": {
-              "combatBoost": " + 1 point, 2 prochains combats"
-            },
+            "effects": [
+              {
+                "type": "skillCombatBoost",
+                "combatCount": 2
+              }
+            ],
             "illustration": "../images/images_foret/bottle_262.jpg",
             "choices": [
               {

@@ -104,6 +104,11 @@ function performAttack(index) {
     if (gameState.inventory.checkItem('Bracelet d\'Habileté')) {
         attackModifier += 1;
     }
+    
+    // Ajout du bonus de potion d'adresse au combat
+    if (character.hasBoost('skillPotionBoost')) {
+        attackModifier += 1;
+    }
 
     // Calcul des forces d'attaque
     let charAttackForce = rollDice() + rollDice() + character.skill + attackModifier + (monster.attackModifier || 0);
@@ -113,8 +118,13 @@ function performAttack(index) {
     let potentialDamageToMonster = charAttackForce > monsterAttackForce ? 2 : 0;
     let potentialDamageToCharacter = charAttackForce < monsterAttackForce ? 2 : 0;
 
-    // Mise à jour du rapport d'attaque
-    let attackReport = `Votre force d'attaque est de <strong>${charAttackForce}</strong>.<br> La force d'attaque du ${monster.name} est de <strong>${monsterAttackForce}</strong>.<br> `;
+    // Affichage du bonus temporaire dans le message d'attaque
+    let attackReport = `Votre force d'attaque est de <strong>${charAttackForce}</strong>`;
+    if (character.hasBoost('skillPotionBoost')) {
+        attackReport += ` (Potion: +1, ${character.getBoostCombatsRemaining('skillPotionBoost')} combat(s) restant(s))`;
+    }
+    attackReport += `.<br> La force d'attaque du ${monster.name} est de <strong>${monsterAttackForce}</strong>.<br> `;
+    
     if (charAttackForce > monsterAttackForce) {
         attackReport += `Vous pouvez infligez <strong>${potentialDamageToMonster}</strong> points de dégâts à ${monster.name}.<br>`;
         // Jouer le son d'attaque du joueur quand il va infliger des dégâts
@@ -223,6 +233,29 @@ function checkEndOfBattle(character, monster) {
         playDefeatSound(); // Son de défaite
     } else if (monster.health <= 0) {
         attackMessageDiv.innerHTML += `<strong> Vous avez vaincu ${monster.name}!</strong>`;
+        
+        // Décrémenter les boost temporaires après chaque combat gagné
+        const expiredBoosts = character.decrementBoosts();
+        
+        // Afficher les messages d'expiration des boost
+        expiredBoosts.forEach(boostType => {
+            switch(boostType) {
+                case 'skillPotionBoost':
+                    attackMessageDiv.innerHTML += "<br><em>L'effet de la Potion d'Adresse au Combat a expiré.</em>";
+                    break;
+                // Ajouter d'autres cas pour d'autres types de boost
+                // case 'strengthPotionBoost':
+                //     attackMessageDiv.innerHTML += "<br><em>L'effet de la Potion de Force a expiré.</em>";
+                //     break;
+            }
+        });
+        
+        // Afficher les boost restants
+        if (character.hasBoost('skillPotionBoost')) {
+            attackMessageDiv.innerHTML += `<br><em>Potion d'Adresse : ${character.getBoostCombatsRemaining('skillPotionBoost')} combat(s) restant(s).</em>`;
+        }
+        
+        updateCharacterStats(); // Mise à jour pour refléter les changements de boost
         updateMonsterList();
         updateChoiceButtonsState();
         selectNextMonster(); // Cette fonction doit gérer la sélection du prochain monstre à attaquer

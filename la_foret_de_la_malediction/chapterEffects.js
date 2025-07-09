@@ -13,7 +13,7 @@ export function applyChapterEffects(chapter) {
     const effectMessageDiv = document.getElementById('effect_message'); // Obtenez la référence une fois pour toutes
     effectMessageDiv.innerHTML = ''; // Réinitialiser le contenu pour de nouveaux effets
 
-    if (chapter.effects) {
+    if (chapter.effects && Array.isArray(chapter.effects)) {
         chapter.effects.forEach(effect => {
             let message = ''; // Initialisez un message vide qui sera rempli selon l'effet
 
@@ -60,6 +60,10 @@ export function applyChapterEffects(chapter) {
                 case "gainChance":
                     gameState.character.chance += effect.value;
                     message = `Chance augmentée de ${effect.value}.`;
+                    break;
+                case "skillCombatBoost":
+                    gameState.character.applyTemporaryBoost('skillPotionBoost', effect.combatCount || 2);
+                    message = '<strong>Potion d\'Adresse au Combat bue !</strong><br>Vous gagnez +1 point de Force d\'Attaque pour vos ' + (effect.combatCount || 2) + ' prochains combats.';
                     break;
                 case "rollDiceSkill":
                     rollDiceSkill();
