@@ -139,7 +139,15 @@ export function takeItem(item, buttonElement) {
         }
     } else {
         gameState.inventory.addItem(item.name, item.quantity || 1, item.category);
-        actionMessageDiv.innerHTML = `Vous avez pris ${item.name}, du type ${item.category}.`;
+        
+        // Si l'item a une valeur, ajouter automatiquement l'or correspondant
+        if (item.value && item.value > 0) {
+            gameState.inventory.addItem('or', item.value, 'gold');
+            actionMessageDiv.innerHTML = `Vous avez pris ${item.name}, du type ${item.category}. Vous gagnez ${item.value} pièces d'or.`;
+        } else {
+            actionMessageDiv.innerHTML = `Vous avez pris ${item.name}, du type ${item.category}.`;
+        }
+        
         buttonElement.remove();
     }
 

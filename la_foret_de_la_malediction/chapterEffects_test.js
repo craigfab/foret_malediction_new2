@@ -122,44 +122,58 @@ function goldOrItem(options) {
     
     actionMessageDiv.innerHTML = 'Que voulez-vous faire ?<br>';
 
-    // Bouton pour retirer une quantité spécifique d'or
-    if (goldToRemove > 0) {
-        const slashGold = document.createElement('button');
-        slashGold.innerText = `Perdre ${goldToRemove} pièces d'or`;
-        slashGold.addEventListener('click', () => {
-            console.log(`Clic sur perdre ${goldToRemove} pièces d'or`);
-            if (gameState.inventory.checkItem('or') >= goldToRemove) {
-                gameState.inventory.removeItem('or', goldToRemove);
-                actionMessageDiv.innerHTML = `<strong>Vous avez perdu ${goldToRemove} pièces d'or.</strong>`;
-                gameState.conditionMet = true; // Condition remplie directement
-            } else {
-                actionMessageDiv.innerHTML = `<strong>Vous n'avez pas assez de pièces d'or.</strong>`;
-            }
-            updateAdventureSheet();
-            updateChoiceButtons();
-        });
-        actionMessageDiv.appendChild(slashGold);
+    // Fonction pour créer le bouton d'or (évite la duplication)
+    function createGoldButton() {
+        if (goldToRemove > 0) {
+            const slashGold = document.createElement('button');
+            slashGold.innerText = `Perdre ${goldToRemove} pièces d'or`;
+            slashGold.addEventListener('click', () => {
+                console.log(`Clic sur perdre ${goldToRemove} pièces d'or`);
+                if (gameState.inventory.checkItem('or') >= goldToRemove) {
+                    gameState.inventory.removeItem('or', goldToRemove);
+                    actionMessageDiv.innerHTML = `<strong>Vous avez perdu ${goldToRemove} pièces d'or.</strong>`;
+                    gameState.conditionMet = true; // Condition remplie directement
+                    updateAdventureSheet();
+                    updateChoiceButtons();
+                } else {
+                    actionMessageDiv.innerHTML = `<strong>Vous n'avez pas assez de pièces d'or.</strong><br>Vous devez choisir une autre option :<br>`;
+                    // Utiliser la fonction pour recréer le bouton d'équipement
+                    createEquipmentButton();
+                }
+            });
+            actionMessageDiv.appendChild(slashGold);
+        }
     }
 
-    // Bouton pour retirer une quantité spécifique d'équipements
-    if (itemsToRemove > 0) {
-        const slashItems = document.createElement('button');
-        slashItems.innerText = `Retirer ${itemsToRemove} équipement(s)`;
-        slashItems.addEventListener('click', () => {
-            console.log(`Clic sur retirer ${itemsToRemove} équipement(s)`);
-            const equipment = gameState.inventory.items.filter(item => item.category === 'equipment');
-            if (equipment.length < itemsToRemove) {
-                actionMessageDiv.innerHTML = `<strong>Vous n'avez pas assez d'équipements à retirer.</strong>`;
-                return;
-            }
-            actionMessageDiv.innerHTML = `Veuillez choisir ${itemsToRemove} équipement(s) à retirer:<br>`;
-            displayEquipmentChoices(actionMessageDiv, itemsToRemove, () => {
-                gameState.conditionMet = true; // Condition remplie directement
-                updateChoiceButtons();
+    // Fonction pour créer le bouton d'équipement (évite la duplication)
+    function createEquipmentButton() {
+        if (itemsToRemove > 0) {
+            const slashItems = document.createElement('button');
+            slashItems.innerText = `Retirer ${itemsToRemove} équipement(s)`;
+            slashItems.addEventListener('click', () => {
+                console.log(`Clic sur retirer ${itemsToRemove} équipement(s)`);
+                const equipment = gameState.inventory.items.filter(item => item.category === 'equipment');
+                if (equipment.length < itemsToRemove) {
+                    actionMessageDiv.innerHTML = `<strong>Vous n'avez pas assez d'équipements à retirer.</strong><br>Vous devez choisir une autre option :<br>`;
+                    // Utiliser la fonction pour recréer le bouton d'or
+                    createGoldButton();
+                    return;
+                }
+                actionMessageDiv.innerHTML = `Veuillez choisir ${itemsToRemove} équipement(s) à retirer:<br>`;
+                displayEquipmentChoices(actionMessageDiv, itemsToRemove, () => {
+                    gameState.conditionMet = true; // Condition remplie directement
+                    updateChoiceButtons();
+                });
             });
-        });
-        actionMessageDiv.appendChild(slashItems);
+            actionMessageDiv.appendChild(slashItems);
+        }
     }
+
+    // Bouton pour retirer une quantité spécifique d'or
+    createGoldButton();
+
+    // Bouton pour retirer une quantité spécifique d'équipements
+    createEquipmentButton();
 }
 
 function displayEquipmentChoices(actionMessageDiv, itemsToRemove) {

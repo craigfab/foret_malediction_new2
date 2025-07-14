@@ -40,6 +40,12 @@ function showChapter(chapters, chapterId) {
     // Réinitialise les contenus des divs action_message et attack_message
     document.getElementById('action_message').innerHTML = '';
     document.getElementById('attack_message').innerHTML = '';
+    
+    // Réinitialise les boutons d'attaque et de chance
+    document.getElementById('attackButton').style.display = 'none';
+    document.getElementById('temptChanceButton').style.display = 'none';
+    document.getElementById('no_temptChanceButton').style.display = 'none';
+    document.getElementById('actual_monster').innerHTML = '';
 
     // cherche le chapitre
     const chapter = chapters.find(chap => chap.id === chapterId);
@@ -120,6 +126,12 @@ function showChapter(chapters, chapterId) {
         // Si pas de monstres, afficher "Pas de monstre ici"
         const monsterContainer = document.getElementById('monsters');
         monsterContainer.innerHTML = 'Pas de monstre ici';
+        
+        // Cacher les boutons d'attaque et de chance
+        document.getElementById('attackButton').style.display = 'none';
+        document.getElementById('temptChanceButton').style.display = 'none';
+        document.getElementById('no_temptChanceButton').style.display = 'none';
+        document.getElementById('actual_monster').innerHTML = '';
     };
 
     //choix

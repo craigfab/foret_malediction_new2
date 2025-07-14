@@ -385,10 +385,15 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceSkill": 2,
-                "reduceHealth": "result_RollDice"
-            },
+            "effects": [
+                {
+                    "type": "reduceSkill",
+                    "value": 2
+                },
+                {
+                    "type": "reduceHealthRollDice"
+                }
+            ],
             "illustration": "../images/images_foret/map_foret.jpg"
         },
         {
@@ -899,7 +904,7 @@
                 "loseAllGold": true,
                 "loseAllItems" : true 
             },
-            "illustration": "../images/images_foret/poison_skull_53.png"
+            "illustration": "../images/images_foret/poison_effects_53.png"
         },
         {
             "id": 54,
@@ -1080,7 +1085,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/simple_basic_camp_with_fire_plain_65_3.png"
         },
         {
             "id": 66,
@@ -1244,7 +1249,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/simple_basic_camp_with_fire_plain_65_3.png"
         },
         {
             "id": 76,
@@ -2000,11 +2005,17 @@
             "choices": [
                 {
                     "text": "Rendez-vous au 314.",
-                    "nextId": 116
+                    "nextId": 314
                 }
             ],
-            "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "items": [
+                {
+                    "name": "Collier de cuir incrusté d'or",
+                    "type": "jewelry",
+                    "value": 15
+                }
+            ],
+            "illustration": "../images/images_foret/dog_leather_collar_gold_116.png"
         }, 
         {
             "id": 117,
@@ -2759,7 +2770,14 @@
                 "text": "Rendez-vous au 375.",
                 "nextId": 375
               }
-            ]
+            ], 
+            "effects": [
+              {
+                "type": "reduceHealth",
+                "value": 3
+              }
+            ],
+            "illustration": "../images/images_foret/little_dark_cloud_thunder_163_2.png"
         }, 
         {
             "id": 164,
@@ -3320,7 +3338,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/potion_anti_poison_197_bis.png"
         }, 
         {
             "id": 198,
@@ -4154,7 +4172,7 @@
                 "nextId": 393
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/trifurcation_three_paths_in_the_valley_245_3.png"
         }, 
         {
             "id": 246,
@@ -4713,7 +4731,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/liana_hanging_from_a_basic_tree_house_274.png"
+            "illustration":"../images/images_foret/liana_hanging_from_a_basic_tree_house_274_bis.png"
         },
         {
             "id": 275,
@@ -4958,7 +4976,18 @@
         }, 
         {
             "id": 288,
-            "text": "En descendant la colline, vous voyez s'étendre devant vous le fond de la vallée et vous apercevez au loin le sinistre mur vert sombre de la Forêt des Ténèbres. C'est au-delà de cette masse d'arbres et de buissons que se trouve Pont-de-Pierre, le but de votre voyage. Vous atteignez le pied de la colline et vous remarquez alors que de gros blocs rocheux s'alignent de chaque côté du chemin. Or, l'un de ces rocs ŕ et l'un des plus imposants ŕ se balance d'un côté et d'autre comme une feuille dans le vent. Il y a là de quoi être surpris et si vous voulez aller voir d'un peu plus près de quoi il retourne, rendez-vous au 84. Si au contraire vous préférez poursuivre votre chemin vers le nord, au fond de la vallée, rendez-vous au 245."
+            "text": "En descendant la colline, vous voyez s'étendre devant vous le fond de la vallée et vous apercevez au loin le sinistre mur vert sombre de la Forêt des Ténèbres. C'est au-delà de cette masse d'arbres et de buissons que se trouve Pont-de-Pierre, le but de votre voyage. Vous atteignez le pied de la colline et vous remarquez alors que de gros blocs rocheux s'alignent de chaque côté du chemin. Or, l'un de ces rocs, et l'un des plus imposants, se balance d'un côté et d'autre comme une feuille dans le vent. Il y a là de quoi être surpris et si vous voulez aller voir d'un peu plus près de quoi il retourne, rendez-vous au 84. Si au contraire vous préférez poursuivre votre chemin vers le nord, au fond de la vallée, rendez-vous au 245.",
+            "choices": [
+                {
+                    "text": "Si vous voulez aller voir d'un peu plus près de quoi il retourne, rendez-vous au 84.",
+                    "nextId": 84
+                },
+                {
+                    "text": "Si vous préférez poursuivre votre chemin vers le nord, au fond de la vallée, rendez-vous au 245.",
+                    "nextId": 245
+                }
+            ],
+            "illustration": "../images/images_foret/big_rocks_288_4.png"
         }, 
         {
             "id": 289,
@@ -5061,7 +5090,8 @@
                     "text": "Quitter la cabane et poursuivre votre chemin vers le nord ? Rendez-vous au 288.",
                     "nextId": 288
                 }
-            ]
+            ],
+            "illustration": "../images/images_foret/inside_the_dark_cabin_294.png"
         },
         {
             "id": 295,
@@ -5419,7 +5449,8 @@
                     "text": "Si vous préférez poursuivre votre route en direction du nord, rendez-vous au 288.",
                     "nextId": 288
                 }
-            ]
+            ], 
+            "illustration": "../images/images_foret/little_wood_cabin_314.png"
         },
         {
             "id": 315,
@@ -5661,7 +5692,8 @@
                     "nextId": 116,
                     "requiresAllMonstersDefeated": true
                 }
-            ]
+            ], 
+            "illustration":"../images/images_foret/three_angry_wolves_in_the_night_attacking_330.png"
         },
         {
             "id": 331,
@@ -5789,7 +5821,8 @@
                     "text": "Mais si vous préférez ne pas prendre ce risque et traverser plutôt la rivière à la nage, en prenant soin de maintenir votre sac à dos hors de l'eau pour en garder le contenu au sec, rendez-vous au 75.",
                     "nextId": 75
                 }
-            ]
+            ], 
+            "illustration":"../images/images_foret/old_wooden_bridge_339.png"
         },
         {
             "id": 340,
