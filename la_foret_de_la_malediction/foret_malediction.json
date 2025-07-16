@@ -658,7 +658,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/old_woman_38_2.png"
+            "illustration": "../images/images_foret/old_woman_reading_books_38_2.png"
         },
         {
             "id": 39,
@@ -1324,7 +1324,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/vampire_attack_79_2.png"
+            "illustration": "../images/images_foret/vampire_attack_79_3.png"
         },
         {
             "id": 80,
@@ -1494,14 +1494,21 @@
             "choices": [
                 {
                     "text": "Si vous êtes Chanceux, la flèche vous manque et vous vous rendez au 210.",
-                    "nextId": 210
+                    "nextId": 210,
+                    "chanceCheckPassed": true
                 },
                 {
                     "text": "Si vous êtes Malchanceux, la flèche vient se planter dans votre épaule et vous perdez 3 points d'ENDURANCE. Dans ce dernier cas, si vous êtes toujours vivant, rendez-vous au 348.",
-                    "nextId": 348
+                    "nextId": 348,
+                    "chanceCheckPassed": false  
                 }
             ],
             "items": [],
+            "effects": [
+                {
+                    "type": "rollDiceChance"
+                }
+            ],
             "illustration": "../images/images_foret/hommes_barbus_90.png"
         },
         {
@@ -1677,6 +1684,11 @@
                     "requiresLuck": "Failure"
                 }
             ],
+            "effects": [
+                {
+                    "type": "luckTest"
+                }
+            ],
             "items": [],
             "illustration": "../images/images_foret/map_foret.jpg"
         }, 
@@ -1818,7 +1830,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/vultures_105_2.png"
+            "illustration": "../images/images_foret/vultures_in_the_sky_105.png"
         }, 
         {
             "id": 106,
@@ -1981,7 +1993,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/homme_arbre_combat_114.png"
+            "illustration": "../images/images_foret/anthropomorph_tree_angry_114_2.png"
         }, 
         {
             "id": 115,
@@ -1997,7 +2009,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/2paths_180.png"
+            "illustration": "../images/images_foret/fork_in_the_road_115_3.png"
         }, 
         {
             "id": 116,
@@ -2072,7 +2084,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/green_hills_forest_119_2.png"
+            "illustration": "../images/images_foret/quiet_plain_and_forest_119.png"
         }, 
         {
             "id": 120,
@@ -2346,7 +2358,17 @@
                 }
             ],
             "items": [],
-            "illustration": ""
+            "effects": [
+                {
+                    "type": "reduceGold",
+                    "value": 1
+                },
+                {
+                    "type": "reduceChance",
+                    "value": 1
+                }
+            ],
+            "illustration": "../images/images_foret/bubbling_mud_199_3.png"
         },
         {
             "id": 135,
@@ -2546,7 +2568,7 @@
                 "nextId": 220
               }
             ],
-            "illustration":"../images/images_foret/cabane_clairiere_147_3.png"
+            "illustration":"../images/images_foret/old_wooden_cabin_in_a_clearing_147.png"
 
         }, 
         {
@@ -3031,7 +3053,7 @@
               }
             ],
             "items": [],
-            "illustration":"../images/images_foret/tall_grass_180.png"
+            "illustration":"../images/images_foret/fork_in_the_path_plain_hills_180_2.png"
         },
         {
             "id": 181,
@@ -3131,10 +3153,10 @@
             "items": [],
             "effects": [
               {
-                "type": "game over"
+                "type": "gameOver"
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/carnivorous_eel_river_186.png"
         }, 
         {
             "id": 187,
@@ -3173,7 +3195,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/wall_tree_188_2.png"
+            "illustration": "../images/images_foret/wall_tree_188_3.png"
         }, 
         {
             "id": 189,
@@ -3374,7 +3396,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/bubbling_mud_199_2.png"
+            "illustration": "../images/images_foret/bubbling_mud_199_3.png"
         }, 
         {
             "id": 200,
@@ -3563,7 +3585,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/hommes_ bois_fight_210.png"
+            "illustration": "../images/images_foret/homme_des_bois_combat_210.png"
         }, 
         {
             "id": 211,
@@ -3622,8 +3644,7 @@
               }
             ],
             "items": [],
-            "illustration": "",
-            "requiredItems": ["Potion de Guérison"]
+            "illustration": "../images/images_foret/little_stone_tunnel_in_the_darkness_214.png"
         }, 
         {
             "id": 215,
@@ -3738,7 +3759,7 @@
                     "nextId": 115
                 }
             ], 
-            "illustration":"../images/images_foret/hole_tree_220.png"
+            "illustration":"../images/images_foret/hole_tree_220_2.png"
         },
         {
             "id": 221,
@@ -3984,7 +4005,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/way_in_the_forest_234.png"
+            "illustration": "../images/images_foret/fork_in_the_road_115_3.png"
         }, 
         {
             "id": 235,
@@ -4032,7 +4053,7 @@
               {
                 "text": "Si vous avez une Potion de Guérison, rendez-vous au 214.",
                 "nextId": 214,
-                "requiredItem": "Potion de Guérison"
+                "requiresItem": "potion de guérison"
               },
               {
                 "text": "Sinon, rendez-vous au 304.",
@@ -4045,7 +4066,7 @@
                 "value": 2
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/broken_leg_darkness_237.png"
         }, 
         {
             "id": 238,
@@ -4639,7 +4660,7 @@
                 }
             ],
             "items": [],
-            "illustration":""
+            "illustration":"../images/images_foret/bats_going_far_268.png"
         },
         {
             "id": 269,
@@ -4805,7 +4826,7 @@
                     "nextId": 114
                 }
             ], 
-            "illustration":"../images/images_foret/homme_arbre_277.png"
+            "illustration":"../images/images_foret/anthropomorph_tree_277.png"
         },
         {
             "id": 278,
@@ -4892,8 +4913,13 @@
                     "nextId": 303
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg",
-            "items": []
+            "effects": [
+                {
+                    "type": "gainHealth",
+                    "value": 4
+                }
+            ],
+            "illustration": "../images/images_foret/bubbling_mud_199_3.png"
         },
         {
             "id": 284,
@@ -5464,7 +5490,8 @@
                     "text": "Tirer votre épée ? Rendez-vous au 342.",
                     "nextId": 342
                 }
-            ]
+            ], 
+            "illustration": "../images/images_foret/inside_the_old_miserable_cabin_dust_cobweb_315.png"
         },
         {
             "id": 316,
@@ -5562,7 +5589,8 @@
                     "text": "Dans le cas contraire, vous irez au 380.",
                     "nextId": 380
                 }
-            ]
+            ],
+            "illustration": "../images/images_foret/gold_medaillon_in_the_dark_322_2.png"
         },
         {
             "id": 323,
@@ -5676,7 +5704,8 @@
                     "text": "En allant vers l'est. Rendez-vous au 252.",
                     "nextId": 252
                 }
-            ]
+            ], 
+            "illustration":"../images/images_foret/plain_with_tall_grass_small_green_hills_329_2.png"
         }, 
         {
             "id": 330,
@@ -5980,7 +6009,7 @@
                     "nextId": 188
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/hommes_barbus_90.png"
         },
         {
             "id": 349,
@@ -6006,7 +6035,7 @@
                     "nextId": 329
                 }
             ],
-            "illustration": "../images/images_foret/homme_arbre_burning_350.png"
+            "illustration": "../images/images_foret/anthropomorphic_tree_burning_350.png"
         }, 
         {
             "id": 351,
@@ -6707,7 +6736,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/river_394_2.png"
+            "illustration": "../images/images_foret/calm_river_with_few_rocks_in_a_green_plain_394.png"
         },
         {
             "id": 395,
