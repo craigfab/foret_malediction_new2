@@ -189,6 +189,11 @@ function applyDamage(success, playerWon, character, monster, potentialDamageToMo
         character.health -= Math.max(finalDamageToCharacter, 0);
         attackMessageDiv.innerHTML += `<strong>Vous subissez ${finalDamageToCharacter} points de dégâts.</strong><br>`;
         
+        // Traquer les blessures du loup-garou
+        if (monster.name === "LOUP-GAROU" && finalDamageToCharacter > 0) {
+            gameState.woundedByLoupGarou = true;
+        }
+        
         // Si l'échec de la chance aggrave les dégâts, jouer un son critique
         if (!success && finalDamageToCharacter > potentialDamageToCharacter) {
             playCriticalHitSound(); // Coup critique du monstre
@@ -215,6 +220,11 @@ function applyDirectDamage(character, monster, potentialDamageToMonster, potenti
         // Appliquer les dégâts au personnage
         character.health -= potentialDamageToCharacter;
         attackMessageDiv.innerHTML += `<strong>Le ${monster.name} vous inflige ${potentialDamageToCharacter} points de dégâts.</strong><br>`;
+        
+        // Traquer les blessures du loup-garou
+        if (monster.name === "LOUP-GAROU" && potentialDamageToCharacter > 0) {
+            gameState.woundedByLoupGarou = true;
+        }
     }
 
     // Mettre à jour l'affichage des caractéristiques du personnage et du monstre

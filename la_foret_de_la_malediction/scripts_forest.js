@@ -22,6 +22,7 @@ export let gameState = {
     character: null, 
     inventory: null,
     currentChapterId: 0,
+    woundedByLoupGarou: false, // Traçage des blessures du loup-garou
 };
 
 // quand le DOM est chargé, choix aléatoire de piste musicale et initialisation des effets sonores
@@ -188,6 +189,49 @@ function showChapter(chapters, chapterId) {
         if (choice.doubleLuckCheck !== undefined) {
             choiceButton.setAttribute('data-doubleLuckCheck', choice.doubleLuckCheck);
             choiceButton.disabled = true; // Désactivé par défaut jusqu'aux jets de chance
+        }
+
+        // Gestion des conditions du loup-garou
+        if (choice.condition === "woundedByLoupGarou") {
+            choiceButton.setAttribute('data-woundedByLoupGarou', 'true');
+            choiceButton.disabled = !gameState.woundedByLoupGarou;
+        } else if (choice.condition === "notWoundedByLoupGarou") {
+            choiceButton.setAttribute('data-woundedByLoupGarou', 'false');
+            choiceButton.disabled = gameState.woundedByLoupGarou;
+        }
+
+        // Gestion des conditions d'or 
+        if (Array.isArray(choice.condition)) {
+            // Gestion des conditions sous forme de tableau [resource, operator, value]
+            const [resource, operator, value] = choice.condition;
+            let conditionMet = false;
+            
+            if (resource === "gold") {
+                choiceButton.setAttribute('data-goldCondition', JSON.stringify(choice.condition));
+                const currentGold = gameState.inventory.checkItem('or') || 0;
+                switch (operator) {
+                    case ">=":
+                        conditionMet = currentGold >= value;
+                        break;
+                    case ">":
+                        conditionMet = currentGold > value;
+                        break;
+                    case "<=":
+                        conditionMet = currentGold <= value;
+                        break;
+                    case "<":
+                        conditionMet = currentGold < value;
+                        break;
+                    case "==":
+                    case "===":
+                        conditionMet = currentGold == value;
+                        break;
+                }
+            }
+            choiceButton.disabled = !conditionMet;
+            if (!conditionMet) {
+                choiceButton.title = `Requis : ${value} pièce(s) d'or`;
+            }
         }
 
         // Vérifie si un coût est associé au choix et passe au chapitre suivant

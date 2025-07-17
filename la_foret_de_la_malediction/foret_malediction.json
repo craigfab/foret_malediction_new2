@@ -123,7 +123,7 @@
                     "nextId": 148
                 }
             ], 
-            "illustration":"../images/images_foret/dark_forest_6.png"
+            "illustration":"../images/images_foret/big_and_luxuriant_dense_forest_a_path_6_2.png"
         },
         {
             "id": 7,
@@ -1097,7 +1097,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/tree_evening_66.png"
+            "illustration": "../images/images_foret/tree_evening_66_2.png"
         },
         {
             "id": 67,
@@ -1362,7 +1362,7 @@
                     "text": "Si oui, rendez-vous au 235.",
                     "nextId": 235,
                     "requiresItem": {
-                        "name": "Potion de Tranquillité",
+                        "name": "potion de tranquilité",
                         "category": "equipment"
                     }
                 },
@@ -2176,7 +2176,7 @@
                 }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/path_in_the_dense_and_luxuriant_forest_124.png"
         },
         {
             "id": 125,
@@ -2584,7 +2584,7 @@
                 "nextId": 20
               }
             ],
-            "illustration":"../images/images_foret/in_the_dark_forest_148.png"
+            "illustration":"../images/images_foret/path_in_the_dense_forest_in_the_morning_148.png"
         },
         {
             "id": 149,
@@ -2688,7 +2688,8 @@
             "choices": [
               {
                 "text": "Si oui, rendez-vous au 83.",
-                "nextId": 83
+                "nextId": 83,
+                "requiresItem": "belladone"
               },
               {
                 "text": "Sinon, rendez-vous au 259.",
@@ -2753,7 +2754,7 @@
             "text": "L'étroit sentier continue de s'enfoncer dans la forêt épaisse. Toutes sortes de cris d'animaux et de bruits étranges retentissent à travers les feuillages ; et bientôt, le chemin s'agrandit : il fait à présent un mètre de large. Peu après, vous arrivez devant un poteau indicateur en bois. Il est couvert de mousse et, à son sommet, un gros corbeau est perché. Le panneau porte deux indications : nord et est. Vous êtes en train de vous demander quelle direction prendre, lorsque vous entendez une voix lancer : « Bon après-midi ! » Vous levez les yeux en direction de l'endroit d'où la voix est venue, et vous voyez le corbeau qui vous regarde attentivement. « Bon après-midi », répondez-vous à voix basse, en vous sentant un peu idiot. Le corbeau alors reprend la parole et vous demande où vous allez. Vous lui répondez que vous cherchez deux Gobelins, des petites créatures au corps noueux et à la peau brune et écailleuse. « Pour une Pièce d'Or, je vous donnerai conseil », dit aussitôt le corbeau.",
             "illustration": "../images/images_foret/corbeau160.jpg",
             "choices":[
-                {"text":"Qu'allez vous faire ? Payer au corbeau le prix qu'il demande pour son conseil ? Rendez-vous au 343.", "nextId": 343, "cost": 1},
+                {"text":"Qu'allez vous faire ? Payer au corbeau le prix qu'il demande pour son conseil ? Rendez-vous au 343.", "nextId": 343, "cost": 1, "condition": ["gold", ">=", 1]},
                 {"text": "Ne pas vous occuper de l'oiseau et poursuivre votre chemin vers le nord? Rendez-vous au 8.", "nextId": 8},
                 {"text": "Ne pas vous occuper de l'oiseau et prendre la direction de l'est ? Rendez-vous au 239", "nextId":239}
             ],
@@ -3177,7 +3178,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/goblin_with_scaly_and_gray_skin_187.png"
+            "illustration": "../images/images_foret/small_creature_like_a_goblin_187_2.png"
         }
         , 
         {
@@ -3350,7 +3351,7 @@
                 "text": "Si vous avez une Potion Antipoison, rendez-vous au 24.",
                 "nextId": 24,
                 "requiresItem": {
-                    "name": "potion antipoison",
+                    "name": "potion anti poison",
                     "category": "potions"
                 }
               },
@@ -3376,7 +3377,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/view_of_the_plains_from_the_hills_198.png"
+            "illustration": "../images/images_foret/path_on_the_small_hills_sunny_day_198.png"
         }, 
         {
             "id": 199,
@@ -3520,7 +3521,7 @@
                     "nextId": 187
                 }
                 ],
-            "illustration":"../images/images_foret/forest_scream_206_2.png",
+            "illustration":"../images/images_foret/big_dense_and_luxuriant_forest_at_dawn_206.png",
             "items":[]
         }, 
         {
@@ -3598,7 +3599,7 @@
             ],
             "items": [],
             "illustration": "",
-            "requiredItems": "Potion Antipoison"
+            "requiresItems": "potion anti poison"
         }, 
         {
             "id": 212,
@@ -3644,7 +3645,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/little_stone_tunnel_in_the_darkness_214.png"
+            "illustration": "../images/images_foret/little_stone_tunnel_in_the_darkness_214_3.png"
         }, 
         {
             "id": 215,
@@ -4024,7 +4025,7 @@
               },
               {
                 "type": "removeItem",
-                "itemName": "Potion de calme",
+                "itemName": "potion de calme",
                 "quantity": 1
               }
             ],
@@ -4103,7 +4104,7 @@
               {
                 "text": "Si vous avez des Filtres à Nez, rendez-vous au 338.",
                 "nextId": 338,
-                "requiredItem": "Filtres à Nez"
+                "requiresItem": "filtres à nez"
               },
               {
                 "text": "Sinon, rendez-vous au 169.",
@@ -4412,10 +4413,15 @@
         {
             "id": 259,
             "text": "Vous éprouvez dans tout votre corps une sensation de brûlure, et vous vous sentez peu à peu gagné par une fièvre enragée. Il se pourrait bien que vous soyez vous-même en train de vous changer en Loup-Garou ! Vous perdez 3 points d'ENDURANCE et vous devez Tenter votre Chance, si toutefois vous êtes toujours vivant. Si le chiffre obtenu aux dés est égal ou inférieur à votre total de CHANCE, la fièvre tombe, et vous vous rendez au 244. Si, en revanche, ce chiffre est supérieur à ce même total, la fièvre continue, et vous voyez avec horreur des poils noirs et épais apparaître sur le dos de vos mains. Le choc que vous en ressentez vous fait perdre 2 autres points d'ENDURANCE, et si vous êtes toujours vivant, vous vous rendez au 19.",
-            "effects": {
-                "temptChance" : "jeter deux fois les dés et comparer à la chance",
-                "reduceHealth": 3
-            },
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 3
+                },
+                {
+                    "type": "rollDiceChance"
+                }
+            ],
             "choices": [
               {
                 "text": "Si le chiffre obtenu aux dés est égal ou inférieur à votre total de CHANCE, la fièvre tombe, et vous vous rendez au 244.  ",
@@ -4425,8 +4431,9 @@
               {
                 "text": "Si, en revanche, ce chiffre est supérieur à ce même total, la fièvre continue, et vous voyez avec horreur des poils noirs et épais apparaître sur le dos de vos mains. Le choc que vous en ressentez vous fait perdre 2 autres points d'ENDURANCE, et si vous êtes toujours vivant, rendez vous au 19.",
                 "nextId": 19,
+                "chanceCheckPassed": false,
                 "cost": {
-                    "reduceHealth": 3
+                    "reduceHealth": 2
                 }
               }
             ],
@@ -4830,22 +4837,34 @@
         },
         {
             "id": 278,
-            "text": "Vous ne remarquez pas un carré de feuilles et de branches camouflant un piège à ours. Vous tombez quatre mètres plus bas, au fond d'une fosse. Si vous êtes Chanceux, vous évitez le pieu mais perdez 2 POINTS d'ENDURANCE. Si vous êtes Malchanceux, vous êtes transpercé par le pieu, perdant 4 POINTS d'ENDURANCE au total.",
-            "effects": {
-                "type": "tryLuckTrap",
-                    "luckyOutcome": {
-                        "reduceHealth": 2,
-                        "message": "Vous êtes Chanceux, évitez le pieu mais perdez 2 POINTS d'ENDURANCE."
-                    },
-                    "unluckyOutcome": {
-                        "reduceHealth": 4,
-                        "message": "Vous êtes Malchanceux, la pointe du pieu vous transperce, perdant 4 POINTS d'ENDURANCE."
-                    }
-                },
+            "text": "Vous ne remarquez pas un carré de feuilles et de branches camouflant un piège à ours. Vous tombez quatre mètres plus bas, au fond d'une fosse. Tentez votre chance pour voir si vous évitez le pieu.",
+            "effects": [
+                {
+                    "type": "rollDiceChance"
+                }
+            ],
             "choices": [
                 {
-                    "text": "Si vous êtes toujours vivant, rendez-vous au 319.",
-                    "nextId": 319
+                    "text": "Si vous êtes Chanceux, vous évitez le pieu mais perdez 2 POINTS d'ENDURANCE. Rendez-vous au 319.",
+                    "nextId": 319,
+                    "chanceCheckPassed": true,
+                    "effects": [
+                        {
+                            "type": "reduceHealth",
+                            "value": 2
+                        }
+                    ]
+                },
+                {
+                    "text": "Si vous êtes Malchanceux, vous êtes transpercé par le pieu, perdant 4 POINTS d'ENDURANCE. Rendez-vous au 319.",
+                    "nextId": 319,
+                    "chanceCheckPassed": false,
+                    "effects": [
+                        {
+                            "type": "reduceHealth",
+                            "value": 4
+                        }
+                    ]
                 }
             ], 
             "illustration":"../images/images_foret/bear_trap_278.png"
@@ -4950,7 +4969,8 @@
             "choices": [
                 {
                     "text": "Si vous êtes vainqueur, rendez-vous au 388.",
-                    "nextId": 388
+                    "nextId": 388,
+                    "requiresAllMonstersDefeated": true
                 }
             ],
             "illustration": "../images/images_foret/werewolf_285.png",
@@ -6176,7 +6196,8 @@
                 "text": "Si vous préférez poursuivre votre route vers l'est, rendez-vous au 281.",
                 "nextId": 281
               }
-            ]
+            ], 
+            "illustration":"../images/images_foret/well_with_stone_edge_359.png"
         },
         {
             "id": 360,
@@ -6205,7 +6226,8 @@
                 "text": "Si vous préférez vous cacher dans les hautes herbes, à l'écart du chemin, et laisser les chiens poursuivre le renard, rendez-vous au 86.",
                 "nextId": 86
               }
-            ]
+            ], 
+            "illustration":"../images/images_foret/frightened_brown_fox_running_361.png"
         },
         {
             "id": 362,
@@ -6626,14 +6648,19 @@
             "choices": [
               {
                 "text": "Si le Loup-Garou vous a infligé une blessure, rendez-vous au 155.",
-                "nextId": 155
+                "nextId": 155,
+                "condition": "woundedByLoupGarou"
               },
               {
                 "text": "Si vous n'avez pas reçu de blessure du Loup-Garou, gagnez 1 POINT de CHANCE et rendez-vous au 316.",
-                "effect": {
-                    "gainChance": 1
-                },
-                "nextId": 316
+                "effects": [
+                    {
+                        "type": "gainChance",
+                        "value": 1
+                    }
+                ],
+                "nextId": 316,
+                "condition": "notWoundedByLoupGarou"
               }
             ],
             "items": [],
@@ -6740,31 +6767,39 @@
         },
         {
             "id": 395,
-            "text": "La mèche ne s'allume pas, mais un éclair, en revanche, jaillit de la lanterne avec une telle clarté que vous en êtes aveuglé. Incapable de rien voir, vous trébuchez et vous tombez à terre. Tentez votre Chance. Si vous êtes Chanceux, vous ne vous faites pas mal en tombant et vous vous rendez au 154. Mais si vous êtes Malchanceux, votre tête heurte une bûche et vous perdez 3 points d'ENDURANCE. Si vous êtes toujours vivant, rendez-vous au 370.",
+            "text": "La mèche ne s'allume pas, mais un éclair, en revanche, jaillit de la lanterne avec une telle clarté que vous en êtes aveuglé. Incapable de rien voir, vous trébuchez et vous tombez à terre. Tentez votre chance pour voir si vous vous blessez en tombant.",
             "choices": [
               {
-                "text": "Si vous êtes Chanceux, rendez-vous au 154.",
+                "text": "Si vous êtes Chanceux, vous ne vous faites pas mal en tombant. Rendez-vous au 154.",
                 "nextId": 154,
-                "chanceCheckPassed": true
+                "chanceCheckPassed": true,
+                "effects": [
+                  {
+                    "type": "message",
+                    "text": "<strong>Vous êtes Chanceux !</strong> Vous réussissez à amortir votre chute et ne vous blessez pas."
+                  }
+                ]
               },
               {
-                "text": "Si vous êtes Malchanceux, perdez 3 points d'ENDURANCE et rendez-vous au 370.",
+                "text": "Si vous êtes Malchanceux, votre tête heurte une bûche et vous perdez 3 points d'ENDURANCE. Rendez-vous au 370.",
                 "nextId": 370,
-                "chanceCheckPassed": false
+                "chanceCheckPassed": false,
+                "effects": [
+                  {
+                    "type": "message",
+                    "text": "<strong>Vous êtes Malchanceux...</strong> Votre tête heurte violemment une bûche au sol !"
+                  },
+                  {
+                    "type": "reduceHealth",
+                    "value": 3
+                  }
+                ]
               }
             ],
             "items": [],
             "effects": [
               {
-                "type": "tryLuckTrap",
-                "luckyOutcome": {
-                  "reduceHealth": 0,
-                  "message": "Vous êtes Chanceux ! Vous ne vous faites pas mal en tombant."
-                },
-                "unluckyOutcome": {
-                  "reduceHealth": 3,
-                  "message": "Vous êtes Malchanceux ! Votre tête heurte une bûche et vous perdez 3 points d'ENDURANCE."
-                }
+                "type": "rollDiceChance"
               }
             ],
             "illustration": ""

@@ -75,17 +75,6 @@ export function applyChapterEffects(chapter) {
                 case "doubleRollDiceChance":
                     doubleRollDiceChance();
                     break;
-
-                case "tryLuckTrap":
-                    const luckTestResult = tempt_chance(gameState.character.chance);
-                    if (luckTestResult) {
-                        gameState.character.health -= effect.luckyOutcome.reduceHealth;
-                        message = effect.luckyOutcome.message;
-                    } else {
-                        gameState.character.health -= effect.unluckyOutcome.reduceHealth;
-                        message = effect.unluckyOutcome.message;
-                    }
-                    break;
                 case "multipleRollDiceSkill":
                     multipleRollDiceSkill();
                     message = `Multiples lancers de dés pour tester l'habileté.`;
@@ -114,6 +103,9 @@ export function applyChapterEffects(chapter) {
                 case "useMeal":
                     useMeal();
                     message = "Repas consommé (+4 endurance).";
+                    break;
+                case "message":
+                    message = effect.text || "Message personnalisé.";
                     break;
                 default:
                     message = "Effet inconnu appliqué.";
@@ -449,8 +441,43 @@ function updateChoiceButtons() {
              const bothLucky = gameState.luckResults && gameState.luckResults.length >= 2 && 
                      gameState.luckResults[0] === true && gameState.luckResults[1] === true;
              button.disabled = (doubleLuckRequired && !bothLucky) || (!doubleLuckRequired && bothLucky);
-}
+        }
 
+        // Mise à jour basée sur woundedByLoupGarou
+        if (button.hasAttribute("data-woundedByLoupGarou")) {
+            const woundedRequired = button.getAttribute("data-woundedByLoupGarou") === "true";
+            button.disabled = gameState.woundedByLoupGarou !== woundedRequired;
+        }
+
+        // Mise à jour basée sur les conditions d'or
+        if (button.hasAttribute("data-goldCondition")) {
+            const condition = JSON.parse(button.getAttribute("data-goldCondition"));
+            const [resource, operator, value] = condition;
+            let conditionMet = false;
+            
+            if (resource === "gold") {
+                const currentGold = gameState.inventory.checkItem('or') || 0;
+                switch (operator) {
+                    case ">=":
+                        conditionMet = currentGold >= value;
+                        break;
+                    case ">":
+                        conditionMet = currentGold > value;
+                        break;
+                    case "<=":
+                        conditionMet = currentGold <= value;
+                        break;
+                    case "<":
+                        conditionMet = currentGold < value;
+                        break;
+                    case "==":
+                    case "===":
+                        conditionMet = currentGold == value;
+                        break;
+                }
+            }
+            button.disabled = !conditionMet;
+        }
 
     });
 }
