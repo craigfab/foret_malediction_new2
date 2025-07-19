@@ -238,16 +238,7 @@
             "items": [],
             "effects": [
                 {
-                    "type": "reduceGold",
-                    "value": 3
-                },
-                {
-                    "type": "removeItem",
-                    "itemName": "un objet magique"
-                },
-                {
-                    "type": "choice",
-                    "value": true
+                    "type": "reduceThreeGoldOrRemoveOneItem"
                 }
             ],
             "illustration":"../images/images_foret/fur_trapper_14_2.png"
@@ -4175,7 +4166,7 @@
                 "nextId": 198
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/boat_sinking_145_3.png"
         }, 
         {
             "id": 245,
@@ -4361,9 +4352,11 @@
         {
             "id": 256,
             "text": "Vous descendez le long du puits sans vous apercevoir qu'un barreau manque à l'échelle. Votre pied glisse, et vous perdez alors l'équilibre. Tentez votre Chance. Si vous êtes Chanceux, vous parvenez à vous retenir de tomber en vous agrippant aux barreaux de l'échelle ; rendez-vous alors au 122. Si vous êtes Malchanceux, vous tombez dans l'eau au fond du puits, et vous vous rendez au 295.",
-            "effects": {
-                "rollDiceChance" : "jeter deux fois les dés et comparer à la chance"
-            },
+            "effects": [
+                {
+                    "type": "rollDiceChance"
+                }
+            ],
             "choices": [
               {
                 "text": "Tentez votre Chance pour vous retenir de tomber. Si vous êtes Chanceux, rendez-vous au 122. ",
@@ -4420,6 +4413,11 @@
                 },
                 {
                     "type": "rollDiceChance"
+                },
+                {
+                    "type": "reduceHealth",
+                    "value": 2,
+                    "chanceCheckPassed": false
                 }
             ],
             "choices": [
@@ -4431,10 +4429,7 @@
               {
                 "text": "Si, en revanche, ce chiffre est supérieur à ce même total, la fièvre continue, et vous voyez avec horreur des poils noirs et épais apparaître sur le dos de vos mains. Le choc que vous en ressentez vous fait perdre 2 autres points d'ENDURANCE, et si vous êtes toujours vivant, rendez vous au 19.",
                 "nextId": 19,
-                "chanceCheckPassed": false,
-                "cost": {
-                    "reduceHealth": 2
-                }
+                "chanceCheckPassed": false
               }
             ],
             "illustration": "../images/images_foret/man_of_ice_and_fire_155.png"
@@ -4841,30 +4836,29 @@
             "effects": [
                 {
                     "type": "rollDiceChance"
+                },
+                {
+                    "type": "reduceHealth",
+                    "value": 2,
+                    "chanceCheckPassed": true
+                },
+                {
+                    "type": "reduceHealth",
+                    "value": 4,
+                    "chanceCheckPassed": false
                 }
             ],
             "choices": [
                 {
                     "text": "Si vous êtes Chanceux, vous évitez le pieu mais perdez 2 POINTS d'ENDURANCE. Rendez-vous au 319.",
                     "nextId": 319,
-                    "chanceCheckPassed": true,
-                    "effects": [
-                        {
-                            "type": "reduceHealth",
-                            "value": 2
-                        }
-                    ]
+                    "chanceCheckPassed": true
+                                        
                 },
                 {
                     "text": "Si vous êtes Malchanceux, vous êtes transpercé par le pieu, perdant 4 POINTS d'ENDURANCE. Rendez-vous au 319.",
                     "nextId": 319,
-                    "chanceCheckPassed": false,
-                    "effects": [
-                        {
-                            "type": "reduceHealth",
-                            "value": 4
-                        }
-                    ]
+                    "chanceCheckPassed": false                    
                 }
             ], 
             "illustration":"../images/images_foret/bear_trap_278.png"

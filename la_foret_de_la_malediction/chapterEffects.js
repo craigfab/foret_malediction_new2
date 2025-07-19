@@ -15,6 +15,11 @@ export function applyChapterEffects(chapter) {
 
     if (chapter.effects && Array.isArray(chapter.effects)) {
         chapter.effects.forEach(effect => {
+            // Ignorer les effets conditionnels qui seront traités après le test de chance
+            if (effect.chanceCheckPassed !== undefined) {
+                return; // Ces effets seront traités par applyConditionalEffects()
+            }
+            
             let message = ''; // Initialisez un message vide qui sera rempli selon l'effet
 
             switch (effect.type) {
@@ -93,6 +98,9 @@ export function applyChapterEffects(chapter) {
                     break;
                 case "reduceFiveGoldOrRemoveOneItem":
                     goldOrItem({ goldToRemove: 5, itemsToRemove: 1});
+                    break;
+                case "reduceThreeGoldOrRemoveOneItem":
+                    goldOrItem({ goldToRemove: 3, itemsToRemove: 1});
                     break;
                 case "reduceFood":
                     message = reduceFood(effect.value);
@@ -331,6 +339,9 @@ function rollDiceChance() {
         }
         gameState.luckResults.push(isLucky);
 
+        // Appliquer les effets conditionnels basés sur le résultat de chance
+        applyConditionalEffects(isLucky);
+
         // Met à jour les boutons de choix
         updateChoiceButtons();
 
@@ -339,6 +350,48 @@ function rollDiceChance() {
     });
 }
 
+// Fonction pour appliquer les effets conditionnels après un test de chance
+function applyConditionalEffects(isLucky) {
+    const currentChapter = gameState.currentChapter;
+    const effectMessageDiv = document.getElementById('effect_message');
+    
+    if (currentChapter.effects && Array.isArray(currentChapter.effects)) {
+        currentChapter.effects.forEach(effect => {
+            // Vérifier si l'effet a une condition chanceCheckPassed
+            if (effect.chanceCheckPassed !== undefined) {
+                // Appliquer l'effet si la condition correspond au résultat
+                if (isLucky === effect.chanceCheckPassed) {
+                    let message = '';
+                    
+                    switch (effect.type) {
+                        case "reduceHealth":
+                            gameState.character.health -= effect.value;
+                            message = `Endurance réduite de ${effect.value}.`;
+                            break;
+                        case "reduceSkill":
+                            gameState.character.skill -= effect.value;
+                            message = `Habileté réduite de ${effect.value}.`;
+                            break;
+                        case "reduceChance":
+                            gameState.character.chance -= effect.value;
+                            message = `Chance réduite de ${effect.value}.`;
+                            break;
+                        case "gainHealth":
+                            gameState.character.health += effect.value;
+                            message = `Endurance augmentée de ${effect.value}.`;
+                            break;
+                        // Ajouter d'autres types d'effets au besoin
+                    }
+                    
+                    if (message) {
+                        effectMessageDiv.innerHTML += `<br>${message}`;
+                        updateCharacterStats();
+                    }
+                }
+            }
+        });
+    }
+}
 
 // fonction RollDiceSkill
 function rollDiceSkill() {
@@ -413,7 +466,12 @@ function updateChoiceButtons() {
         // Mise à jour basée sur chanceCheckPassed
         if (button.hasAttribute("data-chanceCheckPassed")) {
             const chanceRequired = button.getAttribute("data-chanceCheckPassed") === "true";
-            button.disabled = gameState.isLucky !== chanceRequired;
+            // Si aucun test de chance n'a été effectué, désactiver le bouton
+            if (gameState.isLucky === undefined) {
+                button.disabled = true;
+            } else {
+                button.disabled = gameState.isLucky !== chanceRequired;
+            }
         }
 
         // Mise à jour basée sur skillCheckPassed

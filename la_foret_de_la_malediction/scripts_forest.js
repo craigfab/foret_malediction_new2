@@ -22,7 +22,10 @@ export let gameState = {
     character: null, 
     inventory: null,
     currentChapterId: 0,
+    currentChapter: null, // Objet chapitre actuel
     woundedByLoupGarou: false, // Traçage des blessures du loup-garou
+    isLucky: undefined, // Résultat du test de chance
+    luckResults: [] // Pour les tests multiples de chance
 };
 
 // quand le DOM est chargé, choix aléatoire de piste musicale et initialisation des effets sonores
@@ -37,6 +40,10 @@ function showChapter(chapters, chapterId) {
 
     // réinitialisation de gameState pour les monstres
     gameState.monsters = [];
+    
+    // Réinitialisation des tests de chance et d'habileté
+    gameState.isLucky = undefined;
+    gameState.luckResults = [];
 
     // Réinitialise les contenus des divs action_message et attack_message
     document.getElementById('action_message').innerHTML = '';
@@ -52,6 +59,7 @@ function showChapter(chapters, chapterId) {
     const chapter = chapters.find(chap => chap.id === chapterId);
     if (!chapter) return;
     gameState.currentChapterId = chapterId;
+    gameState.currentChapter = chapter;
 
     // Création du personnage et de l'inventaire au chapitre 0
     if (chapterId === 0) {
