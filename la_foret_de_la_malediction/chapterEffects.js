@@ -398,11 +398,11 @@ function rollDiceSkill() {
     // Création et ajout du bouton rollDiceSkillButton, s'il n'existe pas déjà
     let rollDiceSkillButton = document.getElementById("rollDiceSkillButton");
     if (!rollDiceSkillButton) {
-        const temptChanceDiv = document.getElementById("tempt_chance_button");
+        const temptSkillDiv = document.getElementById("action_message");
         rollDiceSkillButton = document.createElement("button");
         rollDiceSkillButton.id = "rollDiceSkillButton";
         rollDiceSkillButton.innerText = "Lancer les dés d'Habileté";
-        temptChanceDiv.appendChild(rollDiceSkillButton);
+        temptSkillDiv.appendChild(rollDiceSkillButton);
     }
 
     rollDiceSkillButton.addEventListener("click", () => {
@@ -414,14 +414,20 @@ function rollDiceSkill() {
         // Comparer le total des dés à l'HABILETÉ du personnage
         const skillCheckPassed = totalRoll <= gameState.character.skill;
 
+        // Stocker le résultat dans gameState pour référence ultérieure
+        gameState.skillCheckPassed = skillCheckPassed;
+
         // Afficher le résultat dans action_message
         const actionMessageDiv = document.getElementById("action_message");
         actionMessageDiv.innerHTML = skillCheckPassed ?
-            `Résultat des dés: ${totalRoll}. Réussite ! Votre habileté est suffisante.` :
-            `Résultat des dés: ${totalRoll}. Échec... Votre habileté n'est pas suffisante.`;
+            `Vous avez lancé ${diceRoll1} et ${diceRoll2} (total: ${totalRoll}). <strong>Réussite !</strong> Votre habileté est suffisante.` :
+            `Vous avez lancé ${diceRoll1} et ${diceRoll2} (total: ${totalRoll}). <strong>Échec...</strong> Votre habileté n'est pas suffisante.`;
 
-         // Met à jour les boutons de choix
-         updateChoiceButtons();
+        // Met à jour les boutons de choix
+        updateChoiceButtons();
+        
+        // Désactiver le bouton pour éviter un second test
+        rollDiceSkillButton.disabled = true;
     });
 }
 
@@ -475,9 +481,14 @@ function updateChoiceButtons() {
         }
 
         // Mise à jour basée sur skillCheckPassed
-        if (button.hasAttribute("data-skillCheckRequired")) {
-            const skillRequired = button.getAttribute("data-skillCheckRequired") === "true";
-            button.disabled = gameState.character.skillCheckPassed !== skillRequired;
+        if (button.hasAttribute("data-skillCheckPassed")) {
+            const skillRequired = button.getAttribute("data-skillCheckPassed") === "true";
+            // Si aucun test d'habileté n'a été effectué, désactiver le bouton
+            if (gameState.skillCheckPassed === undefined) {
+                button.disabled = true;
+            } else {
+                button.disabled = gameState.skillCheckPassed !== skillRequired;
+            }
         }
 
         // Mise à jour basée sur requiresAllMonstersDefeated

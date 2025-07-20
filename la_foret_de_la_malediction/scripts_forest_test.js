@@ -27,6 +27,10 @@ export let gameState = {
     character: null, 
     inventory: null,
     currentChapterId: 0,
+    woundedByLoupGarou: false, // Traçage des blessures du loup-garou
+    isLucky: undefined, // Résultat du test de chance
+    luckResults: [], // Pour les tests multiples de chance
+    skillCheckPassed: undefined // Résultat du test d'habileté
 };
 
 // Initialisation du personnage et de l'inventaire
@@ -47,6 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
 function showChapter(chapters, chapterId) {
     // Réinitialisation de gameState pour les monstres
     gameState.monsters = [];
+    
+    // Réinitialisation des tests de chance et d'habileté
+    gameState.isLucky = undefined;
+    gameState.luckResults = [];
+    gameState.skillCheckPassed = undefined;
 
     // Réinitialise les contenus des divs action_message et attack_message
     document.getElementById('action_message').innerHTML = '';
@@ -170,7 +179,7 @@ function showChapter(chapters, chapterId) {
 
             // Ajouter des attributs personnalisés basés sur le choix requis
             if (choice.skillCheckPassed !== undefined) {
-                choiceButton.setAttribute('data-skillCheckRequired', 'true');
+                choiceButton.setAttribute('data-skillCheckPassed', choice.skillCheckPassed.toString());
                 choiceButton.disabled = true;
             }
 

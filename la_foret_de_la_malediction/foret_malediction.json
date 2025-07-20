@@ -232,7 +232,8 @@
             "choices": [
                 {
                     "text": "Rendez-vous au 255.",
-                    "nextId": 255
+                    "nextId": 255,
+                    "requiresConditionMet" : true
                 }
             ],
             "items": [],
@@ -241,7 +242,7 @@
                     "type": "reduceThreeGoldOrRemoveOneItem"
                 }
             ],
-            "illustration":"../images/images_foret/fur_trapper_14_2.png"
+            "illustration":"../images/images_foret/fur_trapper_14_3.png"
         },
         {
             "id": 15,
@@ -433,7 +434,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/in_a_valley_in_the_big_forest_25.png"
         },
         {
             "id": 26,
@@ -1064,7 +1065,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/crazy_tall_grass_64_2.png"
         },
         {
             "id": 65,
@@ -1968,7 +1969,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/lake_wood_cabin_113.jpg"
+            "illustration": "../images/images_foret/lake_wood_cabin_113_2.png"
         }, 
         {
             "id": 114,
@@ -2058,7 +2059,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/wild_boar_118.png"
+            "illustration": "../images/images_foret/wild_boar_118_2.png"
         }, 
         {
             "id": 119,
@@ -2455,7 +2456,8 @@
                 "text": "Prendre l'embranchement qui mène en direction de l'est (rendez-vous au 267).",
                 "nextId": 267
               }
-            ]
+            ],
+            "illustration": "../images/images_foret/foreground_small_hills_and_plain_background_forest_140_3.png"
         },
         {
             "id": 141,
@@ -2488,7 +2490,8 @@
                 "text": "Tirer votre épée et l'attaquer. Rendez-vous au 251",
                 "nextId": 251
               }
-            ]
+            ], 
+            "illustration": "../images/images_foret/centaur_archer_142.png"
         },
         {
             "id": 143,
@@ -3004,12 +3007,11 @@
             "items": [],
             "effects": [
               {
-                "type": "loseItem",
-                "itemName": "Provisions",
-                "quantity": 1
+                "type": "reduceFood",
+                "value": 1
               }
             ],
-            "illustration":"../images/images_foret/map_foret.jpg"
+            "illustration":"../images/images_foret/small_camp_under_a_giant_oak_178.png"
         },
         {
             "id": 179,
@@ -3070,9 +3072,12 @@
             "id": 182,
             "text": "Vous empoignez l'épée et vous posez un pied sur le rocher pour y prendre appui. Lancez deux dés. Si le chiffre obtenu est égal ou inférieur à votre total d'HABILETÉ, l'épée glisse lentement et se détache de la pierre ; rendez-vous au 70. Si ce chiffre est supérieur à ce même total, l'épée ne bouge pas d'un pouce. Vous finissez par vous fatiguer et vous renoncez. Vous reprenez ensuite votre chemin vers le nord en descendant au fond de la vallée ; rendez-vous au 334.",
             "monsters": [],
-            "effects": {
-                "rollDiceSkill" : "jeter deux fois les dés et comparer à l'habileté"
-            },
+            "effects": [
+                {
+                    "type": "rollDiceSkill",
+                    "text": "jeter deux fois les dés et comparer à l'habileté"
+                }
+            ],
             "choices": [
               {
                 "text": "Si le chiffre obtenu est égal ou inférieur à votre HABILETÉ, rendez-vous au 70.",
@@ -3830,7 +3835,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/trees_226_big.png"
+            "illustration": "../images/images_foret/strange_forest_with_dense_vegetation_dark_atmosphere_226_2.png"
         }, 
         {
             "id": 227,
@@ -4266,9 +4271,12 @@
             "id": 251,
             "text": "Lorsque vous tirez votre épée, le Centaure saisit son arc et avant que vous ayez pu l'atteindre, il vous décoche une flèche. Lancez deux dés.",
             "monsters": [],
-            "effects": {
-                "rollDiceSkill" : "jeter deux fois les dés et comparer à l'habileté"
-            },
+            "effects": [
+                {
+                    "type": "rollDiceSkill",
+                    "text": "jeter deux fois les dés et comparer à l'habileté"
+                }
+            ],
             "choices": [
               {
                 "text": "Si le chiffre obtenu est égal ou inférieur à votre total d'HABILETÉ, vous parvenez à éviter la flèche. Rendez-vous alors au 63.",
@@ -5191,7 +5199,8 @@
                     "nextId": 140,
                     "requiresAllMonstersDefeated": true
                 }
-            ]
+            ],
+            "illustration": "../images/images_foret/giant_spider_under_the_tree_298.png"
         }, 
         {
             "id": 299,
@@ -5223,7 +5232,7 @@
                     "nextId": 331
                 }
             ], 
-            "illustration": "../images/images_foret/edge_forest_300_2.png"
+            "illustration": "../images/images_foret/edge_forest_300_3.png"
         }, 
         {
             "id": 301,
@@ -6327,7 +6336,8 @@
                 "text": "Le croiser en le saluant d'un signe de tête ? Rendez-vous au 390.",
                 "nextId": 390
               }
-            ]
+            ],
+            "illustration": "../images/images_foret/monk_valley_369.png"
         }, 
         {
             "id": 370,

@@ -425,7 +425,7 @@ function updateChoiceButtons() {
     
     choices.forEach(button => {
         // Gestion des choix basés sur le test d'habileté
-        if (button.hasAttribute('data-skillCheckRequired')) {
+        if (button.hasAttribute('data-skillCheckPassed')) {
             button.disabled = !gameState.skillCheckPassed;
         }
         
