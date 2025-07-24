@@ -365,7 +365,7 @@
             "effects": {
                 "Poison": false
             },
-            "illustration":"../images/images_foret/healing_of_poison_21.jpg"
+            "illustration":"../images/images_foret/healing_of_poison_21.png"
         },
         {
             "id": 22,
@@ -569,7 +569,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/in_a_valley_pixel_art_forest_33.png"
         },
         {
             "id": 34,
@@ -662,7 +662,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/cavern_troll_39.png"
+            "illustration": "../images/images_foret/massive_troll_wrapped_net_39.png"
         },
         {
             "id": 40,
@@ -2218,14 +2218,13 @@
                     "nextId": 298
                 }
             ],
-            "items": [
+            "effects": [
                 {
-                    "name": "or",
-                    "type": "gold",
-                    "quantity": 3
+                    "type": "reduceGold",
+                    "value": 3
                 }
             ],
-            "illustration": ""
+             "illustration": "../images/images_foret/small_camp_under_a_giant_oak_178.png"
         },
         {
             "id": 128,
@@ -2579,7 +2578,7 @@
               }
             ],
             "illustration":"../images/images_foret/path_in_the_dense_forest_in_the_morning_148.png"
-        },
+        }, 
         {
             "id": 149,
             "text": "Tandis que vous cheminez au fond de la vallée, vous voyez bientôt se dresser devant vous le mur vert sombre de la Forêt des Ténèbres. Le sentier s'enfonce dans l'épaisse végétation et, quelques instants plus tard, vous avancez parmi des arbres imposants et des buissons d'épines. L'obscurité règne et tout est calme. Plus loin, le chemin bifurque.",
@@ -3243,7 +3242,8 @@
                 "text": "Sinon, rendez-vous au 243.",
                 "nextId": 243
               }
-            ]
+            ],
+            "illustration": "../images/images_foret/monk_valley_369.png"
         }
         , 
         {
@@ -3337,7 +3337,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/slippy_troll_in_a_cavern_196.png"
         }, 
         {
             "id": 197,
@@ -3722,12 +3722,12 @@
         }, 
         {
             "id": 219,
-            "text": "Vous remarquez que la fléchette plantée dans le poitrail de Tours est en argent. Elle vaut 5 Pièces d'Or et vous pouvez la ranger dans votre sac à dos si vous le désirez. Cette trouvaille vous fait gagner 1 POINT de CHANCE.",
+            "text": "Vous remarquez que la fléchette plantée dans le poitrail de l'ours est en argent. Elle vaut 5 Pièces d'Or et vous pouvez la ranger dans votre sac à dos si vous le désirez. Cette trouvaille vous fait gagner 1 POINT de CHANCE.",
             "items": [
                 {
                     "name": "fléchette en argent",
                     "category": "equipment",
-                    "quantity": 5
+                    "value": 5
                 }
             ],
             "choices": [
@@ -3741,7 +3741,8 @@
                     "type": "gainChance",
                     "value": 1
                 }
-            ]
+            ],
+            "illustration": "../images/images_foret/silver_dart_219.png"
         },
         {
             "id": 220,
@@ -3819,7 +3820,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/la_mort_t_attend_224.png"
         }, 
         {
             "id": 226,
@@ -3921,7 +3922,8 @@
             "choices": [
               {
                 "text": "Affrontez les FAUCONS DE LA MORT un par un, et si vous êtes vainqueur, rendez-vous au 224.",
-                "nextId": 224
+                "nextId": 224,
+                "requiresAllMonstersDefeated": true
               },
               {
                 "text": "Vous pouvez aussi prendre la Fuite en courant vers l'ouest, le long du chemin, rendez-vous au 332.",
@@ -3932,21 +3934,21 @@
               {
                 "name": "Premier FAUCON DE LA MORT",
                 "skill": 4,
-                "endurance": 4
+                "health": 4
               },
               {
                 "name": "Deuxième FAUCON DE LA MORT",
                 "skill": 4,
-                "endurance": 3
+                "health": 3
               },
               {
                 "name": "Troisième FAUCON DE LA MORT",
                 "skill": 5,
-                "endurance": 4
+                "health": 4
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/three_death_hawk_attacking_in_the_forest_231.png"
         }, 
         {
             "id": 232,
@@ -4091,7 +4093,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/pear_tree_239_2.png"
+            "illustration": "../images/images_foret/pear_tree_239_3.png"
         }, 
         {
             "id": 240,
@@ -4153,14 +4155,15 @@
             "choices": [
               {
                 "text": "Si vous acceptez, rendez-vous au 166.",
-                "nextId": 166
+                "nextId": 166,
+                "condition": ["gold", ">=", 1]
               },
               {
                 "text": "Si vous refusez de lui donner la pièce, rendez-vous au 33.",
                 "nextId": 33
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/monk_valley_369.png"
         }, 
         {
             "id": 244,
@@ -4293,7 +4296,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/centaur_archer_142.png"
         }, 
         {
             "id": 252,
@@ -4647,18 +4650,19 @@
         }, 
         {
             "id": 267,
-            "text": "Le chemin mène à l'entrée d'une vaste caverne et ne semble pas aller plus loin vers Test. Si vous souhaitez entrer dans la caverne, rendez-vous au 1%. Si vous préférez retourner à la bifurcation et prendre la direction du nord, rendez-vous au 25.",
+            "text": "Le chemin mène à l'entrée d'une vaste caverne et ne semble pas aller plus loin vers l'est. Si vous souhaitez entrer dans la caverne, rendez-vous au 1%. Si vous préférez retourner à la bifurcation et prendre la direction du nord, rendez-vous au 25.",
             "choices": [
                 {
-                    "text": "Entrer dans la caverne: Rendez-vous au 1%.",
-                    "nextId": "1%"
+                    "text": "Entrer dans la caverne: Rendez-vous au 196.",
+                    "nextId": 196
                 },
                 {
                     "text": "Retourner à la bifurcation et prendre la direction du nord: Rendez-vous au 25.",
                     "nextId": 25
                 }
             ],
-            "items": []
+            "items": [],
+            "illustration": "../images/images_foret/entrance_of_a_cavern_in_the_forest_267.png"
         },
         {
             "id": 268,
@@ -5008,7 +5012,7 @@
                     "nextId": 25
                 }
             ],
-            "illustration": "../images/images_foret/copperbell_297.png",
+            "illustration": "../images/images_foret/copper_bell_287.png",
             "items": [
                 {
                     "name": "or",
@@ -5201,7 +5205,7 @@
                 }
             ],
             "illustration": "../images/images_foret/giant_spider_under_the_tree_298.png"
-        }, 
+        },
         {
             "id": 299,
             "text": "Vous courez à toutes jambes en direction de l'endroit d'où provient le bruit d'eau, suivi juste derrière vous par une longue traînée d'ABEILLES TUEUSES. Vous atteignez bientôt la berge d'une rivière et, sans prendre le temps d'y penser, vous plongez droit dans l'eau, puis vous restez sous la surface le plus longtemps possible en retenant votre souffle. Lorsque vous remontez à l'air libre, les Abeilles Tueuses sont parties. Vous vous hissez alors hors de la rivière et vous commencez à vous sécher. Mais en vérifiant le contenu de votre sac à dos, vous constatez avec désespoir que toutes vos Provisions se sont gâtées au contact de l'eau. Vous jetez ensuite un coup d'oeil alentour et vous remarquez que le chemin continue vers le nord, de l'autre côté de la rivière que l'on peut franchir en empruntant un vieux pont de bois tout branlant. Si vous souhaitez passer ce pont, rendez-vous au 65. Mais s'il ne vous inspire vraiment pas confiance, vous pouvez traverser la rivière à la nage en vous rendant au 75.",
@@ -5546,7 +5550,8 @@
                     "text": "Rendez-vous au 231.",
                     "nextId": 231
                 }
-            ]
+            ],
+            "illustration": "../images/images_foret/hidden_in_the_bushes_giant_leg_318.png"
         },
         {
             "id": 319,
@@ -5770,7 +5775,7 @@
                     "nextId": 103
                 }
             ]
-        }, 
+        },
         {
             "id": 333,
             "text": "La couronne vous va à merveille et en vous voyant ainsi coiffé, les deux Guerriers Clones vous fixent avec de grands yeux qui expriment un respect mêlé de crainte. Grâce à la couronne posée sur votre tête, vous pouvez entrer en communication télépathique avec les deux créatures, et vous comprenez alors, en lisant dans leurs pensées, ce qu'elles essayent de vous dire : vous êtes leur nouveau maître et elles attendent les ordres que vous voudrez bien leur donner. Elles vous demandent notamment ce que l'on doit faire de la nouvelle récolte de champignons à chapeaux rouges. Vous n'avez cependant pas la moindre envie d'être le maître de ces humanoïdes, qu'ils soient guerriers ou qu'ils cultivent des champignons, et vous levez les mains pour ôter la couronne de votre tête. Mais vous vous apercevez alors avec terreur que la peau de vos mains s'est flétrie et a pris une couleur sombre. Vous essayez d'enlever la couronne, mais elle ne bouge pas : c'est une couronne maléfique qui a trouvé en vous une nouvelle victime ; et peu à peu les traits de votre visage se transforment car vous êtes en train de prendre la forme et la couleur d'un Démon de Feu. Votre nouveau destin est scellé et votre aventure se termine ici.",
@@ -6091,7 +6096,7 @@
             ],
             "illustration": "../images/images_foret/map_foret.jpg",
             "items": []
-        },
+        }, 
         {
             "id": 353,
             "text": "Lorsque vous vous réveillez, vous vous apercevez que vous êtes étendu sur le sol, à l'extérieur de la cabane en bois. Vous vous asseyez et vous regardez à l'intérieur de votre sac à dos : on vous a volé toutes vos Provisions ! Fort heureusement, rien d'autre ne manque et vous avez toujours votre épée. Vous allez ensuite jeter un coup d'oeil à l'intérieur de la cabane, mais elle est déserte.",
@@ -6124,7 +6129,7 @@
             "id": 355,
             "text": "Vous arrivez à une autre bifurcation. Le sentier orienté au sud ne vous intéresse pas et vous continuez vers l'est.",
             "choices": [
-              {
+                {
                 "text": "Rendez-vous au 340.",
                 "nextId": 340
               }
@@ -6177,14 +6182,14 @@
               {
                 "text": "Si vous êtes Chanceux, votre épée reste dans son fourreau et vous pouvez vous en servir pour couper la corde et vous libérer. Rendez-vous au 40.",
                 "nextId": 40, 
-                "chanceCheckPassed": true
-              },
-              {
+                    "chanceCheckPassed": true
+                },
+                {
                 "text": "Si vous êtes Malchanceux, votre épée glisse de son fourreau et tombe sur le sol, vous laissant là pendu comme un cochon, et incapable de vous dépêtrer. Rendez-vous au 218.",
                 "nextId": 218,
-                "chanceCheckPassed": false
-              }
-            ], 
+                    "chanceCheckPassed": false
+                }
+            ],
             "illustration":"../images/images_foret/upside_down_358.png"
         },
         {
@@ -6291,13 +6296,15 @@
             "choices": [
               {
                 "text": "Accepter son offre ? Rendez-vous au 127.",
-                "nextId": 127
+                "nextId": 127,
+                "condition": ["gold", ">=", 3]
               },
               {
                 "text": "Refuser poliment et traverser la rivière à pied ? Rendez-vous au 178.",
                 "nextId": 178
               }
-            ]
+            ],
+             "illustration": "../images/images_foret/centaur_archer_142.png"
         }, 
         {
             "id": 367,
@@ -6445,7 +6452,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/slippy_troll_in_a_cavern_376.png"
         },
         {
             "id": 377,
@@ -6711,7 +6718,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/in_a_valley_big_forest_390.png"
         },
         {
             "id": 391,
