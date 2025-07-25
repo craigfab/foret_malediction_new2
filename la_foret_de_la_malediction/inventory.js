@@ -114,6 +114,54 @@ export function useMeal() {
     }
 }
 
+// gérer la potion d'adresse
+export function usePotionAdresse() {
+    const potionQuantity = gameState.inventory.checkItem("potion d'adresse");
+    const potionMessageDiv = document.getElementById('PotionMessage');
+
+    if (potionQuantity > 0) {
+        gameState.inventory.removeItem("potion d'adresse", 1);
+        gameState.character.skill = gameState.character.baseSkill;
+        updateCharacterStats();
+        updateAdventureSheet();
+        potionMessageDiv.innerHTML = "Potion d'adresse consommée, habileté rétablie à son niveau initial.";
+    } else {
+        potionMessageDiv.innerHTML = "Aucune potion d'adresse disponible.";
+    }
+}
+
+// gérer la potion de vigueur
+export function usePotionVigueur() {
+    const potionQuantity = gameState.inventory.checkItem('potion de vigueur');
+    const potionMessageDiv = document.getElementById('PotionMessage');
+
+    if (potionQuantity > 0) {
+        gameState.inventory.removeItem('potion de vigueur', 1);
+        gameState.character.health = gameState.character.baseHealth;
+        updateCharacterStats();
+        updateAdventureSheet();
+        potionMessageDiv.innerHTML = 'Potion de vigueur consommée, endurance rétablie à son niveau initial.';
+    } else {
+        potionMessageDiv.innerHTML = 'Aucune potion de vigueur disponible.';
+    }
+}
+
+// gérer la potion de bonne fortune
+export function usePotionBonneFortune() {
+    const potionQuantity = gameState.inventory.checkItem('potion de bonne fortune');
+    const potionMessageDiv = document.getElementById('PotionMessage');
+
+    if (potionQuantity > 0) {
+        gameState.inventory.removeItem('potion de bonne fortune', 1);
+        gameState.character.chance = gameState.character.baseChance + 1;
+        updateCharacterStats();
+        updateAdventureSheet();
+        potionMessageDiv.innerHTML = 'Potion de bonne fortune consommée, chance rétablie à son niveau initial + 1.';
+    } else {
+        potionMessageDiv.innerHTML = 'Aucune potion de bonne fortune disponible.';
+    }
+}
+
 
 // fonction take_item
 export function takeItem(item, buttonElement) {

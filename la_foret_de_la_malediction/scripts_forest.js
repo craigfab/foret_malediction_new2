@@ -6,6 +6,7 @@ import { Character } from "./character.js";
 import { takeItem } from "./inventory.js";
 import { updateAdventureSheet } from "./inventory.js";
 import { useMeal } from "./inventory.js";
+import { usePotionAdresse, usePotionVigueur, usePotionBonneFortune } from "./inventory.js";
 import { Inventory } from "./inventory.js";
 import { loadRandomTrack, initializeSoundEffects } from "./music.js";
 
@@ -26,7 +27,8 @@ export let gameState = {
     woundedByLoupGarou: false, // Traçage des blessures du loup-garou
     isLucky: undefined, // Résultat du test de chance
     luckResults: [], // Pour les tests multiples de chance
-    skillCheckPassed: undefined // Résultat du test d'habileté
+    skillCheckPassed: undefined, // Résultat du test d'habileté
+    assaultCount: 0 // Compteur d'assauts pour le chapitre 84
 };
 
 // quand le DOM est chargé, choix aléatoire de piste musicale et initialisation des effets sonores
@@ -46,6 +48,7 @@ function showChapter(chapters, chapterId) {
     gameState.isLucky = undefined;
     gameState.luckResults = [];
     gameState.skillCheckPassed = undefined;
+    gameState.assaultCount = 0; // Réinitialiser le compteur d'assauts
 
     // Réinitialise les contenus des divs action_message et attack_message
     document.getElementById('action_message').innerHTML = '';
@@ -129,9 +132,55 @@ function showChapter(chapters, chapterId) {
         useMealButton.style.display = 'none'; // Masque le bouton s'il n'y a pas de repas
     }
 
+    // Création bouton pour potion d'adresse
+    const usePotionAdresseButton = document.getElementById('usePotionAdresseButton');
+    if (gameState.inventory.checkItem("potion d'adresse") > 0) {
+        usePotionAdresseButton.style.display = 'block'; 
+        if (!usePotionAdresseButton.onclick) {
+            usePotionAdresseButton.onclick = function() {
+                usePotionAdresse();
+            };
+        }
+    } else {
+        usePotionAdresseButton.style.display = 'none'; // Masque le bouton s'il n'y a pas de potion d'adresse
+    }
+
+    // Création bouton pour potion de vigueur
+    const usePotionVigueurButton = document.getElementById('usePotionVigueurButton');
+    if (gameState.inventory.checkItem('potion de vigueur') > 0) {
+        usePotionVigueurButton.style.display = 'block'; 
+        if (!usePotionVigueurButton.onclick) {
+            usePotionVigueurButton.onclick = function() {
+                usePotionVigueur();
+            };
+        }
+    } else {
+        usePotionVigueurButton.style.display = 'none'; // Masque le bouton s'il n'y a pas de potion de vigueur
+    }
+
+    // Création bouton pour potion de bonne fortune
+    const usePotionBonneFortuneButton = document.getElementById('usePotionBonneFortuneButton');
+    if (gameState.inventory.checkItem('potion de bonne fortune') > 0) {
+        usePotionBonneFortuneButton.style.display = 'block'; 
+        if (!usePotionBonneFortuneButton.onclick) {
+            usePotionBonneFortuneButton.onclick = function() {
+                usePotionBonneFortune();
+            };
+        }
+    } else {
+        usePotionBonneFortuneButton.style.display = 'none'; // Masque le bouton s'il n'y a pas de potion de bonne fortune
+    }
+
     // gestion des monstres
     if (chapter.monsters) {
-        manageMonsters(chapter.monsters);
+        // Vérifier si c'est le combat spécial des pygmées (chapitre 377)
+        if (chapter.id === 377) {
+            import("./battle2.js").then(battle2 => {
+                battle2.managePygmees(chapter.monsters);
+            });
+        } else {
+            manageMonsters(chapter.monsters);
+        }
         
     } else {
         // Si pas de monstres, afficher "Pas de monstre ici"
@@ -186,6 +235,15 @@ function showChapter(chapters, chapterId) {
         if (choice.requiresConditionMet) {
             choiceButton.setAttribute('data-requiresConditionMet', 'true');
             choiceButton.disabled = !gameState.conditionMet;
+        }
+
+        // Gestion de requiresMinAssaults
+        if (choice.requiresMinAssaults) {
+            choiceButton.setAttribute('data-requiresMinAssaults', choice.requiresMinAssaults.toString());
+            choiceButton.disabled = gameState.assaultCount < choice.requiresMinAssaults;
+            if (choiceButton.disabled) {
+                choiceButton.title = `Vous devez mener ${choice.requiresMinAssaults} assauts avant de pouvoir fuir (${gameState.assaultCount}/${choice.requiresMinAssaults})`;
+            }
         }
 
         // Ajouter des attributs personnalisés basés sur le choix requis
@@ -244,14 +302,25 @@ function showChapter(chapters, chapterId) {
             }
         }
 
-        // Vérifie si un coût est associé au choix et passe au chapitre suivant
         choiceButton.addEventListener('click', () => {
+            // Gestion du coût en or
             if (choice.cost && choice.cost > 0) {
-                // Soustrait le coût de l'or de l'inventaire
                 gameState.inventory.removeItem('or', choice.cost);
-                updateAdventureSheet(); // Mise à jour pour refléter le changement
+                updateAdventureSheet();
             }
-            // Passe au chapitre suivant indiqué par le choix
+            
+            // Gestion de la fuite
+            if (choice.text && choice.text.toLowerCase().includes('fuite')) {
+                gameState.character.health -= 2;
+                updateCharacterStats();
+                
+                const effectMessageDiv = document.getElementById('effect_message');
+                if (effectMessageDiv) {
+                    effectMessageDiv.innerHTML = '<strong>Fuite :</strong> Vous perdez 2 points d\'endurance en prenant la fuite.';
+                }
+            }
+            
+            // Navigation vers le chapitre suivant
             showChapter(chapters, choice.nextId);      
         });
 

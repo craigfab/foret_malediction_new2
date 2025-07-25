@@ -418,7 +418,7 @@
                 "Poison": false,
                 "removeItem" : "potion Antipoison"
             },
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/healing_potion.png"
         },
         {
             "id": 25,
@@ -1398,11 +1398,12 @@
                 },
                 {
                     "text": "Si vous souhaitez prendre la Fuite, vous pourrez le faire après avoir mené trois Assauts, et vous vous échapperez alors en direction du nord, vers le fond de la vallée. Rendez-vous au 245.",
-                    "nextId": 245
+                    "nextId": 245,
+                    "requiresMinAssaults": 3
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/beast_made_only_of_stones_84.png"
         },
         {
             "id": 85,
@@ -2015,11 +2016,11 @@
             "items": [
                 {
                     "name": "Collier de cuir incrusté d'or",
-                    "type": "jewelry",
+                    "category": "jewelry",
                     "value": 15
                 }
             ],
-            "illustration": "../images/images_foret/dog_leather_collar_gold_116.png"
+            "illustration": "../images/images_foret/dog_leather_collar_gold_116_2.png"
         }, 
         {
             "id": 117,
@@ -2592,7 +2593,7 @@
                 "nextId": 306
               }
             ], 
-            "illustration":"../images/images_foret/valley_wall_tree_149.png"
+            "illustration":"../images/images_foret/valley_wall_tree_149_2.png"
         },
         {
             "id": 150,
@@ -2603,11 +2604,11 @@
                 "nextId": 357
               },
               {
-                "text": "Si, en revanche, vous préférez aller à l'ouest, rendez-vous au 171.",
+                "text": "Si, en revanche, vous préférez aller à l'est, rendez-vous au 171.",
                 "nextId": 171
               }
             ], 
-            "illustration":"../images/images_foret/valley_wall_tree_149.png"
+            "illustration":"../images/images_foret/path_in_the_forest_357.png"
         }, 
         {
             "id": 151,
@@ -3357,7 +3358,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/potion_anti_poison_197_bis.png"
+            "illustration": "../images/images_foret/healing_potion.png"
         }, 
         {
             "id": 198,
@@ -3501,7 +3502,7 @@
                 "quantity": 6 
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/leather_purses_gold_coins_205.png"
         }, 
         {
             "id": 206,
@@ -5075,7 +5076,8 @@
                     "text": "Vous pouvez également prendre la Fuite en retournant à toutes jambes sur le chemin pour repartir vers le nord. Rendez-vous dans ce cas au 358.",
                     "nextId": 358
                 }
-            ]
+            ],
+            "illustration": "../images/images_foret/angry_ogre_attacking_with_a_mace_290_2.png"
         },
         {
             "id": 291,
@@ -5219,9 +5221,13 @@
                     "nextId": 75
                 }
             ],
-            "effects": {
-                "loseAllFood": true
-            }
+            "effects": [
+                {
+                    "type": "reduceFood",
+                    "value": "all"
+                }
+            ],
+            "illustration": "../images/images_foret/underwater_river_giant_bees_299_2.png"
         },
         {
             "id": 300,
@@ -6431,7 +6437,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/plain_fork_in_the_path_375.png"
         },
         {
             "id": 376,
@@ -6461,14 +6467,15 @@
               {
                 "name": "PYGMEE A",
                 "skill": 5,
-                "endurance": 5
+                "health": 5
               },
               {
                 "name": "PYGMEE B",
                 "skill": 5,
-                "endurance": 6
+                "health": 6
               }
             ],
+            "effects": [],
             "choices": [
               {
                 "text": "Si vous êtes vainqueur, rendez-vous au 205.",
@@ -6480,7 +6487,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/two_pygmies_377_2.png"
         },
         {
             "id": 378,

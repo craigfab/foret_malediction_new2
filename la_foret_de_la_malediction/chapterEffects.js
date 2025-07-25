@@ -460,7 +460,7 @@ function multipleRollDiceSkill() {
 
 
 // fonction générique de mise à jour des choix
-function updateChoiceButtons() {
+export function updateChoiceButtons() {
     const choiceButtons = document.querySelectorAll("#choices button");
 
     choiceButtons.forEach(button => {
@@ -516,6 +516,17 @@ function updateChoiceButtons() {
         if (button.hasAttribute("data-woundedByLoupGarou")) {
             const woundedRequired = button.getAttribute("data-woundedByLoupGarou") === "true";
             button.disabled = gameState.woundedByLoupGarou !== woundedRequired;
+        }
+
+        // Mise à jour basée sur requiresMinAssaults
+        if (button.hasAttribute("data-requiresMinAssaults")) {
+            const minAssaults = parseInt(button.getAttribute("data-requiresMinAssaults"));
+            button.disabled = gameState.assaultCount < minAssaults;
+            if (button.disabled) {
+                button.title = `Vous devez mener ${minAssaults} assauts avant de pouvoir fuir (${gameState.assaultCount}/${minAssaults})`;
+            } else {
+                button.title = ""; // Effacer le titre quand la condition est remplie
+            }
         }
 
         // Mise à jour basée sur les conditions d'or

@@ -96,6 +96,9 @@ function performAttack(index) {
 
     let attackMessageDiv = document.getElementById("attack_message");
 
+    // Incrémenter le compteur d'assauts
+    gameState.assaultCount++;
+
     // modificateurs attaque 
     let attackModifier = 0;
     if (gameState.inventory.checkItem('casque en bronze')) {
@@ -204,6 +207,13 @@ function applyDamage(success, playerWon, character, monster, potentialDamageToMo
     updateCharacterStats();
     updateMonsterList();
 
+    // Mettre à jour les boutons de choix (pour les conditions d'assauts)
+    import("./chapterEffects.js").then(chapterEffects => {
+        if (chapterEffects.updateChoiceButtons) {
+            chapterEffects.updateChoiceButtons();
+        }
+    });
+
     // Vérifier la fin du combat
     checkEndOfBattle(character, monster);
 }
@@ -230,6 +240,13 @@ function applyDirectDamage(character, monster, potentialDamageToMonster, potenti
     // Mettre à jour l'affichage des caractéristiques du personnage et du monstre
     updateCharacterStats();
     updateMonsterList();
+
+    // Mettre à jour les boutons de choix (pour les conditions d'assauts)
+    import("./chapterEffects.js").then(chapterEffects => {
+        if (chapterEffects.updateChoiceButtons) {
+            chapterEffects.updateChoiceButtons();
+        }
+    });
 
     // Vérifier la fin du combat
     checkEndOfBattle(character, monster);
