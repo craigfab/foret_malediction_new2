@@ -190,7 +190,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/map_foret.jpg"
+            "illustration":"../images/images_foret/nightmare_11_2.png"
         },
         {
             "id": 12,
@@ -450,7 +450,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/ancient_library_filled_with_very_old_leather_books_26.png"
         },
         {
             "id": 27,
@@ -698,10 +698,13 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceChance": 1
-            },
-            "illustration": "../images/images_foret/old_woman_342_2.png"
+            "effects": [
+                {
+                    "type": "reduceChance",
+                    "value": 1
+                }
+            ],
+            "illustration": "../images/images_foret/creepy_old_witch_laughing_42.png"
         },
         {
             "id": 43,
@@ -791,7 +794,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/bat_from_behind_escaping_from_a_window_47.png"
         },
         {
             "id": 48,
@@ -1530,7 +1533,7 @@
                 "value": 1
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/amber_eye_jewel_91_2.png"
         },
         {
             "id": 92,
@@ -2730,13 +2733,21 @@
             "choices": [
               {
                 "text": "Tentez votre Chance. Si vous êtes Chanceux, la chaise vous manque et vous vous rendez au 47.",
-                "nextId": 47
+                "nextId": 47,
+                "chanceCheckPassed": true
               },
               {
                 "text": "Si vous êtes Malchanceux, en revanche, la chaise vous heurte à la tempe et vous assomme pour le compte. Rendez-vous au 353.",
-                "nextId": 353
+                "nextId": 353,
+                "chanceCheckPassed": false
               }
-            ]
+            ],
+            "effects": [
+                {
+                    "type": "rollDiceChance"
+                }
+            ],
+            "illustration": "../images/images_foret/chair_upsidedown_just_above_the_floor_158_2.png"
         }, 
         {
             "id": 159,
@@ -5962,15 +5973,19 @@
             "text": "Lorsque vous tirez votre épée, le visage de la vieille femme n'exprime plus l'indifférence mais la colère. Elle prend alors dans le tiroir d'une table à côté d'elle une poignée de fleurs mortes, dont elle frotte quelques pétales entre les paumes de ses mains. Aussitôt, une odeur douceâtre envahit la cabane, et la pièce commence à tournoyer devant vos yeux. Si vous avez un Bandeau de Concentration, rendez-vous au 158. Sinon, rendez-vous au 11.",
             "choices": [
                 {
-                    "text": "Si vous avez un Bandeau de Concentration : Rendez-vous au 158.",
+                    "text": "Si vous avez un bandeau de concentration : Rendez-vous au 158.",
                     "nextId": 158,
-                    "requiresItem": {"name": "Bandeau de Concentration"}
+                    "requiresItem": {
+                        "name": "bandeau de concentration",
+                        "category": "equipment"
+                    }
                 },
                 {
                     "text": "Sinon, rendez-vous au 11.",
                     "nextId": 11
                 }
-            ]
+            ],
+            "illustration": "../images/images_foret/creepy_angry_witch_with_flowers_and_smoke_342_4.png"
         },
         {
             "id": 343,
@@ -6134,7 +6149,13 @@
                     "nextId": 220
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg",
+            "effects": [
+                {
+                    "type": "reduceFood",
+                    "value": "all"
+                }
+            ],
+            "illustration": "../images/images_foret/view_of_the_sky_in_the_forest_353.png",
             "items": []
         },
         {

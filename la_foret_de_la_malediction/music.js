@@ -236,7 +236,7 @@ export function playGameOverMusic() {
         // Créer un nouvel élément audio pour la musique de Game Over
         const gameOverAudio = new Audio('../music/Orphee - Voyage Aux Enfers - Intro (1985)(Loriciels).mp3');
         gameOverAudio.volume = 1.0; // Volume maximum de base
-        gameOverAudio.loop = true; // Répéter
+        gameOverAudio.loop = false; // Ne pas répéter
         
         // Amplifier le volume avec Web Audio API si nécessaire
         let audioContext = null;
