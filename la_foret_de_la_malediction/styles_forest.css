@@ -62,6 +62,12 @@ button:disabled {
     opacity: 0.5;
 }
 
+/* Style pour les monstres vaincus */
+.monster-defeated {
+    opacity: 0.5;
+    color: #333333;
+}
+
 
 
 h2 {

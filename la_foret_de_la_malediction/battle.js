@@ -28,6 +28,12 @@ function updateMonsterList() {
     gameState.monsters.forEach((monster, index) => {
         let monsterInfo = document.createElement('div');
         monsterInfo.innerHTML = `<strong>${monster.name}</strong>, Habileté : ${monster.skill}, Endurance : ${monster.health}, Statut : ${monster.status}<br>`;
+        
+        // Ajouter une classe CSS pour griser les monstres vaincus
+        if (monster.status === "vaincu") {
+            monsterInfo.classList.add('monster-defeated');
+        }
+        
         monsterContainer.appendChild(monsterInfo);
     });
 }

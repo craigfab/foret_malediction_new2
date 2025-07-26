@@ -223,3 +223,56 @@ export function playDefeatSound() {
     soundManager.playSound('defeat');
 }
 
+// Fonction pour jouer la musique de Game Over
+export function playGameOverMusic() {
+    try {
+        // Arrêter la musique de fond actuelle
+        const audioPlayer = document.getElementById('audioPlayer');
+        if (audioPlayer) {
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+        
+        // Créer un nouvel élément audio pour la musique de Game Over
+        const gameOverAudio = new Audio('../music/Orphee - Voyage Aux Enfers - Intro (1985)(Loriciels).mp3');
+        gameOverAudio.volume = 1.0; // Volume maximum de base
+        gameOverAudio.loop = true; // Répéter
+        
+        // Amplifier le volume avec Web Audio API si nécessaire
+        let audioContext = null;
+        if (window.AudioContext || window.webkitAudioContext) {
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const source = audioContext.createMediaElementSource(gameOverAudio);
+                const gainNode = audioContext.createGain();
+                
+                // Amplifier jusqu'à 2x le volume (ajustez selon vos besoins)
+                gainNode.gain.value = 1.8;
+                
+                source.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                console.log('Amplification audio activée: 1.6x volume');
+            } catch (error) {
+                console.warn('Impossible d\'amplifier avec Web Audio API:', error);
+            }
+        }
+        
+        // Jouer la musique
+        gameOverAudio.play().then(() => {
+            // S'assurer que le contexte audio est actif
+            if (audioContext && audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+            console.log('Musique Game Over démarrée avec amplification');
+        }).catch(error => {
+            console.warn('Erreur lors de la lecture de la musique Game Over:', error);
+        });
+        
+        return gameOverAudio;
+    } catch (error) {
+        console.warn('Erreur lors du chargement de la musique Game Over:', error);
+        return null;
+    }
+}
+

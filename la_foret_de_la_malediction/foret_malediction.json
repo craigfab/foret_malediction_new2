@@ -1156,6 +1156,11 @@
                 {
                     "type": "gainSkill",
                     "value": 2
+                },
+                {
+                    "type": "takeItem",
+                    "itemName": "épée enchantée",
+                    "category": "equipment"
                 }
             ],
             "illustration": "../images/images_foret/magic_sword_with_aura_70.png"
@@ -2394,7 +2399,6 @@
           {
             "id": 137,
             "text": "Si vous possédez un Gant d'Adresse au Lancer, rendez-vous au 55. Sinon, rendez-vous au 10.",
-            "illustration": "",
             "items": [],
             "choices": [
               {
@@ -2409,7 +2413,8 @@
                 "text": "Sinon, rendez-vous au 10.",
                 "nextId": 10
               }
-            ]
+            ], 
+            "illustration": "../images/images_foret/ogre_230.png"
           }, 
           {
             "id": 138,
@@ -2608,7 +2613,7 @@
                 "nextId": 171
               }
             ], 
-            "illustration":"../images/images_foret/path_in_the_forest_357.png"
+            "illustration":"../images/images_foret/valley_wall_tree_150_2.png"
         }, 
         {
             "id": 151,
@@ -2777,7 +2782,7 @@
                 "nextId": 285
               }
             ], 
-            "illustration":"../images/images_foret/hills_evening_162.png"
+            "illustration":"../images/images_foret/simple_basic_camp_with_fire_plain_162.png"
         }, 
         {
             "id": 163,
@@ -3062,7 +3067,8 @@
             "choices": [
               {
                 "text": "Si vous êtes vainqueur, rendez-vous au 162.",
-                "nextId": 162
+                "nextId": 162,
+                "requiresAllMonstersDefeated": true
               }
             ],
             "items": [],
@@ -3476,8 +3482,16 @@
               {
                 "text": "Si vous avez la tête de marteau et le manche, tous deux gravés de la lettre G, rendez-vous au 400.",
                 "nextId": 400,
-                "requiresItems": "tête de marteau avec G",
-                "requiresItem": "manche avec G"
+                "requiresMultipleItems": [
+                  {
+                    "name": "tête de marteau avec G",
+                    "category": "equipment"
+                  },
+                  {
+                    "name": "manche avec G",
+                    "category": "equipment"
+                  }
+                ]
               },
               {
                 "text": "Si vous ne possédez qu'un seul, ou aucun de ces objets, rendez-vous au 381.",
@@ -3518,7 +3532,7 @@
                     "nextId": 187
                 }
                 ],
-            "illustration":"../images/images_foret/big_dense_and_luxuriant_forest_at_dawn_206.png",
+            "illustration":"../images/images_foret/help_in_forest_206_2.png",
             "items":[]
         }, 
         {
@@ -3596,7 +3610,10 @@
             ],
             "items": [],
             "illustration": "",
-            "requiresItems": "potion anti poison"
+            "requiresItem": {
+              "name": "potion anti poison",
+              "category": "equipment"
+            }
         }, 
         {
             "id": 212,
@@ -4175,7 +4192,7 @@
                 "nextId": 198
               }
             ],
-            "illustration": "../images/images_foret/boat_sinking_145_3.png"
+            "illustration": "../images/images_foret/little_path_in_the_plain_in_the_early_morning_244.png"
         }, 
         {
             "id": 245,
@@ -5690,7 +5707,8 @@
                     "text": "Rendez-vous au 145.",
                     "nextId": 145
                 }
-            ]
+            ], 
+            "illustration": "../images/images_foret/calm_river_and_torrent_191.png"
         }, 
         {
             "id": 327,
@@ -6173,7 +6191,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/forest_357.png"
+            "illustration": "../images/images_foret/path_in_the_forest_357.png"
         },
         {
             "id": 358,
@@ -6733,7 +6751,11 @@
             "choices": [
               {
                 "text": "Avez-vous une clé d'argent? Si oui, rendez-vous au 200.",
-                "nextId": 200
+                "nextId": 200, 
+                "requiresItem": {
+                  "name": "clé d'argent",
+                  "category": "equipment"
+                }
               },
               {
                 "text": "Sinon, rendez-vous au 379.",
@@ -6741,7 +6763,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/stone_door_391_2.png"
         },
         {
             "id": 392,

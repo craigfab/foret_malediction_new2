@@ -1,7 +1,7 @@
 //jeu d'aventure
 import { manageMonsters } from "./battle.js";
 import { applyChapterEffects } from "./chapterEffects.js";
-import { updateCharacterStats } from "./character.js";
+import { updateCharacterStats, triggerGameOver } from "./character.js";
 import { Character } from "./character.js";
 import { takeItem } from "./inventory.js";
 import { updateAdventureSheet } from "./inventory.js";
@@ -28,7 +28,9 @@ export let gameState = {
     isLucky: undefined, // Résultat du test de chance
     luckResults: [], // Pour les tests multiples de chance
     skillCheckPassed: undefined, // Résultat du test d'habileté
-    assaultCount: 0 // Compteur d'assauts pour le chapitre 84
+    assaultCount: 0, // Compteur d'assauts pour le chapitre 84
+    fleeMessage: false, // Marqueur pour indiquer qu'une fuite a eu lieu
+    gameOver: false // Marqueur pour indiquer si le jeu est terminé (Game Over)
 };
 
 // quand le DOM est chargé, choix aléatoire de piste musicale et initialisation des effets sonores
@@ -40,6 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Afficher un chapitre spécifique
 function showChapter(chapters, chapterId) {
+
+    // Empêcher la navigation si le jeu est terminé (Game Over)
+    if (gameState.gameOver) {
+        return;
+    }
 
     // réinitialisation de gameState pour les monstres
     gameState.monsters = [];
@@ -103,6 +110,16 @@ function showChapter(chapters, chapterId) {
 
     // Appliquer les effets du chapitre
     applyChapterEffects(chapter);
+
+    // Affichage du message de fuite du chapitre précédent (après applyChapterEffects)
+    if (gameState.fleeMessage) {
+        const effectMessageDiv = document.getElementById('effect_message');
+        if (effectMessageDiv) {
+            // Ajouter le message de fuite après les autres effets
+            effectMessageDiv.innerHTML += '<p><strong>Fuite :</strong> Vous avez perdu 2 points d\'endurance en prenant la fuite.</p>';
+        }
+        gameState.fleeMessage = false; // Réinitialiser après affichage
+    }
 
     // Création de boutons pour prendre les objets
     const itemsContainer = document.getElementById('get_item');
@@ -197,7 +214,10 @@ function showChapter(chapters, chapterId) {
     //choix
     const choicesContainer = document.getElementById('choices');
     choicesContainer.innerHTML = '';
-    chapter.choices.forEach(choice => {
+    
+    // Vérifier si le chapitre a des choix avant de les traiter
+    if (chapter.choices && chapter.choices.length > 0) {
+        chapter.choices.forEach(choice => {
 
         const choiceButton = document.createElement('Button');
         choiceButton.innerText = choice.text;
@@ -215,6 +235,25 @@ function showChapter(chapters, chapterId) {
             choiceButton.disabled = !hasItem; // Désactive le bouton si l'item requis n'est pas dans l'inventaire
             if (!hasItem) {
                 choiceButton.title = `Requis : ${choice.requiresItem.name}`; // Ajoute un titre au bouton pour indiquer l'item requis et sa catégorie
+            }
+        }
+
+        // Vérifie si le choix requiert plusieurs items spécifiques
+        if (choice.requiresMultipleItems) {
+            const missingItems = [];
+            let hasAllItems = true;
+            
+            choice.requiresMultipleItems.forEach(item => {
+                const hasItem = gameState.inventory.checkItem(item.name);
+                if (!hasItem) {
+                    hasAllItems = false;
+                    missingItems.push(item.name);
+                }
+            });
+            
+            choiceButton.disabled = !hasAllItems;
+            if (!hasAllItems) {
+                choiceButton.title = `Requis : ${missingItems.join(' et ')}`;
             }
         }
 
@@ -240,7 +279,7 @@ function showChapter(chapters, chapterId) {
         // Gestion de requiresMinAssaults
         if (choice.requiresMinAssaults) {
             choiceButton.setAttribute('data-requiresMinAssaults', choice.requiresMinAssaults.toString());
-            choiceButton.disabled = gameState.assaultCount < choice.requiresMinAssaults;
+            choiceButton.disabled = gameState.assaultCount <= choice.requiresMinAssaults;
             if (choiceButton.disabled) {
                 choiceButton.title = `Vous devez mener ${choice.requiresMinAssaults} assauts avant de pouvoir fuir (${gameState.assaultCount}/${choice.requiresMinAssaults})`;
             }
@@ -302,7 +341,17 @@ function showChapter(chapters, chapterId) {
             }
         }
 
+        // Ajouter un tooltip pour les choix de fuite
+        if (choice.text && choice.text.toLowerCase().includes('fuite')) {
+            choiceButton.title = "Attention : la fuite vous fait perdre 2 points d'endurance";
+        }
+
         choiceButton.addEventListener('click', () => {
+            // Empêcher toute action si le jeu est terminé
+            if (gameState.gameOver) {
+                return;
+            }
+            
             // Gestion du coût en or
             if (choice.cost && choice.cost > 0) {
                 gameState.inventory.removeItem('or', choice.cost);
@@ -314,10 +363,13 @@ function showChapter(chapters, chapterId) {
                 gameState.character.health -= 2;
                 updateCharacterStats();
                 
-                const effectMessageDiv = document.getElementById('effect_message');
-                if (effectMessageDiv) {
-                    effectMessageDiv.innerHTML = '<strong>Fuite :</strong> Vous perdez 2 points d\'endurance en prenant la fuite.';
+                // Si le Game Over s'est déclenché lors de la fuite, arrêter ici
+                if (gameState.gameOver) {
+                    return;
                 }
+                
+                // Marquer qu'une fuite a eu lieu pour afficher le message au prochain chapitre
+                gameState.fleeMessage = true;
             }
             
             // Navigation vers le chapitre suivant
@@ -326,6 +378,12 @@ function showChapter(chapters, chapterId) {
 
         choicesContainer.appendChild(choiceButton);
     });
+    } // Fermeture du bloc if (chapter.choices && chapter.choices.length > 0)
+
+    // Déclencher Game Over automatiquement au chapitre 399 après avoir affiché le contenu
+    if (chapterId === 399) {
+        triggerGameOver();
+    }
     }
 
 
@@ -338,6 +396,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 //restart
 document.getElementById('restartButton').addEventListener('click', function() {
+    // Réinitialiser le state du jeu avant de recharger
+    gameState.gameOver = false;
     location.reload(); 
 });
 
