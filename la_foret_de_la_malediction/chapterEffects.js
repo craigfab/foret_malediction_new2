@@ -77,6 +77,9 @@ export function applyChapterEffects(chapter) {
                 case "rollDiceChance":
                     rollDiceChance();
                     break;
+                case "rollDiceSkillChance":
+                    rollDiceSkillChance();
+                    break;
                 case "doubleRollDiceChance":
                     doubleRollDiceChance();
                     break;
@@ -350,6 +353,49 @@ function rollDiceChance() {
     });
 }
 
+// fonction rollDiceSkillChance pour tester habileté + chance
+function rollDiceSkillChance() {
+    const actionMessageDiv = document.getElementById('action_message');
+    actionMessageDiv.innerHTML = 'Testez votre habileté et votre chance en lançant deux dés<br>';
+    
+    // Création du bouton pour tenter le test
+    const skillChanceButton = document.createElement("button");
+    skillChanceButton.innerText = "Lancer les dés (Habileté + Chance)";
+    skillChanceButton.id = "skillChanceButton";
+
+    // ajout bouton à la div
+    actionMessageDiv.appendChild(skillChanceButton);
+
+    // Ajouter l'événement au clic du bouton
+    skillChanceButton.addEventListener("click", () => {
+        // Lancer deux dés
+        const diceRoll1 = rollDice();
+        const diceRoll2 = rollDice();
+        const totalRoll = diceRoll1 + diceRoll2;
+
+        // Calculer la somme habileté + chance
+        const skillPlusChance = gameState.character.skill + gameState.character.chance;
+
+        // Comparer la somme des dés avec habileté + chance
+        const isSuccessful = totalRoll <= skillPlusChance;
+
+        // Afficher le résultat
+        const resultMessage = isSuccessful
+            ? `Vous avez lancé ${diceRoll1} et ${diceRoll2} (total: ${totalRoll}). Habileté + Chance = ${skillPlusChance}. <strong>Réussite !</strong>`
+            : `Vous avez lancé ${diceRoll1} et ${diceRoll2} (total: ${totalRoll}). Habileté + Chance = ${skillPlusChance}. <strong>Échec...</strong>`;
+        actionMessageDiv.innerHTML = resultMessage;
+
+        // Stocker le résultat dans gameState pour référence ultérieure
+        gameState.skillChanceCheckPassed = isSuccessful;
+
+        // Met à jour les boutons de choix
+        updateChoiceButtons();
+
+        // Désactiver le bouton pour éviter un second test
+        skillChanceButton.disabled = true;
+    });
+}
+
 // Fonction pour appliquer les effets conditionnels après un test de chance
 function applyConditionalEffects(isLucky) {
     const currentChapter = gameState.currentChapter;
@@ -488,6 +534,17 @@ export function updateChoiceButtons() {
                 button.disabled = true;
             } else {
                 button.disabled = gameState.skillCheckPassed !== skillRequired;
+            }
+        }
+
+        // Mise à jour basée sur skillChanceCheckPassed
+        if (button.hasAttribute("data-skillChanceCheckPassed")) {
+            const skillChanceRequired = button.getAttribute("data-skillChanceCheckPassed") === "true";
+            // Si aucun test d'habileté+chance n'a été effectué, désactiver le bouton
+            if (gameState.skillChanceCheckPassed === undefined) {
+                button.disabled = true;
+            } else {
+                button.disabled = gameState.skillChanceCheckPassed !== skillChanceRequired;
             }
         }
 

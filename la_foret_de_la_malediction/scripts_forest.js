@@ -28,6 +28,7 @@ export let gameState = {
     isLucky: undefined, // Résultat du test de chance
     luckResults: [], // Pour les tests multiples de chance
     skillCheckPassed: undefined, // Résultat du test d'habileté
+    skillChanceCheckPassed: undefined, // Résultat du test d'habileté + chance
     assaultCount: 0, // Compteur d'assauts pour le chapitre 84
     fleeMessage: false, // Marqueur pour indiquer qu'une fuite a eu lieu
     gameOver: false // Marqueur pour indiquer si le jeu est terminé (Game Over)
@@ -55,6 +56,7 @@ function showChapter(chapters, chapterId) {
     gameState.isLucky = undefined;
     gameState.luckResults = [];
     gameState.skillCheckPassed = undefined;
+    gameState.skillChanceCheckPassed = undefined;
     gameState.assaultCount = 0; // Réinitialiser le compteur d'assauts
 
     // Réinitialise les contenus des divs action_message et attack_message
@@ -257,7 +259,7 @@ function showChapter(chapters, chapterId) {
             }
         }
 
-        // Désactiver le bouton si la condition est présente et non remplie
+        // Désactiver le bouton si les monstres ne sont pas tous vaincus
         if (choice.requiresAllMonstersDefeated) {
             choiceButton.setAttribute('data-requiresAllMonstersDefeated', 'true');    
             const allMonstersDefeated = gameState.monsters.every(monster => monster.status === "vaincu");
@@ -289,6 +291,13 @@ function showChapter(chapters, chapterId) {
         if (choice.skillCheckPassed !== undefined) {
             choiceButton.setAttribute('data-skillCheckPassed', choice.skillCheckPassed.toString());
             // Désactiver les boutons par défaut, ils seront activés après le test d'habileté
+            choiceButton.disabled = true; 
+        }
+
+        // Gestion de skillChanceCheckPassed
+        if (choice.skillChanceCheckPassed !== undefined) {
+            choiceButton.setAttribute('data-skillChanceCheckPassed', choice.skillChanceCheckPassed.toString());
+            // Désactiver les boutons par défaut, ils seront activés après le test d'habileté+chance
             choiceButton.disabled = true; 
         }
 

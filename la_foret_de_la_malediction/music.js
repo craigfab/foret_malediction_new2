@@ -247,7 +247,7 @@ export function playGameOverMusic() {
                 const gainNode = audioContext.createGain();
                 
                 // Amplifier jusqu'à 2x le volume (ajustez selon vos besoins)
-                gainNode.gain.value = 1.8;
+                gainNode.gain.value = 2
                 
                 source.connect(gainNode);
                 gainNode.connect(audioContext.destination);

@@ -79,7 +79,7 @@
                     "nextId": 120
                 }
             ], 
-            "illustration":"../images/images_foret/hollow_tree_trunk_3.png"
+            "illustration":"../images/images_foret/hollow_tree_trunk_3_2.png"
         },
         {
             "id": 4,
@@ -1208,15 +1208,22 @@
             "choices": [
                 {
                     "text": "Si réussi, rendez-vous au 327.",
-                    "nextId": 327
+                    "nextId": 327,
+                    "skillChanceCheckPassed": true
                 },
                 {
                     "text": "Si échec, rendez-vous au 112.",
-                    "nextId": 112
+                    "nextId": 112,
+                    "skillChanceCheckPassed": false
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "effects": [
+                {
+                    "type": "rollDiceSkillChance"
+                }
+            ],
+            "illustration": "../images/images_foret/stone_door_391_2.png"
         },
         {
             "id": 74,
@@ -1588,13 +1595,7 @@
                     "nextId": 144
                 }
             ],
-            "items": [
-                {
-                    "name": "Corde Magique",
-                    "type": "equipment"
-                }
-            ],
-            "illustration": "../images/images_foret/a_rope_94.jpg"
+            "illustration": "../images/images_foret/a_rope_94.png"
         }, 
         {
             "id": 95,
@@ -1759,7 +1760,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/bifurcation_horse_hoof_prints_102_2.png"
         }, 
         {
             "id": 103,
@@ -4267,6 +4268,11 @@
               {
                 "type": "gainChance",
                 "value": 1
+              }, 
+              {
+                "type": "takeItem",
+                "item": "bouclier d'empereur",
+                "category": "equipment"
               }
             ],
             "illustration": "../images/images_foret/magic_shield_aura_halo_248.png"
@@ -5483,7 +5489,7 @@
             "text": "Vous enjambez le cadavre de la Goule et vous regardez à l'intérieur du cercueil. Vous y trouvez 25 Pièces d'Or mais vous êtes surtout ravi d'y découvrir un objet qui servait d'oreiller à la Goule : il s'agit d'une tête de marteau en bronze gravée de la lettre G. Tout heureux, vous rangez vos trouvailles dans votre sac à dos et vous quittez la crypte pour retourner sur le chemin et repartir vers le nord.",
             "items": [
                 {
-                    "name": "Or",
+                    "name": "or",
                     "category": "gold",
                     "quantity": 25
                 },
@@ -5643,7 +5649,7 @@
                     "text": "Si vous possédez une Corde Magique : Rendez-vous au 94.",
                     "nextId": 94,
                     "requiresItem": {
-                        "name": "Corde Magique",
+                        "name": "corde magique",
                         "category": "equipment"
                     }
                 },
@@ -5708,7 +5714,7 @@
                     "nextId": 79
                 }
             ], 
-            "illustration":"../images/images_foret/bats_325.png"
+            "illustration":"../images/images_foret/bats_325_2.png"
         },
         {
             "id": 326,
@@ -5946,7 +5952,7 @@
             ],
             "items": [
                 {
-                    "name": "Or",
+                    "name": "or",
                     "category": "gold",
                     "quantity": 5
                 },
@@ -6574,7 +6580,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/hole_in_a_soil_of_wood_in_the_dark_380_2.png"
         },
         {
             "id": 381,
@@ -6674,7 +6680,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/dawn_plain_386.png"
+            "illustration": "../images/images_foret/tree_evening_66_2.png"
         },
         {
             "id": 387,
@@ -6687,7 +6693,7 @@
             ],
             "items": [
               {
-                "name": "Or",
+                "name": "or",
                 "quantity": 1 
               }
             ],
@@ -6738,7 +6744,8 @@
             ],
             "items": [
               {
-                "name": "Or",
+                "name": "or",
+                "category": "gold",
                 "quantity": 8
               }
             ],
