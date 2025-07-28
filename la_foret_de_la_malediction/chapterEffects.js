@@ -115,6 +115,10 @@ export function applyChapterEffects(chapter) {
                     useMeal();
                     message = "Repas consommé (+4 endurance).";
                     break;
+                case "giveFiveItems":
+                    giveFiveItems();
+                    message = "Vous devez donner 5 objets/unités.";
+                    break;
                 case "message":
                     message = effect.text || "Message personnalisé.";
                     break;
@@ -648,6 +652,101 @@ function reduceFood(value) {
         
         updateAdventureSheet();
         return `Vous avez perdu ${quantity} nourriture(s).`;
+    }
+}
+
+// Fonction pour donner 5 objets (chapitre 279)
+function giveFiveItems() {
+    const actionMessageDiv = document.getElementById('action_message');
+    // Réinitialiser la condition
+    gameState.conditionMet = false;
+    gameState.itemsGiven = 0;
+
+    // Compteur
+    const countSpan = document.createElement('span');
+    countSpan.id = 'itemCountDisplay';
+    countSpan.innerHTML = `<strong>Objets donnés : ${gameState.itemsGiven}</strong>`;
+    actionMessageDiv.appendChild(countSpan);
+    actionMessageDiv.appendChild(document.createElement('br'));
+    actionMessageDiv.appendChild(document.createElement('br'));
+
+    const currentGold = gameState.inventory.checkItem('or') || 0;
+
+    // Boutons pour donner 1 à 5 pièces d'or
+    if (currentGold > 0) {
+        const goldTitle = document.createElement('strong');
+        goldTitle.textContent = "Pièces d'or :";
+        actionMessageDiv.appendChild(goldTitle);
+        actionMessageDiv.appendChild(document.createElement('br'));
+        for (let i = 1; i <= Math.min(5, currentGold); i++) {
+            const goldButton = document.createElement('button');
+            goldButton.innerText = `Donner ${i} pièce${i > 1 ? 's' : ''} d'or`;
+            goldButton.classList.add('gold-button');
+            goldButton.addEventListener('click', function() {
+                if (gameState.inventory.checkItem('or') >= i) {
+                    gameState.inventory.removeItem('or', i);
+                    gameState.itemsGiven += i;
+                    // Supprimer tous les boutons d'or
+                    const allGoldButtons = document.querySelectorAll('.gold-button');
+                    allGoldButtons.forEach(btn => btn.remove());
+                    updateAdventureSheet();
+                    checkCondition();
+                    updateItemCountDisplay();
+                }
+            });
+            actionMessageDiv.appendChild(goldButton);
+        }
+        actionMessageDiv.appendChild(document.createElement('br'));
+        actionMessageDiv.appendChild(document.createElement('br'));
+    }
+
+    // Boutons pour équipements, bijoux, potions
+    const allItems = gameState.inventory.items.filter(item => item.category === 'equipment' || item.category === 'jewelry' || item.category === 'potions');
+    if (allItems.length > 0) {
+        const categories = {
+            'equipment': 'Équipements',
+            'jewelry': 'Bijoux',
+            'potions': 'Potions'
+        };
+        Object.keys(categories).forEach(category => {
+            const categoryItems = allItems.filter(item => item.category === category);
+            if (categoryItems.length > 0) {
+                const categoryTitle = document.createElement('strong');
+                categoryTitle.textContent = categories[category] + ' :';
+                actionMessageDiv.appendChild(categoryTitle);
+                actionMessageDiv.appendChild(document.createElement('br'));
+                categoryItems.forEach(item => {
+                    for (let j = 0; j < item.quantity; j++) {
+                        const itemButton = document.createElement('button');
+                        itemButton.innerText = item.name;
+                        itemButton.addEventListener('click', function() {
+                            gameState.inventory.removeItem(item.name, 1);
+                            gameState.itemsGiven += 1;
+                            this.remove();
+                            updateAdventureSheet();
+                            checkCondition();
+                            updateItemCountDisplay();
+                        });
+                        actionMessageDiv.appendChild(itemButton);
+                    }
+                });
+                actionMessageDiv.appendChild(document.createElement('br'));
+            }
+        });
+    }
+
+    function checkCondition() {
+        if (gameState.itemsGiven >= 5) {
+            gameState.conditionMet = true;
+            updateChoiceButtons();
+        }
+    }
+
+    function updateItemCountDisplay() {
+        const countDisplay = document.getElementById('itemCountDisplay');
+        if (countDisplay) {
+            countDisplay.innerHTML = `<strong>Objets donnés : ${gameState.itemsGiven}</strong>`;
+        }
     }
 }
 

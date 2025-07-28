@@ -380,7 +380,7 @@
                     "type": "reduceHealthRollDice"
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/opened_silver_box_with_gas_coming_out_126.png"
         },
         {
             "id": 23,
@@ -611,8 +611,7 @@
                     "type": "reduceAllGoldOrRemoveTwoItems"
                 }
             ],
-            
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/bag_36_3.png"
         },
         {
             "id": 37,
@@ -946,19 +945,21 @@
                 {
                     "text": "Si vous êtes Chanceux, rendez-vous au 132.",
                     "nextId": 132,
-                    "requiresLuck": "Success"
+                    "chanceCheckPassed": true
                 },
                 {
                     "text": "Si vous êtes Malchanceux, rendez-vous au 35.",
                     "nextId": 35,
-                    "requiresLuck": "Failure"
+                    "chanceCheckPassed": false
                 }
             ],
             "items": [],
-            "effects": {
-                "testLuck": true
-            },
-            "illustration": "../images/images_foret/green_dragon_57_2.jpg"
+            "effects": [
+                {
+                    "type": "rollDiceChance"
+                }
+            ],
+            "illustration": "../images/images_foret/green_dragon_above_the_forest_jet_of_fire_57.png"
         }
         ,
         {
@@ -1601,7 +1602,7 @@
                     "requiresItem": {
                         "name": "Poudre de Lévitation",
                         "category": "equipment"
-                    }
+                    } 
                 },
                 {
                     "text": "Sinon, rendez-vous au 368.",
@@ -1609,7 +1610,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/stone_chest_351_2.png"
         }, 
         {
             "id": 96,
@@ -1673,20 +1674,20 @@
                 {
                     "text": "Si vous êtes Chanceux, rendez-vous au 1.",
                     "nextId": 1,
-                    "requiresLuck": "Success"
+                    "chanceCheckPassed": true
                 },
                 {
                     "text": "Si vous êtes Malchanceux, cela met fin à votre aventure.",
-                    "requiresLuck": "Failure"
+                    "chanceCheckPassed": false
                 }
             ],
             "effects": [
                 {
-                    "type": "luckTest"
+                    "type": "rollDiceChance"
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/gang_of_forest_bandits_archer_98.png"
         }, 
         {
             "id": 99,
@@ -1770,7 +1771,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/pile_of_branches_103.png"
+            "illustration": "../images/images_foret/pile_of_branche_in_a_clearing_103.png"
         }, 
         {
             "id": 104,
@@ -2312,7 +2313,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/green_wyvern_132_2.png"
+            "illustration": "../images/images_foret/green_dragon_in_a_clearing_132.png"
         }, 
         {
             "id": 133,
@@ -2321,22 +2322,22 @@
             "choices": [
                 {
                     "text": "Essayer le gantelet, rendez-vous au 374.",
-                    "nextId": 374
+                    "nextId": 374, 
+                    "requiresNotVisitedChapter": 374
                 },
                 {
                     "text": "Ne pas vous en occuper et repartir vers le nord, rendez-vous au 360.",
                     "nextId": 360
                 }
             ],
-            "items": [
+            "effects": [
                 {
-                    "name": "Anneau de Lenteur",
-                    "type": "equipment",
-                    "effect": "reduceAttackForce2",
-                    "permanent": true
+                    "type" : "takeItem",
+                    "itemName": "anneau de lenteur",
+                    "category": "equipment"
                 }
             ],
-            "illustration": "../images/images_foret/cursed_ring_133.png"
+            "illustration": "../images/images_foret/cursed_ring_133_2.png"
         },
         {
             "id": 134,
@@ -2704,7 +2705,13 @@
                 "nextId": 109
               }
             ],
-            "effects":[]
+            "effects":[
+                {
+                    "type": "reduceHealth",
+                    "value": 3
+                }
+            ],
+            "illustration": "../images/images_foret/man_of_ice_and_fire_155.png"
         }, 
         {
             "id": 157,
@@ -2844,10 +2851,11 @@
             "choices": [
               {
                 "text": "Si vous êtes vainqueur, rendez-vous au 305.",
-                "nextId": 305
+                "nextId": 305,
+                "requiresAllMonstersDefeated" : true
               }
             ], 
-            "illustration":"../images/images_foret/fighting_green_wyvern_167_2.png"
+            "illustration":"../images/images_foret/angry_green_dragon_attacking_in_a_clearing_167.png"
         }, 
         {
             "id": 168,
@@ -3422,8 +3430,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/stone_stair_200.png",
-            "requiresItem": "Petite clé d'argent"
+            "illustration": "../images/images_foret/stone_stair_200.png"
         }, 
         {
             "id": 201,
@@ -3431,7 +3438,8 @@
             "choices": [
               {
                 "text": "Essayer d'ouvrir le coffre de bois, rendez-vous au 389.",
-                "nextId": 389
+                "nextId": 389,
+                "requiresNotVisitedChapter": 389
               },
               {
                 "text": "Quitter cette anfractuosité pour continuer à monter les marches, rendez-vous au 88.",
@@ -3653,7 +3661,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/path_in_the_luxuriant_forest_blue_and_green_213.png"
         }, 
         {
             "id": 214,
@@ -4222,7 +4230,7 @@
                 "nextId": 204
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/exit_big_forest_246.png"
         }, 
         {
             "id": 247,
@@ -4399,7 +4407,8 @@
               },
               {
                 "text": "Si vous êtes Malchanceux, rendez-vous au 295.",
-                "nextId": 295
+                "nextId": 295,
+                "chanceCheckPassed":false
               }
             ],
             "illustration": ""
@@ -4435,7 +4444,7 @@
                 "requiresItem": "petite flute de cuivre"
               }
             ],
-            "illustration": "../images/images_foret/sleeping_wyvern_258_2.png"
+            "illustration": "../images/images_foret/green_dragon_in_a_clearing_sleeping_258.png"
         }, 
         {
             "id": 259,
@@ -4902,12 +4911,19 @@
             "id": 279,
             "text": "Considérez chacun des objets que vous transportez dans votre sac à dos comme une unité, y compris chaque Pièce d'Or. Faites les aménagements nécessaires sur votre Liste d'Équipement et rendez-vous au 246.",
             "items": [],
+            "effects": [
+                {
+                    "type": "giveFiveItems"
+                }
+            ],
             "choices": [
                 {
                     "text": "Faites les aménagements nécessaires et continuez au chapitre 246.",
-                    "nextId": 246
+                    "nextId": 246,
+                    "requiresConditionMet": true
                 }
-            ]
+            ],
+            "illustration": "../images/images_foret/forest_ambush_360_3.png"
            
         },
         {
@@ -5727,7 +5743,8 @@
                     "text": "Si vous préférez quitter l'édifice et retourner sur le chemin pour repartir en direction du nord, rendez-vous au 112.",
                     "nextId": 112
                 }
-            ]
+            ],
+            "illustration": "../images/images_foret/stone_stair_200_2.png"
         },
         {
             "id": 328,
@@ -6259,7 +6276,7 @@
                 "nextId": 104
               }
             ], 
-            "illustration":"../images/images_foret/angry_peasants_360.png"
+            "illustration":"../images/images_foret/forest_ambush_360_3.png"
         }, 
         {
             "id": 361,
@@ -6368,7 +6385,8 @@
                 "text": "Rendez-vous au 112.",
                 "nextId": 112
               }
-            ]
+            ], 
+            "illustration": "../images/images_foret/stone_staircase_368.png"
         },
         {
             "id": 369,
@@ -6446,15 +6464,22 @@
             "choices": [
               {
                 "text": "Si vous souhaitez à présent essayer l'anneau d'or, rendez-vous au 133.",
-                "nextId": 133
+                "nextId": 133, 
+                "requiresNotVisitedChapter": 133
               },
               {
                 "text": "S'il ne vous intéresse pas (ou si vous l'avez déjà essayé), vous repartirez en direction du nord, le long du chemin. Rendez-vous au 360.",
                 "nextId": 360
               }
             ],
-            "items": [],
-            "illustration": "../images/iron_glove_skill_374.png"
+            "effects": [
+                {
+                    "type": "addItem",
+                    "itemName": "gantelet d'adresse à combattre",
+                    "category": "equipment"
+                }
+            ],
+            "illustration": "../images/images_foret/iron_glove_skill_374.png"
         },
         {
             "id": 375,
@@ -6552,7 +6577,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/stone_door_391_2.png"
         },
         {
             "id": 380,
@@ -6580,7 +6605,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/return_381.png"
         },
         {
             "id": 382,
@@ -6723,7 +6748,8 @@
             "choices": [
               {
                 "text": "Aller jeter un coup d'oeil à l'intérieur du tonneau",
-                "nextId": 215
+                "nextId": 215,
+                "requiresNotVisitedChapter": 215
               },
               {
                 "text": "Quitter l'anfractuosité pour continuer à monter les marches",

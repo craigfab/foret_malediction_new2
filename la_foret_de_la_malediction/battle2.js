@@ -180,6 +180,15 @@ window.attackPriorityPygmee = function() {
     if (gameState.inventory.checkItem('Bracelet d\'Habileté')) {
         attackModifier += 1;
     }
+    if (gameState.inventory.checkItem('gantelet d\'adresse à combattre')) {
+        attackModifier += 1;
+    }
+    
+    // Malédiction de l'anneau de lenteur
+    if (gameState.inventory.checkItem('anneau de lenteur')) {
+        attackModifier -= 2;
+    }
+    
     if (character.hasBoost('skillPotionBoost')) {
         attackModifier += 1;
     }
@@ -212,6 +221,29 @@ window.attackPriorityPygmee = function() {
     }
     
     attackMessageDiv.innerHTML += attackReport;
+
+    // Vérifier l'effet du bouclier d'empereur si le joueur subit des dégâts
+    if (potentialDamageToCharacter > 0 && gameState.inventory.checkItem('bouclier d\'empereur')) {
+        let shieldRoll = rollDice();
+        attackReport += `<br><strong>Bouclier d'empereur activé!</strong> Lancer de dé : <strong>${shieldRoll}</strong><br>`;
+        
+        if (shieldRoll >= 4) {
+            // Le bouclier protège : 1 seul point de dégât, pas de chance
+            attackReport += "<strong>Le bouclier vous protège! Vous ne subissez qu'1 point de dégât et n'avez pas besoin de tenter votre chance.</strong>";
+            attackMessageDiv.innerHTML = attackReport;
+            
+            // Appliquer directement 1 point de dégât
+            character.health -= 1;
+            attackMessageDiv.innerHTML += `<br><strong>Vous subissez 1 point de dégât grâce à votre bouclier.</strong><br>`;
+            
+            updateCharacterStats();
+            finalizePriorityAttack();
+            return; // Sortir de la fonction, pas besoin de gérer la chance
+        } else {
+            attackReport += "<strong>Le bouclier ne vous protège pas cette fois.</strong><br>";
+            attackMessageDiv.innerHTML = attackReport;
+        }
+    }
 
     // Si les forces ne sont pas égales, proposer la tentative de chance
     if (charAttackForcePriority !== priorityAttackForce) {
@@ -340,6 +372,15 @@ window.attackOtherPygmee = function() {
     if (gameState.inventory.checkItem('Bracelet d\'Habileté')) {
         attackModifier += 1;
     }
+    if (gameState.inventory.checkItem('gantelet d\'adresse à combattre')) {
+        attackModifier += 1;
+    }
+    
+    // Malédiction de l'anneau de lenteur
+    if (gameState.inventory.checkItem('anneau de lenteur')) {
+        attackModifier -= 2;
+    }
+    
     if (character.hasBoost('skillPotionBoost')) {
         attackModifier += 1;
     }
@@ -373,8 +414,25 @@ window.attackOtherPygmee = function() {
     
     attackMessageDiv.innerHTML += attackReport;
 
-    // Application des dégâts
-    if (otherDamageToCharacter > 0) {
+    // Vérifier l'effet du bouclier d'empereur si le joueur subit des dégâts
+    if (otherDamageToCharacter > 0 && gameState.inventory.checkItem('bouclier d\'empereur')) {
+        let shieldRoll = rollDice();
+        attackReport += `<br><strong>Bouclier d'empereur activé!</strong> Lancer de dé : <strong>${shieldRoll}</strong><br>`;
+        
+        if (shieldRoll >= 4) {
+            // Le bouclier protège : 1 seul point de dégât
+            attackReport += "<strong>Le bouclier vous protège! Vous ne subissez qu'1 point de dégât.</strong><br>";
+            attackMessageDiv.innerHTML = attackReport;
+            character.health -= 1;
+            attackMessageDiv.innerHTML += `<br><strong>Vous subissez 1 point de dégât grâce à votre bouclier.</strong><br>`;
+        } else {
+            attackReport += "<strong>Le bouclier ne vous protège pas cette fois.</strong><br>";
+            attackMessageDiv.innerHTML = attackReport;
+            character.health -= otherDamageToCharacter;
+            attackMessageDiv.innerHTML += `<br><strong>Vous subissez ${otherDamageToCharacter} points de dégâts.</strong><br>`;
+        }
+    } else if (otherDamageToCharacter > 0) {
+        // Application des dégâts normaux si pas de bouclier
         character.health -= otherDamageToCharacter;
     }
 

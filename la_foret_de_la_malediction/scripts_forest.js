@@ -24,6 +24,7 @@ export let gameState = {
     inventory: null,
     currentChapterId: 0,
     currentChapter: null, // Objet chapitre actuel
+    visitedChapters: new Set(), // Ensemble des chapitres visités
     woundedByLoupGarou: false, // Traçage des blessures du loup-garou
     isLucky: undefined, // Résultat du test de chance
     luckResults: [], // Pour les tests multiples de chance
@@ -31,7 +32,8 @@ export let gameState = {
     skillChanceCheckPassed: undefined, // Résultat du test d'habileté + chance
     assaultCount: 0, // Compteur d'assauts pour le chapitre 84
     fleeMessage: false, // Marqueur pour indiquer qu'une fuite a eu lieu
-    gameOver: false // Marqueur pour indiquer si le jeu est terminé (Game Over)
+    gameOver: false, // Marqueur pour indiquer si le jeu est terminé (Game Over)
+    itemsGiven: 0 // Compteur pour les objets donnés (chapitre 279)
 };
 
 // quand le DOM est chargé, choix aléatoire de piste musicale et initialisation des effets sonores
@@ -74,6 +76,9 @@ function showChapter(chapters, chapterId) {
     if (!chapter) return;
     gameState.currentChapterId = chapterId;
     gameState.currentChapter = chapter;
+    
+    // Enregistrer le chapitre comme visité
+    gameState.visitedChapters.add(chapterId);
 
     // Création du personnage et de l'inventaire au chapitre 0
     if (chapterId === 0) {
@@ -89,7 +94,18 @@ function showChapter(chapters, chapterId) {
     const chapterTitle = chapterId === 0 ? 'Introduction' : 'Chapitre ' + chapterId;
     document.getElementById('chapter_title').innerText = chapterTitle;
     document.getElementById('text').innerText = chapter.text;
-    document.getElementById('illustration').src = chapter.illustration;
+    // --- Ajout pour image aléatoire au chapitre 381 ---
+    if (chapterId === 381) {
+        const images = [
+            '../images/images_foret/return_381.png',
+            '../images/images_foret/return_381_2.png',
+            '../images/images_foret/return_381_3.png'
+        ];
+        const randomIndex = Math.floor(Math.random() * images.length);
+        document.getElementById('illustration').src = images[randomIndex];
+    } else {
+        document.getElementById('illustration').src = chapter.illustration;
+    }
   
     // Affiche le bouton de création de personnage uniquement pour le chapitre 0
     const createCharacterButton = document.getElementById("createCharacterButton");
@@ -256,6 +272,15 @@ function showChapter(chapters, chapterId) {
             choiceButton.disabled = !hasAllItems;
             if (!hasAllItems) {
                 choiceButton.title = `Requis : ${missingItems.join(' et ')}`;
+            }
+        }
+
+        // Vérifie si le choix requiert qu'un chapitre spécifique n'ait pas été visité
+        if (choice.requiresNotVisitedChapter) {
+            const hasVisited = gameState.visitedChapters.has(choice.requiresNotVisitedChapter);
+            choiceButton.disabled = hasVisited;
+            if (hasVisited) {
+                choiceButton.title = `Cette action n'est plus disponible`;
             }
         }
 

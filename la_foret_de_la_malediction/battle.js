@@ -113,6 +113,14 @@ function performAttack(index) {
     if (gameState.inventory.checkItem('Bracelet d\'Habileté')) {
         attackModifier += 1;
     }
+    if (gameState.inventory.checkItem('gantelet d\'adresse à combattre')) {
+        attackModifier += 1;
+    }
+    
+    // Malédiction de l'anneau de lenteur
+    if (gameState.inventory.checkItem('anneau de lenteur')) {
+        attackModifier -= 2;
+    }
     
     // Ajout du bonus de potion d'adresse au combat
     if (character.hasBoost('skillPotionBoost')) {
