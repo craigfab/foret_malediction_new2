@@ -148,6 +148,45 @@ function performAttack(index) {
     }
     attackMessageDiv.innerHTML = attackReport;
 
+    // Vérifier l'effet du bouclier d'empereur si le joueur subit des dégâts
+    if (potentialDamageToCharacter > 0 && gameState.inventory.checkItem('bouclier d\'empereur')) {
+        let shieldRoll = rollDice();
+        attackReport += `<br><strong>Bouclier d'empereur activé!</strong> Lancer de dé : <strong>${shieldRoll}</strong><br>`;
+        
+        if (shieldRoll >= 4) {
+            // Le bouclier protège : 1 seul point de dégât, pas de chance
+            attackReport += "<strong>Le bouclier vous protège! Vous ne subissez qu'1 point de dégât et n'avez pas besoin de tenter votre chance.</strong>";
+            attackMessageDiv.innerHTML = attackReport;
+            
+            // Appliquer directement 1 point de dégât
+            character.health -= 1;
+            attackMessageDiv.innerHTML += `<br><strong>Vous subissez 1 point de dégât grâce à votre bouclier.</strong><br>`;
+            
+            // Traquer les blessures du loup-garou
+            if (monster.name === "LOUP-GAROU") {
+                gameState.woundedByLoupGarou = true;
+            }
+            
+            // Mettre à jour l'affichage des caractéristiques du personnage et du monstre
+            updateCharacterStats();
+            updateMonsterList();
+
+            // Mettre à jour les boutons de choix (pour les conditions d'assauts)
+            import("./chapterEffects.js").then(chapterEffects => {
+                if (chapterEffects.updateChoiceButtons) {
+                    chapterEffects.updateChoiceButtons();
+                }
+            });
+
+            // Vérifier la fin du combat
+            checkEndOfBattle(character, monster);
+            return; // Sortir de la fonction, pas besoin de gérer la chance
+        } else {
+            attackReport += "<strong>Le bouclier ne vous protège pas cette fois.</strong><br>";
+            attackMessageDiv.innerHTML = attackReport;
+        }
+    }
+
     // Affichage des boutons selon le résultat de l'attaque
     let temptChanceButton = document.getElementById("temptChanceButton");
     let noTemptChanceButton = document.getElementById("no_temptChanceButton");

@@ -272,8 +272,8 @@
                     "text": "Si oui, rendez-vous au 211.",
                     "nextId": 211,
                     "requiresItem": {
-                        "name": "Potion Antipoison",
-                        "category": "equipment"
+                        "name": "potion anti poison",
+                        "category": "potions"
                     }
                 },
                 {
@@ -282,13 +282,7 @@
                 }
             ],
             "items": [],
-            "effects": [
-                {
-                    "type": "poison",
-                    "value": true
-                }
-            ],
-            "illustration":"../images/images_foret/map_foret.jpg"
+            "illustration":"../images/images_foret/red_mushrooms_16.png"
         },
         {
             "id": 17,
@@ -3621,11 +3615,11 @@
               }
             ],
             "items": [],
-            "illustration": "",
             "requiresItem": {
               "name": "potion anti poison",
-              "category": "equipment"
-            }
+              "category": "potions"
+            }, 
+            "illustration": "../images/images_foret/healing_potion.png"
         }, 
         {
             "id": 212,
@@ -3684,12 +3678,6 @@
               {
                 "text": "Ne pas y toucher et continuer votre chemin, rendez-vous au 201.",
                 "nextId": 201
-              }
-            ],
-            "items": [
-              {
-                "name": "Bouclier de fer",
-                "category": "equipment"
               }
             ],
             "illustration": "../images/images_foret/metal_shield_215.png"
@@ -4271,7 +4259,7 @@
               }, 
               {
                 "type": "takeItem",
-                "item": "bouclier d'empereur",
+                "itemName": "bouclier d'empereur",
                 "category": "equipment"
               }
             ],
@@ -6034,7 +6022,7 @@
                     "nextId": 293
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/strange_red_mushrooms_in_a_cavern_345.png"
         },
         {
             "id": 346,
