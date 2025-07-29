@@ -127,6 +127,11 @@ function performAttack(index) {
         attackModifier += 1;
     }
 
+    // Malus temporaire chapitre 49 : -3 à la force d'attaque
+    if (gameState.currentChapterId === 49) {
+        attackModifier -= 3;
+    }
+
     // Calcul des forces d'attaque
     let charAttackForce = rollDice() + rollDice() + character.skill + attackModifier + (monster.attackModifier || 0);
     let monsterAttackForce = rollDice() + rollDice() + monster.skill;

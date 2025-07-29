@@ -302,7 +302,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/map_foret.jpg"
+            "illustration":"../images/images_foret/top-down_view_of_a_very_deep_round_stone_well_17_2.png"
         },
         {
             "id": 18,
@@ -830,7 +830,7 @@
             "effects": {
                 "reduceAttackForce": 3
             },
-            "illustration": "../images/images_foret/gremlins_49.jpg"
+            "illustration": "../images/images_foret/gremlins_with_daggers_attacking_and_angry_49.png"
         },
         {
             "id": 50,
@@ -1183,7 +1183,7 @@
             "effects": {
                 "reduceAttackForce": 3
             },
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/gremlin_chief_cavern_71.png"
         },
         {
             "id": 72,
@@ -1354,7 +1354,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/arrow_in_tunnel_81.png"
         },
         {
             "id": 82,
@@ -2136,7 +2136,7 @@
                 }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/tunnel_in_stone_well_122.png"
         },
         {
             "id": 123,
@@ -2381,7 +2381,7 @@
                 }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/tunnel_splitting_135.png"
         }, 
         {
             "id": 136,
@@ -2578,7 +2578,7 @@
                 "nextId": 97
               },
               {
-                "text": "Si vous préférez aller vers l'ouest, rendez-vous au 20.",
+                "text": "Si vous préférez aller vers l'est, rendez-vous au 20.",
                 "nextId": 20
               }
             ],
@@ -2626,7 +2626,8 @@
                 "text": "Si vous préférez rebrousser chemin et revenir à la bifurcation, dans le tunnel, rendez-vous au 296.",
                 "nextId": 296
               }
-            ]
+            ],
+            "illustration" : "../images/images_foret/tunnel_curtain_151.png"
         },
         {
             "id": 152,
@@ -3700,7 +3701,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/path_on_the_edge_of_a_cliff_216.png"
         }, 
         {
             "id": 217,
@@ -3904,23 +3905,23 @@
             "text": "Lorsque vous touchez la boîte de bois, le couvercle s'ouvre à la volée sans que vous ayez eu besoin de le soulever. Une minuscule créature à la peau verte surgit alors de la boîte. Elle a une grosse tête avec un long nez et des oreilles pointues et ses vêtements sont taillés dans de la toile à sac. Vous êtes pris par surprise : le GREMLIN essaye de vous frapper avec son poignard. Tentez votre Chance. Si vous êtes Chanceux, vous parvenez à éviter la lame pointée sur vous et vous vous rendez au 165. Si vous êtes Malchanceux, la lame s'enfonce dans votre cuisse (rendez-vous au 45).",
             "effects": [
                 {
-                    "type": "temptChance"
+                    "type": "rollDiceChance"
                 }
             ],
             "choices": [
               {
                 "text": "Si vous êtes Chanceux, vous parvenez à éviter la lame pointée sur vous et vous vous rendez au 165.",
                 "nextId": 165,
-                "temptChanceResult": true
+                "chanceCheckPassed": true
               },
               {
                 "text": "Si vous êtes Malchanceux, la lame s'enfonce dans votre cuisse (rendez-vous au 45).",
                 "nextId": 45,
-                "temptChanceResult": false
+                "chanceCheckPassed": false
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/gremlin_jumping_out_of_a_wooden_box_229_2.png"
         }, 
         {
             "id": 230,
@@ -4018,7 +4019,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/well_with_stone_edge_359.png"
         }, 
         {
             "id": 234,
@@ -4411,7 +4412,7 @@
                 "chanceCheckPassed":false
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/well_falling_256.png"
         }, 
         {
             "id": 257,
@@ -4594,7 +4595,7 @@
                 "itemName": "petite bouteille contenant un liquide incolore"
               }
             ],
-            "illustration": "../images/images_foret/bottle_262.jpg",
+            "illustration": "../images/images_foret/bottle_262.png",
             "choices": [
               {
                 "text": "Vous prenez ensuite l'or, et vous quittez la caverne pour rejoindre le chemin et poursuivre votre voyage en direction du nord. Rendez-vous au 337.",
@@ -4736,7 +4737,8 @@
                     "nextId": 121
                 }
             ],
-            "items": []
+            "items": [], 
+            "illustration": "../images/images_foret/small_cavern_wood_box_270_2.png"
         },
         {
             "id": 271,
@@ -4998,7 +5000,7 @@
                     "nextId": 270
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg",
+            "illustration": "../images/images_foret/tunnel_splitting_bis_284.png",
             "items": []
         }, 
         {
@@ -6144,7 +6146,14 @@
                     "nextId": 156
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg",
+            "monsters": [
+                {
+                    "name": "Homme Singe",
+                    "skill": 8,
+                    "health": 7
+                }
+            ],
+            "illustration": "../images/images_foret/fighting_monkey_man_352_3.png",
             "items": []
         }, 
         {
@@ -6334,7 +6343,8 @@
                 "text": "Poursuivre la conversation avec lui ? Rendez-vous au 194.",
                 "nextId": 194
               }
-            ]
+            ], 
+            "illustration": "../images/images_foret/black_knight_has_just_dismounted_his_horse_364_2.png"
         },
         {
             "id": 365,
@@ -6900,7 +6910,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/masked_man_on_a_black_horse_396.png"
         },
         {
             "id": 397,
