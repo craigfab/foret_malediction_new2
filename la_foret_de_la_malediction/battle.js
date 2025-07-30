@@ -156,6 +156,19 @@ function performAttack(index) {
     }
     attackMessageDiv.innerHTML = attackReport;
 
+    // Règle spéciale chapitre 107 : démon de feu
+    if (gameState.currentChapterId === 107) {
+        let fireDemonRoll = rollDice();
+        attackMessageDiv.innerHTML += `<br><strong>Coup de fouet du démon :</strong> Résultat du lancer de dé : <strong>${fireDemonRoll}</strong>`;
+        if (fireDemonRoll <= 2) {
+            character.health -= 1;
+            attackMessageDiv.innerHTML += "<br><strong>Vous perdez 1 point d'endurance à cause du coup de fouet!</strong>";
+            updateCharacterStats();
+        } else {
+            attackMessageDiv.innerHTML += "<br><strong>Le fouet du démon de feu vous manque !</strong>";
+        }
+    }
+
     // Vérifier l'effet du bouclier d'empereur si le joueur subit des dégâts
     if (potentialDamageToCharacter > 0 && gameState.inventory.checkItem('bouclier d\'empereur')) {
         let shieldRoll = rollDice();
