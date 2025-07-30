@@ -68,6 +68,22 @@ export class Character {
     getBoostCombatsRemaining(boostType) {
         return this.boost[boostType] || 0;
     }
+
+    // Retourne l'habileté courante, en tenant compte des boosts et de l'épée enchantée
+    getCurrentSkill() {
+        let skill = this.skill; // ou this.baseSkill selon la logique souhaitée
+        // Bonus temporaire (ex: potion d'adresse)
+        if (this.hasBoost && this.hasBoost('skillPotionBoost')) {
+            skill += 1;
+        }
+        // Bonus épée enchantée si présente dans l'équipement
+        if (gameState.inventory && typeof gameState.inventory.checkItem === 'function') {
+            if (gameState.inventory.checkItem("épée enchantée") > 0) {
+                skill += 2;
+            }
+        }
+        return skill;
+    }
 }
 
 // Fonction pour déclencher le Game Over
@@ -141,13 +157,19 @@ export function triggerGameOver() {
 //fonction mise à jour des caractéristiques personnage
 export function updateCharacterStats() {
     let baliseSkillBox = document.getElementById("skill");
-    let skillDisplay = `Habileté: ${gameState.character.skill}`;
+    let skill = gameState.character.getCurrentSkill();
+    let skillDisplay = `Habileté: ${skill}`;
     
     // Affichage des boost actifs
     if (gameState.character.hasBoost('skillPotionBoost')) {
         skillDisplay += ` (Potion: +1 attaque, ${gameState.character.getBoostCombatsRemaining('skillPotionBoost')} combat(s))`;
     }
-    
+    // Affichage du bonus épée enchantée
+    if (gameState.inventory && typeof gameState.inventory.checkItem === 'function') {
+        if (gameState.inventory.checkItem("épée enchantée") > 0) {
+            skillDisplay += ` (+2 épée enchantée)`;
+        }
+    }
     baliseSkillBox.innerHTML = skillDisplay;
 
     let baliseHealthBox = document.getElementById("health");

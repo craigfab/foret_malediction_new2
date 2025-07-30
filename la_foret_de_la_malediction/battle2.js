@@ -189,12 +189,8 @@ window.attackPriorityPygmee = function() {
         attackModifier -= 2;
     }
     
-    if (character.hasBoost('skillPotionBoost')) {
-        attackModifier += 1;
-    }
-
     // Combat avec le pygmée prioritaire (règles normales)
-    const charAttackForcePriority = rollDice() + rollDice() + character.skill + attackModifier;
+    const charAttackForcePriority = rollDice() + rollDice() + character.getCurrentSkill() + attackModifier;
     const priorityAttackForce = rollDice() + rollDice() + priorityPygmee.skill;
     
     // Calcul des dégâts potentiels
@@ -381,12 +377,8 @@ window.attackOtherPygmee = function() {
         attackModifier -= 2;
     }
     
-    if (character.hasBoost('skillPotionBoost')) {
-        attackModifier += 1;
-    }
-
     // Combat avec l'autre pygmée (règles spéciales)
-    const charAttackForceOther = rollDice() + rollDice() + character.skill + attackModifier;
+    const charAttackForceOther = rollDice() + rollDice() + character.getCurrentSkill() + attackModifier;
     const otherAttackForce = rollDice() + rollDice() + otherPygmee.skill;
     
     attackMessageDiv.innerHTML += `<br><strong>Combat simultané contre ${otherPygmee.name} (règles spéciales):</strong><br>`;

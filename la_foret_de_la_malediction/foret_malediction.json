@@ -1152,10 +1152,6 @@
             "items": [],
             "effects": [
                 {
-                    "type": "gainSkill",
-                    "value": 2
-                },
-                {
                     "type": "takeItem",
                     "itemName": "épée enchantée",
                     "category": "equipment"
@@ -3644,10 +3640,10 @@
               }
             ],
             "monsters": [
-              {"name": "Premier GUERRIER CLONE", "skill": 5, "endurance": 5},
-              {"name": "Deuxième GUERRIER CLONE", "skill": 6, "endurance": 4},
-              {"name": "Troisième GUERRIER CLONE", "skill": 5, "endurance": 6},
-              {"name": "Quatrième GUERRIER CLONE", "skill": 6, "endurance": 5}
+              {"name": "Premier GUERRIER CLONE", "skill": 5, "health": 5},
+              {"name": "Deuxième GUERRIER CLONE", "skill": 6, "health": 4},
+              {"name": "Troisième GUERRIER CLONE", "skill": 5, "health": 6},
+              {"name": "Quatrième GUERRIER CLONE", "skill": 6, "health": 5}
             ],
             "items": [],
             "illustration": "../images/images_foret/guerriers_clones_212.png"
@@ -4714,14 +4710,17 @@
             "text": "Vous criez quelque chose à deux humanoïdes qui sont en train de prendre soin d'un carré de champignons à chapeaux verts, mais ils vous ignorent et poursuivent leur besogne. Vous saisissez alors le chapeau de l'un des champignons et vous en arrachez un morceau que vous commencez à manger. Le goût en est agréable et vous sentez votre corps s'animer d'un regain de force. Vous gagnez 4 points d'ENDURANCE et, comme vous n'estimez pas utile de rester plus longtemps en cet endroit, vous vous dirigez vers les marches, dans la paroi du fond.",
             "choices": [
                 {
-                    "text": "Rendez-vous au 293.",
+                    "text": "Rendez-vous au 293",
                     "nextId": 293
                 }
             ],
             "items": [],
-            "effects": {
-                "gainHealth": 4
-            },
+            "effects": [
+                {
+                    "type": "gainHealth",
+                    "value": 4
+                }
+            ],
             "illustration":"../images/images_foret/in_the_cave_a_way_to_the_exit_stairs_269_3.png"
         }, 
         {
