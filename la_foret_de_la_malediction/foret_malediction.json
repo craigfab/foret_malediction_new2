@@ -1179,7 +1179,7 @@
             "effects": {
                 "reduceAttackForce": 3
             },
-            "illustration": "../images/images_foret/gremlin_chief_cavern_71.png"
+            "illustration": "../images/images_foret/gremlin_chief_cavern_71_2.png"
         },
         {
             "id": 72,
@@ -1851,7 +1851,7 @@
         }, 
         {
             "id": 107,
-            "text": "Au moment où vous montez les dernières marches qui mènent à l'anfractuosité, un jet de flammes vous barre la route. Puis une forme immense et sombre sort de la cavité rocheuse. Du feu lui jaillit des narines et des volutes de fumée noire s'élèvent dans la caverne. La créature a la forme d'un homme mais elle est dotée d'ailes. Dans une main, elle tient une épée de feu et, dans l'autre, un fouet. Sa tête est coiffée d'une couronne d'or. La créature vous fait face, debout sur les marches, au-dessus de vous. Elle reste ainsi immobile un instant, puis fait soudain claquer son fouet tout en brandissant son épée enflammée.",
+            "text": "Au moment où vous montez les dernières marches qui mènent à l'anfractuosité, un jet de flammes vous barre la route. Puis une forme immense et sombre sort de la cavité rocheuse. Du feu lui jaillit des narines et des volutes de fumée noire s'élèvent dans la caverne. La créature a la forme d'un homme mais elle est dotée d'ailes. Dans une main, elle tient une épée de feu et, dans l'autre, un fouet. Sa tête est coiffée d'une couronne d'or. La créature vous fait face, debout sur les marches, au-dessus de vous. Elle reste ainsi immobile un instant, puis fait soudain claquer son fouet tout en brandissant son épée enflammée. La seule issue qui permette de sortir de la caverne se trouve à quelque distance devant vous, en haut des marches et, pour parvenir jusque-là, il vous faudra combattre le DEMON DE FEU, Maître des Clones. DEMON DE FEU HABILETÉ : 10 ENDURANCE : 10. A chaque Assaut, après avoir déterminé vos Forces d'Attaque respectives, vous devrez lancer à nouveau un dé pour savoir s'il a réussi à vous donner un coup de son fouet. Si vous faites un 1 ou un 2, vous aurez reçu un coup de fouet qui vous fera perdre 1 POINT d'ENDURANCE. Si vous faites entre 3 et 6, en revanche, le fouet vous aura manqué. Vous avez le droit de faire usage de",
             "monsters": [
                 {
                     "name": "DEMON DE FEU, Maître des Clones",
@@ -1862,7 +1862,8 @@
             "choices": [
                 {
                     "text": "Si vous êtes vainqueur, rendez-vous au 152.",
-                    "nextId": 152
+                    "nextId": 152, 
+                    "requiresAllMonstersDefeated": true
                 }
             ],
             "items": [],
@@ -2088,7 +2089,7 @@
                     "text": "Si vous possédez une Corde Magique, rendez-vous au 94.",
                     "nextId": 94,
                     "requiresItem": {
-                        "name": "Corde Magique",
+                        "name": "corde magique",
                         "category": "equipment"
                       }
                 },
@@ -3254,7 +3255,7 @@
               {
                 "text": "Si vous avez une cloche de cuivre, rendez-vous au 184.",
                 "nextId": 184,
-                "requiresItem": "Cloche de cuivre"
+                "requiresItem": "cloche de cuivre"
               },
               {
                 "text": "Sinon, rendez-vous au 243.",
@@ -3347,7 +3348,7 @@
               {
                 "text": "Prendre dans votre sac à dos le Filet de Capture (si vous le possédez), rendez-vous au 39.",
                 "nextId": 39,
-                "requiresItem": "Filet de Capture"
+                "requiresItem": "filet de capture"
               },
               {
                 "text": "Retourner à la bifurcation et poursuivre votre chemin vers le nord, rendez-vous au 25.",
@@ -3894,7 +3895,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/in_the_valley_small_hills_228.png"
         }, 
         {
             "id": 229,
@@ -4250,7 +4251,8 @@
             "choices": [
               {
                 "text": "Essayer d'ouvrir le coffre de bois, rendez-vous au 389.",
-                "nextId": 389
+                "nextId": 389,
+                "requiresNotVisitedChapter": 389
               },
               {
                 "text": "Quitter l'anfractuosité et monter plus haut, rendez-vous au 88.",
@@ -5342,7 +5344,7 @@
                     "requiresAllMonstersDefeated": true
                 }
             ],
-            "illustration":"../images/images_foret/pterodactylus_303_3.png"
+            "illustration":"../images/images_foret/pterodactylus_303_4.png"
         }, 
         {
             "id": 304,
@@ -5606,7 +5608,7 @@
                     "text": "Si oui, Rendez-vous au 228.",
                     "nextId": 228,
                     "requiresItem": {
-                        "name": "Bottes à Bondir",
+                        "name": "bottes à bondir",
                         "category": "equipment"
                     }
                 },
@@ -6129,7 +6131,7 @@
                     "nextId": 112
                 }
             ],
-            "illustration": "../images/images_foret/stone_chest_351_2.png",
+            "illustration": "../images/images_foret/stone_chest_351_4.png",
             "items": []
         },
         {
