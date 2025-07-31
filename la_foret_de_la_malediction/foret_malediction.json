@@ -466,7 +466,7 @@
                     "text": "Si vous possédez un Brassard de Force, rendez-vous au 52.",
                     "nextId": 52,
                     "requiresItem": {
-                        "name": "Brassard de Force",
+                        "name": "brassard de force",
                         "category": "equipment"
                     }
                 },
@@ -476,7 +476,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/armband_28_3.png"
         },
         {
             "id": 29,
@@ -876,7 +876,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/arm_wrestling_with_armband_52.png"
         },
         {
             "id": 53,
@@ -1289,10 +1289,10 @@
             "items": [
                 {
                     "name": "Petite fiole de poudre étincelante",
-                    "type": "equipment"
+                    "category": "potions"
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/poudre_levitation_354.png"
         },
         {
             "id": 79,
@@ -1699,7 +1699,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/hut_with_thatched_roof_and_mud_walls_99.png"
+            "illustration": "../images/images_foret/hut_with_thatched_roof_and_mud_walls_99_2.png"
         }, 
         {
             "id": 100,
@@ -2251,7 +2251,12 @@
         {
             "id": 129,
             "text": "Votre bras est douloureux en raison de l'effort fourni, et vous ne vous consolez pas d'avoir dû laisser cela à Quin. Cette mésaventure vous fait perdre 2 points de CHANCE et vous quittez la cabane, laissant là un Quin souriant et satisfait. Vous retournez ensuite à la bifurcation en vous rendant au 349.",
-            "monsters": [],
+            "effects": [
+                {
+                    "type": "reduceChance",
+                    "value": 2
+                }
+            ],
             "choices": [
                 {
                     "text": "Retourner à la bifurcation, rendez-vous au 349.",
@@ -2259,7 +2264,7 @@
                 }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/path_in_the_plains_sadness_129 .png"
         },
         {
             "id": 130,
@@ -3593,7 +3598,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/face_of_a_dark_skin_man_209.png"
+            "illustration": "../images/images_foret/hut_and_dark_skin_man_99_2.png"
         }, 
         {
             "id": 210,
@@ -4662,22 +4667,25 @@
         {
             "id": 266,
             "text": "Quin déclare qu'il va miser un peu de Poudre de Lévitation contre un objet, ou 10 Pièces d'Or. Vous vous asseyez face à lui, puis vous posez votre coude sur la table, et vous saisissez sa main. Sa poigne vous serre comme un étau et ses yeux sombres en amande expriment sa confiance en lui-même. Il gonfle alors son biceps et donne le signal du départ. Lancez deux dés. Si le chiffre obtenu est égal ou inférieur à votre total d'HABILETÉ, vous parvenez, au prix d'un grand effort, à repousser légèrement son bras. Mais sa force est grande et il n'abandonnera pas si facilement. Aussi allez-vous devoir jeter les dés encore deux fois et obtenir à chaque lancer un chiffre égal ou inférieur à votre total d'HABILETÉ. Si vous y parvenez, vous le ferez céder en repoussant son bras tout contre la table. Dans ce cas, vous vous rendrez au 354. Mais si, au cours des trois lancers de dés, vous obtenez un chiffre supérieur à votre total d'HABILETÉ, c'est vous qui céderez, et votre bras, incapable de résister à la force de Quin, viendra toucher le panneau de la table. Vous vous rendrez alors au 129.",
-            "effects": {
-                "rollDiceSkill3": "lancer 3 fois les dés et obtenir à chaque fois un resultat inférieur ou égal"
-            },
+            "effects": [
+            {
+                    "type": "multipleRollDiceSkill",
+                    "value": 3
+            }
+            ],
             "choices": [
                 {
                     "text": "Si vous gagnez, rendez-vous au 354.",
                     "nextId": 354,
-                    "skillCheckPassed3": true
+                    "skillCheckPassed": true
                 },
                 {
                     "text": "Si vous perdez, rendez-vous au 129.",
                     "nextId": 129, 
-                    "skillCheckPassed3": false
+                    "skillCheckPassed": false
                 }
             ],
-            "items": []
+            "illustration": "../images/images_foret/arm_wrestling_without_armband_266.png"
         }, 
         {
             "id": 267,
@@ -5702,7 +5710,8 @@
                     "text": "Laisser le vase où il est et rejoindre le chemin pour repartir vers le nord ? Rendez-vous au 149.",
                     "nextId": 149
                 }
-            ]
+            ], 
+            "illustration": "../images/images_foret/blue_ceramic_vase_in_veranda_324_2.png"
         },
         {
             "id": 325,
@@ -6188,7 +6197,14 @@
                     "nextId": 349
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg",
+            "effects": [
+                {
+                    "type": "takeItem",
+                    "itemName": "poudre de levitation",
+                    "category": "potions"
+                }
+            ],
+            "illustration": "../images/images_foret/poudre_levitation_354.png",
             "items": []
         },
         {

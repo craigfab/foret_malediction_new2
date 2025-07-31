@@ -84,7 +84,7 @@ export function applyChapterEffects(chapter) {
                     doubleRollDiceChance();
                     break;
                 case "multipleRollDiceSkill":
-                    multipleRollDiceSkill();
+                    multipleRollDiceSkill(effect.value);
                     message = `Multiples lancers de dés pour tester l'habileté.`;
                     break;
                 case "reduceHealthRollDice":
@@ -484,27 +484,45 @@ function rollDiceSkill() {
 
 
 // Fonction pour gérer l'effet multipleRollDiceSkill
-function multipleRollDiceSkill() {
-    let success = false;
-    do {
-        const diceResult = rollDice() + rollDice();
-        if (diceResult <= gameState.character.skill) {
-            success = true;
-            // Traitement en cas de succès (peut-être afficher un message ou changer de chapitre)
-            console.log("Succès ! Vous avez réussi à soulever le coffre.");
-        } else {
-            gameState.character.health -= 1; // Pénalité d'endurance
-            updateCharacterStats();
-            updateAdventureSheet();
-            // Demander à l'utilisateur s'il souhaite réessayer
-            success = confirm("Échec ! Vous vous êtes fait mal au dos. Voulez-vous réessayer ?");
-        }
-    } while (!success && gameState.character.health > 0 && confirm("Tenter à nouveau ?"));
+async function multipleRollDiceSkill(times) {
+    const actionMessageDiv = document.getElementById('action_message');
+    let success = true;
+    let currentRoll = 0;
 
-    if (!success) {
-        // Gérer l'échec ici, par exemple, en retournant à un certain chapitre
-        console.log("Vous décidez de ne pas prendre plus de risques.");
-    }
+    const rollButton = document.createElement('button');
+    rollButton.textContent = 'Lancer les dés';
+    actionMessageDiv.innerHTML = `<p>Vous devez réussir ${times} test(s) d'HABILETÉ.</p>`;
+    actionMessageDiv.appendChild(rollButton);
+
+    return new Promise((resolve) => {
+        rollButton.onclick = async () => {
+            currentRoll++;
+            const diceResult = rollDice() + rollDice();
+            const isSuccess = diceResult <= gameState.character.skill;
+
+            actionMessageDiv.innerHTML = `
+                <p>Test ${currentRoll}/${times}</p>
+                <p>Résultat des dés :<strong>${diceResult}</strong> / Votre HABILETÉ : <strong>${gameState.character.skill}</strong> --> ${isSuccess ? '<strong>Réussite !</strong>' : '<strong>Échec...</strong>'}</p> `;
+
+            if (!isSuccess) {
+                success = false;
+                gameState.skillCheckPassed = false;
+                updateChoiceButtons();
+                actionMessageDiv.innerHTML += `<p><strong>Vous avez échoué après ${currentRoll} test(s).</strong></p>`;
+                resolve();
+                return;
+            }
+
+            if (currentRoll < times) {
+                actionMessageDiv.appendChild(rollButton);
+            } else {
+                gameState.skillCheckPassed = true;
+                updateChoiceButtons();
+                actionMessageDiv.innerHTML += `<p><strong>Félicitations ! Vous avez réussi tous les tests !</strong></p>`;
+                resolve();
+            }
+        };
+    });
 }
 // Vérifie si le bouton nécessite un test d'habileté et l'active/désactive en conséquence
 
