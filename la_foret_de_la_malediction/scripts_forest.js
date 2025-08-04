@@ -213,6 +213,12 @@ function showChapter(chapters, chapterId) {
             import("./battle2.js").then(battle2 => {
                 battle2.managePygmees(chapter.monsters);
             });
+        }
+        // Vérifier si c'est le combat spécial des chiens (chapitre 96)
+        else if (chapter.id === 96) {
+            import("./battle3.js").then(battle3 => {
+                battle3.manageDogFight(chapter.monsters);
+            });
         } else {
             manageMonsters(chapter.monsters);
         }

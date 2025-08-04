@@ -224,7 +224,7 @@
                     "value": 3
                 }
             ],
-            "illustration":"../images/images_foret/map_foret.jpg"
+            "illustration":"../images/images_foret/completely_destroyed_wood_cabin_13.png"
         },
         {
             "id": 14,
@@ -317,7 +317,7 @@
             "effects": {
                 "heal": "fièvre retombe, disparition du poil"
             },
-            "illustration":"../images/images_foret/way_to_the_hills_18.png"
+            "illustration":"../images/images_foret/path_hills_dawn_18.png"
         },
         {
             "id": 19,
@@ -330,7 +330,8 @@
             ],
             "items": [],
             "effects": {
-                "reduceEndurance": 1
+                "type": "reduceHealth",
+                "value": 1
             },
             "illustration":"../images/images_foret/sword_with_blood_19.png"
         },
@@ -1360,8 +1361,8 @@
                     "text": "Si oui, rendez-vous au 235.",
                     "nextId": 235,
                     "requiresItem": {
-                        "name": "potion de tranquilité",
-                        "category": "equipment"
+                        "itemName": "potion de tranquilité",
+                        "category": "potions"
                     }
                 },
                 {
@@ -1370,7 +1371,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/tranquility_potion_82_2.png"
         },
         {
             "id": 83,
@@ -1522,7 +1523,7 @@
             "items": [
                 {
                     "name": "Collier à chaîne d'argent",
-                    "type": "equipment"
+                    "category": "equipment"
                 }
             ],
             "effects": [
@@ -1641,11 +1642,12 @@
             "choices": [
                 {
                     "text": "Si vous êtes vainqueur, rendez-vous au 62.",
-                    "nextId": 62
+                    "nextId": 62, 
+                    "requiresAllMonstersDefeated": true
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/attacking_dogs_96.png"
         }, 
         {
             "id": 97,
@@ -1979,7 +1981,11 @@
             "choices": [
                 {
                     "text": "Si vous avez des Capsules de Feu, rendez-vous au 350.",
-                    "nextId": 350
+                    "nextId": 350, 
+                    "requiresItem": {
+                        "name": "capsules de feu",
+                        "category": "equipment"
+                    }
                 },
                 {
                     "text": "Sinon, tirez votre épée et rendez-vous au 123.",
@@ -2690,7 +2696,10 @@
               {
                 "text": "Si oui, rendez-vous au 83.",
                 "nextId": 83,
-                "requiresItem": "belladone"
+                "requiresItem":{
+                    "name" : "Belladone",
+                    "category" : "equipment"
+                }
               },
               {
                 "text": "Sinon, rendez-vous au 259.",
@@ -3324,7 +3333,7 @@
                 "category": "equipment"
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/friendly_man_standing_in_a_green_plain_194_2.png"
         }, 
         {
             "id": 195,
@@ -4056,7 +4065,7 @@
                 "quantity": 1
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/completely_destroyed_wood_cabin_235.png"
         }, 
         {
             "id": 236,
@@ -4303,7 +4312,7 @@
                 "value": 2
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/fallen_blue_ceramic_vase_250_2.png"
         }, 
         {
             "id": 251,
@@ -4494,7 +4503,7 @@
         }, 
         {
             "id": 261,
-            "text": "Vous suivez le vieil homme vêtu d'une longue robe en haillons. Il souffle et halète en montant l'escalier en colimaçon qui mène à une grande pièce, au sommet de la tour. Des étagères, des armoires et des vitrines s'alignent le long des murs, toutes remplies de flacons, de bocaux, d'armes, de cuirasses et de toutes sortes d'objets à l'aspect étrange. Yaztromo traverse ce bric-à-brac en traînant les pieds et se laisse tomber sur une veille chaise en bois de chêne. Il glisse alors la main dans une poche, sur sa poitrine, et en sort une petite paire de lunettes cerclées d'or qu'il pose sur son nez. Puis il prend une ardoise et un morceau de craie sur une table et se met à écrire fébrilement. Il vous tend ensuite l'ardoise que vous lisez attentivement.\n ARTICLES DISPONIBLES PRIX \n Potion de Guérison 3 pièces d’Or \n Potion de Contrôle des Plantes 2 pièces d’Or \n Potion de Tranquillité 3 pièces d’Or \n Potion de Contrôle des Insectes 2 pièces d’Or \n Potion Antipoison Ŕ 2 pièces d’Or \n Eau Bénite ŕ 3 pièces d’Or \n Anneau de Lumière 3 pièces d’Or \n Bottes à Bondir 2 pièces d’Or \n Corde Magique 3 pièces d’Or \n Filet de Capture 3 pièces d’Or. \n Brassard de Force 3 pièces d’Or \n Gant d'Adresse au Lancer 2 pièces d’Or \n Perche à Sonder 2 pièces d’Or \n Gousses d'Ail 3 pièces d’Or \n Bandeau de Concentration 3 pièces d’Or \n Capsules de Feu 3 pièces d’Or \n Filtres à Nez 3 pièces d’Or. \n Le Mage vous précise que le mode d'emploi de chaque article est clairement expliqué sur une étiquette qui lui est attachée ; on peut également y lire des suggestions concernant les circonstances dans lesquelles il est conseillé d'en faire usage. Yaztromo pousse un soupir et vous signale que, malheureusement, chacun de ces objets magiques ne peut être utilisé qu'une seule fois ; il ajoute cependant qu'à ce prix là, vous ne trouverez rien de meilleur sur le marché. Si vous décidez d'acheter l'un quelconque (ou plusieurs) de ces objets, vous devrez en payer le prix : vous déduirez donc de votre capital autant de Pièces d'Or qu'il vous en aura coûté, et vous inscrirez chacune de vos acquisitions sur votre Feuille d'Aventure sous la rubrique appropriée. Yaztromo vous demande alors pourquoi vous voulez lui acheter ces objets, et vous lui racontez votre histoire en lui expliquant que vous avez pris la décision de poursuivre la mission de l'infortuné Gromollet. « Ah oui, en effet, répond Yaztromo d'une voix douce. J'ai entendu dire que les bons nains de Pont-de-Pierre avaient perdu leur légendaire marteau de guerre. Et sans lui, leur roi ne peut lever le peuple pour défendre le village menacé par les Trolls des Collines. Selon la rumeur, le roi d'un autre village de nains, agissant par jalousie, a envoyé un aigle à Pont-de-Pierre pour y voler le marteau, et le rapace a réussi son coup. Mais en revenant vers la Forêt des Ténèbres, il a été attaqué en plein vol par des Faucons de la Mort et le marteau est tombé dans les bois où l'on a perdu sa trace. D'après ce que l'on sait, deux Gobelins l'ont trouvé et n'ont pas réussi à se mettre d'accord pour savoir qui allait le garder. Ils se sont battus pendant des heures à ce sujet ; mais comme aucun des deux ne parvenait à vaincre l'autre, ils ont fini par abandonner. C'est alors qu'ils ont découvert qu on pouvait dévisser la tête du marteau de son manche, et la dispute a été aussitôt réglée : l'un des Gobelins a gardé la tête du marteau, et l'autre, le manche. Puis ils sont repartis chacun de son côté, tout heureux d'emporter leur trésor. Qui sait s'ils ont conservé leur trouvaille ? Nul ne peut l'affirmer, et j'ai bien peur que vos recherches en soient rendues plus difficiles encore. Tout ce que je peux vous dire c'est que la tête est en bronze et le manche en ébène poli. Sachez aussi que la lettre G est gravée à la fois sur la tête et sur le manche. Mais, croyez-moi, votre tâche n'est guère aisée. Enfin, bonne chance, malgré tout... » ", 
+            "text": "Vous suivez le vieil homme vêtu d'une longue robe en haillons. Il souffle et halète en montant l'escalier en colimaçon qui mène à une grande pièce, au sommet de la tour. Des étagères, des armoires et des vitrines s'alignent le long des murs, toutes remplies de flacons, de bocaux, d'armes, de cuirasses et de toutes sortes d'objets à l'aspect étrange. Yaztromo traverse ce bric-à-brac en traînant les pieds et se laisse tomber sur une veille chaise en bois de chêne. Il glisse alors la main dans une poche, sur sa poitrine, et en sort une petite paire de lunettes cerclées d'or qu'il pose sur son nez. Puis il prend une ardoise et un morceau de craie sur une table et se met à écrire fébrilement. Il vous tend ensuite l'ardoise que vous lisez attentivement.\n ARTICLES DISPONIBLES PRIX \n Potion de Guérison 3 pièces d’Or \n Potion de Contrôle des Plantes 2 pièces d’Or \n Potion de Tranquillité 3 pièces d’Or \n Potion de Contrôle des Insectes 2 pièces d’Or \n Potion Antipoison 2 pièces d’Or \n Eau Bénite 3 pièces d’Or \n Anneau de Lumière 3 pièces d’Or \n Bottes à Bondir 2 pièces d’Or \n Corde Magique 3 pièces d’Or \n Filet de Capture 3 pièces d’Or. \n Brassard de Force 3 pièces d’Or \n Gant d'Adresse au Lancer 2 pièces d’Or \n Perche à Sonder 2 pièces d’Or \n Gousses d'Ail 3 pièces d’Or \n Bandeau de Concentration 3 pièces d’Or \n Capsules de Feu 3 pièces d’Or \n Filtres à Nez 3 pièces d’Or. \n Le Mage vous précise que le mode d'emploi de chaque article est clairement expliqué sur une étiquette qui lui est attachée ; on peut également y lire des suggestions concernant les circonstances dans lesquelles il est conseillé d'en faire usage. Yaztromo pousse un soupir et vous signale que, malheureusement, chacun de ces objets magiques ne peut être utilisé qu'une seule fois ; il ajoute cependant qu'à ce prix là, vous ne trouverez rien de meilleur sur le marché. Si vous décidez d'acheter l'un quelconque (ou plusieurs) de ces objets, vous devrez en payer le prix : vous déduirez donc de votre capital autant de Pièces d'Or qu'il vous en aura coûté, et vous inscrirez chacune de vos acquisitions sur votre Feuille d'Aventure sous la rubrique appropriée. Yaztromo vous demande alors pourquoi vous voulez lui acheter ces objets, et vous lui racontez votre histoire en lui expliquant que vous avez pris la décision de poursuivre la mission de l'infortuné Gromollet. « Ah oui, en effet, répond Yaztromo d'une voix douce. J'ai entendu dire que les bons nains de Pont-de-Pierre avaient perdu leur légendaire marteau de guerre. Et sans lui, leur roi ne peut lever le peuple pour défendre le village menacé par les Trolls des Collines. Selon la rumeur, le roi d'un autre village de nains, agissant par jalousie, a envoyé un aigle à Pont-de-Pierre pour y voler le marteau, et le rapace a réussi son coup. Mais en revenant vers la Forêt des Ténèbres, il a été attaqué en plein vol par des Faucons de la Mort et le marteau est tombé dans les bois où l'on a perdu sa trace. D'après ce que l'on sait, deux Gobelins l'ont trouvé et n'ont pas réussi à se mettre d'accord pour savoir qui allait le garder. Ils se sont battus pendant des heures à ce sujet ; mais comme aucun des deux ne parvenait à vaincre l'autre, ils ont fini par abandonner. C'est alors qu'ils ont découvert qu on pouvait dévisser la tête du marteau de son manche, et la dispute a été aussitôt réglée : l'un des Gobelins a gardé la tête du marteau, et l'autre, le manche. Puis ils sont repartis chacun de son côté, tout heureux d'emporter leur trésor. Qui sait s'ils ont conservé leur trouvaille ? Nul ne peut l'affirmer, et j'ai bien peur que vos recherches en soient rendues plus difficiles encore. Tout ce que je peux vous dire c'est que la tête est en bronze et le manche en ébène poli. Sachez aussi que la lettre G est gravée à la fois sur la tête et sur le manche. Mais, croyez-moi, votre tâche n'est guère aisée. Enfin, bonne chance, malgré tout... » ", 
             "illustration": "../images/images_foret/yastromo261bis.png",
             "items": [
                 {
@@ -6185,7 +6194,7 @@
                     "value": "all"
                 }
             ],
-            "illustration": "../images/images_foret/view_of_the_sky_in_the_forest_353.png",
+            "illustration": "../images/images_foret/view_of_the_sky_in_the_forest_353_2.png",
             "items": []
         },
         {
