@@ -81,7 +81,12 @@ export function updateAdventureSheet() {
                 jewelryItems.push(itemDescription);
                 break;
             case 'potions':
-                potionsItems.push(itemDescription);
+                // Affichage plus court: enlever le préfixe "potion de" ou "potion d'"
+                {
+                    const potionName = i.name.replace(/^potion(?:\s+d[e']?)?\s*/i, '');
+                    const potionDescription = i.quantity && i.quantity > 1 ? `${potionName} x ${i.quantity}` : `${potionName}`;
+                    potionsItems.push(potionDescription);
+                }
                 break;
             case 'food':
                 foodItems.push(itemDescription);
@@ -91,11 +96,19 @@ export function updateAdventureSheet() {
         }
     });
 
-    equipmentDiv.innerHTML = equipmentItems.length > 0 ? `Équipement transporté = ${equipmentItems.join(', ')}` : 'Equipement';
+    equipmentDiv.innerHTML = equipmentItems.length > 0 ? `Équipement transporté :<br>${equipmentItems.join('<br>')}` : 'Equipement';
     goldDiv.innerHTML = goldItems.length > 0 ? `Or = ${goldItems.join(', ')}` : 'Or';
     jewelryDiv.innerHTML = jewelryItems.length > 0 ? `Bijoux = ${jewelryItems.join(', ')}` : 'Bijoux';
     potionsDiv.innerHTML = potionsItems.length > 0 ? `Potions = ${potionsItems.join(', ')}` : 'Potions';
     foodDiv.innerHTML = foodItems.length > 0 ? `Nourriture = ${foodItems.join(', ')}` : 'Nourriture';
+
+    // Mettre à jour la disponibilité du bouton Carte en fonction de l'inventaire
+    const mapButton = document.getElementById('mapButton');
+    if (mapButton) {
+        const hasMap = (gameState.inventory.checkItem('map') || 0) > 0;
+        mapButton.disabled = !hasMap;
+        mapButton.title = hasMap ? 'Afficher la carte' : "Vous n'avez pas encore la carte";
+    }
 }
 
 // gérer les repas

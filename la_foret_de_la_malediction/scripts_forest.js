@@ -1,7 +1,7 @@
 //jeu d'aventure
 import { manageMonsters } from "./battle.js";
 import { applyChapterEffects } from "./chapterEffects.js";
-import { updateCharacterStats, triggerGameOver } from "./character.js";
+import { updateCharacterStats, triggerGameOver, triggerVictory } from "./character.js";
 import { Character } from "./character.js";
 import { takeItem } from "./inventory.js";
 import { updateAdventureSheet } from "./inventory.js";
@@ -40,6 +40,35 @@ export let gameState = {
 document.addEventListener('DOMContentLoaded', function() {
     loadRandomTrack();
     initializeSoundEffects(); // Initialiser le système d'effets sonores
+    // Initialiser le bouton de carte
+    const mapButton = document.getElementById('mapButton');
+    const mapModal = document.getElementById('mapModal');
+    const closeModalBtn = mapModal ? mapModal.querySelector('.close-modal') : null;
+    const mapImage = document.getElementById('mapImage');
+    if (mapButton && mapModal && closeModalBtn && mapImage) {
+        // Désactiver par défaut (sera activé via updateAdventureSheet si la carte est dans l'inventaire)
+        mapButton.disabled = true;
+        mapButton.title = "Vous n'avez pas encore la carte";
+        mapButton.addEventListener('click', () => {
+            // Charger l'image de la carte et afficher le modal
+            mapImage.src = '../images/images_foret/map_foret.JPG';
+            mapModal.style.display = 'flex';
+        });
+        closeModalBtn.addEventListener('click', () => {
+            mapModal.style.display = 'none';
+        });
+        mapModal.addEventListener('click', (e) => {
+            if (e.target === mapModal) {
+                mapModal.style.display = 'none';
+            }
+        });
+        // Fermer avec Echap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mapModal.style.display !== 'none') {
+                mapModal.style.display = 'none';
+            }
+        });
+    }
 });
 
 
@@ -429,6 +458,11 @@ function showChapter(chapters, chapterId) {
     // Déclencher Game Over automatiquement au chapitre 399 après avoir affiché le contenu
     if (chapterId === 399) {
         triggerGameOver();
+    }
+
+    // Déclencher l'écran de victoire automatiquement au chapitre 400
+    if (chapterId === 400) {
+        triggerVictory();
     }
     }
 

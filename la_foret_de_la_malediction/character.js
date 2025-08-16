@@ -154,6 +154,17 @@ export function triggerGameOver() {
     gameState.gameOver = true;
 }
 
+// Fonction pour déclencher l'écran de victoire (fin réussie)
+export function triggerVictory() {
+    // Afficher un message de VICTOIRE dans la section Actions avec des emojis positifs
+    const actionMessageDiv = document.getElementById('action_message');
+    if (actionMessageDiv) {
+        actionMessageDiv.innerHTML = '<h1 style="color: black; font-size: 3em; text-align: center; margin: 20px 0;">🏆🌟 Vous avez réussi, votre quête est désormais terminée ! 🌟🏆</h1>';
+    }
+
+    // Ne pas marquer le jeu comme terminé et ne pas désactiver les boutons.
+}
+
 //fonction mise à jour des caractéristiques personnage
 export function updateCharacterStats() {
     let baliseSkillBox = document.getElementById("skill");

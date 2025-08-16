@@ -29,6 +29,9 @@
             <audio id="audioPlayer" controls>
                 <source src="" type="audio/mp3">
             </audio>
+
+            <!-- Bouton Carte -->
+            <button id="mapButton" title="Afficher la carte">🗺️ Carte</button>
         </div>
     </nav>
 
@@ -131,5 +134,13 @@
     
     </div>
     
+    <!-- Modal Carte -->
+    <div id="mapModal" class="modal" style="display:none">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Fermer">×</button>
+            <img id="mapImage" src="" alt="Carte de la forêt">
+        </div>
+        
+    </div>
 
 </body>
