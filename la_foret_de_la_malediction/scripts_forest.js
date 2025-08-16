@@ -297,6 +297,12 @@ function showChapter(chapters, chapterId) {
             choiceButton.disabled = !allMonstersDefeated;
         }
 
+        // Désactiver le bouton si la paralysie n'est pas active
+        if (choice.requiresParalysis) {
+            choiceButton.setAttribute('data-requiresParalysis', 'true');
+            choiceButton.disabled = !gameState.isParalyzed;
+        }
+
         // Gestion de chanceCheckPassed
         if (choice.chanceCheckPassed !== undefined) {
             choiceButton.setAttribute('data-chanceCheckPassed', choice.chanceCheckPassed);

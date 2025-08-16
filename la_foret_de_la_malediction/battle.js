@@ -2,6 +2,7 @@ import { gameState } from "./scripts_forest.js";
 import { rollDice, tempt_chance } from "./chance.js";
 import { updateCharacterStats } from "./character.js";
 import { playAttackSound, playCriticalHitSound, playVictorySound, playDefeatSound } from "./music.js";
+import { updateChoiceButtons } from "./chapterEffects.js";
 
 
 //fonction manageMonsters
@@ -15,6 +16,12 @@ export function manageMonsters(chapterMonsters) {
         ...monsterData,
         status: "vivant"
     }));
+
+    // Réinitialiser le compteur de blessures de la goule
+    if (gameState.currentChapterId === 227) {
+        gameState.ghoulWounds = 0;
+        gameState.isParalyzed = false;
+    }
 
     updateMonsterList();
     selectCurrentMonster(0);
@@ -38,18 +45,7 @@ function updateMonsterList() {
     });
 }
 
-// fonction de mise à jour boutons choix
-function updateChoiceButtonsState() {
-    const allMonstersDefeated = gameState.monsters.every(monster => monster.status === "vaincu");
-    const choices = document.getElementById('choices').getElementsByTagName('button');
 
-    for (let choice of choices) {
-        // Si le bouton nécessite que tous les monstres soient vaincus pour être activé
-        if (choice.getAttribute('data-requiresAllMonstersDefeated') === 'true') {
-            choice.disabled = !allMonstersDefeated;
-        }
-    }
-}
 
 // selectionne le monstre actuel
 function selectCurrentMonster(index) {
@@ -88,7 +84,7 @@ function selectNextMonster() {
         // Si non, gérer la fin de la rencontre
         document.getElementById("attack_message").innerHTML += " Tous les monstres ont été vaincus!";
         playVictorySound(); // Son de victoire finale quand tous les monstres sont vaincus
-        updateChoiceButtonsState();
+        updateChoiceButtons();
         // cacher le bouton d'attaque 
         document.getElementById("attackButton").style.display = "none";
     }
@@ -192,12 +188,8 @@ function performAttack(index) {
             updateCharacterStats();
             updateMonsterList();
 
-            // Mettre à jour les boutons de choix (pour les conditions d'assauts)
-            import("./chapterEffects.js").then(chapterEffects => {
-                if (chapterEffects.updateChoiceButtons) {
-                    chapterEffects.updateChoiceButtons();
-                }
-            });
+            // Mettre à jour les boutons de choix
+            updateChoiceButtons();
 
             // Vérifier la fin du combat
             checkEndOfBattle(character, monster);
@@ -263,6 +255,14 @@ function applyDamage(success, playerWon, character, monster, potentialDamageToMo
             gameState.woundedByLoupGarou = true;
         }
         
+        // Traquer les blessures de la goule
+        if (gameState.currentChapterId === 227 && monster.name === "GOULE" && finalDamageToCharacter > 0) {
+            gameState.ghoulWounds++;
+            if (handleGhoulParalysis(attackMessageDiv)) {
+                return;
+            }
+        }
+        
         // Si l'échec de la chance aggrave les dégâts, jouer un son critique
         if (!success && finalDamageToCharacter > potentialDamageToCharacter) {
             playCriticalHitSound(); // Coup critique du monstre
@@ -273,12 +273,8 @@ function applyDamage(success, playerWon, character, monster, potentialDamageToMo
     updateCharacterStats();
     updateMonsterList();
 
-    // Mettre à jour les boutons de choix (pour les conditions d'assauts)
-    import("./chapterEffects.js").then(chapterEffects => {
-        if (chapterEffects.updateChoiceButtons) {
-            chapterEffects.updateChoiceButtons();
-        }
-    });
+    // Mettre à jour les boutons de choix
+    updateChoiceButtons();
 
     // Vérifier la fin du combat
     checkEndOfBattle(character, monster);
@@ -301,21 +297,44 @@ function applyDirectDamage(character, monster, potentialDamageToMonster, potenti
         if (monster.name === "LOUP-GAROU" && potentialDamageToCharacter > 0) {
             gameState.woundedByLoupGarou = true;
         }
+        
+        // Traquer les blessures de la goule
+        if (gameState.currentChapterId === 227 && monster.name === "GOULE" && potentialDamageToCharacter > 0) {
+            gameState.ghoulWounds++;
+            if (handleGhoulParalysis(attackMessageDiv)) {
+                return;
+            }
+        }
     }
 
     // Mettre à jour l'affichage des caractéristiques du personnage et du monstre
     updateCharacterStats();
     updateMonsterList();
 
-    // Mettre à jour les boutons de choix (pour les conditions d'assauts)
-    import("./chapterEffects.js").then(chapterEffects => {
-        if (chapterEffects.updateChoiceButtons) {
-            chapterEffects.updateChoiceButtons();
-        }
-    });
+    // Mettre à jour les boutons de choix
+    updateChoiceButtons();
 
     // Vérifier la fin du combat
     checkEndOfBattle(character, monster);
+}
+
+// Gestion de la paralysie par la goule
+function handleGhoulParalysis(attackMessageDiv) {
+    if (gameState.ghoulWounds >= 4) {
+        gameState.isParalyzed = true;
+        attackMessageDiv.innerHTML += `<br><strong>La Goule vous a blessé ${gameState.ghoulWounds} fois ! Vous êtes paralysé !</strong>`;
+        // Cacher le bouton d'attaque
+        document.getElementById("attackButton").style.display = "none";
+        // Masquer les boutons de tenter sa chance
+        document.getElementById("temptChanceButton").style.display = "none";
+        document.getElementById("no_temptChanceButton").style.display = "none";
+        // Mettre à jour les boutons de choix
+        updateChoiceButtons();
+        return true; // Indique que la paralysie a été appliquée
+    } else {
+        attackMessageDiv.innerHTML += `<br><em>La Goule vous a blessé ${gameState.ghoulWounds} fois. Elle vous paralysera si elle vous blesse ${4 - gameState.ghoulWounds} fois de plus !</em>`;
+        return false; // Indique que le combat peut continuer
+    }
 }
 
 // fin du combat?
@@ -350,7 +369,7 @@ function checkEndOfBattle(character, monster) {
         
         updateCharacterStats(); // Mise à jour pour refléter les changements de boost
         updateMonsterList();
-        updateChoiceButtonsState();
+        updateChoiceButtons();
         selectNextMonster(); // Cette fonction doit gérer la sélection du prochain monstre à attaquer
 
     } else {

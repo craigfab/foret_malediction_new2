@@ -597,6 +597,11 @@ export function updateChoiceButtons() {
             button.disabled = gameState.woundedByLoupGarou !== woundedRequired;
         }
 
+        // Mise à jour basée sur isParalyzed
+        if (button.hasAttribute("data-requiresParalysis")) {
+            button.disabled = !gameState.isParalyzed;
+        }
+
         // Mise à jour basée sur requiresMinAssaults
         if (button.hasAttribute("data-requiresMinAssaults")) {
             const minAssaults = parseInt(button.getAttribute("data-requiresMinAssaults"));

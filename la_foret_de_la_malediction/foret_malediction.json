@@ -167,7 +167,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/map_foret.jpg"
+            "illustration":"../images/images_foret/goblin_attack_117.png"
         },
         {
             "id": 10,
@@ -594,7 +594,7 @@
             "effects": {
                 "reduceHealth": 4
             },
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/green_dragon_above_the_forest_jet_of_fire_57.jpg"
         },
         {
             "id": 36,
@@ -937,7 +937,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/valley_56.png"
         },
         {
             "id": 57,
@@ -979,8 +979,8 @@
                     "quantity": 25
                 },
                 {
-                    "name": "Marteau à tête de bronze",
-                    "type": "equipment",
+                    "name": "tête du marteau de guerre des nains avec G gravé",
+                    "category": "equipment",
                     "description": "Un marteau spécial avec l'initiale G gravée."
                 }
             ],
@@ -1236,7 +1236,7 @@
                     "type": "equipment"
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/copper_bell_and_five_gold_coins_74.png"
         },
         {
             "id": 75,
@@ -1289,11 +1289,11 @@
             ],
             "items": [
                 {
-                    "name": "Petite fiole de poudre étincelante",
+                    "name": "poudre de levitation",
                     "category": "potions"
                 }
             ],
-            "illustration": "../images/images_foret/poudre_levitation_354.png"
+            "illustration": "../images/images_foret/powder_of_levitation_in_a_glass_flask_95.png"
         },
         {
             "id": 79,
@@ -1343,11 +1343,18 @@
             "choices": [
                 {
                     "text": "Si vous êtes Chanceux, la flèche vous siffle aux oreilles sans vous atteindre et vous vous rendez au 49.",
-                    "nextId": 49
+                    "nextId": 49, 
+                    "chanceCheckPassed": true
                 },
                 {
                     "text": "Si vous êtes Malchanceux, la flèche vient se planter dans votre épaule. Rendez-vous au 4.",
-                    "nextId": 4
+                    "nextId": 4, 
+                    "chanceCheckPassed": false
+                }
+            ],
+            "effects": [
+                {
+                    "type": "rollDiceChance"
                 }
             ],
             "items": [],
@@ -1597,8 +1604,8 @@
                     "text": "Si oui, rendez-vous au 173.",
                     "nextId": 173,
                     "requiresItem": {
-                        "name": "Poudre de Lévitation",
-                        "category": "equipment"
+                        "name": "poudre de levitation",
+                        "category": "potions"
                     } 
                 },
                 {
@@ -1607,7 +1614,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/stone_chest_351_2.png"
+            "illustration": "../images/images_foret/powder_of_levitation_in_a_glass_flask_95.png"
         }, 
         {
             "id": 96,
@@ -1933,19 +1940,13 @@
                     "nextId": 150
                 }
             ],
-            "items": [
-                {
-                    "name": "5 Pièces d'Or",
-                    "type": "gold"
-                }
-            ],
             "effects": [
                 {
                     "type": "gainGold",
                     "value": 5
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/sorrowful_sad_mage_with_purple_dress_111.png"
         }, 
         {
             "id": 112,
@@ -2446,14 +2447,14 @@
         {
             "id": 139,
             "text": "Les effets de la belladone et de la morsure du Loup-Garou disparaissent bientôt, et vous parvenez enfin à vous rendormir. Au matin, vous ramassez vos affaires et vous repartez vers le nord, sur le chemin qui mène en direction des collines. Rendez-vous au 198.",
-            "illustration": "",
             "items": [],
             "choices": [
               {
                 "text": "Rendez-vous au 198.",
                 "nextId": 198
               }
-            ]
+            ], 
+            "illustration": "../images/images_foret/little_path_in_the_plain_in_the_early_morning_244.png"
         }, 
         {
             "id": 140,
@@ -2914,7 +2915,8 @@
                 "text": "Sinon, rendez-vous au 346.",
                 "nextId": 346
               }
-            ]
+            ],
+            "illustration": "../images/images_foret/angry_mage_arragon_170.png"
         },
         {
             "id": 171,
@@ -2962,7 +2964,7 @@
                 "nextId": 227
               }
             ], 
-            "illustration":"../images/images_foret/ghoul_173_2.png"
+            "illustration":"../images/images_foret/scary_ugly_ghoul_in_an_evil_tomb_173.png"
         },
         {
             "id": 174,
@@ -3010,10 +3012,11 @@
             ], 
             "items":[
                 { 
-                    "name" : "manche du marteau de guerre",
+                    "name" : "manche du marteau de guerre des nains avec G gravé",
                     "category": "equipment"                         
                 }
-            ]
+            ], 
+            "illustration": "../images/images_foret/bronze_headed_hammer_G_58_2_handle.png"
         }, 
         {
             "id": 177,
@@ -3259,7 +3262,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/something_in_the_dark_and_green_forest_190_2.png"
+            "illustration": "../images/images_foret/small_path_in_the_giant_forest_190.png"
         }
         , 
         {
@@ -3510,11 +3513,11 @@
                 "nextId": 400,
                 "requiresMultipleItems": [
                   {
-                    "name": "tête de marteau avec G",
+                    "name": "tête du marteau de guerre des nains avec G gravé",
                     "category": "equipment"
                   },
                   {
-                    "name": "manche avec G",
+                    "name": "manche du marteau de guerre des nains avec G gravé",
                     "category": "equipment"
                   }
                 ]
@@ -3591,7 +3594,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/owlboy_style_a_path_in_a_plain_323.png"
         }, 
         {
             "id": 209,
@@ -3846,7 +3849,7 @@
                 "quantity": 5
               }
             ],
-            "illustration": ""
+            "illustration": "../images/images_foret/sorrowful_sad_mage_with_purple_dress_223.png"
         }, 
         {
             "id": 224,
@@ -3882,22 +3885,24 @@
             "choices": [
               {
                 "text": "Si vous terrassez la Goule, rendez-vous au 312.",
-                "nextId": 312
+                "nextId": 312, 
+                "requiresAllMonstersDefeated": true
               },
               {
                 "text": "Si elle vous paralyse, rendez-vous au 2.",
-                "nextId": 2
+                "nextId": 2,
+                "requiresParalysis": true
               }
             ],
             "monsters": [
               {
                 "name": "GOULE",
                 "skill": 9,
-                "endurance": 7
+                "health": 7
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/attacking_ghoul_in_the_evil_tomb_227.png"
         }, 
         {
             "id": 228,
@@ -4003,7 +4008,7 @@
             ],
             "items": [
               {
-                "name": "Manche du marteau de guerre des Nains",
+                "name": "manche du marteau de guerre des nains avec G gravé",
                 "category": "equipment",
                 "description": "Taillé dans un morceau d'ébène avec la lettre G gravée à l'un des bouts."
               }
@@ -4081,7 +4086,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "../images/images_foret/thatched_roof_stone_house_236.png"
         }, 
         {
             "id": 237,
@@ -4231,7 +4236,7 @@
                 "nextId": 393
               }
             ],
-            "illustration": "../images/images_foret/trifurcation_three_paths_in_the_valley_245_3.png"
+            "illustration": "../images/images_foret/trifurcation_three_paths_in_the_valley_245_4.png"
         }, 
         {
             "id": 246,
@@ -4671,7 +4676,7 @@
                 }
             ],
             "items": [], 
-            "illustration":"../images/images_foret/giant_in_the_forest_265_2.png"
+            "illustration":"../images/images_foret/giant_man_in_the_forest_brown_clothes_265.png"
         }, 
         {
             "id": 266,
@@ -5165,7 +5170,7 @@
                     "nextId": 112
                 }
             ],
-            "illustration": "../images/images_foret/skeleton_chest_292.png"
+            "illustration": "../images/images_foret/coffre_squelette_chandelle_351.jpg"
         }, 
         {
             "id": 293,
@@ -5518,7 +5523,7 @@
                     "quantity": 25
                 },
                 {
-                    "name": "tête de marteau en bronze",
+                    "name": "tête du marteau de guerre des nains avec G gravé",
                     "category": "equipment"
                 }
             ],
@@ -5527,7 +5532,8 @@
                     "text": "Rendez-vous au 112.",
                     "nextId": 112
                 }
-            ]
+            ],
+            "illustration": "../images/images_foret/bronze_headed_hammer_G_58_2_thehead.png"
         },
         {
             "id": 313,
@@ -5831,7 +5837,8 @@
                     "text": "ou aller au nord : Rendez-vous au 309.",
                     "nextId": 309
                 }
-            ]
+            ], 
+            "illustration": "../images/images_foret/path_splitting_in_two_paths_in_the_green_plain_331.png"
         },
         {
             "id": 332,
@@ -6075,7 +6082,7 @@
                     "nextId": 111
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "../images/images_foret/scary_and_threatening_mage_346.jpg"
         },
         {
             "id": 347,
@@ -6149,7 +6156,7 @@
                     "nextId": 112
                 }
             ],
-            "illustration": "../images/images_foret/stone_chest_351_4.png",
+            "illustration": "../images/images_foret/coffre_squelette_chandelle_351.jpg",
             "items": []
         },
         {
@@ -6213,7 +6220,7 @@
                     "category": "potions"
                 }
             ],
-            "illustration": "../images/images_foret/poudre_levitation_354.png",
+            "illustration": "../images/images_foret/powder_of_levitation_in_a_glass_flask_95.png",
             "items": []
         },
         {
@@ -6457,7 +6464,8 @@
                 "text": "Si vous le désirez, vous pouvez prendre l'une des mains d'argile. Rendez-vous au 93.",
                 "nextId": 93
               }
-            ]
+            ], 
+            "illustration": "../images/images_foret/hands_of_clay_371.png"
         },
         {
             "id": 372,
@@ -6536,19 +6544,21 @@
         {
             "id": 376,
             "text": "Tentez votre Chance. Si vous êtes Chanceux, il ne se réveille pas et vous vous rendez au 74. Si vous êtes Malchanceux, vous heurtez du bout du pied un caillou qui roule avec bruit sur le sol de la caverne, éveillant le Troll. Rendez-vous dans ce cas au 310.",
-            "effects": {
-                "temptChance": "tentez votre chance."
-            },
+            "effects": [
+                {
+                    "type": "rollDiceChance"
+                }
+            ],
             "choices": [
               {
                 "text": "Si vous êtes Chanceux, rendez-vous au 74.",
                 "nextId": 74,
-                "condition": "lucky"
+                "chanceCheckPassed": true
               },
               {
                 "text": "Si vous êtes Malchanceux, rendez-vous au 310.",
                 "nextId": 310,
-                "condition": "unlucky"
+                "chanceCheckPassed": false
               }
             ],
             "items": [],
@@ -6853,7 +6863,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/face_with_brown_eyes_behind_the_bushes.png"
+            "illustration": "../images/images_foret/warrior_hidden_in_the_bushes_392.png"
         },
         {
             "id": 393,
@@ -6936,7 +6946,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/masked_man_on_a_black_horse_396.png"
+            "illustration": "../images/images_foret/masked_man_with_a_cape_on_a_horse_396.png"
         },
         {
             "id": 397,
