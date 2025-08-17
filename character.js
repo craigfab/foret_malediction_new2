@@ -84,6 +84,26 @@ export class Character {
         }
         return skill;
     }
+
+    // Retourne l'affichage détaillé de l'habileté avec tous les bonus
+    getSkillDisplay() {
+        let skill = this.skill;
+        let skillDisplay = `Habileté:&nbsp;<strong>${this.getCurrentSkill()}</strong>`;
+        
+        // 2. Affichage du bonus épée enchantée (bonus permanent d'habileté)
+        if (gameState.inventory && typeof gameState.inventory.checkItem === 'function') {
+            if (gameState.inventory.checkItem("épée enchantée") > 0) {
+                skillDisplay += ` <small>(+2 épée enchantée)</small>`;
+            }
+        }
+        
+        // 3. Affichage des boost actifs 
+        if (this.hasBoost('skillPotionBoost')) {
+            skillDisplay += ` <small>(Potion: +1, ${this.getBoostCombatsRemaining('skillPotionBoost')} combat(s))</small>`;
+        }
+        
+        return skillDisplay;
+    }
 }
 
 // Fonction pour déclencher le Game Over
@@ -167,29 +187,72 @@ export function triggerVictory() {
     // Ne pas marquer le jeu comme terminé et ne pas désactiver les boutons.
 }
 
+
+// Fonction pour calculer et formater les modificateurs de combat
+function getCombatModifiersDisplay() {
+    let modifiers = [];
+    let totalModifier = 0;
+    
+    // Équipements bonus
+    if (gameState.inventory.checkItem('casque en bronze')) {
+        modifiers.push('+1 casque');
+        totalModifier += 1;
+    }
+    if (gameState.inventory.checkItem('Bracelet d\'Habileté')) {
+        modifiers.push('+1 bracelet');
+        totalModifier += 1;
+    }
+    if (gameState.inventory.checkItem('gantelet d\'adresse à combattre')) {
+        modifiers.push('+1 gantelet');
+        totalModifier += 1;
+    }
+    
+    // Malédictions
+    if (gameState.inventory.checkItem('anneau de lenteur')) {
+        modifiers.push('-2 anneau');
+        totalModifier -= 2;
+    }
+    
+    // Malus temporaires selon le chapitre
+    if (gameState.currentChapterId === 49) {
+        modifiers.push('-3 chapitre');
+        totalModifier -= 3;
+    }
+    if (gameState.currentChapterId === 193) {
+        modifiers.push('-3 tunnel');
+        totalModifier -= 3;
+    }
+    
+    if (modifiers.length > 0) {
+        return `\n<small>(Combat: ${modifiers.join(', ')})</small>`;
+    }
+    return '';
+}
+
+
 //fonction mise à jour des caractéristiques personnage
 export function updateCharacterStats() {
     let baliseSkillBox = document.getElementById("skill");
-    let skill = gameState.character.getCurrentSkill();
-    let skillDisplay = `Habileté: ${skill}`;
+    let skillDisplay = gameState.character.getSkillDisplay();
     
-    // Affichage des boost actifs
-    if (gameState.character.hasBoost('skillPotionBoost')) {
-        skillDisplay += ` (Potion: +1 attaque, ${gameState.character.getBoostCombatsRemaining('skillPotionBoost')} combat(s))`;
+    // Ajouter les modificateurs de combat séparément
+    let combatModifiers = getCombatModifiersDisplay();
+    if (combatModifiers) {
+        skillDisplay += combatModifiers;
     }
-    // Affichage du bonus épée enchantée
-    if (gameState.inventory && typeof gameState.inventory.checkItem === 'function') {
-        if (gameState.inventory.checkItem("épée enchantée") > 0) {
-            skillDisplay += ` (+2 épée enchantée)`;
-        }
-    }
+    
+    // Forcer l'affichage multiligne avec centrage relatif
+    baliseSkillBox.style.alignItems = 'center';
+    baliseSkillBox.style.whiteSpace = 'pre-line';
+    baliseSkillBox.style.textAlign = 'center';
+    baliseSkillBox.style.lineHeight = '1.2';
     baliseSkillBox.innerHTML = skillDisplay;
 
     let baliseHealthBox = document.getElementById("health");
-    baliseHealthBox.innerHTML = `Endurance: ${gameState.character.health}`;
+    baliseHealthBox.innerHTML = `Endurance:&nbsp;<strong>${gameState.character.health}</strong>`;
 
     let baliseChanceBox = document.getElementById("chance");
-    baliseChanceBox.innerHTML = `Chance: ${gameState.character.chance}`;
+    baliseChanceBox.innerHTML = `Chance:&nbsp;<strong>${gameState.character.chance}</strong>`;
     
     // Vérifier si l'endurance est à 0 ou inférieur pour déclencher le Game Over
     // Exception : ne pas déclencher Game Over au chapitre 0 ou si le personnage n'est pas initialisé

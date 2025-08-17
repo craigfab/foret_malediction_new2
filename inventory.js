@@ -217,5 +217,6 @@ export function takeItem(item, buttonElement) {
     }
 
     updateAdventureSheet();
+    updateCharacterStats(); // Mise à jour pour afficher les modificateurs de combat
 }
 
