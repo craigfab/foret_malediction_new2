@@ -172,8 +172,8 @@ aside img {
     position: relative;
 }
 
-/* Padding spécifique pour les sections avec icônes */
-.skill, .health, .chance, .equipment, .gold, .jewelry, .potions, .food {
+/* Padding spécifique pour les sections avec icônes à gauche */
+.skill, .health, .chance, .equipment {
     padding-left: 37px;
 }
 
@@ -182,9 +182,16 @@ aside img {
     padding-left: 45px;
 }
 
-/* Alignement à gauche pour les sections avec icônes */
-.gold, .jewelry, .potions, .food {
+/* Alignement à gauche pour les sections avec icônes à droite */
+.gold, .jewelry, .potions {
     justify-content: flex-start;
+    padding: 5px 35px 5px 5px;
+}
+
+/* Section nourriture sans icône */
+.food {
+    justify-content: flex-start;
+    padding: 5px 10px 5px 5px;
 }
 
 /* Icônes simples pour la feuille d'aventure */
@@ -225,7 +232,7 @@ aside img {
     content: "💰";
     position: absolute;
     top: 8px;
-    left: 8px;
+    right: 8px;
     font-size: 24px;
 }
 
@@ -233,7 +240,7 @@ aside img {
     content: "💎";
     position: absolute;
     top: 8px;
-    left: 8px;
+    right: 8px;
     font-size: 24px;
 }
 
@@ -241,21 +248,24 @@ aside img {
     content: "🧪";
     position: absolute;
     top: 8px;
-    left: 8px;
+    right: 8px;
     font-size: 24px;
 }
 
-.food::before {
-    content: "🍖";
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    font-size: 24px;
-}
+/* .food::before - icône supprimée pour une meilleure apparence */
 
 /* Chiffres plus gros pour les statistiques principales */
 .skill strong, .health strong, .chance strong {
     font-size: 1.1em;
+}
+
+/* Espacement pour les boutons de la feuille d'aventure */
+#createCharacterButton {
+    margin-bottom: 10px;
+}
+
+#useMealButton, #usePotionAdresseButton, #usePotionVigueurButton, #usePotionBonneFortuneButton {
+    margin-top: 10px;
 }
 
 
@@ -297,8 +307,7 @@ aside img {
     grid-row: 4 / 6;
     overflow-y: auto;
     box-sizing: border-box;
-    padding: 5px 5px 5px 37px;
-    margin: 5px;
+    padding: 5px 35px 5px 5px;
     align-items: flex-start;
 }
 .food{
