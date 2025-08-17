@@ -253,6 +253,11 @@ aside img {
     font-size: 24px;
 }
 
+/* Chiffres plus gros pour les statistiques principales */
+.skill strong, .health strong, .chance strong {
+    font-size: 1.1em;
+}
+
 
 
 .skill{
