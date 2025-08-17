@@ -1,6 +1,6 @@
 import { rollDice } from "./chance.js";
 import { gameState } from "./scripts_forest.js";
-import { playGameOverMusic } from "./music.js";
+import { playGameOverMusic, playVictoryMusic } from "./music.js";
 
 
 //create a character object
@@ -156,6 +156,8 @@ export function triggerGameOver() {
 
 // Fonction pour déclencher l'écran de victoire (fin réussie)
 export function triggerVictory() {
+    // Jouer la musique de victoire
+    playVictoryMusic();
     // Afficher un message de VICTOIRE dans la section Actions avec des emojis positifs
     const actionMessageDiv = document.getElementById('action_message');
     if (actionMessageDiv) {

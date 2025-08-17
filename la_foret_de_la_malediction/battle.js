@@ -122,6 +122,11 @@ function performAttack(index) {
     if (gameState.currentChapterId === 49) {
         attackModifier -= 3;
     }
+    
+    // Malus temporaire chapitre 193 : -3 à la force d'attaque (position malaisée dans le tunnel)
+    if (gameState.currentChapterId === 193) {
+        attackModifier -= 3;
+    }
 
     // Calcul des forces d'attaque
     let charAttackForce = rollDice() + rollDice() + character.getCurrentSkill() + attackModifier + (monster.attackModifier || 0);

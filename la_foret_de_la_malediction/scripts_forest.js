@@ -33,7 +33,8 @@ export let gameState = {
     assaultCount: 0, // Compteur d'assauts pour le chapitre 84
     fleeMessage: false, // Marqueur pour indiquer qu'une fuite a eu lieu
     gameOver: false, // Marqueur pour indiquer si le jeu est terminé (Game Over)
-    itemsGiven: 0 // Compteur pour les objets donnés (chapitre 279)
+    itemsGiven: 0, // Compteur pour les objets donnés (chapitre 279)
+    effectApplied: false // Marqueur pour indiquer qu'un effet a été appliqué
 };
 
 // quand le DOM est chargé, choix aléatoire de piste musicale et initialisation des effets sonores
@@ -90,6 +91,7 @@ function showChapter(chapters, chapterId) {
     gameState.skillCheckPassed = undefined;
     gameState.skillChanceCheckPassed = undefined;
     gameState.assaultCount = 0; // Réinitialiser le compteur d'assauts
+    gameState.effectApplied = false; // Réinitialiser l'état des effets appliqués
 
     // Réinitialise les contenus des divs action_message et attack_message
     document.getElementById('action_message').innerHTML = '';
@@ -415,6 +417,13 @@ function showChapter(chapters, chapterId) {
             if (!conditionMet) {
                 choiceButton.title = `Requis : ${value} pièce(s) d'or`;
             }
+        }
+
+        // Gestion de requiresEffectApplied
+        if (choice.requiresEffectApplied !== undefined) {
+            choiceButton.setAttribute('data-requiresEffectApplied', choice.requiresEffectApplied.toString());
+            // Désactiver le bouton par défaut si l'effet n'a pas encore été appliqué
+            choiceButton.disabled = gameState.effectApplied !== choice.requiresEffectApplied;
         }
 
         // Ajouter un tooltip pour les choix de fuite

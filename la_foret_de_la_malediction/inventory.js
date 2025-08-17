@@ -202,9 +202,9 @@ export function takeItem(item, buttonElement) {
         gameState.inventory.addItem(item.name, item.quantity || 1, item.category);
         
         // Si l'item a une valeur, ajouter automatiquement l'or correspondant
-        if (item.value && item.value > 0) {
-            gameState.inventory.addItem('or', item.value, 'gold');
-            actionMessageDiv.innerHTML = `Vous avez pris ${item.name}, du type ${item.category}. Vous gagnez ${item.value} pièces d'or.`;
+        if (item.goldValue && item.goldValue > 0) {
+            gameState.inventory.addItem('or', item.goldValue, 'gold');
+            actionMessageDiv.innerHTML = `Vous avez pris ${item.name}, du type ${item.category}. Vous gagnez ${item.goldValue} pièces d'or.`;
         } else if (item.name === 'or' || item.category === 'gold') {
             // Cas spécifique pour l'or : toujours afficher la quantité
             const quantiteOr = item.quantity || 1;

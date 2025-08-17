@@ -83,14 +83,16 @@ export function applyChapterEffects(chapter) {
                 case "doubleRollDiceChance":
                     doubleRollDiceChance();
                     break;
+                case "rollDiceSkillAgain":
+                    rollDiceSkillAgain();
+                    message = `Test d'HABILETÉ avec relances possibles (-1 ENDURANCE par relance).`;
+                    break;
                 case "multipleRollDiceSkill":
                     multipleRollDiceSkill(effect.value);
                     message = `Multiples lancers de dés pour tester l'habileté.`;
                     break;
                 case "reduceHealthRollDice":
-                    const diceResult = rollDice();
-                    gameState.character.health -= diceResult;
-                    message = `Lancer de dé : ${diceResult}. Endurance réduite de ${diceResult}.`;
+                    reduceHealthRollDice();
                     break;
                 case "reduceAllGoldOrRemoveTwoItems":
                     goldOrItem({
@@ -118,6 +120,14 @@ export function applyChapterEffects(chapter) {
                 case "giveFiveItems":
                     giveFiveItems();
                     message = "Vous devez donner 5 objets/unités.";
+                    break;
+                case "giveXItems":
+                    giveXItems(effect.value);
+                    message = `Vous devez donner ${effect.value} objet${effect.value > 1 ? 's' : ''}.`;
+                    break;
+                case "restoreStats":
+                    restoreStats();
+                    message = "Choisissez quelle statistique restaurer.";
                     break;
                 case "message":
                     message = effect.text || "Message personnalisé.";
@@ -357,6 +367,28 @@ function rollDiceChance() {
     });
 }
 
+// fonction reduceHealthRollDice: un lancer de dé puis réduction de l'ENDURANCE du résultat
+function reduceHealthRollDice() {
+    const actionMessageDiv = document.getElementById('action_message');
+    actionMessageDiv.innerHTML = "Lancez un dé pour déterminer la perte d'ENDURANCE :<br>";
+
+    const rollButton = document.createElement('button');
+    rollButton.innerText = 'Lancer un dé';
+    rollButton.id = 'reduceHealthRollButton';
+    actionMessageDiv.appendChild(rollButton);
+
+    rollButton.addEventListener('click', () => {
+        const diceResult = rollDice();
+        gameState.character.health -= diceResult;
+        gameState.effectApplied = true; // Marquer que l'effet a été appliqué
+        actionMessageDiv.innerHTML = `Vous avez lancé ${diceResult}. Endurance réduite de ${diceResult}.`;
+        updateCharacterStats();
+        updateAdventureSheet();
+        updateChoiceButtons(); // Mettre à jour les boutons après l'effet
+        rollButton.disabled = true;
+    });
+}
+
 // fonction rollDiceSkillChance pour tester habileté + chance
 function rollDiceSkillChance() {
     const actionMessageDiv = document.getElementById('action_message');
@@ -482,6 +514,80 @@ function rollDiceSkill() {
 }
 
 
+
+// Fonction rollDiceSkillAgain: permet de relancer en cas d'échec, chaque relance coûte 1 ENDURANCE
+function rollDiceSkillAgain() {
+    const actionMessageDiv = document.getElementById("action_message");
+
+    // Préparer l'UI
+    actionMessageDiv.innerHTML = `Test d'HABILETÉ. En cas d'échec, vous pouvez relancer en perdant 1 point d'ENDURANCE à chaque tentative.`;
+
+    // Créer (ou récupérer) le bouton de lancer
+    let rollButton = document.getElementById("rollDiceSkillAgainButton");
+    if (!rollButton) {
+        rollButton = document.createElement("button");
+        rollButton.id = "rollDiceSkillAgainButton";
+        rollButton.innerText = "Lancer les dés d'Habileté";
+    }
+
+    // Nettoyer et reposer le bouton
+    actionMessageDiv.appendChild(rollButton);
+
+    // Gestionnaire de clic
+    rollButton.onclick = () => {
+        const diceRoll1 = rollDice();
+        const diceRoll2 = rollDice();
+        const totalRoll = diceRoll1 + diceRoll2;
+
+        const success = totalRoll <= gameState.character.skill;
+        gameState.skillCheckPassed = success;
+
+        if (success) {
+            actionMessageDiv.innerHTML = `Vous avez lancé ${diceRoll1} et ${diceRoll2} (total: ${totalRoll}). <strong>Réussite !</strong> Votre habileté est suffisante.`;
+            updateChoiceButtons();
+            // Verrouiller le bouton après succès
+            rollButton.disabled = true;
+            return;
+        }
+
+        // Échec: proposer de relancer et appliquer le coût d'ENDURANCE si on relance
+        actionMessageDiv.innerHTML = `Vous avez lancé ${diceRoll1} et ${diceRoll2} (total: ${totalRoll}). <strong>Échec...</strong> Votre habileté n'est pas suffisante.`;
+
+        // Boutons d'action après échec
+        const actionsContainer = document.createElement('div');
+
+        const retryButton = document.createElement('button');
+        retryButton.innerText = "Réessayer (-1 ENDURANCE)";
+        const stopButton = document.createElement('button');
+        stopButton.innerText = "Arrêter le test";
+
+        actionsContainer.appendChild(retryButton);
+        actionsContainer.appendChild(stopButton);
+        actionMessageDiv.appendChild(actionsContainer);
+
+        // Empêcher double-clics du bouton principal tant qu'une décision n'est pas prise
+        rollButton.disabled = true;
+
+        retryButton.onclick = () => {
+            // Coût de relance
+            gameState.character.health -= 1;
+            updateCharacterStats();
+
+            // Réactiver le bouton principal pour un nouveau lancer
+            rollButton.disabled = false;
+            actionMessageDiv.innerHTML = `Vous perdez 1 point d'ENDURANCE pour retenter. Lancez à nouveau les dés.`;
+            actionMessageDiv.appendChild(rollButton);
+            updateChoiceButtons();
+        };
+
+        stopButton.onclick = () => {
+            // On conserve gameState.skillCheckPassed = false
+            actionMessageDiv.innerHTML += `<p>Vous choisissez d'arrêter les tentatives.</p>`;
+            updateChoiceButtons();
+            // Laisser le bouton principal désactivé pour figer le résultat
+        };
+    };
+}
 
 // Fonction pour gérer l'effet multipleRollDiceSkill
 async function multipleRollDiceSkill(times) {
@@ -643,6 +749,12 @@ export function updateChoiceButtons() {
             button.disabled = !conditionMet;
         }
 
+        // Mise à jour basée sur requiresEffectApplied
+        if (button.hasAttribute("data-requiresEffectApplied")) {
+            const effectRequired = button.getAttribute("data-requiresEffectApplied") === "true";
+            button.disabled = gameState.effectApplied !== effectRequired;
+        }
+
     });
 }
 
@@ -773,6 +885,71 @@ function giveFiveItems() {
     }
 }
 
+// Fonction pour donner X objets (sans pièces d'or)
+function giveXItems(numberOfItems) {
+    const actionMessageDiv = document.getElementById('action_message');
+    // Réinitialiser la condition
+    gameState.conditionMet = false;
+    gameState.itemsGiven = 0;
+
+    // Compteur
+    const countSpan = document.createElement('span');
+    countSpan.id = 'itemCountDisplay';
+    countSpan.innerHTML = `<strong>Objets donnés : ${gameState.itemsGiven}/${numberOfItems}</strong>`;
+    actionMessageDiv.appendChild(countSpan);
+    actionMessageDiv.appendChild(document.createElement('br'));
+    actionMessageDiv.appendChild(document.createElement('br'));
+
+    // Boutons pour équipements, bijoux, potions (pas de pièces d'or)
+    const allItems = gameState.inventory.items.filter(item => item.category === 'equipment' || item.category === 'jewelry' || item.category === 'potions');
+    if (allItems.length > 0) {
+        const categories = {
+            'equipment': 'Équipements',
+            'jewelry': 'Bijoux',
+            'potions': 'Potions'
+        };
+        Object.keys(categories).forEach(category => {
+            const categoryItems = allItems.filter(item => item.category === category);
+            if (categoryItems.length > 0) {
+                const categoryTitle = document.createElement('strong');
+                categoryTitle.textContent = categories[category] + ' :';
+                actionMessageDiv.appendChild(categoryTitle);
+                actionMessageDiv.appendChild(document.createElement('br'));
+                categoryItems.forEach(item => {
+                    for (let j = 0; j < item.quantity; j++) {
+                        const itemButton = document.createElement('button');
+                        itemButton.innerText = item.name;
+                        itemButton.addEventListener('click', function() {
+                            gameState.inventory.removeItem(item.name, 1);
+                            gameState.itemsGiven += 1;
+                            this.remove();
+                            updateAdventureSheet();
+                            checkCondition();
+                            updateItemCountDisplay();
+                        });
+                        actionMessageDiv.appendChild(itemButton);
+                    }
+                });
+                actionMessageDiv.appendChild(document.createElement('br'));
+            }
+        });
+    }
+
+    function checkCondition() {
+        if (gameState.itemsGiven >= numberOfItems) {
+            gameState.conditionMet = true;
+            updateChoiceButtons();
+        }
+    }
+
+    function updateItemCountDisplay() {
+        const countDisplay = document.getElementById('itemCountDisplay');
+        if (countDisplay) {
+            countDisplay.innerHTML = `<strong>Objets donnés : ${gameState.itemsGiven}/${numberOfItems}</strong>`;
+        }
+    }
+}
+
 // Fonction pour récupérer un objet avec conversion automatique en or si nécessaire
 function takeItem(itemName, quantity = 1, category = 'equipment', goldValue = 0) {
     const actionMessageDiv = document.getElementById('action_message');
@@ -788,6 +965,73 @@ function takeItem(itemName, quantity = 1, category = 'equipment', goldValue = 0)
     }
     
     updateAdventureSheet();
+}
+
+// Fonction pour restaurer les statistiques (HABiLETÊ, ENDURANCE ou CHANCE)
+function restoreStats() {
+    const actionMessageDiv = document.getElementById('action_message');
+    
+    // Réinitialiser la condition
+    gameState.conditionMet = false;
+    
+    actionMessageDiv.innerHTML = 'Le génie vous offre de restaurer une de vos statistiques à son niveau de départ :<br><br>';
+
+    // Bouton pour restaurer l'HABiLETÊ
+    if (gameState.character.skill < gameState.baseSkill) {
+        const skillButton = document.createElement('button');
+        skillButton.innerText = `Restaurer HABiLETÊ (${gameState.character.skill} → ${gameState.baseSkill})`;
+        skillButton.addEventListener('click', () => {
+            gameState.character.skill = gameState.baseSkill;
+            actionMessageDiv.innerHTML = `<strong>Votre HABiLETÊ a été restaurée à ${gameState.baseSkill} !</strong>`;
+            gameState.conditionMet = true;
+            updateCharacterStats();
+            updateAdventureSheet();
+            updateChoiceButtons();
+        });
+        actionMessageDiv.appendChild(skillButton);
+        actionMessageDiv.appendChild(document.createElement('br'));
+    }
+
+    // Bouton pour restaurer l'ENDURANCE
+    if (gameState.character.health < gameState.baseHealth) {
+        const healthButton = document.createElement('button');
+        healthButton.innerText = `Restaurer ENDURANCE (${gameState.character.health} → ${gameState.baseHealth})`;
+        healthButton.addEventListener('click', () => {
+            gameState.character.health = gameState.baseHealth;
+            actionMessageDiv.innerHTML = `<strong>Votre ENDURANCE a été restaurée à ${gameState.baseHealth} !</strong>`;
+            gameState.conditionMet = true;
+            updateCharacterStats();
+            updateAdventureSheet();
+            updateChoiceButtons();
+        });
+        actionMessageDiv.appendChild(healthButton);
+        actionMessageDiv.appendChild(document.createElement('br'));
+    }
+
+    // Bouton pour restaurer la CHANCE
+    if (gameState.character.chance < gameState.baseChance) {
+        const chanceButton = document.createElement('button');
+        chanceButton.innerText = `Restaurer CHANCE (${gameState.character.chance} → ${gameState.baseChance})`;
+        chanceButton.addEventListener('click', () => {
+            gameState.character.chance = gameState.baseChance;
+            actionMessageDiv.innerHTML = `<strong>Votre CHANCE a été restaurée à ${gameState.baseChance} !</strong>`;
+            gameState.conditionMet = true;
+            updateCharacterStats();
+            updateAdventureSheet();
+            updateChoiceButtons();
+        });
+        actionMessageDiv.appendChild(chanceButton);
+        actionMessageDiv.appendChild(document.createElement('br'));
+    }
+
+    // Si toutes les stats sont déjà au maximum
+    if (gameState.character.skill >= gameState.baseSkill && 
+        gameState.character.health >= gameState.baseHealth && 
+        gameState.character.chance >= gameState.baseChance) {
+        actionMessageDiv.innerHTML += '<strong>Toutes vos statistiques sont déjà à leur niveau maximum !</strong><br>';
+        gameState.conditionMet = true;
+        updateChoiceButtons();
+    }
 }
 
 

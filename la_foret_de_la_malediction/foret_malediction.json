@@ -535,7 +535,7 @@
                 }
             ],
             "items": [],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/first_person_upside_view_from_the_bottom_well_295.jpg"
         },
         {
             "id": 32,
@@ -543,16 +543,26 @@
             "choices": [
                 {
                     "text": "Rendez-vous au 150.",
-                    "nextId": 150
+                    "nextId": 150, 
+                    "requiresConditionMet" : true
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceGold": 10,
-                "reduceItem": 2,
-                "reduceChance": 1
-            },
-            "illustration": "images_foret/map_foret.jpg"
+            "effects": [
+                {
+                    "type": "reduceGold",
+                    "value": 10
+                },
+                {
+                    "type": "giveXItems",
+                    "value": 2
+                },
+                {
+                    "type": "reduceChance",
+                    "value": 1
+                }
+            ],
+            "illustration": "images_foret/very_angry_mage_white_beard_purple_dress_32.png"
         },
         {
             "id": 33,
@@ -572,14 +582,17 @@
             "choices": [
                 {
                     "text": "Rendez-vous au 231.",
-                    "nextId": 231
+                    "nextId": 231, 
+                    "requiresConditionMet" : true
                 }
             ],
             "items": [],
-            "effects": {
-                "restore": "HABiLETÊ ou ENDURANCE ou CHANCE"
-            },
-            "illustration": "images_foret/map_foret.jpg"
+            "effects": [
+                {
+                    "type": "restoreStats"
+                }
+            ],
+            "illustration": "images_foret/genius_lantern_34.png"
         },
         {
             "id": 35,
@@ -727,7 +740,7 @@
                 }
             ],
             "items": [],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/forest_men_attacking_you_43.png"
         },
         {
             "id": 44,
@@ -739,10 +752,13 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceHealth": 2
-            },
-            "illustration": "images_foret/map_foret.jpg"
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 2
+                }
+            ],
+            "illustration": "images_foret/green_toxic_gaz_from_a_purple_split_mushroom_60.png"
         },
         {
             "id": 45,
@@ -800,14 +816,17 @@
             "choices": [
                 {
                     "text": "Rendez-vous au 288.",
-                    "nextId": 288
+                    "nextId": 288, 
+                    "requiresEffectApplied": true
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceHealth": "result_rollDice"
-            },
-            "illustration": "images_foret/map_foret.jpg"
+            "effects": [
+                {
+                    "type": "reduceHealthRollDice"
+                }
+            ],
+            "illustration": "images_foret/giant_blue_and_white_egg_with_a_crack_48.png"
         },
         {
             "id": 49,
@@ -853,7 +872,7 @@
                     "description": "Une clé mystérieuse trouvée sur l'un des Hommes des Bois."
                 }
             ],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/silver_key_50_3.png"
         },
         {
             "id": 51,
@@ -979,7 +998,7 @@
             "items": [
                 {
                     "name": "or",
-                    "type": "gold",
+                    "category": "gold",
                     "quantity": 25
                 },
                 {
@@ -1008,15 +1027,22 @@
             "choices": [
                 {
                     "text": "Si vous êtes Chanceux, rendez-vous au 183.",
-                    "nextId": 183
+                    "nextId": 183,
+                    "chanceCheckPassed": true
                 },
                 {
                     "text": "Si vous êtes Malchanceux, rendez-vous au 44.",
-                    "nextId": 44
+                    "nextId": 44,
+                    "chanceCheckPassed": false
                 }
             ],
             "items": [],
-            "illustration": "images_foret/map_foret.jpg"
+            "effects": [
+                {
+                    "type": "rollDiceChance"
+                }
+            ],
+            "illustration": "images_foret/green_toxic_gaz_from_a_purple_split_mushroom_60.png"
         },
         {
             "id": 61,
@@ -1032,7 +1058,7 @@
                 }
             ],
             "items": [],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/tunnel_splitting_135.png"
         },
         {
             "id": 62,
@@ -1044,7 +1070,7 @@
                 }
             ],
             "items": [],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/white_horse_escaping_in_the_green_plain_62_2.png"
         },
         {
             "id": 63,
@@ -1056,7 +1082,7 @@
                 }
             ],
             "items": [],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/centaur_archer_142.png"
         },
         {
             "id": 64,
@@ -1437,7 +1463,7 @@
                 }
             ],
             "items": [],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/goblin_in_a_metal_cage_in_a_dark_cavern_168_2.png"
         },
         {
             "id": 86,
@@ -1449,7 +1475,7 @@
                 }
             ],
             "items": [],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/frightened_brown_fox_running_361.png"
         },
         {
             "id": 87,
@@ -1744,15 +1770,16 @@
             ],
             "items": [
                 {
-                    "name": "5 Pièces d'Or",
-                    "type": "gold"
+                    "name": "or",
+                    "category": "gold", 
+                    "quantity": 5
                 },
                 {
-                    "name": "Petite cloche de cuivre",
-                    "type": "equipment"
+                    "name": "petite cloche de cuivre",
+                    "category": "equipment"
                 }
             ],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/copper_bell_and_five_gold_coins_74.png"
         }, 
         {
             "id": 102,
@@ -1849,9 +1876,10 @@
             ],
             "items": [
                 {
-                    "name": "Anneau d'or avec émeraude",
-                    "type": "jewelry",
-                    "value": 15
+                    "name": "anneau d'or avec émeraude",
+                    "category": "jewelry",
+                    "quantity": 1,
+                    "goldValue": 15
                 }
             ],
             "effects": [
@@ -1860,7 +1888,7 @@
                     "value": 2
                 }
             ],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/ring_emerald_106.png"
         }, 
         {
             "id": 107,
@@ -1897,7 +1925,7 @@
                     "value": 3
                 }
             ],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/sick_adventurer_on_knees_108_3.png"
         }, 
         {
             "id": 109,
@@ -2029,7 +2057,7 @@
                 {
                     "name": "Collier de cuir incrusté d'or",
                     "category": "jewelry",
-                    "value": 15
+                    "goldValue": 15
                 }
             ],
             "illustration": "images_foret/dog_leather_collar_gold_116_2.png"
@@ -3008,7 +3036,9 @@
                 "text": "Si vous préférez l'abandonner là, et fouiller plutôt la cheminée, rendez-vous au 106.",
                 "nextId": 106
               }
-            ]
+            ], 
+            "illustration" :"images_foret/old_wood_chest_with_rusty_lock_175.png"
+
         },
         {
             "id": 176,
@@ -3315,8 +3345,7 @@
               {
                 "name": "GREMLIN",
                 "skill": 4,
-                "endurance": 4,
-                "attackModifier": -3 
+                "health": 4    
               }
             ],
             "choices": [
@@ -3326,7 +3355,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/attacking_gremlin_in_a_small_stone_tunnel_193_2.png"
         }
         , 
         {
@@ -3777,7 +3806,7 @@
                 {
                     "name": "fléchette en argent",
                     "category": "equipment",
-                    "value": 5
+                    "goldValue": 5
                 }
             ],
             "choices": [
@@ -3827,20 +3856,19 @@
         {
             "id": 222,
             "text": "Il n'y a pas moyen d'échapper au nuage de gaz empoisonné qui vous enveloppe. Vous avez l'impression que vos poumons vont éclater et vous êtes forcé de respirer. Lancez alors un dé pour savoir de combien de points vous allez devoir réduire votre total d'ENDURANCE. Si vous êtes toujours vivant, le nuage s'éloigne enfin, et vous pouvez à nouveau respirer librement. Vous ne voyez cependant aucun avantage à rester plus longtemps en ces lieux et vous vous dirigez vers les marches, dans la paroi du fond (rendez-vous au 293).",
-            "effects": [
-              {
-                "type": "reduceEndurance",
-                "value": "rollDice"
-              }
-            ],
             "choices": [
               {
                 "text": "Rendez-vous au 293.",
                 "nextId": 293
               }
             ],
+            "effects": [
+              {
+                "type": "reduceHealthRollDice"
+              }
+            ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/green_toxic_gaz_from_a_purple_split_mushroom_60.png"
         }, 
         {
             "id": 223,
@@ -4211,7 +4239,7 @@
                 "name": "Lingot d'or",
                 "category": "jewelry",
                 "quantity": 1,
-                "value": 28
+                "goldValue": 28
               }
             ],
             "illustration": "images_foret/single_gold_bar_dark_cave_242.png"
@@ -5682,7 +5710,8 @@
                     "text": "Rendez-vous au 362.",
                     "nextId": 362
                 }
-            ]
+            ], 
+            "illustration": "images_foret/gremlin_falling_in_the_well_320.png"
         }, 
         {
             "id": 321,
@@ -5703,7 +5732,7 @@
                     "name": "médaillon d'or",
                     "category": "jewelry",
                     "quantity": 1,
-                    "value": 5
+                    "goldValue": 5
                 }
             ],
             "choices": [
@@ -6147,7 +6176,13 @@
                     "nextId": 188
                 }
             ],
-            "illustration": "images_foret/hommes_barbus_90.png"
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 2
+                }
+            ],
+            "illustration": "images_foret/hommes_barbus_haha_348.png"
         },
         {
             "id": 349,
@@ -6509,21 +6544,24 @@
         {
             "id": 372,
             "text": "Vous vous penchez pour essayer de soulever le coffre, mais il est très lourd.",
-            "effects": {
-                "multipleRollDiceSkill" : "lancer 2 dés, si <= habileté : succès. si echec, enlever un point d'endurance et possibilité de recommencer autant de fois qu'on veut"
-            },
+            "effects": [
+                {
+                    "type": "rollDiceSkillAgain"
+                }
+            ],
             "choices": [
               {
                 "text": "Si le chiffre obtenu est inférieur ou égal à votre total d'HABILETÉ, vous y parvenez et vous vous rendez au 48. Si en revanche ce chiffre est supérieur à ce même total, vous vous faites mal au dos et vous perdez 1 point d'ENDURANCE. Vous pouvez à nouveau tenter de soulever le coffre en relançant les dés.",
                 "nextId": 48,
-                "multipleRollDiceSkillResult": true
+                "skillCheckPassed": true
               },
               {
                 "text": "Mais si vous ne parvenez décidément pas à soulever ce coffre, vous décidez de ne pas prendre le risque de vous faire encore plus mal au dos et vous quittez la pièce fort mécontent. Repartez vers le nord et rendez-vous au 288.",
                 "nextId": 288,
-                "multipleRollDiceSkillResult": false
+                "skillCheckPassed": false
               }
-            ]
+            ], 
+            "illustration": "images_foret/old_wood_chest_with_rusty_lock_175.png"
         }, 
         {
             "id": 373,
@@ -6792,6 +6830,7 @@
             "items": [
               {
                 "name": "or",
+                "category": "gold",
                 "quantity": 1 
               }
             ],
@@ -7017,7 +7056,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/first_person_upside_view_from_the_bottom_well_295.png"
         },
         {
             "id": 399,
@@ -7032,12 +7071,12 @@
                 {
                     "name": "casque ailé en or",
                     "category": "equipment",
-                    "value": 100
+                    "goldValue": 100
                 },
                 {
                     "name": "coffre en argent avec bijoux",
                     "category" : "jewelry",
-                    "value": 100
+                    "goldValue": 100
                 }
             ],
             "effects": [
