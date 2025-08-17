@@ -88,20 +88,21 @@ export class Character {
     // Retourne l'affichage détaillé de l'habileté avec tous les bonus
     getSkillDisplay() {
         let skill = this.skill;
-        let skillDisplay = `Habileté:&nbsp;<strong>${this.getCurrentSkill()}</strong>`;
+        let skillDisplay = `<div class="skill-main">Habileté:&nbsp;<strong>${this.getCurrentSkill()}</strong>`;
         
         // 2. Affichage du bonus épée enchantée (bonus permanent d'habileté)
         if (gameState.inventory && typeof gameState.inventory.checkItem === 'function') {
             if (gameState.inventory.checkItem("épée enchantée") > 0) {
-                skillDisplay += ` <small>(+2 épée enchantée)</small>`;
+                skillDisplay += ` <span class="skill-note">(+2 épée enchantée)</span>`;
             }
         }
         
         // 3. Affichage des boost actifs 
         if (this.hasBoost('skillPotionBoost')) {
-            skillDisplay += ` <small>(Potion: +1, ${this.getBoostCombatsRemaining('skillPotionBoost')} combat(s))</small>`;
+            skillDisplay += ` <span class="skill-note">(Potion: +1, ${this.getBoostCombatsRemaining('skillPotionBoost')} combat(s))</span>`;
         }
         
+        skillDisplay += `</div>`;
         return skillDisplay;
     }
 }
@@ -224,7 +225,7 @@ function getCombatModifiersDisplay() {
     }
     
     if (modifiers.length > 0) {
-        return `\n<small>(Combat: ${modifiers.join(', ')})</small>`;
+        return `<span class="skill-note">(Combat: ${modifiers.join(', ')})</span>`;
     }
     return '';
 }
@@ -238,14 +239,10 @@ export function updateCharacterStats() {
     // Ajouter les modificateurs de combat séparément
     let combatModifiers = getCombatModifiersDisplay();
     if (combatModifiers) {
-        skillDisplay += combatModifiers;
+        // Encapsuler dans un bloc pour pouvoir cibler via CSS et forcer la ligne suivante
+        skillDisplay += `<div class="combat-modifiers">${combatModifiers}</div>`;
     }
     
-    // Forcer l'affichage multiligne avec centrage relatif
-    baliseSkillBox.style.alignItems = 'center';
-    baliseSkillBox.style.whiteSpace = 'pre-line';
-    baliseSkillBox.style.textAlign = 'center';
-    baliseSkillBox.style.lineHeight = '1.2';
     baliseSkillBox.innerHTML = skillDisplay;
 
     let baliseHealthBox = document.getElementById("health");

@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         mapButton.title = "Vous n'avez pas encore la carte";
         mapButton.addEventListener('click', () => {
             // Charger l'image de la carte en couleur et afficher le modal
-            mapImage.src = 'images_foret/map_forest_color_2.PNG';
+            mapImage.src = 'images_foret/map_forest_color_2.png';
             mapModal.style.display = 'flex';
         });
         closeModalBtn.addEventListener('click', () => {

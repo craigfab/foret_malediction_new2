@@ -259,6 +259,22 @@ aside img {
     font-size: 1.1em;
 }
 
+/* Affichage multiligne pour la section habileté */
+.skill {
+    align-items: center !important;
+    white-space: pre-line !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+    flex-direction: column !important; /* Empile le texte principal et les modificateurs */
+}
+
+/* Simplification: même taille et empilement propre dans la box habileté */
+.skill .combat-modifiers { margin-top: 0; }
+.skill .skill-main { display: inline-block; white-space: nowrap; }
+
+/* Notes d'habileté (épée, potions, combat) – taille identique */
+.skill .skill-note { font-size: 0.95em; }
+
 /* Espacement pour les boutons de la feuille d'aventure */
 #createCharacterButton {
     margin-bottom: 10px;

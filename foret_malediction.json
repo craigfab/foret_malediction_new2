@@ -1961,7 +1961,7 @@
                 }
             ],
             "items": [],
-            "illustration": "images_foret/map_foret.jpg"
+            "illustration": "images_foret/very_old_leather_purse_bag_110.png"
         }, 
         {
             "id": 111,
@@ -2807,7 +2807,14 @@
                 "text": "Soulagé d'avoir survécu, vous repartez ensuite vers le nord. Rendez-vous au 142.",
                 "nextId": 142
               }
-            ]
+            ], 
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 3
+                }
+            ],
+            "illustration":"images_foret/herbe_embrouille_wrapping_159.png"
         }, 
         {
             "id": 160,
@@ -2892,7 +2899,14 @@
                 "text": "Rendez-vous au 390.",
                 "nextId": 390
               }
-            ]
+            ], 
+            "effects": [
+                {
+                    "type": "gainChance",
+                    "value": 2
+                }
+            ], 
+            "illustration":"images_foret/monk_valley_369.png"
         }, 
         {
             "id": 167,
@@ -2904,6 +2918,13 @@
                 "requiresAllMonstersDefeated" : true
               }
             ], 
+            "monsters": [
+                {
+                    "name": "Vouivre volante",
+                    "skill": 10,
+                    "health": 11
+                }
+            ],
             "illustration":"images_foret/angry_green_dragon_attacking_in_a_clearing_167.png"
         }, 
         {
@@ -4661,16 +4682,17 @@
               {
                 "type": "removeItem",
                 "itemName": "petite bouteille contenant un liquide incolore"
+              }, 
+              {
+                "type": "gainGold",
+                "value": 4
               }
             ],
             "illustration": "images_foret/bottle_262.png",
             "choices": [
               {
                 "text": "Vous prenez ensuite l'or, et vous quittez la caverne pour rejoindre le chemin et poursuivre votre voyage en direction du nord. Rendez-vous au 337.",
-                "nextId": 337,
-                "cost" : {
-                    "gainGold" : 1
-                }
+                "nextId": 337
               }
             ]
         }, 
