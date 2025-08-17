@@ -3,7 +3,7 @@
         {
             "id": 0,
             "text": "Vous êtes un aventurier, un condottiere infatigable, vagabondant aux frontières du royaume, dans les provinces du Septentrion. La vie morne et paisible des villageois vous répugne et on vous a toujours vu courir sans repos les plaines et les bois, en quête de richesses et de périls. Malgré les longues errances et les rigueurs de la vie à la belle étoile, votre destinée est toujours imprévisible et vous satisfait pleinement. Vous n'avez peur de rien en ce bas monde car vous êtes un bretteur chevronné, toujours prompt à transpercer de votre fidèle épée quiconque, homme ou bête, se met en travers de votre route. Depuis dix jours que vous êtes entré dans les provinces du Nord, vous n'avez rencontré âme qui vive, ce qui d'ailleurs ne vous chagrine nullement : votre seule compagnie, en effet, vous suffit amplement et vous n'êtes pas fâché de passer quelques journées au soleil à chasser, à manger et à dormir.\n Le soir est tombé et vous venez d'achever un repas de lièvre sauvage, rôti à la broche sur un feu de camp. Repu et content, vous vous allongez sous une couverture en peau de mouton, en vous promettant une longue et bonne nuit de sommeil. La lune est pleine et sa lueur se reflète sur la lame de votre épée plantée dans le sol auprès de vous. Cette épée que vous contemplez un instant en vous demandant combien de temps il s'écoulera encore avant que vous ayez à essuyer de son tranchant le sang de quelque créature abjecte. Car c'est une étrange contrée que vous avez entrepris de parcourir. On y rencontre des êtres singuliers bien propres à inspirer l'effroi : des elfes, des trolls et même des dragons.\n Tandis que les dernières flammes de votre feu de camp s'éteignent lentement, vous vous laissez gagner par le sommeil et des visions de trolls à la face verdâtre et grimaçante vous traversent l'esprit. Mais soudain, dans un bosquet proche, vous percevez le bruit d'une branche morte craquant sous un pas malhabile. Vous vous levez d'un bond, empoignant votre épée que vous arrachez du sol, et vous restez là sans bouger, tous les sens en alerte, prêt à vous ruer sur un adversaire encore invisible. Vous entendez alors un gémissement immédiatement suivi du bruit sourd d'un corps s'écroulant sur le sol. S'agit-il d'un piège ? Vous vous approchez prudemment du bosquet d'où le bruit est venu et vous écartez quelques branches, puis vous regardez à terre et vous apercevez un petit homme, vieux, à la barbe en broussaille, le visage tordu par la douleur. Vous vous agenouillez auprès de lui pour ôter le casque de fer qui protège son crâne dégarni et vous remarquez alors deux flèches d'arbalète plantées dans son estomac : elles ont transpercé la cotte de mailles qui couvre son torse replet. Vous le soulevez de terre et vous le portez dans vos bras auprès du feu dont vous ranimez les braises. Après avoir étendu sur lui votre couverture en peau de mouton, vous parvenez à faire boire un peu d'eau au vieil homme. Il émet un grognement, tousse, s'assied, le buste raide, le regard fixe, puis se met à crier : « Je les aurai ! Je les aurai ! N'aie crainte, Gillibran, Gromollet va venir ^apporter le marteau. J'y arriverai, oh oui, j'y arriverai... » \n Le nain, dont vous supposez qu'il se nomme Gromollet, est de toute évidence pris de délire, sans doute à cause d'un poison dans lequel on a dû tremper les deux flèches fichées dans son estomac. Un instant plus tard, son buste retombe lourdement en arrière et vous vous approchez de son oreille pour murmurer son nom. Ses yeux vous fixent sans ciller lorsque, à nouveau, il se met à hurler : « Un guet-apens ! Attention ! Un guet-apens ! Aaaarrrghhh ! Le marteau ! Apportez le marteau à Gillibran ! Sauvez les nains ! » Ses yeux se ferment à demi, sa douleur semble s'atténuer et tandis que son délire le quitte, il s'adresse à vous dans un chuchotement : « Aide-nous, ami... porte le marteau à Gillibran... Seul le marteau pourra unir notre peuple contre les Trolls... Nous faisions route vers la Forêt des Ténèbres, en quête du marteau... Le petit peuple nous a tendu une embuscade... les autres ont été tués... Il y a dans ma bourse la carte qui te mènera chez Yaztromo, le grand mage... lui seul peut te vendre les recettes magiques qui te protégeront contre les créatures de la Forêt des Ténèbres... prends mon or... Je t'en supplie, trouve le marteau et porte-le à Gilli-bran, le Seigneur de Pont-de-Pierre... tu en recevras bonne récompense... » \n Gromollet ouvre la bouche pour dire encore quelques mots mais il ne parvient qu'à exhaler son dernier souffle. Vous vous asseyez alors devant son cadavre en repensant à ses paroles. Qui est Gillibran? Qui est Yaztromo? Que signifie toute cette histoire de marteau et de nains ? Vous vous approchez du corps de Gromollet et vous prenez la bourse attachée à sa ceinture. A l'intérieur, vous trouvez 30 Pièces d'Or et une carte (voir ci-contre).\n En faisant sonner les pièces au creux de votre main, vous pensez à la récompense qui vous attend peut-être pour le simple fait de rapporter un marteau à un peuple de nains, et vous décidez soudain que vous irez bel et bien chercher ce marteau dans la Forêt des Ténèbres car votre dernière bonne bataille remonte déjà à quelques semaines. Or, vous aimez l'aventure, surtout si on vous promet une belle somme d'argent à l'arrivée... \n Maintenant que vous avez pris votre décision, vous retournez vous coucher après avoir récupéré votre couverture sur le cadavre de l'infortuné Gromollet. Au matin, vous enterrez le vieux nain et vous ramassez vos affaires. Ensuite, vous étudiez la carte, puis vous vous orientez en observant la position du soleil. Alors, vous vous mettez en marche en direction du sud, en sifflant joyeusement et très curieux de rencontrer ce fameux Yaztromo pour voir ce qu'il a d'intéressant à vous proposer. ",
-            "illustration": "../images/la_foret_de_la_malediction.JPG", 
+            "illustration": "images_foret/la_foret_de_la_malediction.JPG", 
             "items": [
                 {
                     "name": "épée",
@@ -52,7 +52,7 @@
         {
             "id": 1,
             "text": "Votre marche jusqu'à la maison de Yaztromo prend un peu plus d'une demi-journée et, lorsque vous arrivez à la tour de pierre où il a élu domicile, vous êtes couvert de poussière et vous avez grand-faim. La tour du mage est difficile à trouver car elle est bâtie en retrait, à une cinquantaine de mètres du chemin, en lisière de la Forêt. Lorsque enfin vous la découvrez, vous vous dirigez vers son immense porte de chêne avec un sentiment de soulagement en constatant qu'elle existe bel et bien, et qu'elle n'est pas le fruit du délire de Gromollet. Une grosse cloche de cuivre et un heurtoir sont accrochés sur le côté d'une arche de pierre qui marque l'entrée. Vous frappez alors la cloche et un frisson aussitôt vous parcourt l'échiné, car le « bong » sonore que vous venez de produire résonne dans un silence profond dont vous n'aviez pas pris conscience jusqu'à cet instant. On n'entend en effet ni chants d'oiseaux ni cris d'animaux. Vous attendez à la porte avec une certaine inquiétude, et vous entendez bientôt des bruits de pas qui descendent lentement un escalier, à l'intérieur de la tour. Un petit panneau glisse alors dans le bois de la porte, révélant une étroite ouverture en forme de fente, à travers laquelle une paire d'yeux soudainement apparus vous examine attentivement. « Eh bien, qui êtes-vous ? » demande une voix rogue. Vous répondez que vous êtes un aventurier et que vous cherchez le grand mage Yaztromo pour lui acheter quelques objets magiques qui pourraient vous aider à combattre les créatures de la Forêt des Ténèbres. « Ah, très bien ! si vous souhaitez m'acheter quelque chose, vous feriez mieux d'entrer. Je suis Yaztromo. » Il vous ouvre alors la porte et vous invite à le suivre en montant les marches d'un escalier de pierre. Qu'allez-vous faire ? ",
-            "illustration": "../images/images_foret/yastromo_tower_1.png", 
+            "illustration": "images_foret/yastromo_tower_1.png", 
             "items": [],
             "choices": [
                 {"text": "Le suivre en haut des marches ? Rendez-vous au 261", "nextId": 261},
@@ -63,7 +63,7 @@
             "id": 2,
             "text": "Pour vous, l'aventure se termine ici : votre chair fraîche et savoureuse offrira un festin de choix à la Goule victorieuse.",
             "effects": "game over", 
-            "illustration":"../images/images_foret/game_over_2.png"
+            "illustration":"images_foret/game_over_2.png"
         },
         {
             "id": 3,
@@ -79,7 +79,7 @@
                     "nextId": 120
                 }
             ], 
-            "illustration":"../images/images_foret/hollow_tree_trunk_3_2.png"
+            "illustration":"images_foret/hollow_tree_trunk_3_2.png"
         },
         {
             "id": 4,
@@ -95,7 +95,7 @@
                     "nextId": 93
                 }
             ], 
-            "illustration":"../images/images_foret/arrow_in_the_shoulder_4.png"
+            "illustration":"images_foret/arrow_in_the_shoulder_4.png"
         },
         {
             "id": 5,
@@ -111,7 +111,7 @@
                     "nextId": 249
                 }
             ],
-            "illustration":"../images/images_foret/craig1755_pixel_art_im_seating_on_a_throne_and_I_look_to_two_humanoids_5.png"
+            "illustration":"images_foret/craig1755_pixel_art_im_seating_on_a_throne_and_I_look_to_two_humanoids_5.png"
         },
         {
             "id": 6,
@@ -123,7 +123,7 @@
                     "nextId": 148
                 }
             ], 
-            "illustration":"../images/images_foret/big_and_luxuriant_dense_forest_a_path_6_2.png"
+            "illustration":"images_foret/big_and_luxuriant_dense_forest_a_path_6_2.png"
         },
         {
             "id": 7,
@@ -136,7 +136,7 @@
             "choices": [
                 {"text": "Si vous sortez vainqueur de ce combat, rendez-vous au 23.", "nextId": 23, "requiresAllMonstersDefeated": true}
             ],
-            "illustration": "../images/abeilles_tueuses_id7.png",
+            "illustration": "/abeilles_tueuses_id7.png",
             "items": []
         },
         {
@@ -145,7 +145,7 @@
             "choices": [
                 {"text": "Si vous souhaitez rencontrer les personnages qui se chamaillent ainsi, rendez-vous au 317.", "nextId":317},
                 {"text": "Si, en revanche, vous préférez vous cacher dans les buissons, au bord du chemin pour les laisser passer sans être vu, rendez-vous au 392", "nextId": 392}],
-            "illustration":"../images/images_foret/luxuriant_forest_8.png",
+            "illustration":"images_foret/luxuriant_forest_8.png",
             "items":[]
             
         },
@@ -167,7 +167,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/goblin_attack_117.png"
+            "illustration":"images_foret/goblin_attack_117.png"
         },
         {
             "id": 10,
@@ -190,7 +190,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/nightmare_11_2.png"
+            "illustration":"images_foret/nightmare_11_2.png"
         },
         {
             "id": 12,
@@ -206,7 +206,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/little_man_271.png"
+            "illustration":"images_foret/little_man_271.png"
         },
         {
             "id": 13,
@@ -224,7 +224,7 @@
                     "value": 3
                 }
             ],
-            "illustration":"../images/images_foret/completely_destroyed_wood_cabin_13.png"
+            "illustration":"images_foret/completely_destroyed_wood_cabin_13.png"
         },
         {
             "id": 14,
@@ -242,7 +242,7 @@
                     "type": "reduceThreeGoldOrRemoveOneItem"
                 }
             ],
-            "illustration":"../images/images_foret/fur_trapper_14_3.png"
+            "illustration":"images_foret/fur_trapper_14_3.png"
         },
         {
             "id": 15,
@@ -262,7 +262,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/ver_piqueur_15.jpg"
+            "illustration":"images_foret/ver_piqueur_15.jpg"
         },
         {
             "id": 16,
@@ -282,7 +282,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/red_mushrooms_16.png"
+            "illustration":"images_foret/red_mushrooms_16.png"
         },
         {
             "id": 17,
@@ -302,7 +302,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/top-down_view_of_a_very_deep_round_stone_well_17_2.png"
+            "illustration":"images_foret/top-down_view_of_a_very_deep_round_stone_well_17_2.png"
         },
         {
             "id": 18,
@@ -317,7 +317,7 @@
             "effects": {
                 "heal": "fièvre retombe, disparition du poil"
             },
-            "illustration":"../images/images_foret/path_hills_dawn_18.png"
+            "illustration":"images_foret/path_hills_dawn_18.png"
         },
         {
             "id": 19,
@@ -333,7 +333,7 @@
                 "type": "reduceHealth",
                 "value": 1
             },
-            "illustration":"../images/images_foret/sword_with_blood_19.png"
+            "illustration":"images_foret/sword_with_blood_19.png"
         },
         {
             "id": 20,
@@ -345,7 +345,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/way_in_the_forest_morning_20.png"
+            "illustration":"images_foret/way_in_the_forest_morning_20.png"
         },
         {
             "id": 21,
@@ -360,7 +360,7 @@
             "effects": {
                 "Poison": false
             },
-            "illustration":"../images/images_foret/healing_of_poison_21.png"
+            "illustration":"images_foret/healing_of_poison_21.png"
         },
         {
             "id": 22,
@@ -381,7 +381,7 @@
                     "type": "reduceHealthRollDice"
                 }
             ],
-            "illustration": "../images/images_foret/opened_silver_box_with_gas_coming_out_126.png"
+            "illustration": "images_foret/opened_silver_box_with_gas_coming_out_126.png"
         },
         {
             "id": 23,
@@ -393,7 +393,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/sunny_plain_evil_atmosphere_23.png"
+            "illustration": "images_foret/sunny_plain_evil_atmosphere_23.png"
         },
         {
             "id": 24,
@@ -413,7 +413,7 @@
                 "Poison": false,
                 "removeItem" : "potion Antipoison"
             },
-            "illustration": "../images/images_foret/healing_potion.png"
+            "illustration": "images_foret/healing_potion.png"
         },
         {
             "id": 25,
@@ -429,7 +429,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/in_a_valley_in_the_big_forest_25.png"
+            "illustration": "images_foret/in_a_valley_in_the_big_forest_25.png"
         },
         {
             "id": 26,
@@ -445,7 +445,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/ancient_library_filled_with_very_old_leather_books_26.png"
+            "illustration": "images_foret/ancient_library_filled_with_very_old_leather_books_26.png"
         },
         {
             "id": 27,
@@ -457,7 +457,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/path_in_the_forest_few_trees_27.png"
         },
         {
             "id": 28,
@@ -477,7 +477,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/armband_28_3.png"
+            "illustration": "images_foret/armband_28_3.png"
         },
         {
             "id": 29,
@@ -506,7 +506,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/orques_29.jpg"
+            "illustration": "images_foret/orques_29.jpg"
         },
         {
             "id": 30,
@@ -523,7 +523,7 @@
                 "value": 2
             }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/from_the_bottom_of_well_dark_30.png"
         },
         {
             "id": 31,
@@ -535,7 +535,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 32,
@@ -552,7 +552,7 @@
                 "reduceItem": 2,
                 "reduceChance": 1
             },
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 33,
@@ -564,7 +564,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/in_a_valley_pixel_art_forest_33.png"
+            "illustration": "images_foret/in_a_valley_pixel_art_forest_33.png"
         },
         {
             "id": 34,
@@ -579,7 +579,7 @@
             "effects": {
                 "restore": "HABiLETÊ ou ENDURANCE ou CHANCE"
             },
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 35,
@@ -594,7 +594,7 @@
             "effects": {
                 "reduceHealth": 4
             },
-            "illustration": "../images/images_foret/green_dragon_above_the_forest_jet_of_fire_57.jpg"
+            "illustration": "images_foret/green_dragon_above_the_forest_jet_of_fire_57.jpg"
         },
         {
             "id": 36,
@@ -612,7 +612,7 @@
                     "type": "reduceAllGoldOrRemoveTwoItems"
                 }
             ],
-            "illustration": "../images/images_foret/bag_36_3.png"
+            "illustration": "images_foret/bag_36_3.png"
         },
         {
             "id": 37,
@@ -628,7 +628,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/pear_tree_37.png"
+            "illustration": "images_foret/pear_tree_37.png"
         },
         {
             "id": 38,
@@ -644,7 +644,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/old_woman_reading_books_38_2.png"
+            "illustration": "images_foret/old_woman_reading_books_38_2.png"
         },
         {
             "id": 39,
@@ -656,7 +656,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/massive_troll_wrapped_net_39.png"
+            "illustration": "images_foret/massive_troll_wrapped_net_39.png"
         },
         {
             "id": 40,
@@ -668,7 +668,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/forest_40.png"
+            "illustration": "images_foret/forest_40.png"
         },
         {
             "id": 41,
@@ -680,7 +680,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/corbeau160.jpg"
+            "illustration": "images_foret/corbeau160.jpg"
         },
         {
             "id": 42,
@@ -698,7 +698,7 @@
                     "value": 1
                 }
             ],
-            "illustration": "../images/images_foret/creepy_old_witch_laughing_42.png"
+            "illustration": "images_foret/creepy_old_witch_laughing_42.png"
         },
         {
             "id": 43,
@@ -727,7 +727,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 44,
@@ -742,7 +742,7 @@
             "effects": {
                 "reduceHealth": 2
             },
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 45,
@@ -754,10 +754,13 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceHealth": 2
-            },
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 2
+                }
+            ],
+            "illustration": "images_foret/gremlin_jumping_out_of_a_wooden_box_229_2.png"
         },
         {
             "id": 46,
@@ -773,7 +776,7 @@
                 "type": "reduceChance",
                 "value": 2
             },
-            "illustration": "../images/images_foret/butterfly_flying_in_the_sky_46.png"
+            "illustration": "images_foret/butterfly_flying_in_the_sky_46.png"
         },
         {
             "id": 47,
@@ -789,7 +792,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/bat_from_behind_escaping_from_a_window_47.png"
+            "illustration": "images_foret/bat_from_behind_escaping_from_a_window_47.png"
         },
         {
             "id": 48,
@@ -804,7 +807,7 @@
             "effects": {
                 "reduceHealth": "result_rollDice"
             },
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 49,
@@ -832,7 +835,7 @@
             "effects": {
                 "reduceAttackForce": 3
             },
-            "illustration": "../images/images_foret/gremlins_with_daggers_attacking_and_angry_49.png"
+            "illustration": "images_foret/gremlins_with_daggers_attacking_and_angry_49.png"
         },
         {
             "id": 50,
@@ -850,7 +853,7 @@
                     "description": "Une clé mystérieuse trouvée sur l'un des Hommes des Bois."
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 51,
@@ -866,7 +869,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/green_valley_51.png"
+            "illustration": "images_foret/green_valley_51.png"
         },
         {
             "id": 52,
@@ -878,7 +881,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/arm_wrestling_with_armband_52.png"
+            "illustration": "images_foret/arm_wrestling_with_armband_52.png"
         },
         {
             "id": 53,
@@ -894,7 +897,7 @@
                 "loseAllGold": true,
                 "loseAllItems" : true 
             },
-            "illustration": "../images/images_foret/poison_effects_53.png"
+            "illustration": "images_foret/poison_effects_53.png"
         },
         {
             "id": 54,
@@ -902,7 +905,7 @@
             "choices": [
                 {"text":"Si vous persistez à vouloir l'attaquer, rendez-vous au 399.", "nextId":399},
                 {"text":"Si vous changez d'avis en revanche, suivez-le en haut des marches en vous rendant au 261.", "nextId":261}],
-            "illustration":"../images/images_foret/attack_yastromo_54_3.png",
+            "illustration":"images_foret/attack_yastromo_54_3.png",
             "items":[]
         },
         {
@@ -922,7 +925,7 @@
                     "nextId": 358
                 }
             ],
-            "illustration": "../images/images_foret/creature_in_a_cage_dark_cave_55_2.png"
+            "illustration": "images_foret/creature_in_a_cage_dark_cave_55_2.png"
         },
         {
             "id": 56,
@@ -938,7 +941,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/valley_56.png"
+            "illustration": "images_foret/valley_56.png"
         },
         {
             "id": 57,
@@ -961,7 +964,7 @@
                     "type": "rollDiceChance"
                 }
             ],
-            "illustration": "../images/images_foret/green_dragon_above_the_forest_jet_of_fire_57.png"
+            "illustration": "images_foret/green_dragon_above_the_forest_jet_of_fire_57.png"
         }
         ,
         {
@@ -985,7 +988,7 @@
                     "description": "Un marteau spécial avec l'initiale G gravée."
                 }
             ],
-            "illustration": "../images/images_foret/bronze_headed_hammer_G_58_2_thehead.png"
+            "illustration": "images_foret/bronze_headed_hammer_G_58_2_thehead.png"
         },
         {
             "id": 59,
@@ -997,7 +1000,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/path_in_the_dark_and_green_forest_59_2.png"
+            "illustration": "images_foret/path_in_the_dark_and_green_forest_59_2.png"
         },
         {
             "id": 60,
@@ -1013,7 +1016,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 61,
@@ -1029,7 +1032,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 62,
@@ -1041,7 +1044,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 63,
@@ -1053,7 +1056,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 64,
@@ -1065,7 +1068,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/crazy_tall_grass_64_2.png"
+            "illustration": "images_foret/crazy_tall_grass_64_2.png"
         },
         {
             "id": 65,
@@ -1077,7 +1080,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/simple_basic_camp_with_fire_plain_65_3.png"
+            "illustration": "images_foret/simple_basic_camp_with_fire_plain_65_3.png"
         },
         {
             "id": 66,
@@ -1089,7 +1092,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/tree_evening_66_2.png"
+            "illustration": "images_foret/tree_evening_66_2.png"
         },
         {
             "id": 67,
@@ -1101,7 +1104,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/green_valley_67.png"
+            "illustration": "images_foret/green_valley_67.png"
         },
         {
             "id": 68,
@@ -1116,7 +1119,7 @@
             "effects": {
                 "gainHealth": 3
             },
-            "illustration": "../images/images_foret/bottle_clear_liquid_halo_68_2.png"
+            "illustration": "images_foret/bottle_clear_liquid_halo_68_2.png"
         },
         {
             "id": 69,
@@ -1140,7 +1143,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/humanoides_69.png"
+            "illustration": "images_foret/humanoides_69.png"
         },
         {
             "id": 70,
@@ -1159,7 +1162,7 @@
                     "category": "equipment"
                 }
             ],
-            "illustration": "../images/images_foret/magic_sword_with_aura_70.png"
+            "illustration": "images_foret/magic_sword_with_aura_70.png"
         },
         {
             "id": 71,
@@ -1181,7 +1184,7 @@
             "effects": {
                 "reduceAttackForce": 3
             },
-            "illustration": "../images/images_foret/gremlin_chief_cavern_71_2.png"
+            "illustration": "images_foret/gremlin_chief_cavern_71_2.png"
         },
         {
             "id": 72,
@@ -1193,7 +1196,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/edge_forest_300_3.png"
+            "illustration": "images_foret/edge_forest_300_3.png"
         },
         {
             "id": 73,
@@ -1216,7 +1219,7 @@
                     "type": "rollDiceSkillChance"
                 }
             ],
-            "illustration": "../images/images_foret/stone_door_391_2.png"
+            "illustration": "images_foret/stone_door_391_2.png"
         },
         {
             "id": 74,
@@ -1237,7 +1240,7 @@
                     "type": "equipment"
                 }
             ],
-            "illustration": "../images/images_foret/copper_bell_and_five_gold_coins_74.png"
+            "illustration": "images_foret/copper_bell_and_five_gold_coins_74.png"
         },
         {
             "id": 75,
@@ -1249,7 +1252,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/simple_basic_camp_with_fire_plain_65_3.png"
+            "illustration": "images_foret/simple_basic_camp_with_fire_plain_65_3.png"
         },
         {
             "id": 76,
@@ -1260,7 +1263,7 @@
                     "nextId": 206
                 }
             ],
-            "illustration":"../images/images_foret/obliquepath_76_2.png",
+            "illustration":"images_foret/obliquepath_76_2.png",
             "items":[]
         },
         {
@@ -1277,7 +1280,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/path_tall_grass_309.png"
+            "illustration": "images_foret/path_tall_grass_309.png"
         },
         {
             "id": 78,
@@ -1294,7 +1297,7 @@
                     "category": "potions"
                 }
             ],
-            "illustration": "../images/images_foret/powder_of_levitation_in_a_glass_flask_95.png"
+            "illustration": "images_foret/powder_of_levitation_in_a_glass_flask_95.png"
         },
         {
             "id": 79,
@@ -1324,7 +1327,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/vampire_attack_79_3.png"
+            "illustration": "images_foret/vampire_attack_79_3.png"
         },
         {
             "id": 80,
@@ -1336,7 +1339,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/stone_stairs_going_up_from_a_dark_cave_80_2.png"
         },
         {
             "id": 81,
@@ -1359,7 +1362,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/arrow_in_tunnel_81.png"
+            "illustration": "images_foret/arrow_in_tunnel_81.png"
         },
         {
             "id": 82,
@@ -1379,7 +1382,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/tranquility_potion_82_2.png"
+            "illustration": "images_foret/tranquility_potion_82_2.png"
         },
         {
             "id": 83,
@@ -1394,7 +1397,7 @@
             "effects": {
                 "reduceHealth": 2
             },
-            "illustration": "../images/images_foret/healing_werewolf_83.png"
+            "illustration": "images_foret/healing_werewolf_83.png"
         },
         {
             "id": 84,
@@ -1418,7 +1421,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/beast_made_only_of_stones_84.png"
+            "illustration": "images_foret/beast_made_only_of_stones_84.png"
         },
         {
             "id": 85,
@@ -1434,7 +1437,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 86,
@@ -1446,7 +1449,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         },
         {
             "id": 87,
@@ -1458,7 +1461,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/cliffroad_on_the_hill_87_4.png"
+            "illustration": "images_foret/cliffroad_on_the_hill_87_4.png"
         },
         {
             "id": 88,
@@ -1474,7 +1477,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/strange_silhouettes_in_a_dark_cave_88_2.png"
+            "illustration": "images_foret/strange_silhouettes_in_a_dark_cave_88_2.png"
         },
         {
             "id": 89,
@@ -1494,7 +1497,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/well_with_stone_edge_359.png"
         },
         {
             "id": 90,
@@ -1517,7 +1520,7 @@
                     "type": "rollDiceChance"
                 }
             ],
-            "illustration": "../images/images_foret/hommes_barbus_90.png"
+            "illustration": "images_foret/hommes_barbus_90.png"
         },
         {
             "id": 91,
@@ -1540,7 +1543,7 @@
                 "value": 1
                 }
             ],
-            "illustration": "../images/images_foret/amber_eye_jewel_91_2.png"
+            "illustration": "images_foret/amber_eye_jewel_91_2.png"
         },
         {
             "id": 92,
@@ -1564,7 +1567,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/swarm_of_giant_bees_92.png"
+            "illustration": "images_foret/swarm_of_giant_bees_92.png"
         },
         {
             "id": 93,
@@ -1580,7 +1583,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/tunnel_splitting_bis_284.png"
         },
         {
             "id": 94,
@@ -1595,7 +1598,7 @@
                     "nextId": 144
                 }
             ],
-            "illustration": "../images/images_foret/a_rope_94.png"
+            "illustration": "images_foret/a_rope_94.png"
         }, 
         {
             "id": 95,
@@ -1615,7 +1618,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/powder_of_levitation_in_a_glass_flask_95.png"
+            "illustration": "images_foret/powder_of_levitation_in_a_glass_flask_95.png"
         }, 
         {
             "id": 96,
@@ -1655,7 +1658,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/attacking_dogs_96.png"
+            "illustration": "images_foret/attacking_dogs_96.png"
         }, 
         {
             "id": 97,
@@ -1671,7 +1674,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/old_wood_chair_97.png"
+            "illustration": "images_foret/old_wood_chair_97.png"
         }, 
         {
             "id": 98,
@@ -1693,7 +1696,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/gang_of_forest_bandits_archer_98.png"
+            "illustration": "images_foret/gang_of_forest_bandits_archer_98.png"
         }, 
         {
             "id": 99,
@@ -1709,7 +1712,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/hut_with_thatched_roof_and_mud_walls_99_2.png"
+            "illustration": "images_foret/hut_with_thatched_roof_and_mud_walls_99_2.png"
         }, 
         {
             "id": 100,
@@ -1728,7 +1731,7 @@
                     "quantity": 1
                 }
             ],
-            "illustration": "../images/images_foret/giant_bees_sphere_safety_100.png"
+            "illustration": "images_foret/giant_bees_sphere_safety_100.png"
         }, 
         {
             "id": 101,
@@ -1749,7 +1752,7 @@
                     "type": "equipment"
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         }, 
         {
             "id": 102,
@@ -1761,7 +1764,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/bifurcation_horse_hoof_prints_102_2.png"
+            "illustration": "images_foret/bifurcation_horse_hoof_prints_102_2.png"
         }, 
         {
             "id": 103,
@@ -1777,7 +1780,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/pile_of_branche_in_a_clearing_103.png"
+            "illustration": "images_foret/pile_of_branche_in_a_clearing_103.png"
         }, 
         {
             "id": 104,
@@ -1817,7 +1820,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/fighting_angry_peasants_104_2.png"
+            "illustration": "images_foret/fighting_angry_peasants_104_2.png"
         }, 
         {
             "id": 105,
@@ -1833,7 +1836,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/vultures_in_the_sky_105.png"
+            "illustration": "images_foret/vultures_in_the_sky_105.png"
         }, 
         {
             "id": 106,
@@ -1857,7 +1860,7 @@
                     "value": 2
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         }, 
         {
             "id": 107,
@@ -1877,7 +1880,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/demon_107.png"
+            "illustration": "images_foret/demon_107.png"
         }, 
         {
             "id": 108,
@@ -1894,7 +1897,7 @@
                     "value": 3
                 }
             ],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         }, 
         {
             "id": 109,
@@ -1914,7 +1917,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/trifurcation_plain_forest_109.png"
+            "illustration": "images_foret/trifurcation_plain_forest_109.png"
         }, 
         {
             "id": 110,
@@ -1930,7 +1933,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/map_foret.jpg"
+            "illustration": "images_foret/map_foret.jpg"
         }, 
         {
             "id": 111,
@@ -1947,7 +1950,7 @@
                     "value": 5
                 }
             ],
-            "illustration": "../images/images_foret/sorrowful_sad_mage_with_purple_dress_111.png"
+            "illustration": "images_foret/sorrowful_sad_mage_with_purple_dress_111.png"
         }, 
         {
             "id": 112,
@@ -1959,7 +1962,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/dense_vegetation_112_2.png"
+            "illustration": "images_foret/dense_vegetation_112_2.png"
         },
         {
             "id": 113,
@@ -1975,7 +1978,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/lake_wood_cabin_113_2.png"
+            "illustration": "images_foret/lake_wood_cabin_113_2.png"
         }, 
         {
             "id": 114,
@@ -1995,7 +1998,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/anthropomorph_tree_angry_114_2.png"
+            "illustration": "images_foret/anthropomorph_tree_angry_114_2.png"
         }, 
         {
             "id": 115,
@@ -2011,7 +2014,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/fork_in_the_road_115_3.png"
+            "illustration": "images_foret/fork_in_the_road_115_3.png"
         }, 
         {
             "id": 116,
@@ -2029,7 +2032,7 @@
                     "value": 15
                 }
             ],
-            "illustration": "../images/images_foret/dog_leather_collar_gold_116_2.png"
+            "illustration": "images_foret/dog_leather_collar_gold_116_2.png"
         }, 
         {
             "id": 117,
@@ -2049,7 +2052,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/goblin_attack_117.png"
+            "illustration": "images_foret/goblin_attack_117.png"
         }, 
         {
             "id": 118,
@@ -2069,7 +2072,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/wild_boar_118_2.png"
+            "illustration": "images_foret/wild_boar_118_2.png"
         }, 
         {
             "id": 119,
@@ -2086,7 +2089,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/quiet_plain_and_forest_119.png"
+            "illustration": "images_foret/quiet_plain_and_forest_119.png"
         }, 
         {
             "id": 120,
@@ -2141,7 +2144,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/tunnel_in_stone_well_122.png"
+            "illustration": "images_foret/tunnel_in_stone_well_122.png"
         },
         {
             "id": 123,
@@ -2178,7 +2181,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/path_in_the_dense_and_luxuriant_forest_124.png"
+            "illustration": "images_foret/path_in_the_dense_and_luxuriant_forest_124.png"
         },
         {
             "id": 125,
@@ -2195,7 +2198,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/green_sludge_cave_125.png"
+            "illustration": "images_foret/green_sludge_cave_125.png"
         },
         {
             "id": 126,
@@ -2216,7 +2219,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/opened_silver_box_with_gas_coming_out_126.png"
+            "illustration": "images_foret/opened_silver_box_with_gas_coming_out_126.png"
         },
         {
             "id": 127,
@@ -2234,7 +2237,7 @@
                     "value": 3
                 }
             ],
-             "illustration": "../images/images_foret/small_camp_under_a_giant_oak_178.png"
+             "illustration": "images_foret/small_camp_under_a_giant_oak_178.png"
         },
         {
             "id": 128,
@@ -2254,7 +2257,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/barbarian_fight_128.png"
+            "illustration": "images_foret/barbarian_fight_128.png"
         },
         {
             "id": 129,
@@ -2272,7 +2275,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/path_in_the_plains_sadness_129 .png"
+            "illustration": "images_foret/path_in_the_plains_sadness_129 .png"
         },
         {
             "id": 130,
@@ -2289,7 +2292,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/feline_woman_130_6.png"
+            "illustration": "images_foret/feline_woman_130_6.png"
         }, 
         {
             "id": 131,
@@ -2323,7 +2326,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/green_dragon_in_a_clearing_132.png"
+            "illustration": "images_foret/green_dragon_in_a_clearing_132.png"
         }, 
         {
             "id": 133,
@@ -2347,7 +2350,7 @@
                     "category": "equipment"
                 }
             ],
-            "illustration": "../images/images_foret/cursed_ring_133_2.png"
+            "illustration": "images_foret/cursed_ring_133_2.png"
         },
         {
             "id": 134,
@@ -2374,7 +2377,7 @@
                     "value": 1
                 }
             ],
-            "illustration": "../images/images_foret/bubbling_mud_199_3.png"
+            "illustration": "images_foret/bubbling_mud_199_3.png"
         },
         {
             "id": 135,
@@ -2391,7 +2394,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/tunnel_splitting_135.png"
+            "illustration": "images_foret/tunnel_splitting_135.png"
         }, 
         {
             "id": 136,
@@ -2403,7 +2406,7 @@
                 "nextId": 69
               }
             ],
-            "illustration":"../images/images_foret/catacomb_narrow_tunnel_136_2.png"
+            "illustration":"images_foret/catacomb_narrow_tunnel_136_2.png"
           },
           {
             "id": 137,
@@ -2423,12 +2426,12 @@
                 "nextId": 10
               }
             ], 
-            "illustration": "../images/images_foret/ogre_230.png"
+            "illustration": "images_foret/ogre_230.png"
           }, 
           {
             "id": 138,
             "text": "Vous avancez sur le chemin, entre les hautes herbes qui ondulent sous le vent. Mais bientôt vous avez la désagréable impression que ces herbes, en fait, ne se soumettent pas au souffle de la brise : il semble plutôt qu'elles soient douées de volonté et qu'elles puissent remuer à leur guise. Et soudain, un bouquet d'herbes se couche en travers du sentier et s'enroule autour de votre cheville. D'autres herbes font de même, essayant de vous saisir bras et jambes. Vous vous rendez compte alors que vous êtes cerné par de l'HERBE D'EMBROUILLE.",
-            "illustration": "../images/images_foret/herbe_embrouille_138.png",
+            "illustration": "images_foret/herbe_embrouille_138.png",
             "items": [],
             "choices": [
               {
@@ -2455,7 +2458,7 @@
                 "nextId": 198
               }
             ], 
-            "illustration": "../images/images_foret/little_path_in_the_plain_in_the_early_morning_244.png"
+            "illustration": "images_foret/little_path_in_the_plain_in_the_early_morning_244.png"
         }, 
         {
             "id": 140,
@@ -2471,7 +2474,7 @@
                 "nextId": 267
               }
             ],
-            "illustration": "../images/images_foret/foreground_small_hills_and_plain_background_forest_140_3.png"
+            "illustration": "images_foret/foreground_small_hills_and_plain_background_forest_140_3.png"
         },
         {
             "id": 141,
@@ -2505,7 +2508,7 @@
                 "nextId": 251
               }
             ], 
-            "illustration": "../images/images_foret/centaur_archer_142.png"
+            "illustration": "images_foret/centaur_archer_142.png"
         },
         {
             "id": 143,
@@ -2516,10 +2519,13 @@
                 "nextId": 80
               }
             ], 
-            "effects": {
-                "reduceHealth": 3
-            },
-            "illustration":[]
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 2
+                }
+            ],
+            "illustration": "images_foret/sword_mushroom_143.png"
         }, 
         {
             "id": 144,
@@ -2534,7 +2540,7 @@
                 "nextId": 387
               }
             ],
-            "illustration":"../images/images_foret/craig1755_pixel_art_16_bit_in_Lucas_Art_style_in_the_green_gras_144.png"
+            "illustration":"images_foret/craig1755_pixel_art_16_bit_in_Lucas_Art_style_in_the_green_gras_144.png"
         }, 
         {
             "id": 145,
@@ -2551,7 +2557,7 @@
                     "value": "all"
                 }
             ],
-            "illustration": "../images/images_foret/boat_sinking_145_3.png"
+            "illustration": "images_foret/boat_sinking_145_3.png"
         },
         {
             "id": 146,
@@ -2576,7 +2582,7 @@
                 "nextId": 220
               }
             ],
-            "illustration":"../images/images_foret/old_wooden_cabin_in_a_clearing_147.png"
+            "illustration":"images_foret/old_wooden_cabin_in_a_clearing_147.png"
 
         }, 
         {
@@ -2592,7 +2598,7 @@
                 "nextId": 20
               }
             ],
-            "illustration":"../images/images_foret/path_in_the_dense_forest_in_the_morning_148.png"
+            "illustration":"images_foret/path_in_the_dense_forest_in_the_morning_148.png"
         }, 
         {
             "id": 149,
@@ -2607,7 +2613,7 @@
                 "nextId": 306
               }
             ], 
-            "illustration":"../images/images_foret/valley_wall_tree_149_2.png"
+            "illustration":"images_foret/valley_wall_tree_149_2.png"
         },
         {
             "id": 150,
@@ -2622,7 +2628,7 @@
                 "nextId": 171
               }
             ], 
-            "illustration":"../images/images_foret/valley_wall_tree_150_2.png"
+            "illustration":"images_foret/valley_wall_tree_150_2.png"
         }, 
         {
             "id": 151,
@@ -2637,7 +2643,7 @@
                 "nextId": 296
               }
             ],
-            "illustration" : "../images/images_foret/tunnel_curtain_151.png"
+            "illustration" : "images_foret/tunnel_curtain_151.png"
         },
         {
             "id": 152,
@@ -2656,7 +2662,7 @@
                 "nextId": 249
               }
             ], 
-            "illustration":"../images/images_foret/craig1755_pixel_art_fabulous_throne_in_a_cave_152.png"
+            "illustration":"images_foret/craig1755_pixel_art_fabulous_throne_in_a_cave_152.png"
         },
         {
             "id": 153,
@@ -2679,7 +2685,7 @@
                 "nextId": 355
               }
             ], 
-            "illustration":"../images/images_foret/bad_feline_woman_153_2.png"
+            "illustration":"images_foret/bad_feline_woman_153_2.png"
         }, 
         {
             "id": 154,
@@ -2708,7 +2714,7 @@
                 "nextId": 259
               }
             ], 
-            "illustration":"../images/images_foret/man_of_ice_and_fire_155.png"
+            "illustration":"images_foret/man_of_ice_and_fire_155.png"
         },
         {
             "id": 156,
@@ -2725,7 +2731,7 @@
                     "value": 3
                 }
             ],
-            "illustration": "../images/images_foret/man_of_ice_and_fire_155.png"
+            "illustration": "images_foret/man_of_ice_and_fire_155.png"
         }, 
         {
             "id": 157,
@@ -2741,7 +2747,7 @@
               }
             ],
             "items":[],
-            "illustration":"../images/images_foret/hole_in_the_soil_of_the_forest_157.png"
+            "illustration":"images_foret/hole_in_the_soil_of_the_forest_157.png"
         }, 
         {
             "id": 158,
@@ -2763,7 +2769,7 @@
                     "type": "rollDiceChance"
                 }
             ],
-            "illustration": "../images/images_foret/chair_upsidedown_just_above_the_floor_158_2.png"
+            "illustration": "images_foret/chair_upsidedown_just_above_the_floor_158_2.png"
         }, 
         {
             "id": 159,
@@ -2778,7 +2784,7 @@
         {
             "id": 160,
             "text": "L'étroit sentier continue de s'enfoncer dans la forêt épaisse. Toutes sortes de cris d'animaux et de bruits étranges retentissent à travers les feuillages ; et bientôt, le chemin s'agrandit : il fait à présent un mètre de large. Peu après, vous arrivez devant un poteau indicateur en bois. Il est couvert de mousse et, à son sommet, un gros corbeau est perché. Le panneau porte deux indications : nord et est. Vous êtes en train de vous demander quelle direction prendre, lorsque vous entendez une voix lancer : « Bon après-midi ! » Vous levez les yeux en direction de l'endroit d'où la voix est venue, et vous voyez le corbeau qui vous regarde attentivement. « Bon après-midi », répondez-vous à voix basse, en vous sentant un peu idiot. Le corbeau alors reprend la parole et vous demande où vous allez. Vous lui répondez que vous cherchez deux Gobelins, des petites créatures au corps noueux et à la peau brune et écailleuse. « Pour une Pièce d'Or, je vous donnerai conseil », dit aussitôt le corbeau.",
-            "illustration": "../images/images_foret/corbeau160.jpg",
+            "illustration": "images_foret/corbeau160.jpg",
             "choices":[
                 {"text":"Qu'allez vous faire ? Payer au corbeau le prix qu'il demande pour son conseil ? Rendez-vous au 343.", "nextId": 343, "cost": 1, "condition": ["gold", ">=", 1]},
                 {"text": "Ne pas vous occuper de l'oiseau et poursuivre votre chemin vers le nord? Rendez-vous au 8.", "nextId": 8},
@@ -2809,7 +2815,7 @@
                 "nextId": 285
               }
             ], 
-            "illustration":"../images/images_foret/simple_basic_camp_with_fire_plain_162.png"
+            "illustration":"images_foret/simple_basic_camp_with_fire_plain_162.png"
         }, 
         {
             "id": 163,
@@ -2826,7 +2832,7 @@
                 "value": 3
               }
             ],
-            "illustration": "../images/images_foret/little_dark_cloud_thunder_163_2.png"
+            "illustration": "images_foret/little_dark_cloud_thunder_163_2.png"
         }, 
         {
             "id": 164,
@@ -2837,7 +2843,7 @@
                 "nextId": 144
               }
             ],
-            "illustration":"../images/images_foret/craig1755_pixel_art_exit_the_cave_outside_green_grass_plain_164.png"
+            "illustration":"images_foret/craig1755_pixel_art_exit_the_cave_outside_green_grass_plain_164.png"
         },
         {
             "id": 165,
@@ -2847,7 +2853,8 @@
                 "text": "Si vous êtes vainqueur, rendez-vous au 242.",
                 "nextId": 242
               }
-            ]
+            ], 
+            "illustration" :"images_foret/gremlin_jumping_out_of_a_wooden_box_229_2.png"
         },
         {
             "id": 166,
@@ -2869,7 +2876,7 @@
                 "requiresAllMonstersDefeated" : true
               }
             ], 
-            "illustration":"../images/images_foret/angry_green_dragon_attacking_in_a_clearing_167.png"
+            "illustration":"images_foret/angry_green_dragon_attacking_in_a_clearing_167.png"
         }, 
         {
             "id": 168,
@@ -2884,7 +2891,7 @@
                 "nextId": 358
               }
             ],
-            "illustration": "../images/images_foret/goblin_in_a_metal_cage_in_a_dark_cavern_168_2.png"
+            "illustration": "images_foret/goblin_in_a_metal_cage_in_a_dark_cavern_168_2.png"
         }, 
         {
             "id": 169,
@@ -2917,7 +2924,7 @@
                 "nextId": 346
               }
             ],
-            "illustration": "../images/images_foret/angry_mage_arragon_170.png"
+            "illustration": "images_foret/angry_mage_arragon_170.png"
         },
         {
             "id": 171,
@@ -2928,7 +2935,7 @@
                 "nextId": 190
               }
             ], 
-            "illustration":"../images/images_foret/path_forest_171.png"
+            "illustration":"images_foret/path_forest_171.png"
         },
         {
             "id": 172,
@@ -2946,7 +2953,8 @@
                 "text": "Retourner sur le chemin et partir vers l'est ? Rendez-vous au 281.",
                 "nextId": 281
               }
-            ]
+            ], 
+            "illustration":"images_foret/well_with_stone_edge_359.png"
         },
         {
             "id": 173,
@@ -2965,7 +2973,7 @@
                 "nextId": 227
               }
             ], 
-            "illustration":"../images/images_foret/scary_ugly_ghoul_in_an_evil_tomb_173.png"
+            "illustration":"images_foret/scary_ugly_ghoul_in_an_evil_tomb_173.png"
         },
         {
             "id": 174,
@@ -2986,7 +2994,7 @@
                 "value": 10
               }
             ],
-            "illustration":"../images/images_foret/sol_ring_174.png"
+            "illustration":"images_foret/sol_ring_174.png"
         },
         {
             "id": 175,
@@ -3017,7 +3025,7 @@
                     "category": "equipment"                         
                 }
             ], 
-            "illustration": "../images/images_foret/bronze_headed_hammer_G_58_2_handle.png"
+            "illustration": "images_foret/bronze_headed_hammer_G_58_2_handle.png"
         }, 
         {
             "id": 177,
@@ -3027,7 +3035,7 @@
                 {"text":"Si vous voulez aller vers l'ouest, rendez-vous au 289.", "nextId":289},
                 {"text":"Si vous préférez aller à l'est, rendez-vous au 160. ", "nextId":160}
             ],
-            "illustration":"../images/images_foret/small_path_177_bis.png"
+            "illustration":"images_foret/small_path_177_bis.png"
         }, 
         {
             "id": 178,
@@ -3046,7 +3054,7 @@
                 "value": 1
               }
             ],
-            "illustration":"../images/images_foret/small_camp_under_a_giant_oak_178.png"
+            "illustration":"images_foret/small_camp_under_a_giant_oak_178.png"
         },
         {
             "id": 179,
@@ -3065,7 +3073,7 @@
                 "category": "equipment"
               }
             ],
-            "illustration":"../images/images_foret/magic_helmet_179_3.png"
+            "illustration":"images_foret/magic_helmet_179_3.png"
         },
         {
             "id": 180,
@@ -3082,7 +3090,7 @@
               }
             ],
             "items": [],
-            "illustration":"../images/images_foret/fork_in_the_path_plain_hills_180_2.png"
+            "illustration":"images_foret/fork_in_the_path_plain_hills_180_2.png"
         },
         {
             "id": 181,
@@ -3102,7 +3110,7 @@
               }
             ],
             "items": [],
-            "illustration":"../images/images_foret/merfolk_trident_181.png"
+            "illustration":"images_foret/merfolk_trident_181.png"
         },
         {
             "id": 182,
@@ -3127,7 +3135,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/sword_planted_in_a_rock_182.png"
+            "illustration": "images_foret/sword_planted_in_a_rock_182.png"
         },
         {
             "id": 183,
@@ -3189,7 +3197,7 @@
                 "type": "gameOver"
               }
             ],
-            "illustration": "../images/images_foret/carnivorous_eel_river_186.png"
+            "illustration": "images_foret/carnivorous_eel_river_186.png"
         }, 
         {
             "id": 187,
@@ -3210,7 +3218,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/small_creature_like_a_goblin_187_2.png"
+            "illustration": "images_foret/small_creature_like_a_goblin_187_2.png"
         }
         , 
         {
@@ -3228,7 +3236,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/wall_tree_188_3.png"
+            "illustration": "images_foret/wall_tree_188_3.png"
         }, 
         {
             "id": 189,
@@ -3245,7 +3253,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/green_mushrooms_with_humanoids_189_2.png"
+            "illustration": "images_foret/green_mushrooms_with_humanoids_189_2.png"
         }
         , 
         {
@@ -3263,7 +3271,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/small_path_in_the_giant_forest_190.png"
+            "illustration": "images_foret/small_path_in_the_giant_forest_190.png"
         }
         , 
         {
@@ -3280,7 +3288,7 @@
                 "nextId": 243
               }
             ],
-            "illustration": "../images/images_foret/monk_valley_369.png"
+            "illustration": "images_foret/monk_valley_369.png"
         }
         , 
         {
@@ -3297,7 +3305,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/little_man_271.png"
+            "illustration": "images_foret/little_man_271.png"
         }
         , 
         {
@@ -3337,7 +3345,7 @@
                 "category": "equipment"
               }
             ],
-            "illustration": "../images/images_foret/friendly_man_standing_in_a_green_plain_194_2.png"
+            "illustration": "images_foret/friendly_man_standing_in_a_green_plain_194_2.png"
         }, 
         {
             "id": 195,
@@ -3353,7 +3361,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/monkey_man_front_of_a_cabin_195.png"
+            "illustration": "images_foret/monkey_man_front_of_a_cabin_195.png"
         }, 
         {
             "id": 196,
@@ -3374,7 +3382,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/slippy_troll_in_a_cavern_196.png"
+            "illustration": "images_foret/slippy_troll_in_a_cavern_196.png"
         }, 
         {
             "id": 197,
@@ -3394,7 +3402,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/healing_potion.png"
+            "illustration": "images_foret/healing_potion.png"
         }, 
         {
             "id": 198,
@@ -3410,7 +3418,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/path_on_the_small_hills_sunny_day_198.png"
+            "illustration": "images_foret/path_on_the_small_hills_sunny_day_198.png"
         }, 
         {
             "id": 199,
@@ -3430,7 +3438,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/bubbling_mud_199_3.png"
+            "illustration": "images_foret/bubbling_mud_199_3.png"
         }, 
         {
             "id": 200,
@@ -3446,7 +3454,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/stone_stair_200.png"
+            "illustration": "images_foret/stone_stair_200.png"
         }, 
         {
             "id": 201,
@@ -3463,7 +3471,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/_2.png"
+            "illustration": "images_foret/_2.png"
         }, 
         {
             "id": 202,
@@ -3483,7 +3491,7 @@
                     "goldValue": 10
                   }
             ],
-            "illustration": "../images/images_foret/gold_earrings_202.png"
+            "illustration": "images_foret/gold_earrings_202.png"
         }, 
         {
             "id": 203,
@@ -3503,7 +3511,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/changeforme.png"
+            "illustration": "images_foret/changeforme.png"
         }, 
         {
             "id": 204,
@@ -3529,7 +3537,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/stone_bridge_204.png"
+            "illustration": "images_foret/stone_bridge_204.png"
         }, 
         {
             "id": 205,
@@ -3546,7 +3554,7 @@
                 "quantity": 6 
               }
             ],
-            "illustration": "../images/images_foret/leather_purses_gold_coins_205.png"
+            "illustration": "images_foret/leather_purses_gold_coins_205.png"
         }, 
         {
             "id": 206,
@@ -3562,7 +3570,7 @@
                     "nextId": 187
                 }
                 ],
-            "illustration":"../images/images_foret/help_in_forest_206_2.png",
+            "illustration":"images_foret/help_in_forest_206_2.png",
             "items":[]
         }, 
         {
@@ -3595,7 +3603,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/owlboy_style_a_path_in_a_plain_323.png"
+            "illustration": "images_foret/owlboy_style_a_path_in_a_plain_323.png"
         }, 
         {
             "id": 209,
@@ -3611,7 +3619,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/hut_and_dark_skin_man_99_2.png"
+            "illustration": "images_foret/hut_and_dark_skin_man_99_2.png"
         }, 
         {
             "id": 210,
@@ -3627,7 +3635,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/homme_des_bois_combat_210.png"
+            "illustration": "images_foret/homme_des_bois_combat_210.png"
         }, 
         {
             "id": 211,
@@ -3643,7 +3651,7 @@
               "name": "potion anti poison",
               "category": "potions"
             }, 
-            "illustration": "../images/images_foret/healing_potion.png"
+            "illustration": "images_foret/healing_potion.png"
         }, 
         {
             "id": 212,
@@ -3665,7 +3673,7 @@
               {"name": "Quatrième GUERRIER CLONE", "skill": 6, "health": 5}
             ],
             "items": [],
-            "illustration": "../images/images_foret/guerriers_clones_212.png"
+            "illustration": "images_foret/guerriers_clones_212.png"
         }, 
         {
             "id": 213,
@@ -3677,7 +3685,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/path_in_the_luxuriant_forest_blue_and_green_213.png"
+            "illustration": "images_foret/path_in_the_luxuriant_forest_blue_and_green_213.png"
         }, 
         {
             "id": 214,
@@ -3689,7 +3697,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/little_stone_tunnel_in_the_darkness_214_3.png"
+            "illustration": "images_foret/little_stone_tunnel_in_the_darkness_214_3.png"
         }, 
         {
             "id": 215,
@@ -3704,7 +3712,7 @@
                 "nextId": 201
               }
             ],
-            "illustration": "../images/images_foret/metal_shield_215.png"
+            "illustration": "images_foret/metal_shield_215.png"
         }, 
         {
             "id": 216,
@@ -3716,7 +3724,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/path_on_the_edge_of_a_cliff_216.png"
+            "illustration": "images_foret/path_on_the_edge_of_a_cliff_216.png"
         }, 
         {
             "id": 217,
@@ -3742,7 +3750,7 @@
                 "category": "potions"
               }
             ],
-            "illustration": "../images/images_foret/human_bones_in_a_dark_cave_217.png"
+            "illustration": "images_foret/human_bones_in_a_dark_cave_217.png"
         }, 
         {
             "id": 218,
@@ -3755,7 +3763,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/boy_with_green_leather_short_and_shirt_218.png",
+            "illustration": "images_foret/boy_with_green_leather_short_and_shirt_218.png",
             "effects":[
                 {
                     "type": "reduceFiveGoldOrRemoveOneItem"
@@ -3784,7 +3792,7 @@
                     "value": 1
                 }
             ],
-            "illustration": "../images/images_foret/silver_dart_219.png"
+            "illustration": "images_foret/silver_dart_219.png"
         },
         {
             "id": 220,
@@ -3799,7 +3807,7 @@
                     "nextId": 115
                 }
             ], 
-            "illustration":"../images/images_foret/hole_tree_220_2.png"
+            "illustration":"images_foret/hole_tree_220_2.png"
         },
         {
             "id": 221,
@@ -3814,7 +3822,7 @@
                     "nextId": 199
                 }
             ],
-            "illustration":"../images/images_foret/green_valley_221.png"
+            "illustration":"images_foret/green_valley_221.png"
         }, 
         {
             "id": 222,
@@ -3850,7 +3858,7 @@
                 "quantity": 5
               }
             ],
-            "illustration": "../images/images_foret/sorrowful_sad_mage_with_purple_dress_223.png"
+            "illustration": "images_foret/sorrowful_sad_mage_with_purple_dress_223.png"
         }, 
         {
             "id": 224,
@@ -3862,8 +3870,23 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/la_mort_t_attend_224.png"
+            "illustration": "images_foret/la_mort_t_attend_224.png"
         }, 
+        {
+            "id": 225,
+            "text": "Vous lancez un juron et vous vous hissez hors de l'eau en vous glissant dans l'entrée du tunnel. Vous remarquez alors avec étonnement qu'il est éclairé à intervalles réguliers et sur toute sa longueur par des torches allumées. Si vous souhaitez avancer à quatre pattes dans ce tunnel, rendez-vous au 135. Si vous préférez remonter l'échelle et retourner sur le chemin, rendez-vous au 362.",
+            "choices": [
+                {
+                    "text": "Si vous souhaitez avancer à quatre pattes dans ce tunnel, rendez-vous au 135.",
+                    "nextId": 135
+                },
+                {
+                    "text": "Si vous préférez remonter l'échelle et retourner sur le chemin, rendez-vous au 362.",
+                    "nextId": 362
+                }
+            ],
+            "illustration": "images_foret/tunnel_in_stone_well_122.png"
+        },
         {
             "id": 226,
             "text": "Vous entendez, venant de votre droite, des voix qui se disputent dans une langue étrange. Les personnages qui parlent ainsi sont cachés par les arbres",
@@ -3878,7 +3901,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/strange_forest_with_dense_vegetation_dark_atmosphere_226_2.png"
+            "illustration": "images_foret/strange_forest_with_dense_vegetation_dark_atmosphere_226_2.png"
         }, 
         {
             "id": 227,
@@ -3903,7 +3926,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/attacking_ghoul_in_the_evil_tomb_227.png"
+            "illustration": "images_foret/attacking_ghoul_in_the_evil_tomb_227.png"
         }, 
         {
             "id": 228,
@@ -3915,7 +3938,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/in_the_valley_small_hills_228.png"
+            "illustration": "images_foret/in_the_valley_small_hills_228.png"
         }, 
         {
             "id": 229,
@@ -3938,7 +3961,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/gremlin_jumping_out_of_a_wooden_box_229_2.png"
+            "illustration": "images_foret/gremlin_jumping_out_of_a_wooden_box_229_2.png"
         }, 
         {
             "id": 230,
@@ -3958,7 +3981,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/ogre_230.png"
+            "illustration": "images_foret/ogre_230.png"
         }, 
         {
             "id": 231,
@@ -3992,7 +4015,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/three_death_hawk_attacking_in_the_forest_231.png"
+            "illustration": "images_foret/three_death_hawk_attacking_in_the_forest_231.png"
         }, 
         {
             "id": 232,
@@ -4020,7 +4043,7 @@
                 "value": 1
               }
             ],
-            "illustration": "../images/images_foret/bronze_headed_hammer_G_58_2_handle.png"
+            "illustration": "images_foret/bronze_headed_hammer_G_58_2_handle.png"
         }, 
         {
             "id": 233,
@@ -4036,7 +4059,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/well_with_stone_edge_359.png"
+            "illustration": "images_foret/well_with_stone_edge_359.png"
         }, 
         {
             "id": 234,
@@ -4048,7 +4071,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/fork_in_the_road_115_3.png"
+            "illustration": "images_foret/fork_in_the_road_115_3.png"
         }, 
         {
             "id": 235,
@@ -4071,7 +4094,7 @@
                 "quantity": 1
               }
             ],
-            "illustration": "../images/images_foret/completely_destroyed_wood_cabin_235.png"
+            "illustration": "images_foret/completely_destroyed_wood_cabin_235.png"
         }, 
         {
             "id": 236,
@@ -4087,7 +4110,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/thatched_roof_stone_house_236.png"
+            "illustration": "images_foret/thatched_roof_stone_house_236.png"
         }, 
         {
             "id": 237,
@@ -4109,7 +4132,7 @@
                 "value": 2
               }
             ],
-            "illustration": "../images/images_foret/broken_leg_darkness_237.png"
+            "illustration": "images_foret/broken_leg_darkness_237.png"
         }, 
         {
             "id": 238,
@@ -4137,7 +4160,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/pear_tree_239_3.png"
+            "illustration": "images_foret/pear_tree_239_3.png"
         }, 
         {
             "id": 240,
@@ -4172,7 +4195,7 @@
                 "health": 8
               }
             ],
-            "illustration": "../images/images_foret/agressive_bear_in_the_forest_219.png"
+            "illustration": "images_foret/agressive_bear_in_the_forest_219.png"
         }, 
         {
             "id": 242,
@@ -4191,7 +4214,7 @@
                 "value": 28
               }
             ],
-            "illustration": ""
+            "illustration": "images_foret/single_gold_bar_dark_cave_242.png"
         }, 
         {
             "id": 243,
@@ -4207,7 +4230,7 @@
                 "nextId": 33
               }
             ],
-            "illustration": "../images/images_foret/monk_valley_369.png"
+            "illustration": "images_foret/monk_valley_369.png"
         }, 
         {
             "id": 244,
@@ -4218,7 +4241,7 @@
                 "nextId": 198
               }
             ],
-            "illustration": "../images/images_foret/little_path_in_the_plain_in_the_early_morning_244.png"
+            "illustration": "images_foret/little_path_in_the_plain_in_the_early_morning_244.png"
         }, 
         {
             "id": 245,
@@ -4237,7 +4260,7 @@
                 "nextId": 393
               }
             ],
-            "illustration": "../images/images_foret/trifurcation_three_paths_in_the_valley_245_4.png"
+            "illustration": "images_foret/trifurcation_three_paths_in_the_valley_245_4.png"
         }, 
         {
             "id": 246,
@@ -4248,7 +4271,7 @@
                 "nextId": 204
               }
             ],
-            "illustration": "../images/images_foret/exit_big_forest_246.png"
+            "illustration": "images_foret/exit_big_forest_246.png"
         }, 
         {
             "id": 247,
@@ -4263,7 +4286,7 @@
                 "nextId": 144
               }
             ],
-            "illustration": "../images/images_foret/yellow_arrow_drawn_in_the_grass_247.png"
+            "illustration": "images_foret/yellow_arrow_drawn_in_the_grass_247.png"
         }, 
         {
             "id": 248,
@@ -4290,7 +4313,7 @@
                 "category": "equipment"
               }
             ],
-            "illustration": "../images/images_foret/magic_shield_aura_halo_248.png"
+            "illustration": "images_foret/magic_shield_aura_halo_248.png"
         }, 
         {
             "id": 249,
@@ -4301,7 +4324,7 @@
                 "nextId": 164
               }
             ],
-            "illustration": "../images/images_foret/craig1755_pixel_art_exit_of_the_cave_249.png"
+            "illustration": "images_foret/craig1755_pixel_art_exit_of_the_cave_249.png"
         }, 
         {
             "id": 250,
@@ -4318,7 +4341,7 @@
                 "value": 2
               }
             ],
-            "illustration": "../images/images_foret/fallen_blue_ceramic_vase_250_2.png"
+            "illustration": "images_foret/fallen_blue_ceramic_vase_250_2.png"
         }, 
         {
             "id": 251,
@@ -4346,7 +4369,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/centaur_archer_142.png"
+            "illustration": "images_foret/centaur_archer_142.png"
         }, 
         {
             "id": 252,
@@ -4376,7 +4399,7 @@
                 "nextId": 187
               }
             ],
-            "illustration": "../images/images_foret/hommedjellaba253.jpg",
+            "illustration": "images_foret/hommedjellaba253.jpg",
             "items": []
         }, 
         {
@@ -4392,7 +4415,7 @@
                 "nextId": 300
               }
             ],
-            "illustration": "../images/images_foret/mysterious_growl_in_the_forest_254.png",
+            "illustration": "images_foret/mysterious_growl_in_the_forest_254.png",
             "items":[]
         }, 
         {
@@ -4408,7 +4431,7 @@
                 "nextId": 334
               }
             ],
-            "illustration": "../images/images_foret/sword_in_a_rock_255.png"
+            "illustration": "images_foret/sword_in_a_rock_255.png"
         }, 
         {
             "id": 256,
@@ -4430,7 +4453,7 @@
                 "chanceCheckPassed":false
               }
             ],
-            "illustration": "../images/images_foret/well_falling_256.png"
+            "illustration": "images_foret/well_falling_256.png"
         }, 
         {
             "id": 257,
@@ -4463,7 +4486,7 @@
                 "requiresItem": "petite flute de cuivre"
               }
             ],
-            "illustration": "../images/images_foret/green_dragon_in_a_clearing_sleeping_258.png"
+            "illustration": "images_foret/green_dragon_in_a_clearing_sleeping_258.png"
         }, 
         {
             "id": 259,
@@ -4494,7 +4517,7 @@
                 "chanceCheckPassed": false
               }
             ],
-            "illustration": "../images/images_foret/man_of_ice_and_fire_155.png"
+            "illustration": "images_foret/man_of_ice_and_fire_155.png"
         }, 
         {
             "id": 260,
@@ -4510,7 +4533,7 @@
         {
             "id": 261,
             "text": "Vous suivez le vieil homme vêtu d'une longue robe en haillons. Il souffle et halète en montant l'escalier en colimaçon qui mène à une grande pièce, au sommet de la tour. Des étagères, des armoires et des vitrines s'alignent le long des murs, toutes remplies de flacons, de bocaux, d'armes, de cuirasses et de toutes sortes d'objets à l'aspect étrange. Yaztromo traverse ce bric-à-brac en traînant les pieds et se laisse tomber sur une veille chaise en bois de chêne. Il glisse alors la main dans une poche, sur sa poitrine, et en sort une petite paire de lunettes cerclées d'or qu'il pose sur son nez. Puis il prend une ardoise et un morceau de craie sur une table et se met à écrire fébrilement. Il vous tend ensuite l'ardoise que vous lisez attentivement.\n ARTICLES DISPONIBLES PRIX \n Potion de Guérison 3 pièces d’Or \n Potion de Contrôle des Plantes 2 pièces d’Or \n Potion de Tranquillité 3 pièces d’Or \n Potion de Contrôle des Insectes 2 pièces d’Or \n Potion Antipoison 2 pièces d’Or \n Eau Bénite 3 pièces d’Or \n Anneau de Lumière 3 pièces d’Or \n Bottes à Bondir 2 pièces d’Or \n Corde Magique 3 pièces d’Or \n Filet de Capture 3 pièces d’Or. \n Brassard de Force 3 pièces d’Or \n Gant d'Adresse au Lancer 2 pièces d’Or \n Perche à Sonder 2 pièces d’Or \n Gousses d'Ail 3 pièces d’Or \n Bandeau de Concentration 3 pièces d’Or \n Capsules de Feu 3 pièces d’Or \n Filtres à Nez 3 pièces d’Or. \n Le Mage vous précise que le mode d'emploi de chaque article est clairement expliqué sur une étiquette qui lui est attachée ; on peut également y lire des suggestions concernant les circonstances dans lesquelles il est conseillé d'en faire usage. Yaztromo pousse un soupir et vous signale que, malheureusement, chacun de ces objets magiques ne peut être utilisé qu'une seule fois ; il ajoute cependant qu'à ce prix là, vous ne trouverez rien de meilleur sur le marché. Si vous décidez d'acheter l'un quelconque (ou plusieurs) de ces objets, vous devrez en payer le prix : vous déduirez donc de votre capital autant de Pièces d'Or qu'il vous en aura coûté, et vous inscrirez chacune de vos acquisitions sur votre Feuille d'Aventure sous la rubrique appropriée. Yaztromo vous demande alors pourquoi vous voulez lui acheter ces objets, et vous lui racontez votre histoire en lui expliquant que vous avez pris la décision de poursuivre la mission de l'infortuné Gromollet. « Ah oui, en effet, répond Yaztromo d'une voix douce. J'ai entendu dire que les bons nains de Pont-de-Pierre avaient perdu leur légendaire marteau de guerre. Et sans lui, leur roi ne peut lever le peuple pour défendre le village menacé par les Trolls des Collines. Selon la rumeur, le roi d'un autre village de nains, agissant par jalousie, a envoyé un aigle à Pont-de-Pierre pour y voler le marteau, et le rapace a réussi son coup. Mais en revenant vers la Forêt des Ténèbres, il a été attaqué en plein vol par des Faucons de la Mort et le marteau est tombé dans les bois où l'on a perdu sa trace. D'après ce que l'on sait, deux Gobelins l'ont trouvé et n'ont pas réussi à se mettre d'accord pour savoir qui allait le garder. Ils se sont battus pendant des heures à ce sujet ; mais comme aucun des deux ne parvenait à vaincre l'autre, ils ont fini par abandonner. C'est alors qu'ils ont découvert qu on pouvait dévisser la tête du marteau de son manche, et la dispute a été aussitôt réglée : l'un des Gobelins a gardé la tête du marteau, et l'autre, le manche. Puis ils sont repartis chacun de son côté, tout heureux d'emporter leur trésor. Qui sait s'ils ont conservé leur trouvaille ? Nul ne peut l'affirmer, et j'ai bien peur que vos recherches en soient rendues plus difficiles encore. Tout ce que je peux vous dire c'est que la tête est en bronze et le manche en ébène poli. Sachez aussi que la lettre G est gravée à la fois sur la tête et sur le manche. Mais, croyez-moi, votre tâche n'est guère aisée. Enfin, bonne chance, malgré tout... » ", 
-            "illustration": "../images/images_foret/yastromo261bis.png",
+            "illustration": "images_foret/yastromo261bis.png",
             "items": [
                 {
                     "name": "potion de guérison",
@@ -4613,7 +4636,7 @@
                 "itemName": "petite bouteille contenant un liquide incolore"
               }
             ],
-            "illustration": "../images/images_foret/bottle_262.png",
+            "illustration": "images_foret/bottle_262.png",
             "choices": [
               {
                 "text": "Vous prenez ensuite l'or, et vous quittez la caverne pour rejoindre le chemin et poursuivre votre voyage en direction du nord. Rendez-vous au 337.",
@@ -4627,7 +4650,7 @@
         {
             "id": 263,
             "text": "Il n'y a pas grand-chose d'intéressant dans la caverne. Vous ne voyez tout d'abord qu'une paillasse, des pots en pierre, une table et une chaise ; mais bientôt, sur une étagère au-dessus du lit, vous remarquez une petite boîte d'argent qui attire votre regard. Si vous souhaitez ouvrir cette boîte, rendez-vous au 126. Si vous préférez quitter la caverne et repartir vers le nord sans emporter la boîte d'argent, rendez-vous au 358.",
-            "illustration": "../images/images_foret/ogre_cavern_263.png",
+            "illustration": "images_foret/ogre_cavern_263.png",
             "choices": [
               {
                 "text": "Si vous souhaitez ouvrir cette boîte, rendez-vous au 126.",
@@ -4657,7 +4680,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/three_mushrooms_264.png"
+            "illustration": "images_foret/three_mushrooms_264.png"
         }, 
         {
             "id": 265,
@@ -4677,7 +4700,7 @@
                 }
             ],
             "items": [], 
-            "illustration":"../images/images_foret/giant_man_in_the_forest_brown_clothes_265.png"
+            "illustration":"images_foret/giant_man_in_the_forest_brown_clothes_265.png"
         }, 
         {
             "id": 266,
@@ -4700,7 +4723,7 @@
                     "skillCheckPassed": false
                 }
             ],
-            "illustration": "../images/images_foret/arm_wrestling_without_armband_266.png"
+            "illustration": "images_foret/arm_wrestling_without_armband_266.png"
         }, 
         {
             "id": 267,
@@ -4716,7 +4739,7 @@
                 }
             ],
             "items": [],
-            "illustration": "../images/images_foret/entrance_of_a_cavern_in_the_forest_267.png"
+            "illustration": "images_foret/entrance_of_a_cavern_in_the_forest_267.png"
         },
         {
             "id": 268,
@@ -4728,7 +4751,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/bats_going_far_268.png"
+            "illustration":"images_foret/bats_going_far_268.png"
         },
         {
             "id": 269,
@@ -4746,7 +4769,7 @@
                     "value": 4
                 }
             ],
-            "illustration":"../images/images_foret/in_the_cave_a_way_to_the_exit_stairs_269_3.png"
+            "illustration":"images_foret/in_the_cave_a_way_to_the_exit_stairs_269_3.png"
         }, 
         {
             "id": 270,
@@ -4762,7 +4785,7 @@
                 }
             ],
             "items": [], 
-            "illustration": "../images/images_foret/small_cavern_wood_box_270_2.png"
+            "illustration": "images_foret/small_cavern_wood_box_270_2.png"
         },
         {
             "id": 271,
@@ -4783,7 +4806,7 @@
                     "type": "reduceFiveGoldOrRemoveOneItem"
                 }
             ],
-            "illustration": "../images/images_foret/little_man_271.png"
+            "illustration": "images_foret/little_man_271.png"
         },
         {
             "id": 272,
@@ -4795,7 +4818,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/plain_272.png"
+            "illustration":"images_foret/plain_272.png"
         },        
         {
             "id": 273,
@@ -4828,7 +4851,7 @@
                 }
             ],
             "items": [],
-            "illustration":"../images/images_foret/liana_hanging_from_a_basic_tree_house_274_bis.png"
+            "illustration":"images_foret/liana_hanging_from_a_basic_tree_house_274_bis.png"
         },
         {
             "id": 275,
@@ -4849,7 +4872,7 @@
                 "value": 1
                 }
             ], 
-            "illustration":"../images/images_foret/helmet_copper_275_3.png"
+            "illustration":"images_foret/helmet_copper_275_3.png"
         }, 
         {
             "id": 276,
@@ -4902,7 +4925,7 @@
                     "nextId": 114
                 }
             ], 
-            "illustration":"../images/images_foret/anthropomorph_tree_277.png"
+            "illustration":"images_foret/anthropomorph_tree_277.png"
         },
         {
             "id": 278,
@@ -4935,7 +4958,7 @@
                     "chanceCheckPassed": false                    
                 }
             ], 
-            "illustration":"../images/images_foret/bear_trap_278.png"
+            "illustration":"images_foret/bear_trap_278.png"
         }, 
         {
             "id": 279,
@@ -4953,7 +4976,7 @@
                     "requiresConditionMet": true
                 }
             ],
-            "illustration": "../images/images_foret/forest_ambush_360_3.png"
+            "illustration": "images_foret/forest_ambush_360_3.png"
            
         },
         {
@@ -4980,7 +5003,8 @@
                     "text": "Si vous préférez poursuivre en direction de l'est, rendez-vous au 393.",
                     "nextId": 393
                 }
-            ]
+            ],
+            "illustration":"images_foret/trifurcation_three_paths_in_the_valley_245_4.png"
         }, 
         {
             "id": 282,
@@ -4995,7 +5019,7 @@
                     "nextId": 293
                 }
             ],
-            "illustration": "../images/images_foret/red_mushrooms_with_humanoids_282.png",
+            "illustration": "images_foret/red_mushrooms_with_humanoids_282.png",
             "items": []
         },
         {
@@ -5013,7 +5037,7 @@
                     "value": 4
                 }
             ],
-            "illustration": "../images/images_foret/bubbling_mud_199_3.png"
+            "illustration": "images_foret/bubbling_mud_199_3.png"
         },
         {
             "id": 284,
@@ -5028,7 +5052,7 @@
                     "nextId": 270
                 }
             ],
-            "illustration": "../images/images_foret/tunnel_splitting_bis_284.png",
+            "illustration": "images_foret/tunnel_splitting_bis_284.png",
             "items": []
         }, 
         {
@@ -5048,7 +5072,7 @@
                     "requiresAllMonstersDefeated": true
                 }
             ],
-            "illustration": "../images/images_foret/werewolf_285.png",
+            "illustration": "images_foret/werewolf_285.png",
             "items": []
             
         },
@@ -5069,7 +5093,7 @@
                     "requiresAllMonstersDefeated": true
                 }
             ],
-            "illustration": "../images/images_foret/changeforme.png",
+            "illustration": "images_foret/changeforme.png",
             "items": []
         },
         {
@@ -5081,7 +5105,7 @@
                     "nextId": 25
                 }
             ],
-            "illustration": "../images/images_foret/copper_bell_287.png",
+            "illustration": "images_foret/copper_bell_287.png",
             "items": [
                 {
                     "name": "or",
@@ -5108,7 +5132,7 @@
                     "nextId": 245
                 }
             ],
-            "illustration": "../images/images_foret/big_rocks_288_4.png"
+            "illustration": "images_foret/big_rocks_288_4.png"
         }, 
         {
             "id": 289,
@@ -5121,7 +5145,7 @@
                     "text": "Si vous préférez prendre la direction du nord, rendez-vous au 147.", "nextId": 147
                     }
                 ],
-            "illustration":"../images/images_foret/narrowpath_289bis.png",
+            "illustration":"images_foret/narrowpath_289bis.png",
             "items":[]
         }, 
         {
@@ -5145,7 +5169,7 @@
                     "nextId": 358
                 }
             ],
-            "illustration": "../images/images_foret/angry_ogre_attacking_with_a_mace_290_2.png"
+            "illustration": "images_foret/angry_ogre_attacking_with_a_mace_290_2.png"
         },
         {
             "id": 291,
@@ -5160,7 +5184,7 @@
                     "nextId": 145
                 }
             ], 
-            "illustration":"../images/images_foret/calm_river_and_torrent_191.png"
+            "illustration":"images_foret/calm_river_and_torrent_191.png"
         },
         {
             "id": 292,
@@ -5175,7 +5199,7 @@
                     "nextId": 112
                 }
             ],
-            "illustration": "../images/images_foret/coffre_squelette_chandelle_351.jpg"
+            "illustration": "images_foret/coffre_squelette_chandelle_351.jpg"
         }, 
         {
             "id": 293,
@@ -5194,7 +5218,7 @@
                     "nextId": 88
                 }
             ],
-            "illustration":"../images/images_foret/wooden_barrel_and_chest_in_a_cave_293.png"
+            "illustration":"images_foret/wooden_barrel_and_chest_in_a_cave_293.png"
         },
         {
             "id": 294,
@@ -5213,7 +5237,7 @@
                     "nextId": 288
                 }
             ],
-            "illustration": "../images/images_foret/inside_the_dark_cabin_294.png"
+            "illustration": "images_foret/inside_the_dark_cabin_294.png"
         },
         {
             "id": 295,
@@ -5231,7 +5255,8 @@
                     "text": "Sinon, rendez-vous au 30.",
                     "nextId": 30
                 }
-            ]
+            ],
+            "illustration": "images_foret/first_person_upside_view_from_the_bottom_well_295.png"
         }, 
         {
             "id": 296,
@@ -5256,7 +5281,7 @@
                     "nextId": 67
                 }
             ], 
-            "illustration": "../images/images_foret/little_man_271.png"
+            "illustration": "images_foret/little_man_271.png"
         },
         {
             "id": 298,
@@ -5275,7 +5300,7 @@
                     "requiresAllMonstersDefeated": true
                 }
             ],
-            "illustration": "../images/images_foret/giant_spider_under_the_tree_298.png"
+            "illustration": "images_foret/giant_spider_under_the_tree_298.png"
         },
         {
             "id": 299,
@@ -5296,7 +5321,7 @@
                     "value": "all"
                 }
             ],
-            "illustration": "../images/images_foret/underwater_river_giant_bees_299_2.png"
+            "illustration": "images_foret/underwater_river_giant_bees_299_2.png"
         },
         {
             "id": 300,
@@ -5311,7 +5336,7 @@
                     "nextId": 331
                 }
             ], 
-            "illustration": "../images/images_foret/edge_forest_300_3.png"
+            "illustration": "images_foret/edge_forest_300_3.png"
         }, 
         {
             "id": 301,
@@ -5336,7 +5361,7 @@
                     "quantity": 3
                 }
             ],
-            "illustration":"../images/images_foret/flute_crane_gold.PNG"
+            "illustration":"images_foret/flute_crane_gold.PNG"
         }, 
         {
             "id": 302,
@@ -5372,7 +5397,7 @@
                     "requiresAllMonstersDefeated": true
                 }
             ],
-            "illustration":"../images/images_foret/pterodactylus_303_4.png"
+            "illustration":"images_foret/pterodactylus_303_4.png"
         }, 
         {
             "id": 304,
@@ -5416,7 +5441,7 @@
                     "nextId": 360
                 }
             ],
-            "illustration": "../images/images_foret/iron_glove_305.png"
+            "illustration": "images_foret/iron_glove_305.png"
         }, 
         {
             "id": 306,
@@ -5431,7 +5456,7 @@
                     "nextId": 112
                 }
             ], 
-            "illustration": "../images/images_foret/stone_building_306_2.png"
+            "illustration": "images_foret/stone_building_306_2.png"
         }, 
         {
             "id": 307,
@@ -5446,7 +5471,7 @@
                     "nextId": 271
                 }
             ],
-            "illustration": "../images/images_foret/little_man_with_a_beard_fallen_from_mushroom_307.png"
+            "illustration": "images_foret/little_man_with_a_beard_fallen_from_mushroom_307.png"
         }, 
         {
             "id": 308,
@@ -5481,7 +5506,7 @@
                     "doubleLuckCheck": false
                 }
             ], 
-            "illustration": "../images/images_foret/path_tall_grass_309.png"
+            "illustration": "images_foret/path_tall_grass_309.png"
         }, 
         {
             "id": 310,
@@ -5518,7 +5543,7 @@
                     "nextId": 204
                 }
             ],
-            "illustration":"../images/images_foret/cultivated_field_311.png"
+            "illustration":"images_foret/cultivated_field_311.png"
         },
         {
             "id": 312,
@@ -5540,7 +5565,7 @@
                     "nextId": 112
                 }
             ],
-            "illustration": "../images/images_foret/bronze_headed_hammer_G_58_2_thehead.png"
+            "illustration": "images_foret/bronze_headed_hammer_G_58_2_thehead.png"
         },
         {
             "id": 313,
@@ -5565,7 +5590,7 @@
                     "category": "equipment"
                 }
             ], 
-            "illustration": "../images/images_foret/silver_box_313_bis.png"
+            "illustration": "images_foret/silver_box_313_bis.png"
         }, 
         {
             "id": 314,
@@ -5580,7 +5605,7 @@
                     "nextId": 288
                 }
             ], 
-            "illustration": "../images/images_foret/little_wood_cabin_314.png"
+            "illustration": "images_foret/little_wood_cabin_314.png"
         },
         {
             "id": 315,
@@ -5595,7 +5620,7 @@
                     "nextId": 342
                 }
             ], 
-            "illustration": "../images/images_foret/inside_the_old_miserable_cabin_dust_cobweb_315.png"
+            "illustration": "images_foret/inside_the_old_miserable_cabin_dust_cobweb_315.png"
         },
         {
             "id": 316,
@@ -5606,7 +5631,7 @@
                     "nextId": 198
                 }
             ], 
-            "illustration":"../images/images_foret/landscape_316_2.png"
+            "illustration":"images_foret/landscape_316_2.png"
         }, 
         {
             "id": 317,
@@ -5616,7 +5641,7 @@
                 {"name": "Lutin 2", "skill":5, "health":7} 
             ], 
             "choices":[{"text": "Si vous êtes vainqueur, rendez-vous au 301.", "nextId": 301, "requiresAllMonstersDefeated": true}, {"text": "Si vous souhaitez prendre la Fuite au cours du combat, vous pourrez le faire en vous rendant au 41.", "nextId": 41}],
-            "illustration":"../images/images_foret/lutins_317.png",
+            "illustration":"images_foret/lutins_317.png",
             "items":[]
         }, 
         {
@@ -5628,7 +5653,7 @@
                     "nextId": 231
                 }
             ],
-            "illustration": "../images/images_foret/hidden_in_the_bushes_giant_leg_318.png"
+            "illustration": "images_foret/hidden_in_the_bushes_giant_leg_318.png"
         },
         {
             "id": 319,
@@ -5647,7 +5672,7 @@
                     "nextId": 14
                 }
             ], 
-            "illustration":"../images/images_foret/jumping_boots_319.png"
+            "illustration":"images_foret/jumping_boots_319.png"
         },
         {
             "id": 320,
@@ -5668,7 +5693,7 @@
                     "nextId": 107
                 }
             ], 
-            "illustration":"../images/images_foret/colored_puddles_cavefloor_321_3.png"
+            "illustration":"images_foret/colored_puddles_cavefloor_321_3.png"
         },
         {
             "id": 322,
@@ -5695,7 +5720,7 @@
                     "nextId": 380
                 }
             ],
-            "illustration": "../images/images_foret/gold_medaillon_in_the_dark_322_2.png"
+            "illustration": "images_foret/gold_medaillon_in_the_dark_322_2.png"
         },
         {
             "id": 323,
@@ -5714,7 +5739,7 @@
                     "nextId": 102
                 }
             ], 
-            "illustration":"../images/images_foret/owlboy_style_a_path_in_a_plain_323.png"
+            "illustration":"images_foret/owlboy_style_a_path_in_a_plain_323.png"
         }, 
         {
             "id": 324,
@@ -5733,7 +5758,7 @@
                     "nextId": 149
                 }
             ], 
-            "illustration": "../images/images_foret/blue_ceramic_vase_in_veranda_324_2.png"
+            "illustration": "images_foret/blue_ceramic_vase_in_veranda_324_2.png"
         },
         {
             "id": 325,
@@ -5752,7 +5777,7 @@
                     "nextId": 79
                 }
             ], 
-            "illustration":"../images/images_foret/bats_325_2.png"
+            "illustration":"images_foret/bats_325_2.png"
         },
         {
             "id": 326,
@@ -5763,7 +5788,7 @@
                     "nextId": 145
                 }
             ], 
-            "illustration": "../images/images_foret/calm_river_and_torrent_191.png"
+            "illustration": "images_foret/calm_river_and_torrent_191.png"
         }, 
         {
             "id": 327,
@@ -5778,7 +5803,7 @@
                     "nextId": 112
                 }
             ],
-            "illustration": "../images/images_foret/stone_stair_200_2.png"
+            "illustration": "images_foret/stone_stair_200_2.png"
         },
         {
             "id": 328,
@@ -5798,7 +5823,7 @@
                     "nextId": 118
                 }
             ], 
-            "illustration":"../images/images_foret/forest_narrowed_field_of_view_328.png"
+            "illustration":"images_foret/forest_narrowed_field_of_view_328.png"
         },
         {
             "id": 329,
@@ -5813,7 +5838,7 @@
                     "nextId": 252
                 }
             ], 
-            "illustration":"../images/images_foret/plain_with_tall_grass_small_green_hills_329_2.png"
+            "illustration":"images_foret/plain_with_tall_grass_small_green_hills_329_2.png"
         }, 
         {
             "id": 330,
@@ -5830,7 +5855,7 @@
                     "requiresAllMonstersDefeated": true
                 }
             ], 
-            "illustration":"../images/images_foret/three_angry_wolves_in_the_night_attacking_330.png"
+            "illustration":"images_foret/three_angry_wolves_in_the_night_attacking_330.png"
         },
         {
             "id": 331,
@@ -5845,7 +5870,7 @@
                     "nextId": 309
                 }
             ], 
-            "illustration": "../images/images_foret/path_splitting_in_two_paths_in_the_green_plain_331.png"
+            "illustration": "images_foret/path_splitting_in_two_paths_in_the_green_plain_331.png"
         },
         {
             "id": 332,
@@ -5861,7 +5886,7 @@
             "id": 333,
             "text": "La couronne vous va à merveille et en vous voyant ainsi coiffé, les deux Guerriers Clones vous fixent avec de grands yeux qui expriment un respect mêlé de crainte. Grâce à la couronne posée sur votre tête, vous pouvez entrer en communication télépathique avec les deux créatures, et vous comprenez alors, en lisant dans leurs pensées, ce qu'elles essayent de vous dire : vous êtes leur nouveau maître et elles attendent les ordres que vous voudrez bien leur donner. Elles vous demandent notamment ce que l'on doit faire de la nouvelle récolte de champignons à chapeaux rouges. Vous n'avez cependant pas la moindre envie d'être le maître de ces humanoïdes, qu'ils soient guerriers ou qu'ils cultivent des champignons, et vous levez les mains pour ôter la couronne de votre tête. Mais vous vous apercevez alors avec terreur que la peau de vos mains s'est flétrie et a pris une couleur sombre. Vous essayez d'enlever la couronne, mais elle ne bouge pas : c'est une couronne maléfique qui a trouvé en vous une nouvelle victime ; et peu à peu les traits de votre visage se transforment car vous êtes en train de prendre la forme et la couleur d'un Démon de Feu. Votre nouveau destin est scellé et votre aventure se termine ici.",
             "effects": "game over", 
-            "illustration":"../images/images_foret/craig1755_pixel_art_cursed_crown_on_a_black_evil_creature_evil_333_2.png"
+            "illustration":"images_foret/craig1755_pixel_art_cursed_crown_on_a_black_evil_creature_evil_333_2.png"
         },
         {
             "id": 334,
@@ -5876,7 +5901,7 @@
                     "nextId": 51
                 }
             ], 
-            "illustration":"../images/images_foret/green_valley_and_forest_334.png"
+            "illustration":"images_foret/green_valley_and_forest_334.png"
         },
         {
             "id": 335,
@@ -5891,7 +5916,7 @@
                     "nextId": 326
                 }
             ], 
-            "illustration":"../images/images_foret/behind_the_waterfall_335_4.png"
+            "illustration":"images_foret/behind_the_waterfall_335_4.png"
         }, 
         {
             "id": 336,
@@ -5910,7 +5935,7 @@
                     "nextId": 108
                 }
             ],
-            "illustration":"../images/images_foret/poison_with_the_antidot_336.png"
+            "illustration":"images_foret/poison_with_the_antidot_336.png"
         },
         {
             "id": 337,
@@ -5925,7 +5950,7 @@
                     "nextId": 358
                 }
             ], 
-            "illustration":"../images/images_foret/entrance_of_a_dark_cave_337.png"
+            "illustration":"images_foret/entrance_of_a_dark_cave_337.png"
         },
         {
             "id": 338,
@@ -5960,7 +5985,7 @@
                     "nextId": 75
                 }
             ], 
-            "illustration":"../images/images_foret/old_wooden_bridge_339.png"
+            "illustration":"images_foret/old_wooden_bridge_339.png"
         },
         {
             "id": 340,
@@ -5979,7 +6004,7 @@
                     "nextId": 59
                 }
             ], 
-            "illustration":"../images/images_foret/dwarf_with_metal_helmet_and_chainmail_340_2.png"
+            "illustration":"images_foret/dwarf_with_metal_helmet_and_chainmail_340_2.png"
         },
         {
             "id": 341,
@@ -6031,7 +6056,7 @@
                     "nextId": 11
                 }
             ],
-            "illustration": "../images/images_foret/creepy_angry_witch_with_flowers_and_smoke_342_4.png"
+            "illustration": "images_foret/creepy_angry_witch_with_flowers_and_smoke_342_4.png"
         },
         {
             "id": 343,
@@ -6046,7 +6071,7 @@
                     "nextId": 239
                 }
             ],
-            "illustration": "../images/images_foret/corbeau160.jpg"
+            "illustration": "images_foret/corbeau160.jpg"
         },
         {
             "id": 344,
@@ -6057,7 +6082,7 @@
                     "nextId": 36
                 }
             ],
-            "illustration": "../images/images_foret/hommedjellaba253.JPG"
+            "illustration": "images_foret/hommedjellaba253.JPG"
         }, 
         {
             "id": 345,
@@ -6074,7 +6099,7 @@
                     "nextId": 293
                 }
             ],
-            "illustration": "../images/images_foret/strange_red_mushrooms_in_a_cavern_345.png"
+            "illustration": "images_foret/strange_red_mushrooms_in_a_cavern_345.png"
         },
         {
             "id": 346,
@@ -6089,7 +6114,7 @@
                     "nextId": 111
                 }
             ],
-            "illustration": "../images/images_foret/scary_and_threatening_mage_346.jpg"
+            "illustration": "images_foret/scary_and_threatening_mage_346.jpg"
         },
         {
             "id": 347,
@@ -6107,7 +6132,7 @@
                     "nextId": 363
                 }
             ],
-            "illustration": "../images/images_foret/fighting_dwarf_347.png"
+            "illustration": "images_foret/fighting_dwarf_347.png"
         }, 
         {
             "id": 348,
@@ -6122,7 +6147,7 @@
                     "nextId": 188
                 }
             ],
-            "illustration": "../images/images_foret/hommes_barbus_90.png"
+            "illustration": "images_foret/hommes_barbus_90.png"
         },
         {
             "id": 349,
@@ -6137,7 +6162,7 @@
                     "nextId": 102
                 }
             ],
-            "illustration": "../images/images_foret/owlboy_style_a_path_in_a_plain_323.png"
+            "illustration": "images_foret/owlboy_style_a_path_in_a_plain_323.png"
         },
         {
             "id": 350,
@@ -6148,7 +6173,7 @@
                     "nextId": 329
                 }
             ],
-            "illustration": "../images/images_foret/anthropomorphic_tree_burning_350.png"
+            "illustration": "images_foret/anthropomorphic_tree_burning_350.png"
         }, 
         {
             "id": 351,
@@ -6163,7 +6188,7 @@
                     "nextId": 112
                 }
             ],
-            "illustration": "../images/images_foret/coffre_squelette_chandelle_351.jpg",
+            "illustration": "images_foret/coffre_squelette_chandelle_351.jpg",
             "items": []
         },
         {
@@ -6186,7 +6211,7 @@
                     "health": 7
                 }
             ],
-            "illustration": "../images/images_foret/fighting_monkey_man_352_3.png",
+            "illustration": "images_foret/fighting_monkey_man_352_3.png",
             "items": []
         }, 
         {
@@ -6208,7 +6233,7 @@
                     "value": "all"
                 }
             ],
-            "illustration": "../images/images_foret/view_of_the_sky_in_the_forest_353_2.png",
+            "illustration": "images_foret/view_of_the_sky_in_the_forest_353_2.png",
             "items": []
         },
         {
@@ -6227,7 +6252,7 @@
                     "category": "potions"
                 }
             ],
-            "illustration": "../images/images_foret/powder_of_levitation_in_a_glass_flask_95.png",
+            "illustration": "images_foret/powder_of_levitation_in_a_glass_flask_95.png",
             "items": []
         },
         {
@@ -6240,7 +6265,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/in_the_forest_355.png"
+            "illustration": "images_foret/in_the_forest_355.png"
         },
         {
             "id": 356,
@@ -6260,7 +6285,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/copper_lantern_356.png"
+            "illustration": "images_foret/copper_lantern_356.png"
         },
         {
             "id": 357,
@@ -6272,7 +6297,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/path_in_the_forest_357.png"
+            "illustration": "images_foret/path_in_the_forest_357.png"
         },
         {
             "id": 358,
@@ -6295,7 +6320,7 @@
                     "chanceCheckPassed": false
                 }
             ],
-            "illustration":"../images/images_foret/upside_down_358.png"
+            "illustration":"images_foret/upside_down_358.png"
         },
         {
             "id": 359,
@@ -6310,7 +6335,7 @@
                 "nextId": 281
               }
             ], 
-            "illustration":"../images/images_foret/well_with_stone_edge_359.png"
+            "illustration":"images_foret/well_with_stone_edge_359.png"
         },
         {
             "id": 360,
@@ -6325,7 +6350,7 @@
                 "nextId": 104
               }
             ], 
-            "illustration":"../images/images_foret/forest_ambush_360_3.png"
+            "illustration":"images_foret/forest_ambush_360_3.png"
         }, 
         {
             "id": 361,
@@ -6340,7 +6365,7 @@
                 "nextId": 86
               }
             ], 
-            "illustration":"../images/images_foret/frightened_brown_fox_running_361.png"
+            "illustration":"images_foret/frightened_brown_fox_running_361.png"
         },
         {
             "id": 362,
@@ -6369,7 +6394,7 @@
                 "nextId": 59
               }
             ], 
-            "illustration":"../images/images_foret/bottle_clear_liquid_363_2.png"
+            "illustration":"images_foret/bottle_clear_liquid_363_2.png"
         }, 
         {
             "id": 364,
@@ -6384,7 +6409,7 @@
                 "nextId": 194
               }
             ], 
-            "illustration": "../images/images_foret/black_knight_has_just_dismounted_his_horse_364_2.png"
+            "illustration": "images_foret/black_knight_has_just_dismounted_his_horse_364_2.png"
         },
         {
             "id": 365,
@@ -6410,7 +6435,7 @@
                 "nextId": 178
               }
             ],
-             "illustration": "../images/images_foret/centaur_archer_142.png"
+             "illustration": "images_foret/centaur_archer_142.png"
         }, 
         {
             "id": 367,
@@ -6425,7 +6450,7 @@
                 "nextId": 222
               }
             ], 
-            "illustration":"../images/images_foret/purple_split_mushroom_and_a_toxic_367.png"
+            "illustration":"images_foret/purple_split_mushroom_and_a_toxic_367.png"
         },
         {
             "id": 368,
@@ -6436,7 +6461,7 @@
                 "nextId": 112
               }
             ], 
-            "illustration": "../images/images_foret/stone_staircase_368.png"
+            "illustration": "images_foret/stone_staircase_368.png"
         },
         {
             "id": 369,
@@ -6451,7 +6476,7 @@
                 "nextId": 390
               }
             ],
-            "illustration": "../images/images_foret/monk_valley_369.png"
+            "illustration": "images_foret/monk_valley_369.png"
         }, 
         {
             "id": 370,
@@ -6472,7 +6497,14 @@
                 "nextId": 93
               }
             ], 
-            "illustration": "../images/images_foret/hands_of_clay_371.png"
+            "items": [
+                {
+                    "name": "pièces d'or",
+                    "category": "gold",
+                    "quantity": 3
+                }
+            ],
+            "illustration": "images_foret/hands_of_clay_371.png"
         },
         {
             "id": 372,
@@ -6507,7 +6539,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/purple_mushrooms_373.png"
+            "illustration": "images_foret/purple_mushrooms_373.png"
         },
         {
             "id": 374,
@@ -6530,7 +6562,7 @@
                     "category": "equipment"
                 }
             ],
-            "illustration": "../images/images_foret/iron_glove_skill_374.png"
+            "illustration": "images_foret/iron_glove_skill_374.png"
         },
         {
             "id": 375,
@@ -6546,7 +6578,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/plain_fork_in_the_path_375.png"
+            "illustration": "images_foret/plain_fork_in_the_path_375.png"
         },
         {
             "id": 376,
@@ -6569,7 +6601,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/slippy_troll_in_a_cavern_376.png"
+            "illustration": "images_foret/slippy_troll_in_a_cavern_376.png"
         },
         {
             "id": 377,
@@ -6598,7 +6630,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/two_pygmies_377_2.png"
+            "illustration": "images_foret/two_pygmies_377_2.png"
         },
         {
             "id": 378,
@@ -6614,7 +6646,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/little_man_378.png"
+            "illustration": "images_foret/little_man_378.png"
         },
         {
             "id": 379,
@@ -6630,7 +6662,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/stone_door_391_2.png"
+            "illustration": "images_foret/stone_door_391_2.png"
         },
         {
             "id": 380,
@@ -6646,7 +6678,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/hole_in_a_soil_of_wood_in_the_dark_380_2.png"
+            "illustration": "images_foret/hole_in_a_soil_of_wood_in_the_dark_380_2.png"
         },
         {
             "id": 381,
@@ -6658,7 +6690,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/return_381.png"
+            "illustration": "images_foret/return_381.png"
         },
         {
             "id": 382,
@@ -6670,7 +6702,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/forest_382.png"
+            "illustration": "images_foret/forest_382.png"
         },
         {
             "id": 383,
@@ -6698,7 +6730,7 @@
                     "value": 2                                
                 }
             ],
-            "illustration": "../images/images_foret/gold_coins_and_wooden_whistle_383.png"
+            "illustration": "images_foret/gold_coins_and_wooden_whistle_383.png"
         },
         {
             "id": 384,
@@ -6714,7 +6746,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/barbarian_384_4.png"
+            "illustration": "images_foret/barbarian_384_4.png"
         },
         {
             "id": 385,
@@ -6746,7 +6778,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/tree_evening_66_2.png"
+            "illustration": "images_foret/tree_evening_66_2.png"
         },
         {
             "id": 387,
@@ -6793,7 +6825,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/werewolf_285.png"
+            "illustration": "images_foret/werewolf_285.png"
         },
         {
             "id": 389,
@@ -6822,7 +6854,7 @@
                 "value": 1
               }
             ],
-            "illustration": "../images/images_foret/ten_gold_coins_in_a_cave_389.png"
+            "illustration": "images_foret/ten_gold_coins_in_a_cave_389.png"
         },
         {
             "id": 390,
@@ -6838,7 +6870,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/in_a_valley_big_forest_390.png"
+            "illustration": "images_foret/in_a_valley_big_forest_390.png"
         },
         {
             "id": 391,
@@ -6858,7 +6890,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/stone_door_391_2.png"
+            "illustration": "images_foret/stone_door_391_2.png"
         },
         {
             "id": 392,
@@ -6870,7 +6902,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/warrior_hidden_in_the_bushes_392.png"
+            "illustration": "images_foret/warrior_hidden_in_the_bushes_392.png"
         },
         {
             "id": 393,
@@ -6898,7 +6930,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/calm_river_with_few_rocks_in_a_green_plain_394.png"
+            "illustration": "images_foret/calm_river_with_few_rocks_in_a_green_plain_394.png"
         },
         {
             "id": 395,
@@ -6953,7 +6985,7 @@
               }
             ],
             "items": [],
-            "illustration": "../images/images_foret/masked_man_with_a_cape_on_a_horse_396.png"
+            "illustration": "images_foret/masked_man_with_a_cape_on_a_horse_396.png"
         },
         {
             "id": 397,
@@ -6990,7 +7022,7 @@
         {
             "id": 399,
             "text": "Vous vous précipitez sur Yaztromo, mais vous avez à peine atteint la première marche que le sorcier lève son bras droit d'un geste nonchalant et marmonne quelques mots. Le temps paraît alors s'arrêter tandis que jaillissent tout autour de vous des éclairs aveuglants. Votre corps vous semble soudain un liquide bouillonnant et lorsque toute cette agitation s'apaise enfin, vous êtes conscient qu'il vient de se passer quelque chose de terrifiant. Vous sentez contre votre corps la pierre froide de l'escalier, et vous allez devoir à présent vous habituer à un nouveau genre de vie : le sorcier vous a en effet transformé en grenouille ! Se penchant vers vous, Yaztromo vous ramasse d'une main et vous déclare d'une voix de tonnerre : « Profite donc bien de ta nouvelle vie, piètre bretteur ! » Puis il éclate d'un rire tonitruant et vous laisse presque tomber sur le sol. Il retourne ensuite vers la porte de chêne d'un pas traînant, l'ouvre, et vous jette parmi les hautes herbes qui entourent sa demeure. Votre aventure se termine ici.",
-            "illustration":"../images/images_foret/frog_399.png"
+            "illustration":"images_foret/frog_399.png"
        
         },
         {
@@ -7018,7 +7050,7 @@
                     "itemName": "tête du marteau de guerre des nains avec G gravé"
                 }
             ],
-            "illustration": "../images/images_foret/dwarf_king_with_a_crown_with_a_big_hammer_400.png"
+            "illustration": "images_foret/dwarf_king_with_a_crown_with_a_big_hammer_400.png"
         }
           
                  

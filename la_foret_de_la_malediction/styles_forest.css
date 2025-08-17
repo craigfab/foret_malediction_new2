@@ -3,7 +3,7 @@ body {
     flex-direction: column;
     padding: 5px;
     margin: 8px; 
-    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../images/images_foret/dark_gloomy_forest.png");
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("images_foret/dark_gloomy_forest.png");
     background-size: cover; 
     background-position: center; 
     font-family: 'IM Fell DW Pica', serif;
@@ -24,8 +24,26 @@ nav #navbar {
     justify-content: flex-start;
     gap: 20px;
     align-items: center;
-    padding: 0px;
+    padding: 0px 0px 0px 10px;
     color: white;
+}
+
+/* Alignement des éléments avec icônes dans la navbar */
+nav #navbar button,
+nav #navbar a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.audio-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.music-icon {
+    font-size: 1.1em;
 }
 
 /* Pousser le bouton Carte à droite */
@@ -99,7 +117,7 @@ main {
 section{
     padding: 10px;
     margin: 8px;
-    background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url("../images/images_foret/oldparchemin3.JPG");
+    background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url("images_foret/oldparchemin3.JPG");
     background-position: center;
     background-size: cover;
     border: 6px solid rgba(100, 76, 117, 0.582);

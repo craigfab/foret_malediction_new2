@@ -20,15 +20,18 @@
     <nav>
         <div id="navbar">
             <!-- Bouton Recommencer -->
-            <button id="restartButton">Recommencer</button>
+            <button id="restartButton" title="Recommencer">🔄 Recommencer</button>
     
             <!-- Bouton Retour Accueil -->
-            <a id="homeButton" href="../index.html">Retour accueil</a>
+            <a id="homeButton" href="../index.html" title="Accueil">🏠 Accueil</a>
     
             <!-- Lecteur Audio -->
-            <audio id="audioPlayer" controls>
-                <source src="" type="audio/mp3">
-            </audio>
+            <div class="audio-wrapper" aria-label="Musique">
+                <span class="music-icon" aria-hidden="true">🎶</span>
+                <audio id="audioPlayer" controls>
+                    <source src="" type="audio/mp3">
+                </audio>
+            </div>
 
             <!-- Bouton Carte -->
             <button id="mapButton" title="Afficher la carte">🗺️ Carte</button>
@@ -128,7 +131,7 @@
         <!-- ASIDE -->
         <aside>
             <!-- illustration -->
-            <img id="illustration" src="../images/la_foret_de_la_malediction.JPG" alt=""illustration du chapitre en pixelart>
+            <img id="illustration" src="images_foret/la_foret_de_la_malediction.JPG" alt=""illustration du chapitre en pixelart>
         
         </aside>
     

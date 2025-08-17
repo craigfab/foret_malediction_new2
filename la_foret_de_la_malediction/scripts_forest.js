@@ -40,6 +40,7 @@ export let gameState = {
 document.addEventListener('DOMContentLoaded', function() {
     loadRandomTrack();
     initializeSoundEffects(); // Initialiser le système d'effets sonores
+    
     // Initialiser le bouton de carte
     const mapButton = document.getElementById('mapButton');
     const mapModal = document.getElementById('mapModal');
@@ -50,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
         mapButton.disabled = true;
         mapButton.title = "Vous n'avez pas encore la carte";
         mapButton.addEventListener('click', () => {
-            // Charger l'image de la carte et afficher le modal
-            mapImage.src = '../images/images_foret/map_foret.JPG';
+            // Charger l'image de la carte en couleur et afficher le modal
+            mapImage.src = 'images_foret/map_forest_color_2.PNG';
             mapModal.style.display = 'flex';
         });
         closeModalBtn.addEventListener('click', () => {
@@ -126,9 +127,9 @@ function showChapter(chapters, chapterId) {
     // --- Ajout pour image aléatoire au chapitre 381 ---
     if (chapterId === 381) {
         const images = [
-            '../images/images_foret/return_381.png',
-            '../images/images_foret/return_381_2.png',
-            '../images/images_foret/return_381_3.png'
+            'images_foret/return_381.png',
+            'images_foret/return_381_2.png',
+            'images_foret/return_381_3.png'
         ];
         const randomIndex = Math.floor(Math.random() * images.length);
         document.getElementById('illustration').src = images[randomIndex];

@@ -100,7 +100,7 @@ export function triggerGameOver() {
     // Changer l'image d'illustration
     const illustrationImg = document.getElementById('illustration');
     if (illustrationImg) {
-        illustrationImg.src = '../images/images_foret/game_over_image_2.png';
+        illustrationImg.src = 'images_foret/game_over_image_2.png';
         illustrationImg.alt = 'Game Over - Vous êtes mort';
     }
     
