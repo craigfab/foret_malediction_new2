@@ -6,7 +6,7 @@ import { Character } from "./character.js";
 import { takeItem } from "./inventory.js";
 import { updateAdventureSheet } from "./inventory.js";
 import { useMeal } from "./inventory.js";
-import { usePotionAdresse, usePotionVigueur, usePotionBonneFortune } from "./inventory.js";
+import { usePotionAdresse, usePotionVigueur, usePotionBonneFortune, usePotionForce } from "./inventory.js";
 import { Inventory } from "./inventory.js";
 import { loadRandomTrack, initializeSoundEffects } from "./music.js";
 
@@ -236,6 +236,19 @@ function showChapter(chapters, chapterId) {
         }
     } else {
         usePotionBonneFortuneButton.style.display = 'none'; // Masque le bouton s'il n'y a pas de potion de bonne fortune
+    }
+
+    // Création bouton pour potion de force
+    const usePotionForceButton = document.getElementById('usePotionForceButton');
+    if (gameState.inventory.checkItem('Potion de Force') > 0) {
+        usePotionForceButton.style.display = 'block'; 
+        if (!usePotionForceButton.onclick) {
+            usePotionForceButton.onclick = function() {
+                usePotionForce();
+            };
+        }
+    } else {
+        usePotionForceButton.style.display = 'none'; // Masque le bouton s'il n'y a pas de Potion de Force
     }
 
     // gestion des monstres

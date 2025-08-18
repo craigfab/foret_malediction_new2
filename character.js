@@ -161,6 +161,9 @@ export function triggerGameOver() {
     const usePotionBonneFortuneButton = document.getElementById('usePotionBonneFortuneButton');
     if (usePotionBonneFortuneButton) usePotionBonneFortuneButton.disabled = true;
     
+    const usePotionForceButton = document.getElementById('usePotionForceButton');
+    if (usePotionForceButton) usePotionForceButton.disabled = true;
+    
     // Bloquer les boutons de prise d'objets
     const getItemContainer = document.getElementById('get_item');
     if (getItemContainer) {

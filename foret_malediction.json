@@ -178,7 +178,8 @@
                     "nextId": 290
                 }
             ],
-            "items": []
+            "items": [], 
+            "illustration":"images_foret/ogre_230.png"
         },
         {
             "id": 11,
@@ -2138,7 +2139,7 @@
                 }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/hollow_tree_trunk_3_2.png"
         }, 
         {
             "id": 121,
@@ -2155,7 +2156,7 @@
                 }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/tunnel_splitting_bis_284.png"
         },
         {
             "id": 122,
@@ -2179,7 +2180,12 @@
             "text": "L'homme Arbre essaye de vous frapper à grands coups de ses deux grandes branches, et vous vous lancez à l'assaut. HOMME ARBRE HABILETÉ : 8 ENDURANCE : 8. Pour terrasser l'Homme Arbre, il faut le combattre deux fois : une fois pour chacune de ses deux grandes branches. Si vous êtes vainqueur, rendez-vous au 27. Vous avez toutefois le droit de fuir en retournant à la bifurcation sur le chemin. Rendez-vous dans ce cas au 234.",
             "monsters": [
                 {
-                    "name": "HOMME ARBRE",
+                    "name": "1ere branche de l'HOMME ARBRE",
+                    "skill": 8,
+                    "health": 8
+                },
+                {
+                    "name": "2eme branche de l'HOMME ARBRE",
                     "skill": 8,
                     "health": 8
                 }
@@ -2196,7 +2202,7 @@
                 }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/tree_man_attacking_you_123.png"
         }, 
         {
             "id": 124,
@@ -2333,7 +2339,7 @@
                 }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/tree_evening_66_2.png"
         }, 
         {
             "id": 132,
@@ -2517,7 +2523,8 @@
                 "text": "Si vous préférez lui dire que vous ne pouvez lui être d'aucune aide et poursuivre votre chemin vers l'est en vous rendant au 59.",
                 "nextId": 59
               }
-            ]
+            ],
+            "illustration": "images_foret/dwarf_with_metal_helmet_and_chainmail_340_2.png"
         }, 
         {
             "id": 142,
@@ -2595,7 +2602,8 @@
                 "text": "Rendez-vous au 245.",
                 "nextId": 245
               }
-            ]
+            ], 
+            "illustration": "images_foret/fallen_stone_man_146.png"
         },
         {
             "id": 147,
@@ -2723,7 +2731,8 @@
                 "text": "Repartez vers le nord, le long du chemin (rendez-vous au 231).",
                 "nextId": 231
               }
-            ]
+            ],
+            "illustration": "images_foret/blackened_extinguished_copper_lantern_154.png"
         },
         {
             "id": 155,
@@ -2839,7 +2848,8 @@
                 "text": "Si vous préférez y chercher à tâtons ce qui s'y cache, rendez-vous au 341.",
                 "nextId": 341
               }
-            ]
+            ], 
+            "illustration": "images_foret/upside_view_of_a_bleu_vase_darkness_inside_185_2.png"
         }, 
         {
             "id": 162,
@@ -2954,7 +2964,17 @@
                 "text": "Si vous préférez quitter la caverne et poursuivre votre route en direction du nord, rendez-vous au 358.",
                 "nextId": 358
               }
-            ]
+            ], 
+            "effects": [
+                {
+                    "type" : "reduceHealthRollDice"
+                }, 
+                {
+                    "type": "reduceSkill",
+                    "value": 2
+                }
+            ],
+            "illustration" :"images_foret/craig1755_pixel_art_of_a_green_toxic_gaz_and_fog_around_an_opened_silver_box_169_2.png"
         }, 
         {
             "id": 170,
@@ -3198,7 +3218,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/green_toxic_gaz_from_a_purple_split_mushroom_60.png"
         },  
         {
             "id": 184,
@@ -3213,11 +3233,12 @@
             "items": [],
             "effects": [
               {
+                "message" : "le moine, ravi, vous donne une petite fiole de verre",
                 "type": "gainHealth",
                 "value": 4
               }
             ],
-            "illustration": ""
+            "illustration": "images_foret/happy_monk_in_the_forest_184.png"
         }, 
         {
             "id": 185,
@@ -3234,7 +3255,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/upside_view_of_a_bleu_vase_darkness_inside_185_2.png"
         }, 
         {
             "id": 186,
@@ -3636,7 +3657,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/copper_bangle_bracelet_jungle_207.png"
         }, 
         {
             "id": 208,
@@ -4192,7 +4213,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/wall_tree_188_3.png"
         }, 
         {
             "id": 239,
@@ -4225,7 +4246,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/craig1755_pixel_art_of_a_green_toxic_gaz_and_fog_around_an_opened_silver_box_169_2.png"
         },
         {
             "id": 241,
@@ -4256,7 +4277,7 @@
             ],
             "items": [
               {
-                "name": "Lingot d'or",
+                "name": "lingot d'or",
                 "category": "jewelry",
                 "quantity": 1,
                 "goldValue": 28
@@ -4432,7 +4453,7 @@
                 "nextId": 72
               }
             ],
-            "illustration": ""
+            "illustration": "images_foret/trifurcation_plain_forest_109.png"
         }, 
         {
             "id": 253,
@@ -4522,7 +4543,7 @@
                 "value": 1
               }
             ],
-            "illustration": ""
+            "illustration": "images_foret/elvish_bread_on_a_stone_pavment_257_2.png"
         }, 
         {
             "id": 258,
@@ -4576,7 +4597,7 @@
                 "nextId": 178
               }
             ],
-            "illustration": ""
+            "illustration": "images_foret/across_the_river_260_2.png"
         }, 
         {
             "id": 261,
@@ -4876,7 +4897,7 @@
                 {
                     "name": "médaillon en or",
                     "category": "jewelry",
-                    "quantity": 9
+                    "goldValue": 9
                 }
             ],
             "choices": [
@@ -4884,7 +4905,8 @@
                     "text": "Rendez-vous au 296 pour revenir à la bifurcation.",
                     "nextId": 296
                 }
-            ]
+            ], 
+            "illustration": "images_foret/gold_medaillon_gremlin_273.png"
         },
         {
             "id": 274,
@@ -4959,7 +4981,8 @@
                     "nextId": 62, 
                     "requiresAllMonstersDefeated": true
                 }
-            ]
+            ], 
+            "illustration": "images_foret/attacking_dogs_96.png"
         },
         {
             "id": 277,
@@ -5037,7 +5060,8 @@
                     "text": "Rendez vous au chapitre 306.",
                     "nextId": 306
                 }
-            ]
+            ], 
+            "illustration": "images_foret/path_in_the_forest_280.png"
         },
         {
             "id": 281,
@@ -5319,7 +5343,8 @@
                     "text": "Poursuivre vers l'ouest : Rendez-vous au 284.",
                     "nextId": 284
                 }
-            ]
+            ], 
+            "illustration": "images_foret/tunnel_splitting_135.png"
         },
         {
             "id": 297,
@@ -5427,7 +5452,8 @@
                     "text": "Rendez-vous au 109.",
                     "nextId": 109
                 }
-            ]
+            ], 
+            "illustration": "images_foret/bracelet_habilete_302.png"
         }, 
         {
             "id": 303,
@@ -5451,16 +5477,23 @@
         {
             "id": 304,
             "text": "Il faudra du temps pour que votre jambe guérisse. Vous trouvez deux branches sur le sol, et vous vous en servez comme d'attelles en les attachant de chaque côté de votre jambe brisée à l'aide de la ceinture de cuir que vous portez à la taille. Puis vous vous asseyez et vous vous reposez. Il vous faudra manger cinq rations de vos Provisions avant de vous sentir à nouveau d'attaque et s'il ne vous reste pas cinq rations, vous mourrez de faim. Si, en revanche, vous survivez, vous devrez réduire de 2 points votre total d'HABILETÉ en raison de votre blessure. Vos yeux se sont bien habitués à l'obscurité, à présent, et vous vous apercevez que le tunnel n'a pas plus d'un mètre de hauteur. Il vous faut avancer à quatre pattes pour l'explorer.",
-            "effects": {
-                "reduceSkill": 2,
-                "consumeFood": 5
-            },
+            "effects": [
+                {
+                    "type": "reduceSkill",
+                    "value": 2
+                },
+                {
+                    "type": "reduceFood",
+                    "value": 5
+                }
+            ],
             "choices": [
                 {
                     "text": "Rendez-vous au 69.",
                     "nextId": 69
                 }
-            ]
+            ],
+            "illustration": "images_foret/broken_leg_304.png"
         }, 
         {
             "id": 305,
@@ -5525,15 +5558,19 @@
         {
             "id": 308,
             "text": "En mangeant les champignons, vous ressentez une grande agitation dans tout votre corps, et vous pensez aussitôt que vous êtes peut-être en train de devenir vous-même un Changeur de Forme ! Bientôt, cependant, vous êtes soulagé de sentir cette agitation s'apaiser puis disparaître ; vous n'êtes pas devenu un Changeur de Forme, mais vous avez mangé des Champignons Brouilleurs et votre total d'HABILETÉ va maintenant remplacer votre total de CHANCE et inversement, c'est-à-dire que vous devrez intervertir les deux chiffres figurant dans ces cases respectives. Vous vous sentez un peu bizarre à présent, mais vous repartez malgré tout en direction du nord.",
-            "effects": {
-                "swingSkillChance": "intervertir chance et habileté"
-            },
+            "effects": [
+                {
+                    "type": "swingSkillChance"
+                }
+            ],
             "choices": [
                 {
                     "text": "Rendez-vous au 148.",
                     "nextId": 148
                 }
-            ]
+            ], 
+            "illustration": "images_foret/mushrooms_effects_308.png"
+
         }, 
         {
             "id": 309,
@@ -5574,7 +5611,7 @@
                     "requiresAllMonstersDefeated": true
                 }
             ],
-            "illustration": ""
+            "illustration": "images_foret/cavern_troll_attacking_with_a_mace_310.png"
         }, 
         {
             "id": 311,
@@ -5930,7 +5967,8 @@
                     "text": "Rendez-vous au 103.",
                     "nextId": 103
                 }
-            ]
+            ],
+            "illustration": "images_foret/dense_vegetation_112_2.png"
         },
         {
             "id": 333,
@@ -6020,7 +6058,8 @@
                     "name": "boîte en argent",
                     "category": "equipment"
                 }
-            ]
+            ], 
+            "illustration": "images_foret/craig1755_pixel_art_of_a_green_toxic_gaz_and_fog_around_an_opened_silver_box_169_2.png"
         }, 
         {
             "id": 339,
@@ -6072,14 +6111,13 @@
                     "quantity": 5
                 },
                 {
-                    "name": "Dent de dragon",
+                    "name": "dent de dragon",
                     "category": "equipment"
                 },
                 {
                     "name": "Potion de Force",
                     "category": "potions",
-                    "description": "Rend 5 points d'ENDURANCE",
-                    "effect": { "gainHealth": 5}
+                    "description": "Rend 5 points d'ENDURANCE"
                 }
             ],
             "effects": [
@@ -6087,7 +6125,8 @@
                     "type": "gainChance",
                     "value": 1
                 }
-            ]
+            ],
+            "illustration": "images_foret/five_gold_coins_big_dragon_tooth_and_strenght_potion_341.png"
         }, 
         {
             "id": 342,
@@ -6435,7 +6474,8 @@
                 "text": "Si vous préférez l'ouest, rendez-vous au 238.",
                 "nextId": 238
               }
-            ]
+            ],
+            "illustration": "images_foret/two_possible_ways_in_the_forest_362.png"
         },
         {
             "id": 363,
@@ -6475,7 +6515,8 @@
                 "text": "Rendez-vous au 358.",
                 "nextId": 358
               }
-            ]
+            ],
+            "illustration": "images_foret/craig1755_pixel_art_of_a_green_toxic_gaz_and_fog_around_an_opened_silver_box_169_2.png"
         },
         {
             "id": 366,
@@ -6542,7 +6583,14 @@
                 "text": "Rendez-vous au 231.",
                 "nextId": 231
               }
-            ]
+            ],
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 3
+                }
+            ],
+            "illustration": "images_foret/dark_image_a_few_touch_of_green_370_2.png"
         },
         {
             "id": 371,
@@ -6616,7 +6664,7 @@
             ],
             "effects": [
                 {
-                    "type": "addItem",
+                    "type": "takeItem",
                     "itemName": "gantelet d'adresse à combattre",
                     "category": "equipment"
                 }
@@ -6825,7 +6873,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/creature_in_a_cage_dark_cave_55_2.png"
         },
         {
             "id": 386,
@@ -6861,7 +6909,7 @@
                 "value": 1
               }
             ],
-            "illustration": ""
+            "illustration": "images_foret/gold_coin_forest_387.png"
         },
         {
             "id": 388,
@@ -6974,7 +7022,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/in_a_valley_in_the_big_forest_25.png"
         },
         {
             "id": 394,
@@ -6999,37 +7047,20 @@
               {
                 "text": "Si vous êtes Chanceux, vous ne vous faites pas mal en tombant. Rendez-vous au 154.",
                 "nextId": 154,
-                "chanceCheckPassed": true,
-                "effects": [
-                  {
-                    "type": "message",
-                    "text": "<strong>Vous êtes Chanceux !</strong> Vous réussissez à amortir votre chute et ne vous blessez pas."
-                  }
-                ]
+                "chanceCheckPassed": true
               },
               {
                 "text": "Si vous êtes Malchanceux, votre tête heurte une bûche et vous perdez 3 points d'ENDURANCE. Rendez-vous au 370.",
                 "nextId": 370,
-                "chanceCheckPassed": false,
-                "effects": [
-                  {
-                    "type": "message",
-                    "text": "<strong>Vous êtes Malchanceux...</strong> Votre tête heurte violemment une bûche au sol !"
-                  },
-                  {
-                    "type": "reduceHealth",
-                    "value": 3
-                  }
-                ]
+                "chanceCheckPassed": false
               }
             ],
-            "items": [],
             "effects": [
               {
                 "type": "rollDiceChance"
               }
             ],
-            "illustration": ""
+            "illustration": "images_foret/bolts_and_thunders_from_magical_copper_lantern_395.png"
         },
         {
             "id": 396,
@@ -7061,7 +7092,7 @@
               }
             ],
             "items": [],
-            "illustration": ""
+            "illustration": "images_foret/valley_56.png"
         },
         {
             "id": 398,

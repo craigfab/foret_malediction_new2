@@ -129,6 +129,10 @@ export function applyChapterEffects(chapter) {
                     restoreStats();
                     message = "Choisissez quelle statistique restaurer.";
                     break;
+                case "swingSkillChance":
+                    swingSkillChance();
+                    message = "Vos valeurs de CHANCE et d'HABILETÉ ont été interverties !";
+                    break;
                 case "message":
                     message = effect.text || "Message personnalisé.";
                     break;
@@ -140,6 +144,11 @@ export function applyChapterEffects(chapter) {
             updateCharacterStats();
             updateAdventureSheet();
 
+            // Affiche un message personnalisé si présent dans l'effet (avant le message automatique)
+            if (effect.message) {
+                effectMessageDiv.innerHTML += `<p>${effect.message}</p>`;
+            }
+            
             // Affiche le message pour cet effet
             if (message !== '') {
                 effectMessageDiv.innerHTML += `<p>${message}</p>`;
@@ -1032,6 +1041,20 @@ function restoreStats() {
         gameState.conditionMet = true;
         updateChoiceButtons();
     }
+}
+
+// Fonction pour intervertir les valeurs de CHANCE et d'HABILETÉ (effet des Champignons Brouilleurs)
+function swingSkillChance() {
+    // Sauvegarder la valeur actuelle de l'habileté
+    const tempSkill = gameState.character.skill;
+    
+    // Intervertir les valeurs
+    gameState.character.skill = gameState.character.chance;
+    gameState.character.chance = tempSkill;
+    
+    // Mettre à jour l'affichage
+    updateCharacterStats();
+    updateAdventureSheet();
 }
 
 

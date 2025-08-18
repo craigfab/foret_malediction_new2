@@ -175,6 +175,21 @@ export function usePotionBonneFortune() {
     }
 }
 
+// gérer la potion de force
+export function usePotionForce() {
+    const potionMessageDiv = document.getElementById('PotionMessage');
+
+    if (gameState.inventory.checkItem('Potion de Force') > 0) {
+        gameState.inventory.removeItem('Potion de Force');
+        gameState.character.health += 5;
+        updateCharacterStats();
+        updateAdventureSheet();
+        potionMessageDiv.innerHTML = 'Potion de Force consommée, +5 points d\'endurance.';
+    } else {
+        potionMessageDiv.innerHTML = 'Aucune Potion de Force disponible.';
+    }
+}
+
 
 // fonction take_item
 export function takeItem(item, buttonElement) {
