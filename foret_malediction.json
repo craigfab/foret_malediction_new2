@@ -1523,6 +1523,12 @@
                     "nextId": 238
                 }
             ],
+            "effects": [
+                {
+                    "type": "reduceGold",
+                    "value": 1
+                }
+            ],
             "items": [],
             "illustration": "images_foret/well_with_stone_edge_359.png"
         },
@@ -1610,6 +1616,14 @@
                 }
             ],
             "items": [],
+            "effects": [
+                {
+                    "type": "takeItem",
+                    "itemName": "main d'argile",
+                    "category": "equipment",
+                    "quantity": 1
+                }
+            ],
             "illustration": "images_foret/tunnel_splitting_bis_284.png"
         },
         {
@@ -2899,7 +2913,14 @@
                 "nextId": 242
               }
             ], 
-            "illustration" :"images_foret/gremlin_jumping_out_of_a_wooden_box_229_2.png"
+            "illustration" :"images_foret/gremlin_out_a_box_229.jpg",
+            "monsters": [
+                {
+                    "name": "Gremlin",
+                    "skill": 5,
+                    "health": 3
+                }
+            ]
         },
         {
             "id": 166,
@@ -6603,7 +6624,7 @@
             ], 
             "items": [
                 {
-                    "name": "pièces d'or",
+                    "name": "or",
                     "category": "gold",
                     "quantity": 3
                 }
