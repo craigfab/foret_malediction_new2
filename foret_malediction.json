@@ -1862,7 +1862,7 @@
                 }
             ],
             "items": [],
-            "illustration": "images_foret/fighting_angry_peasants_104_2.png"
+            "illustration": "images_foret/forest_ambush_360_3.png"
         }, 
         {
             "id": 105,
@@ -3201,7 +3201,7 @@
               }
             ],
             "items": [],
-            "illustration":"images_foret/merfolk_trident_181.png"
+            "illustration":"images_foret/merfolk_trident_181_3.png"
         },
         {
             "id": 182,
@@ -7155,14 +7155,16 @@
             "effects": [
                 {
                     "type": "removeItem",
-                    "itemName": "manche du marteau de guerre des nains avec G gravé"
+                    "itemName": "manche du marteau de guerre des nains avec G gravé",
+                    "category": "equipment"
                 },
                 {
                     "type": "removeItem",
-                    "itemName": "tête du marteau de guerre des nains avec G gravé"
+                    "itemName": "tête du marteau de guerre des nains avec G gravé", 
+                    "category": "equipment"
                 }
             ],
-            "illustration": "images_foret/dwarf_king_with_a_crown_with_a_big_hammer_400.png"
+            "illustration": "images_foret/dwarf_king_400.png"
         }
           
                  

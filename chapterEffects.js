@@ -398,14 +398,14 @@ function reduceHealthRollDice() {
     });
 }
 
-// fonction rollDiceSkillChance pour tester habileté + chance
+// fonction rollDiceSkillChance pour tester habileté ET chance
 function rollDiceSkillChance() {
     const actionMessageDiv = document.getElementById('action_message');
-    actionMessageDiv.innerHTML = 'Testez votre habileté et votre chance en lançant deux dés<br>';
+    actionMessageDiv.innerHTML = 'Testez votre HABILETÉ et votre CHANCE en lançant deux dés.<br>Réussite si le total est <= HABILETÉ ET <= CHANCE.<br>';
     
     // Création du bouton pour tenter le test
     const skillChanceButton = document.createElement("button");
-    skillChanceButton.innerText = "Lancer les dés (Habileté + Chance)";
+    skillChanceButton.innerText = "Lancer les dés";
     skillChanceButton.id = "skillChanceButton";
 
     // ajout bouton à la div
@@ -418,16 +418,17 @@ function rollDiceSkillChance() {
         const diceRoll2 = rollDice();
         const totalRoll = diceRoll1 + diceRoll2;
 
-        // Calculer la somme habileté + chance
-        const skillPlusChance = gameState.character.skill + gameState.character.chance;
+        // Récupérer les valeurs d'HABILETÉ et de CHANCE
+        const skill = gameState.character.skill;
+        const chance = gameState.character.chance;
 
-        // Comparer la somme des dés avec habileté + chance
-        const isSuccessful = totalRoll <= skillPlusChance;
+        // Réussite si le total est <= HABILETÉ ET <= CHANCE
+        const isSuccessful = totalRoll <= skill && totalRoll <= chance;
 
         // Afficher le résultat
         const resultMessage = isSuccessful
-            ? `Vous avez lancé ${diceRoll1} et ${diceRoll2} (total: ${totalRoll}). Habileté + Chance = ${skillPlusChance}. <strong>Réussite !</strong>`
-            : `Vous avez lancé ${diceRoll1} et ${diceRoll2} (total: ${totalRoll}). Habileté + Chance = ${skillPlusChance}. <strong>Échec...</strong>`;
+            ? `Vous avez lancé ${diceRoll1} et ${diceRoll2} (total: ${totalRoll}). HABILETÉ = ${skill}, CHANCE = ${chance}. <strong>Réussite !</strong>`
+            : `Vous avez lancé ${diceRoll1} et ${diceRoll2} (total: ${totalRoll}). HABILETÉ = ${skill}, CHANCE = ${chance}. <strong>Échec...</strong>`;
         actionMessageDiv.innerHTML = resultMessage;
 
         // Stocker le résultat dans gameState pour référence ultérieure
