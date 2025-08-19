@@ -682,7 +682,7 @@
                 }
             ],
             "items": [],
-            "illustration": "images_foret/forest_40.png"
+            "illustration": "images_foret/forest_40_2.png"
         },
         {
             "id": 41,
@@ -6059,7 +6059,7 @@
                     "nextId": 358
                 }
             ], 
-            "illustration":"images_foret/entrance_of_a_dark_cave_337.png"
+            "illustration":"images_foret/entrance_of_a_cavern_337_2.png"
         },
         {
             "id": 338,
@@ -6413,7 +6413,7 @@
               }
             ],
             "items": [],
-            "illustration": "images_foret/path_in_the_forest_357.png"
+            "illustration": "images_foret/forest_357_2.png"
         },
         {
             "id": 358,
@@ -7031,7 +7031,7 @@
               }
             ],
             "items": [],
-            "illustration": "images_foret/adventurer_hidden_behind_the_bushes_392_2.png"
+            "illustration": "images_foret/adventurer_hidden_behind_the_bushes_392_3.png"
         },
         {
             "id": 393,
