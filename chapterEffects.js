@@ -42,14 +42,18 @@ export function applyChapterEffects(chapter) {
                     gameState.inventory.removeItem('or', effect.value);
                     message = `${effect.value} pièces d'or retirées.`;
                     break;
-                case "removeItem":
-                    gameState.inventory.removeItem(effect.itemName, effect.quantity);
-                    message = `${effect.quantity} ${effect.itemName} retiré(s).`;
+                case "removeItem": {
+                    const quantityToRemove = (typeof effect.quantity === 'number' && effect.quantity > 0) ? effect.quantity : 1;
+                    gameState.inventory.removeItem(effect.itemName, quantityToRemove);
+                    message = `${quantityToRemove} ${effect.itemName} retiré(s).`;
                     break;
-                case "useAndRemoveItem":
-                    gameState.inventory.removeItem(effect.itemName, effect.quantity);
-                    message = `Utilisation et retrait de ${effect.quantity} ${effect.itemName}.`;
+                }
+                case "useAndRemoveItem": {
+                    const quantityToRemove = (typeof effect.quantity === 'number' && effect.quantity > 0) ? effect.quantity : 1;
+                    gameState.inventory.removeItem(effect.itemName, quantityToRemove);
+                    message = `Utilisation et retrait de ${quantityToRemove} ${effect.itemName}.`;
                     break;
+                }
                 case "gainSkill":
                     gameState.character.skill += effect.value;
                     message = `Habileté augmentée de ${effect.value}.`;

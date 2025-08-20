@@ -188,6 +188,41 @@ export function triggerVictory() {
         actionMessageDiv.innerHTML = '<h1 style="color: black; font-size: 3em; text-align: center; margin: 20px 0;">🏆🌟 Vous avez réussi, votre quête est désormais terminée ! 🌟🏆</h1>';
     }
 
+    // Lecture d'une animation vidéo avant d'afficher l'image finale pour le chapitre 400
+    if (gameState && gameState.currentChapterId === 400) {
+        const illustrationImg = document.getElementById('illustration');
+        if (illustrationImg) {
+            const previousDisplay = illustrationImg.style.display;
+            // Masquer l'image le temps de l'animation
+            illustrationImg.style.display = 'none';
+
+            // Créer et configurer la vidéo (muette pour laisser la musique de victoire)
+            const video = document.createElement('video');
+            video.id = 'victoryChapter400Video';
+            video.src = 'images_foret/dwarf_amimation.MP4';
+            video.autoplay = true;
+            video.muted = true;
+            video.playsInline = true;
+            video.controls = false;
+            video.style.width = '100%';
+            video.style.maxWidth = '100%';
+            video.style.display = 'block';
+
+            const container = illustrationImg.parentElement || document.body;
+            container.insertBefore(video, illustrationImg);
+
+            const cleanupAndShowImage = () => {
+                try { video.pause(); } catch {}
+                video.remove();
+                illustrationImg.style.display = previousDisplay || '';
+                // L'illustration a déjà été fixée par le chapitre (king_dwarf)
+            };
+
+            video.addEventListener('ended', cleanupAndShowImage, { once: true });
+            video.addEventListener('error', cleanupAndShowImage, { once: true });
+        }
+    }
+
     // Ne pas marquer le jeu comme terminé et ne pas désactiver les boutons.
 }
 
