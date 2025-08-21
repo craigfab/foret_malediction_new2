@@ -106,7 +106,7 @@ function performAttack(index) {
     if (gameState.inventory.checkItem('casque en bronze')) {
         attackModifier += 1;
     }
-    if (gameState.inventory.checkItem('Bracelet d\'Habileté')) {
+    if (gameState.inventory.checkItem('bracelet d\'habileté')) {
         attackModifier += 1;
     }
     if (gameState.inventory.checkItem('gantelet d\'adresse à combattre')) {
@@ -118,13 +118,8 @@ function performAttack(index) {
         attackModifier -= 2;
     }
     
-    // Malus temporaire chapitre 49 : -3 à la force d'attaque
-    if (gameState.currentChapterId === 49) {
-        attackModifier -= 3;
-    }
-    
-    // Malus temporaire chapitre 193 : -3 à la force d'attaque (position malaisée dans le tunnel)
-    if (gameState.currentChapterId === 193) {
+    // Malus temporaire de -3 à la force d'attaque pour certains chapitres
+    if (gameState.currentChapterId === 49 || gameState.currentChapterId === 71 || gameState.currentChapterId === 193) {
         attackModifier -= 3;
     }
 

@@ -62,7 +62,7 @@
         {
             "id": 2,
             "text": "Pour vous, l'aventure se termine ici : votre chair fraîche et savoureuse offrira un festin de choix à la Goule victorieuse.",
-            "effects": "game over", 
+            "effects": [{"type": "gameOver"}], 
             "illustration":"images_foret/game_over_2.png"
         },
         {
@@ -315,9 +315,6 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "heal": "fièvre retombe, disparition du poil"
-            },
             "illustration":"images_foret/path_hills_dawn_18.png"
         },
         {
@@ -330,10 +327,12 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "type": "reduceHealth",
-                "value": 1
-            },
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 1
+                }
+            ],
             "illustration":"images_foret/sword_with_blood_19.png"
         },
         {
@@ -358,9 +357,6 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "Poison": false
-            },
             "illustration":"images_foret/healing_of_poison_21.png"
         },
         {
@@ -410,10 +406,6 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "Poison": false,
-                "removeItem" : "potion Antipoison"
-            },
             "illustration": "images_foret/healing_potion.png"
         },
         {
@@ -605,9 +597,12 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceHealth": 4
-            },
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 4
+                }
+            ],
             "illustration": "images_foret/green_dragon_above_the_forest_jet_of_fire_57.jpg"
         },
         {
@@ -789,10 +784,12 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "type": "reduceChance",
-                "value": 2
-            },
+            "effects": [
+                {
+                    "type": "reduceChance",
+                    "value": 2
+                }
+            ],
             "illustration": "images_foret/butterfly_flying_in_the_sky_46.png"
         },
         {
@@ -852,9 +849,6 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceAttackForce": 3
-            },
             "illustration": "images_foret/gremlins_with_daggers_attacking_and_angry_49.png"
         },
         {
@@ -913,10 +907,12 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "loseAllGold": true,
-                "loseAllItems" : true 
-            },
+            "effects": [
+                {
+                    "type": "loseAllGold"
+                }
+        
+            ],
             "illustration": "images_foret/poison_effects_53.png"
         },
         {
@@ -1143,9 +1139,12 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "gainHealth": 3
-            },
+            "effects": [
+                {
+                    "type": "gainHealth",
+                    "value": 3
+                }
+            ],
             "illustration": "images_foret/bottle_clear_liquid_halo_68_2.png"
         },
         {
@@ -1208,9 +1207,6 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceAttackForce": 3
-            },
             "illustration": "images_foret/gremlin_chief_cavern_71_2.png"
         },
         {
@@ -1399,7 +1395,7 @@
                     "text": "Si oui, rendez-vous au 235.",
                     "nextId": 235,
                     "requiresItem": {
-                        "itemName": "potion de tranquilité",
+                        "name": "potion de tranquilité",
                         "category": "potions"
                     }
                 },
@@ -1421,9 +1417,12 @@
                 }
             ],
             "items": [],
-            "effects": {
-                "reduceHealth": 2
-            },
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 2
+                }
+            ],
             "illustration": "images_foret/healing_werewolf_83.png"
         },
         {
@@ -1439,7 +1438,8 @@
             "choices": [
                 {
                     "text": "Si vous êtes vainqueur, rendez-vous au 146.",
-                    "nextId": 146
+                    "nextId": 146, 
+                    "requiresAllMonstersDefeated": true
                 },
                 {
                     "text": "Si vous souhaitez prendre la Fuite, vous pourrez le faire après avoir mené trois Assauts, et vous vous échapperez alors en direction du nord, vers le fond de la vallée. Rendez-vous au 245.",
@@ -1734,6 +1734,10 @@
             "effects": [
                 {
                     "type": "rollDiceChance"
+                },
+                {
+                    "type": "gameOver",
+                    "chanceCheckPassed": false
                 }
             ],
             "items": [],
@@ -2364,7 +2368,7 @@
                     "text": "Si vous avez une flûte, rendez-vous au 258.",
                     "nextId": 258,
                     "requiresItem": {
-                        "name": "flûte",
+                        "name": "petite flûte de cuivre",
                         "category": "equipment"
                     }
                 },
@@ -2756,8 +2760,8 @@
                 "text": "Si oui, rendez-vous au 83.",
                 "nextId": 83,
                 "requiresItem":{
-                    "name" : "Belladone",
-                    "category" : "equipment"
+                    "name" : "belladone",
+                    "category" : "potions"
                 }
               },
               {
@@ -3373,7 +3377,10 @@
               {
                 "text": "Si vous avez une cloche de cuivre, rendez-vous au 184.",
                 "nextId": 184,
-                "requiresItem": "cloche de cuivre"
+                "requiresItem": {
+                  "name": "cloche de cuivre",
+                  "category": "jewelry"
+                }
               },
               {
                 "text": "Sinon, rendez-vous au 243.",
@@ -3431,9 +3438,9 @@
             ],
             "items": [
               {
-                "name": "Belladone",
+                "name": "belladone",
                 "quantity": 1,
-                "category": "equipment"
+                "category": "potions"
               }
             ],
             "illustration": "images_foret/friendly_man_standing_in_a_green_plain_194_2.png"
@@ -3465,7 +3472,10 @@
               {
                 "text": "Prendre dans votre sac à dos le Filet de Capture (si vous le possédez), rendez-vous au 39.",
                 "nextId": 39,
-                "requiresItem": "filet de capture"
+                "requiresItem": {
+                  "name":  "filet de capture",
+                  "category": "equipment"
+                }
               },
               {
                 "text": "Retourner à la bifurcation et poursuivre votre chemin vers le nord, rendez-vous au 25.",
@@ -4209,7 +4219,10 @@
               {
                 "text": "Si vous avez une Potion de Guérison, rendez-vous au 214.",
                 "nextId": 214,
-                "requiresItem": "potion de guérison"
+                "requiresItem": {
+                  "name": "potion de guérison",
+                  "category": "potion"
+                }
               },
               {
                 "text": "Sinon, rendez-vous au 304.",
@@ -4259,7 +4272,10 @@
               {
                 "text": "Si vous avez des Filtres à Nez, rendez-vous au 338.",
                 "nextId": 338,
-                "requiresItem": "filtres à nez"
+                "requiresItem": {
+                  "name": "filtres à nez",
+                  "category": "equipment"
+                }
               },
               {
                 "text": "Sinon, rendez-vous au 169.",
@@ -4573,7 +4589,10 @@
               {
                 "text": "Utilisez la flûte et rendez-vous au 305.",
                 "nextId": 305,
-                "requiresItem": "petite flute de cuivre"
+                "requiresItem": {
+                  "name": "petite flûte de cuivre",
+                  "category": "equipment"
+                }
               }
             ],
             "illustration": "images_foret/green_dragon_in_a_clearing_sleeping_258.png"
@@ -5436,7 +5455,10 @@
         {
             "id": 301,
             "text": "Vous fouillez les poches des Lutins et vous y trouvez 3 pièces d'Or, une petite flûte de cuivre et des biscuits grouillant de vers. Autour du cou d'une des créatures est également attaché un collier fait de crânes de souris.",
-            "choices":[{"text": "Si vous estimez avoir besoin de l'un quelconque de ces objets (ou de plusieurs, voire de tous), inscrivez-les sur votre Liste d'Equipement et rendez-vous au 157.", "nextId": 157}],
+            "choices":[
+                {"text": "Si vous estimez avoir besoin de l'un quelconque de ces objets (ou de plusieurs, voire de tous), inscrivez-les sur votre Liste d'Equipement et rendez-vous au 157.",
+                 "nextId": 157}
+                ],
             "items":[
                 { 
                     "name": "petite flûte de cuivre",
@@ -5456,14 +5478,14 @@
                     "quantity": 3
                 }
             ],
-            "illustration":"images_foret/flute_crane_gold.PNG"
+            "illustration":"images_foret/flute_crane_gold.png"
         }, 
         {
             "id": 302,
             "text": "Vous passez le bracelet autour de votre poignet et, soudain, une énergie nouvelle parcourt votre bras et vous faites un bond sur place. Vous vous sentez fort car ce bracelet est un Bracelet d'Habileté qui vous permettra d'ajouter 1 point à votre Force d'Attaque lors de vos futurs combats et cela, aussi longtemps que vous le porterez. Inscrivez-le sur votre Liste d'Equipement et redescendez le long de la liane pour repartir en direction du nord.",
             "items": [
                 {
-                    "name": "Bracelet d'Habileté",
+                    "name": "bracelet d'habileté",
                     "category": "equipment",
                     "description": "Ajoute 1 point à la Force d'Attaque lors des combats"
                 }
@@ -5639,7 +5661,7 @@
             "text": "En fouillant leurs vêtements et leurs bourses, vous ne trouvez rien d'intéressant, à part 2 pièces d'Or que vous rangez dans votre sac à dos. Vous repartez ensuite vers le nord, le long du chemin, et vous remarquez bientôt que le feuillage des arbres se fait moins dense de part et d'autre du sentier. Vous sortez alors de la Forêt et vous arrivez sur un champ cultivé. Vous avez enfin quitté la Forêt des Ténèbres !",
             "items": [
                 {
-                    "name": "Pièces d'Or",
+                    "name": "or",
                     "category": "gold",
                     "quantity": 2
                 }
@@ -5994,7 +6016,7 @@
         {
             "id": 333,
             "text": "La couronne vous va à merveille et en vous voyant ainsi coiffé, les deux Guerriers Clones vous fixent avec de grands yeux qui expriment un respect mêlé de crainte. Grâce à la couronne posée sur votre tête, vous pouvez entrer en communication télépathique avec les deux créatures, et vous comprenez alors, en lisant dans leurs pensées, ce qu'elles essayent de vous dire : vous êtes leur nouveau maître et elles attendent les ordres que vous voudrez bien leur donner. Elles vous demandent notamment ce que l'on doit faire de la nouvelle récolte de champignons à chapeaux rouges. Vous n'avez cependant pas la moindre envie d'être le maître de ces humanoïdes, qu'ils soient guerriers ou qu'ils cultivent des champignons, et vous levez les mains pour ôter la couronne de votre tête. Mais vous vous apercevez alors avec terreur que la peau de vos mains s'est flétrie et a pris une couleur sombre. Vous essayez d'enlever la couronne, mais elle ne bouge pas : c'est une couronne maléfique qui a trouvé en vous une nouvelle victime ; et peu à peu les traits de votre visage se transforment car vous êtes en train de prendre la forme et la couleur d'un Démon de Feu. Votre nouveau destin est scellé et votre aventure se termine ici.",
-            "effects": "game over", 
+            "effects": [{"type": "gameOver"}], 
             "illustration":"images_foret/craig1755_pixel_art_cursed_crown_on_a_black_evil_creature_evil_333_2.png"
         },
         {
@@ -6750,7 +6772,8 @@
             "choices": [
               {
                 "text": "Si vous êtes vainqueur, rendez-vous au 205.",
-                "nextId": 205
+                "nextId": 205, 
+                "requiresAllMonstersDefeated": true
               },
               {
                 "text": "Si vous souhaitez prendre la Fuite, repartez vers le nord. Rendez-vous au 92.",

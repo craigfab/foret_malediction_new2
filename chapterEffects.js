@@ -1,6 +1,6 @@
 import { gameState } from "./scripts_forest.js";
 import { rollDice, tempt_chance } from "./chance.js";
-import { updateCharacterStats } from "./character.js";
+import { updateCharacterStats, triggerGameOver } from "./character.js";
 import { updateAdventureSheet, useMeal } from "./inventory.js";
 
 
@@ -25,6 +25,7 @@ export function applyChapterEffects(chapter) {
             switch (effect.type) {
                 case "gameOver":
                     message = '<strong>GAME OVER</strong>';
+                    triggerGameOver();
                     break;
                 case "reduceSkill":
                     gameState.character.skill -= effect.value;
@@ -475,6 +476,10 @@ function applyConditionalEffects(isLucky) {
                         case "gainHealth":
                             gameState.character.health += effect.value;
                             message = `Endurance augmentée de ${effect.value}.`;
+                            break;
+                        case "gameOver":
+                            message = '<strong>GAME OVER</strong>';
+                            triggerGameOver();
                             break;
                         // Ajouter d'autres types d'effets au besoin
                     }
@@ -991,12 +996,12 @@ function restoreStats() {
     actionMessageDiv.innerHTML = 'Le génie vous offre de restaurer une de vos statistiques à son niveau de départ :<br><br>';
 
     // Bouton pour restaurer l'HABiLETÊ
-    if (gameState.character.skill < gameState.baseSkill) {
+    if (gameState.character.skill < gameState.character.baseSkill) {
         const skillButton = document.createElement('button');
-        skillButton.innerText = `Restaurer HABiLETÊ (${gameState.character.skill} → ${gameState.baseSkill})`;
+        skillButton.innerText = `Restaurer HABiLETÊ (${gameState.character.skill} → ${gameState.character.baseSkill})`;
         skillButton.addEventListener('click', () => {
-            gameState.character.skill = gameState.baseSkill;
-            actionMessageDiv.innerHTML = `<strong>Votre HABiLETÊ a été restaurée à ${gameState.baseSkill} !</strong>`;
+            gameState.character.skill = gameState.character.baseSkill;
+            actionMessageDiv.innerHTML = `<strong>Votre HABiLETÊ a été restaurée à ${gameState.character.baseSkill} !</strong>`;
             gameState.conditionMet = true;
             updateCharacterStats();
             updateAdventureSheet();
@@ -1007,12 +1012,12 @@ function restoreStats() {
     }
 
     // Bouton pour restaurer l'ENDURANCE
-    if (gameState.character.health < gameState.baseHealth) {
+    if (gameState.character.health < gameState.character.baseHealth) {
         const healthButton = document.createElement('button');
-        healthButton.innerText = `Restaurer ENDURANCE (${gameState.character.health} → ${gameState.baseHealth})`;
+        healthButton.innerText = `Restaurer ENDURANCE (${gameState.character.health} → ${gameState.character.baseHealth})`;
         healthButton.addEventListener('click', () => {
-            gameState.character.health = gameState.baseHealth;
-            actionMessageDiv.innerHTML = `<strong>Votre ENDURANCE a été restaurée à ${gameState.baseHealth} !</strong>`;
+            gameState.character.health = gameState.character.baseHealth;
+            actionMessageDiv.innerHTML = `<strong>Votre ENDURANCE a été restaurée à ${gameState.character.baseHealth} !</strong>`;
             gameState.conditionMet = true;
             updateCharacterStats();
             updateAdventureSheet();
@@ -1023,12 +1028,12 @@ function restoreStats() {
     }
 
     // Bouton pour restaurer la CHANCE
-    if (gameState.character.chance < gameState.baseChance) {
+    if (gameState.character.chance < gameState.character.baseChance) {
         const chanceButton = document.createElement('button');
-        chanceButton.innerText = `Restaurer CHANCE (${gameState.character.chance} → ${gameState.baseChance})`;
+        chanceButton.innerText = `Restaurer CHANCE (${gameState.character.chance} → ${gameState.character.baseChance})`;
         chanceButton.addEventListener('click', () => {
-            gameState.character.chance = gameState.baseChance;
-            actionMessageDiv.innerHTML = `<strong>Votre CHANCE a été restaurée à ${gameState.baseChance} !</strong>`;
+            gameState.character.chance = gameState.character.baseChance;
+            actionMessageDiv.innerHTML = `<strong>Votre CHANCE a été restaurée à ${gameState.character.baseChance} !</strong>`;
             gameState.conditionMet = true;
             updateCharacterStats();
             updateAdventureSheet();
@@ -1039,9 +1044,9 @@ function restoreStats() {
     }
 
     // Si toutes les stats sont déjà au maximum
-    if (gameState.character.skill >= gameState.baseSkill && 
-        gameState.character.health >= gameState.baseHealth && 
-        gameState.character.chance >= gameState.baseChance) {
+    if (gameState.character.skill >= gameState.character.baseSkill && 
+        gameState.character.health >= gameState.character.baseHealth && 
+        gameState.character.chance >= gameState.character.baseChance) {
         actionMessageDiv.innerHTML += '<strong>Toutes vos statistiques sont déjà à leur niveau maximum !</strong><br>';
         gameState.conditionMet = true;
         updateChoiceButtons();

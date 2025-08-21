@@ -177,7 +177,7 @@ window.attackPriorityPygmee = function() {
     if (gameState.inventory.checkItem('casque en bronze')) {
         attackModifier += 1;
     }
-    if (gameState.inventory.checkItem('Bracelet d\'Habileté')) {
+    if (gameState.inventory.checkItem('bracelet d\'habileté')) {
         attackModifier += 1;
     }
     if (gameState.inventory.checkItem('gantelet d\'adresse à combattre')) {
@@ -365,7 +365,7 @@ window.attackOtherPygmee = function() {
     if (gameState.inventory.checkItem('casque en bronze')) {
         attackModifier += 1;
     }
-    if (gameState.inventory.checkItem('Bracelet d\'Habileté')) {
+    if (gameState.inventory.checkItem('bracelet d\'habileté')) {
         attackModifier += 1;
     }
     if (gameState.inventory.checkItem('gantelet d\'adresse à combattre')) {

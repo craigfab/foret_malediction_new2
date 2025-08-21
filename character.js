@@ -214,8 +214,9 @@ export function triggerVictory() {
             const cleanupAndShowImage = () => {
                 try { video.pause(); } catch {}
                 video.remove();
-                illustrationImg.style.display = previousDisplay || '';
-                // L'illustration a déjà été fixée par le chapitre (king_dwarf)
+                // S'assurer que l'image est configurée avec la bonne source
+                illustrationImg.src = 'images_foret/dwarf_king_400.png';
+                illustrationImg.style.display = previousDisplay || 'block';
             };
 
             video.addEventListener('ended', cleanupAndShowImage, { once: true });
@@ -237,7 +238,7 @@ function getCombatModifiersDisplay() {
         modifiers.push('+1 casque');
         totalModifier += 1;
     }
-    if (gameState.inventory.checkItem('Bracelet d\'Habileté')) {
+    if (gameState.inventory.checkItem('bracelet d\'habileté')) {
         modifiers.push('+1 bracelet');
         totalModifier += 1;
     }
