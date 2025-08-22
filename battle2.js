@@ -3,6 +3,7 @@ import { rollDice, tempt_chance } from "./chance.js";
 import { updateCharacterStats } from "./character.js";
 import { playAttackSound, playCriticalHitSound, playVictorySound, playDefeatSound } from "./music.js";
 import { manageMonsters as normalManageMonsters } from "./battle.js";
+import { updateChoiceButtons } from "./chapterEffects.js";
 
 // Fonction principale pour gérer le combat des pygmées
 export function managePygmees(chapterMonsters) {
@@ -34,6 +35,9 @@ export function managePygmees(chapterMonsters) {
     }
 
     updatePygmeeList();
+    
+    // Mettre à jour l'état des boutons de choix dès l'initialisation
+    updateChoiceButtons();
 }
 
 // Configuration de l'interface de combat spécial pygmées
@@ -100,10 +104,18 @@ function setupPygmeeCombat() {
             priorityDisabled = 'disabled';
         }
         
+        // Texte du bouton selon la phase
+        let priorityButtonText;
+        if (gameState.pygmeeCombatState.phase === "choix") {
+            priorityButtonText = `${priorityPygmee.monster.name}`;
+        } else {
+            priorityButtonText = `Attaquer ${priorityPygmee.monster.name}`;
+        }
+        
         priorityDiv.innerHTML = `
             <strong>${priorityPygmee.monster.name}</strong> - Habileté: ${priorityPygmee.monster.skill}, Endurance: ${priorityPygmee.monster.health}<br>
             <button style="${priorityStyle}" onclick="${priorityOnClick}" ${priorityDisabled}>
-                Attaquer ${priorityPygmee.monster.name}
+                ${priorityButtonText}
             </button>
         `;
         monsterContainer.appendChild(priorityDiv);
@@ -126,10 +138,18 @@ function setupPygmeeCombat() {
             otherDisabled = 'disabled';
         }
         
+        // Texte du bouton selon la phase
+        let otherButtonText;
+        if (gameState.pygmeeCombatState.phase === "choix") {
+            otherButtonText = `${otherPygmee.monster.name}`;
+        } else {
+            otherButtonText = `Esquivez l'attaque de ${otherPygmee.monster.name}`;
+        }
+        
         otherDiv.innerHTML = `
             <strong>${otherPygmee.monster.name}</strong> - Habileté: ${otherPygmee.monster.skill}, Endurance: ${otherPygmee.monster.health}<br>
             <button style="${otherStyle}" onclick="${otherOnClick}" ${otherDisabled}>
-                Attaquer ${otherPygmee.monster.name}
+                ${otherButtonText}
             </button>
         `;
         monsterContainer.appendChild(otherDiv);
@@ -443,7 +463,7 @@ function checkPygmeeBattleEnd() {
     if (character.health <= 0) {
         attackMessageDiv.innerHTML += "<br><strong>Vous avez été vaincu. Game Over.</strong>";
         playDefeatSound();
-        updateChoiceButtonsState();
+        updateChoiceButtons();
         return;
     }
 
@@ -464,7 +484,7 @@ function checkPygmeeBattleEnd() {
         }
         
         updateCharacterStats();
-        updateChoiceButtonsState();
+        updateChoiceButtons();
         playVictorySound();
         
     } else if (alivePygmees.length === 1) {
@@ -487,16 +507,6 @@ function checkPygmeeBattleEnd() {
 // Mise à jour de la liste des pygmées
 function updatePygmeeList() {
     updateCharacterStats();
-}
-
-// Fonction pour mettre à jour l'état des boutons de choix
-function updateChoiceButtonsState() {
-    const allMonstersDefeated = gameState.monsters.every(monster => monster.status === "vaincu");
-    const choices = document.getElementById('choices').getElementsByTagName('button');
-
-    for (let choice of choices) {
-        if (choice.getAttribute('data-requiresAllMonstersDefeated') === 'true') {
-            choice.disabled = !allMonstersDefeated;
-        }
-    }
+    // Mettre à jour l'état des boutons de choix
+    updateChoiceButtons();
 }
