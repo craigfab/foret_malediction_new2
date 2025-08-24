@@ -1203,7 +1203,8 @@
             "choices": [
                 {
                     "text": "Si vous êtes vainqueur, rendez-vous au 273.",
-                    "nextId": 273
+                    "nextId": 273, 
+                    "requiresAllMonstersDefeated": true
                 }
             ],
             "items": [],
@@ -2914,7 +2915,8 @@
             "choices": [
               {
                 "text": "Si vous êtes vainqueur, rendez-vous au 242.",
-                "nextId": 242
+                "nextId": 242,
+                "requiresAllMonstersDefeated": true
               }
             ], 
             "illustration" :"images_foret/gremlin_out_a_box_229.jpg",
@@ -3379,7 +3381,7 @@
                 "nextId": 184,
                 "requiresItem": {
                   "name": "cloche de cuivre",
-                  "category": "jewelry"
+                  "category": "equipment"
                 }
               },
               {
@@ -3420,7 +3422,8 @@
             "choices": [
               {
                 "text": "Si vous êtes vainqueur, rendez-vous au 110.",
-                "nextId": 110
+                "nextId": 110,
+                "requiresAllMonstersDefeated": true
               }
             ],
             "items": [],
@@ -4291,7 +4294,8 @@
             "choices": [
               {
                 "text": "Si vous êtes vainqueur, rendez-vous au 219.",
-                "nextId": 219
+                "nextId": 219,
+                "requiresAllMonstersDefeated": true
               }
             ],
             "monsters": [
@@ -6261,7 +6265,8 @@
             "choices": [
                 {
                     "text": "Si vous êtes vainqueur, rendez-vous au 363.",
-                    "nextId": 363
+                    "nextId": 363,
+                    "requiresAllMonstersDefeated": true
                 }
             ],
             "illustration": "images_foret/fighting_dwarf_347.png"
@@ -6335,7 +6340,8 @@
             "choices": [
                 {
                     "text": "Si vous êtes vainqueur, rendez-vous au 207.",
-                    "nextId": 207
+                    "nextId": 207,
+                    "requiresAllMonstersDefeated": true
                 },
                 {
                     "text": "Vous pouvez également prendre la Fuite en sautant de la plate-forme sur le sol qui se trouve à cinq mètres au-dessous. Rendez-vous au 156.",
