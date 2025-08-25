@@ -136,7 +136,7 @@
             "choices": [
                 {"text": "Si vous sortez vainqueur de ce combat, rendez-vous au 23.", "nextId": 23, "requiresAllMonstersDefeated": true}
             ],
-            "illustration": "/abeilles_tueuses_id7.png",
+            "illustration": "images_foret/abeilles_tueuses_id7.png",
             "items": []
         },
         {
