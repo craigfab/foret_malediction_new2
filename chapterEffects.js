@@ -56,20 +56,38 @@ export function applyChapterEffects(chapter) {
                     break;
                 }
                 case "gainSkill":
-                    gameState.character.skill += effect.value;
-                    message = `Habileté augmentée de ${effect.value}.`;
+                    const oldSkill = gameState.character.skill;
+                    gameState.character.skill = Math.min(gameState.character.skill + effect.value, gameState.character.baseSkill);
+                    const actualSkillGain = gameState.character.skill - oldSkill;
+                    if (actualSkillGain > 0) {
+                        message = `Habileté augmentée de ${actualSkillGain}.`;
+                    } else {
+                        message = `Votre habileté est déjà à son niveau maximum.`;
+                    }
                     break;
                 case "gainHealth":
-                    gameState.character.health += effect.value;
-                    message = `Endurance augmentée de ${effect.value}.`;
+                    const oldHealth = gameState.character.health;
+                    gameState.character.health = Math.min(gameState.character.health + effect.value, gameState.character.baseHealth);
+                    const actualHealthGain = gameState.character.health - oldHealth;
+                    if (actualHealthGain > 0) {
+                        message = `Endurance augmentée de ${actualHealthGain}.`;
+                    } else {
+                        message = `Votre endurance est déjà à son niveau maximum.`;
+                    }
                     break;
                 case "gainGold":
                     gameState.inventory.addItem('or', effect.value, 'gold');
                     message = `${effect.value} pièces d'or ajoutées.`;
                     break;
                 case "gainChance":
-                    gameState.character.chance += effect.value;
-                    message = `Chance augmentée de ${effect.value}.`;
+                    const oldChance = gameState.character.chance;
+                    gameState.character.chance = Math.min(gameState.character.chance + effect.value, gameState.character.baseChance);
+                    const actualChanceGain = gameState.character.chance - oldChance;
+                    if (actualChanceGain > 0) {
+                        message = `Chance augmentée de ${actualChanceGain}.`;
+                    } else {
+                        message = `Votre chance est déjà à son niveau maximum.`;
+                    }
                     break;
                 case "skillCombatBoost":
                     gameState.character.applyTemporaryBoost('skillPotionBoost', effect.combatCount || 2);
@@ -474,8 +492,14 @@ function applyConditionalEffects(isLucky) {
                             message = `Chance réduite de ${effect.value}.`;
                             break;
                         case "gainHealth":
-                            gameState.character.health += effect.value;
-                            message = `Endurance augmentée de ${effect.value}.`;
+                            const oldHealth = gameState.character.health;
+                            gameState.character.health = Math.min(gameState.character.health + effect.value, gameState.character.baseHealth);
+                            const actualHealthGain = gameState.character.health - oldHealth;
+                            if (actualHealthGain > 0) {
+                                message = `Endurance augmentée de ${actualHealthGain}.`;
+                            } else {
+                                message = `Votre endurance est déjà à son niveau maximum.`;
+                            }
                             break;
                         case "gameOver":
                             message = '<strong>GAME OVER</strong>';

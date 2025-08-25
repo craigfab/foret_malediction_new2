@@ -117,11 +117,19 @@ export function useMeal() {
     const mealMessageDiv = document.getElementById('MealMessage');
 
     if (foodQuantity > 0) {
+        // Vérifier si l'endurance est déjà au maximum
+        if (gameState.character.health >= gameState.character.baseHealth) {
+            mealMessageDiv.innerHTML = 'Endurance au maximum, repas inutile.';
+            return;
+        }
+        
         gameState.inventory.removeItem('repas', 1, 'food');
-        gameState.character.health += 4;
+        const oldHealth = gameState.character.health;
+        gameState.character.health = Math.min(gameState.character.health + 4, gameState.character.baseHealth);
+        const actualGain = gameState.character.health - oldHealth;
         updateCharacterStats();
         updateAdventureSheet();
-        mealMessageDiv.innerHTML = 'Un repas consommé, +4 points de santé.';
+        mealMessageDiv.innerHTML = `Un repas consommé, +${actualGain} points de santé.`;
     } else {
         mealMessageDiv.innerHTML = 'Aucun repas disponible.';
     }
@@ -180,11 +188,19 @@ export function usePotionForce() {
     const potionMessageDiv = document.getElementById('PotionMessage');
 
     if (gameState.inventory.checkItem('Potion de Force') > 0) {
+        // Vérifier si l'endurance est déjà au maximum
+        if (gameState.character.health >= gameState.character.baseHealth) {
+            potionMessageDiv.innerHTML = 'Endurance au maximum, potion inutile.';
+            return;
+        }
+        
+        const oldHealth = gameState.character.health;
         gameState.inventory.removeItem('Potion de Force');
-        gameState.character.health += 5;
+        gameState.character.health = Math.min(gameState.character.health + 5, gameState.character.baseHealth);
+        const actualGain = gameState.character.health - oldHealth;
         updateCharacterStats();
         updateAdventureSheet();
-        potionMessageDiv.innerHTML = 'Potion de Force consommée, +5 points d\'endurance.';
+        potionMessageDiv.innerHTML = `Potion de Force consommée, +${actualGain} points d'endurance.`;
     } else {
         potionMessageDiv.innerHTML = 'Aucune Potion de Force disponible.';
     }
