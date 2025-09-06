@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles_collines.css"> 
+    <script type="module" src="scripts_collines.js" defer></script>
+    <title>Les Collines Maléfiques</title>
+
+</head>
+
+<body>
+    <header>
+        <h1> Les collines maléfiques</h1>
+    </header>
+
+    <nav>
+        <div id="navbar">
+            <!-- Bouton Recommencer -->
+            <button id="restartButton" title="Recommencer">🔄 Recommencer</button>
+    
+            <!-- Bouton Retour Accueil 
+            <a id="homeButton" href="../index.html" title="Accueil">🏠 Accueil</a>
+            -->
+    
+            <!-- Lecteur Audio -->
+            <div class="audio-wrapper" aria-label="Musique">
+                <span class="music-icon" aria-hidden="true">🎶</span>
+                <audio id="audioPlayer" controls>
+                    <source src="" type="audio/mp3">
+                </audio>
+            </div>
+
+            <!-- Bouton Carte -->
+            <button id="mapButton" title="Afficher la carte">🗺️ Carte</button>
+        </div>
+    </nav>
+
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- MAIN -->    
+        <main>
+        
+        <!-- Section text + choices -->
+        <section class="texte"> 
+            <h2 id="chapter_title"> chapitre </h2>
+            <div id="text"> texte </div>
+            <div id="choices"> </div>
+
+        </section>
+
+        <!-- Section actions -->
+        <section class="actions">
+
+            <h2> Actions </h2>
+
+            <!-- get item button -->
+            <div id="get_item"> </div>
+
+            <!-- tempt chance button -->
+            <div id="tempt_chance_button" >
+            </div>
+
+            <!-- throw a dice button -->
+            <div> 
+                <button id="roll_dice" style="display: none"> Lancez le dé </button>
+                <div id="zone_result_dice"> </div> 
+            </div>
+
+            <!-- effect message... -->
+            <div id="effect_message">
+            </div>
+
+            <!-- vous avez effectué... -->
+            <div id="action_message">
+            </div>
+
+        </section>
+
+        <!-- FEUILLE AVENTURE -->
+
+        <div class="container_aventure_combat">
+
+            <!-- feuille d'aventure -->
+            <section class="aventure"> 
+                <h2> Feuille d'aventure </h2>
+                <button id="createCharacterButton"> Créer un personnage </button>
+                <div class="feuille_aventure">
+                    <div id="skill" class="box skill"> Habileté </div>
+                    <div id="health" class="box health"> Endurance </div>
+                    <div id="chance" class="box chance"> Chance </div>
+                    <div id="equipment" class="box equipment"> Equipement transporté </div>
+                    <div id="gold" class="box gold"> Or </div>
+                    <div id="jewelry" class="box jewelry"> Bijoux </div>
+                    <div id="potions" class="box potions"> Potions </div>
+                    <div id="food" class="box food"> Provisions </div>
+                    
+                </div>
+                <button id="useMealButton" style="display:none"> Prendre un repas (augmente endurance de 4 points) </button>
+                <div id="MealMessage"> </div>
+                
+                <button id="invokeLibraButton" style="display:block"> Invoquer Libra, déesse de la justice </button>
+                <div id="PotionMessage"> </div>
+            </section>
+        
+        
+            <!-- combats -->
+            <section class="combat"> 
+                <h2> Combat </h2>
+                <div id="monsters"> Vous combattez : </div>
+                <br>
+                <div id="actual_monster" style="display:none" > </div>
+                <button id="attackButton" style="display:none"> Attaquer </button>  
+                <div id="attack_message"> </div>  
+                <button id="no_temptChanceButton" style="display:none"> Ne pas tenter ma chance. </button>
+                <button id="temptChanceButton" style="display:none"> Tenter ma chance ? </button>
+                <button id="escapeButton" style="display:none"> Choisir la fuite </button>
+            
+            </section>
+        
+        </div>
+
+        </main>
+
+        <!-- ASIDE -->
+        <aside>
+            <!-- illustration -->
+            <img id="illustration" src="images_collines/page_garde_collines.jpg" alt="illustration du chapitre en pixelart">
+        
+        </aside>
+    
+    </div>
+    
+    <!-- Modal Carte -->
+    <div id="mapModal" class="modal" style="display:none">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Fermer">×</button>
+            <img id="mapImage" src="" alt="Carte des collines maléfiques">
+        </div>
+    </div>
+
+    <!-- Modal Libra -->
+    <div id="libraModal" class="modal" style="display:none">
+        <div class="modal-content libra-modal">
+            <button class="close-modal" onclick="hideLibraModal()" aria-label="Fermer">×</button>
+            <h2>Invoquer Libra, déesse de la justice</h2>
+            <p>Choisissez l'aide que vous souhaitez recevoir de Libra (une seule invocation possible) :</p>
+            
+            <div class="libra-choices">
+                <button onclick="revitalisationLibra(); hideLibraModal();" class="libra-choice">
+                    <strong>Revitalisation</strong><br>
+                    Restaure toutes vos statistiques à leur niveau initial
+                </button>
+                
+                <button onclick="escapeLibra(); hideLibraModal();" class="libra-choice">
+                    <strong>Fuite Divine</strong><br>
+                    Vous aide à prendre la fuite avec l'aide divine
+                </button>
+                
+                <button onclick="healLibra(); hideLibraModal();" class="libra-choice">
+                    <strong>Guérison</strong><br>
+                    Neutralise les mauvais sorts et guérit vos afflictions
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>

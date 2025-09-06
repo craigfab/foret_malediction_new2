@@ -1,0 +1,439 @@
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin: 8px; 
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("images_collines/dark_and_gloomy_hills.png");
+    background-size: cover; 
+    background-position: center; 
+    font-family: 'IM Fell DW Pica', serif;
+    font-size: 23px;
+    border: 8px solid rgb(146, 168, 148)
+}
+
+header {
+    background-color: rgba(243, 243, 243, 0.5);
+    font-size: 35px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    height: 150px;
+}
+
+nav #navbar {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: center;
+    padding: 0px 0px 0px 10px;
+    color: white;
+}
+
+/* Alignement des éléments avec icônes dans la navbar */
+nav #navbar button,
+nav #navbar a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.audio-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.music-icon {
+    font-size: 1.1em;
+}
+
+/* Pousser le bouton Carte à droite */
+#navbar::after {
+    content: "";
+    flex: 1;
+}
+
+#mapButton {
+    margin-left: auto;
+}
+
+nav #navbar button, nav #navbar a {
+    color: black;
+    text-decoration: none;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 7px;
+}
+
+nav #navbar a:hover, nav #navbar button:hover {
+    background-color: #3e443e;
+}
+
+button {
+    font-family: 'IM Fell DW Pica', serif;
+    font-size: 23px;
+    background-color: white; 
+    color: black; 
+    padding: 10px 20px;
+    border: 3px solid #362a21; 
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+  
+button:hover {
+    background-color: #dad4d4; /* Légèrement gris pour le survol */
+    border-color: #30251d; /* Changement de couleur de bordure au survol */
+}
+
+button:disabled {
+    opacity: 0.5;
+}
+
+/* Style pour les monstres vaincus */
+.monster-defeated {
+    opacity: 0.5;
+    color: #333333;
+}
+
+
+
+h2 {
+    padding: 5px;
+    margin: 0px;
+}
+  
+/* Flexbox pour organiser le contenu principal */
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+main {
+    flex: 5;
+    padding: 0px;
+}
+
+section{
+    padding: 10px;
+    margin: 8px;
+    background: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url("images_collines/oldparchemin3.jpg");
+    background-position: center;
+    background-size: cover;
+    border: 6px solid rgba(100, 76, 117, 0.582);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+aside {
+    display: flex;
+    flex: 3;
+    align-items: flex-start;
+    margin-right: 8px;
+    padding: 7px;
+}
+
+aside img {
+    width: 100%;
+    height: auto;
+    border: 5px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.container_aventure_combat {
+    display: flex;
+    flex-direction: row;
+}
+
+.aventure {
+    flex: 2;
+}
+
+.combat {
+    flex: 1;
+}
+
+/* Grid pour la feuille d'aventure */
+.feuille_aventure {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 90px 90px 90px 90px 90px 90px;
+    grid-gap: 10px;
+    }
+.box {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+}
+
+/* Padding spécifique pour les sections avec icônes à gauche */
+.skill, .health, .chance, .equipment {
+    padding-left: 37px;
+}
+
+/* Padding supplémentaire pour l'équipement */
+.equipment {
+    padding-left: 45px;
+}
+
+/* Alignement à gauche pour les sections avec icônes à droite */
+.gold, .jewelry, .potions {
+    justify-content: flex-start;
+    padding: 5px 35px 5px 5px;
+}
+
+/* Section nourriture sans icône */
+.food {
+    justify-content: flex-start;
+    padding: 5px 10px 5px 5px;
+}
+
+/* Icônes simples pour la feuille d'aventure */
+.skill::before {
+    content: "⚔️";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 24px;
+}
+
+.health::before {
+    content: "❤️";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 24px;
+    color: #FF0000;
+}
+
+.chance::before {
+    content: "🍀";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 24px;
+}
+
+.equipment::before {
+    content: "🗡️"; 
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 24px;
+}
+
+.gold::before {
+    content: "💰";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 24px;
+}
+
+.jewelry::before {
+    content: "💎";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 24px;
+}
+
+.potions::before {
+    content: "🧪";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 24px;
+}
+
+/* .food::before - icône supprimée pour une meilleure apparence */
+
+/* Chiffres plus gros pour les statistiques principales */
+.skill strong, .health strong, .chance strong {
+    font-size: 1.1em;
+}
+
+/* Affichage multiligne pour la section habileté */
+.skill {
+    align-items: center !important;
+    white-space: pre-line !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+    flex-direction: column !important; /* Empile le texte principal et les modificateurs */
+}
+
+/* Simplification: même taille et empilement propre dans la box habileté */
+.skill .combat-modifiers { margin-top: 0; }
+.skill .skill-main { display: inline-block; white-space: nowrap; }
+
+/* Notes d'habileté (épée, potions, combat) – taille identique */
+.skill .skill-note { font-size: 0.95em; }
+
+/* Espacement pour les boutons de la feuille d'aventure */
+#createCharacterButton {
+    margin-bottom: 10px;
+}
+
+#useMealButton, #usePotionAdresseButton, #usePotionVigueurButton, #usePotionBonneFortuneButton {
+    margin-top: 10px;
+}
+
+
+
+.skill{
+    grid-column: 1 / 2 ;
+    grid-row: 1 / 2;
+}
+.health{
+    grid-column: 2 / 3 ;
+    grid-row: 1 / 2;
+}
+.chance{
+    grid-column: 3 / 4 ;
+    grid-row: 1 / 2;
+}
+.equipment{
+    grid-column: 1 / 3 ;
+    grid-row: 2 / 7;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+}
+.gold{
+    grid-column: 3 / 4 ;
+    grid-row: 2 / 3;
+    overflow-y: auto;
+    align-items: flex-start;
+}
+.jewelry{
+    grid-column: 3 / 4 ;
+    grid-row: 3 / 4;
+    overflow-y: auto;
+    align-items: flex-start;
+}
+.potions{
+    grid-column: 3 / 4 ;
+    grid-row: 4 / 6;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 5px 35px 5px 5px;
+    align-items: flex-start;
+}
+.food{
+    grid-column: 3 / 4 ;
+    grid-row: 6 / 7;
+    overflow-y: auto;
+    align-items: flex-start;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    main, aside {
+        width: 100%;
+    }
+}
+
+/* Modal simple pour la carte */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    display: block;
+}
+
+.close-modal {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 22px;
+    line-height: 22px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+/* Modal Libra spécifique */
+.libra-modal {
+    max-width: 600px;
+    text-align: center;
+}
+
+.libra-modal h2 {
+    color: #4a5568;
+    margin-bottom: 10px;
+}
+
+.libra-modal p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.libra-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.libra-choice {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.libra-choice:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.libra-choice strong {
+    font-size: 18px;
+    margin-bottom: 5px;
+}

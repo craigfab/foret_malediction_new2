@@ -95,7 +95,13 @@
                     "nextId": 93
                 }
             ], 
-            "illustration":"images_foret/arrow_in_the_shoulder_4.png"
+            "illustration":"images_foret/arrow_in_the_shoulder_4.png", 
+            "effects": [
+                {
+                    "type": "reduceHealth",
+                    "value": 4
+                }
+            ]
         },
         {
             "id": 5,
@@ -1260,7 +1266,7 @@
                     "type": "gold"
                 },
                 {
-                    "name": "Petite cloche de cuivre",
+                    "name": "petite cloche de cuivre",
                     "type": "equipment"
                 }
             ],
@@ -2332,7 +2338,7 @@
         },
         {
             "id": 130,
-            "text": "A Le chemin s'enfonce parmi les arbres noueux et les buissons d'épines. Bientôt, vous entendez un grognement au-dessus de votre tête et vous apercevez, allongée sur une branche qui surplombe le sentier, une créature moitié femme, moitié félin. Elle a le pelage ras et d'un noir brillant comme celui d'une panthère, et ses bras et ses jambes sont dotés de grosses pattes aux griffes acérées. Le visage de la créature, cependant, a des traits humains, avec des yeux en amande, mais de longues dents de fauve. Il vous semble qu'elle s'apprête à bondir sur vous et, si vous voulez tirer votre épée pour combattre cette FEMME FÉLINE, rendez-vous au 153. Si vous préférez vous enfuir à toutes jambes droit devant vous, déduisez 1 point de votre total de CHANCE et rendez-vous au 355.",
+            "text": "Le chemin s'enfonce parmi les arbres noueux et les buissons d'épines. Bientôt, vous entendez un grognement au-dessus de votre tête et vous apercevez, allongée sur une branche qui surplombe le sentier, une créature moitié femme, moitié félin. Elle a le pelage ras et d'un noir brillant comme celui d'une panthère, et ses bras et ses jambes sont dotés de grosses pattes aux griffes acérées. Le visage de la créature, cependant, a des traits humains, avec des yeux en amande, mais de longues dents de fauve. Il vous semble qu'elle s'apprête à bondir sur vous et, si vous voulez tirer votre épée pour combattre cette FEMME FÉLINE, rendez-vous au 153. Si vous préférez vous enfuir à toutes jambes droit devant vous, déduisez 1 point de votre total de CHANCE et rendez-vous au 355.",
             "monsters": [],
             "choices": [
                 {
@@ -3380,7 +3386,7 @@
                 "text": "Si vous avez une cloche de cuivre, rendez-vous au 184.",
                 "nextId": 184,
                 "requiresItem": {
-                  "name": "cloche de cuivre",
+                  "name": "petite cloche de cuivre",
                   "category": "equipment"
                 }
               },
@@ -4841,7 +4847,7 @@
         }, 
         {
             "id": 267,
-            "text": "Le chemin mène à l'entrée d'une vaste caverne et ne semble pas aller plus loin vers l'est. Si vous souhaitez entrer dans la caverne, rendez-vous au 1%. Si vous préférez retourner à la bifurcation et prendre la direction du nord, rendez-vous au 25.",
+            "text": "Le chemin mène à l'entrée d'une vaste caverne et ne semble pas aller plus loin vers l'est. Si vous souhaitez entrer dans la caverne, rendez-vous au 196. Si vous préférez retourner à la bifurcation et prendre la direction du nord, rendez-vous au 25.",
             "choices": [
                 {
                     "text": "Entrer dans la caverne: Rendez-vous au 196.",
@@ -5230,7 +5236,7 @@
                     "quantity": 5
                 },
                 {
-                    "name": "Petite cloche de cuivre",
+                    "name": "petite cloche de cuivre",
                     "category": "equipment",
                     "quantity": 1
                 }
@@ -5364,7 +5370,7 @@
                     "text": "Si oui, rendez-vous au 225.",
                     "nextId": 225,
                     "requiresItem": {
-                        "name": "casque",
+                        "name": "casque en bronze",
                         "category": "equipment"
                     }
                 },
@@ -6192,7 +6198,7 @@
                     "nextId": 11
                 }
             ],
-            "illustration": "images_foret/creepy_angry_witch_with_flowers_and_smoke_342_4.png"
+            "illustration": "images_foret/creepy_angry_witch_with_flowers_and_smoke_342_5.png"
         },
         {
             "id": 343,
