@@ -1575,8 +1575,8 @@
             ],
             "items": [
                 {
-                    "name": "Collier à chaîne d'argent",
-                    "category": "equipment"
+                    "name": "collier à chaîne d'argent",
+                    "category": "jewelry"
                 }
             ],
             "effects": [
@@ -2083,7 +2083,7 @@
             ],
             "items": [
                 {
-                    "name": "Collier de cuir incrusté d'or",
+                    "name": "collier de cuir incrusté d'or",
                     "category": "jewelry",
                     "goldValue": 15
                 }
