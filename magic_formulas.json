@@ -1,0 +1,96 @@
+{
+    "magic_formulas": [
+        {
+            "code": "BOU",
+            "description": "En prononçant cette formule, vous devrez répandre du Sable sur le sol à l'endroit désiré (devant une créature qui vous attaque, par exemple). Aussitôt, ce Sable formera une mare de sable mouvant dans laquelle votre adversaire s'enlisera dès qu'il y aura posé le pied. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "PUE",
+            "description": "Lorsque vous prononcerez cette formule, une o deur infecte se répandra aussitôt alentour. Cette puanteur est si épouvantable que toute créature en ayant respiré une bouffée sera immédiatement prise de vomissements. Vos adversaires dotés d'un sens de l'odorat se trouveront ainsi considérablement affaib lis. Mais attention : vous -même serez victime de cette répugnante odeur si vous ne prenez pas la précaution de vous boucher le nez à l'aide de Tampons enfoncés dans les narines. Les créatures pourvues de grands nez seront plus sensibles que les autres à ce  sortilège. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "TEL",
+            "description": "Pour faire usage de ce sortilège, vous devrez porter une Calotte de toile. Grâce à cette Calotte, vous pourrez lire les pensées de toute créature douée d'intelligence ; vous obtiendrez ainsi tous les renseigneme nts dont vous aurez besoin : force et faiblesses de la créature en question, disposition des lieux, objets contenus dans tel ou tel endroit etc. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "HOU",
+            "description": "Pour pouvoir utiliser ce sortilège, vous devrez être en possession d'un Masque Noir qu'il vous faudra porter pendant que vous prononcerez la formule. Vous provoquerez alors une peur panique dans l'esprit de votre adversaire. Les créatures courageuses seront moins sensibles à ce sortilège que les êtres couards, et ses effets iront d'u ne simple sueur froide à un état d'épouvante spectaculaire qui réduira votre adversaire à un petit tas de chair tremblotante blottie peureusement dans un coin de la pièce. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "BOF",
+            "description": "Ce sortilège n'a d'effet qu'au cours d'un combat : il vous permettra alors de démoraliser complètement votre adversaire qui n'aura plus aucune volonté de vaincre. Toute créature atteinte par cet état dépressif deviendra plus facile à neutraliser ; méfiez -vous cependant, car votre victoire ne sera pas forcé ment assurée pour autant. Coût : 2 points  d'ENDURANCE."
+        },
+        {
+            "code": "AMI",
+            "description": "Vous ne pourrez faire usage de ce sortilège que si vous possédez un Bijou en Or. Dès que vous aurez prononcé cette formule, toute créature, homme ou animal, se trouvant à proximité éprouvera tout à  coup une très grande affection à votre égard. Cela ne signifie nullement que les créatures en question renonceront à vous combattre si telle est leur mission : vous pourrez simplement obtenir d'elles des renseignements qu'elles ne vous auraient jamais don nés en temps normal. Parfois, elles vous apporteront même leur aide, bien qu'elles vous soient fondamentalement hostiles. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "BIS",
+            "description": "Ce sortilège, fort utile lors des combats, nécessite l'utilisation d'un Miroir au Cadre d'Or. En dirig eant ce Miroir vers votre adversaire, vous créerez aussitôt son double. Cette réplique de la créature sera sous le contrôle de votre volonté et combattra l'original. Les deux adversaires, la créature réelle et son image, disposeront des mêmes armes et sero nt de force égale. Seule la chance décidera de la victoire de l'un ou de l'autre. Dès la fin du combat - que la créature réelle l'ait emporté ou qu'elle ait été vaincue par son double -, la réplique ainsi créée disparaîtra immédiatement. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "FOR",
+            "description": "Pour pouvoir faire usage de cette formule, vous devrez tout d'abord boire une Potion d'Eau de Feu. Le sortilège augmentera alors les effets du breuvage et vous disposerez d'une force deux à trois fois supérieure à la normale. Le sortilège n' agit que provisoirement, mais suffisamment longtemps en principe pour vous permettre de remporter un combat ou d'accomplir un exploit exigeant une force exceptionnelle. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "ROC",
+            "description": "L'usage de cette formule nécessite l'emploi d'une Poudr e de Pierre. Lorsque vous prononcerez la formule, vous devrez jeter cette Poudre sur la créature que vous souhaitez neutraliser. Les mouvements de votre adversaire se feront aussitôt plus lents, puis il s'immobilisera et sa peau prendra une teinte grise. Q uelques instants plus tard, il se sera transformé en une statue de pierre. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "HOP",
+            "description": "En utilisant cette formule sur vous -même, vous deviendrez extraordinairement rapide et vous pourrez courir, parler, penser ou vous battre trois fois plus vite qu'à l'ordinaire. Vous devrez toutefois renifler de la Poudre Jaune avant de pouvoir faire usage de ce sortilège. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "VEN",
+            "description": "Pour utiliser cette formule vous devrez être en possession de la Trompe à Vent, un instrument en for me de trompette qui produit un son discordant. En prononçant la formule, vous vous concentrerez sur la Trompe puis vous soufflerez dans cette dernière après l'avoir orientée dans la direction choisie par vous. Il en sortira alors un vent terriblement viole nt, capable de renverser une créature de la taille d'un homme ou de balayer toutes sortes d'objets. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "FIX",
+            "description": "Ce sortilège peut s'appliquer indifféremment à des créatures ou à des objets. Il a pour effet d'immobiliser la créature ou l'objet en question à l'endroit où il se trouve, même s'il est en train de voler. Pour pouvoir utiliser cette formule, vous devrez disposer d'une Branche de Jeune Chêne. La créature ou la chose ainsi paralysées ne bougeront plus jusqu'à ce que vous ayez qu itté les environs. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "SOM",
+            "description": "Ce sortilège permet d'endormir les créatures qui en sont victimes. Pour en faire usage, vous aurez besoin d'un Pendule de Cuivre. La Formule Magique aura pour effet de concentrer l'attention de votre adver saire sur ce Pendule que vous balancerez lentement devant lui. La créature commencera alors à somnoler et tombera bientôt dans un sommeil profond. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "VOL",
+            "description": "Pour recourir à ce sortilège, vous devrez porter autour du cou un Médaillon Incrusté de Pierreries. En prononçant cette formule, vous aurez alors la faculté de flotter dans les airs à la hauteur qui vous conviendra. Vous pourrez rester ainsi suspendu entre ciel et terre aussi longtemps qu'il vous plaira et vous déplacer à volonté. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "INV",
+            "description": "Vous ne pourrez recourir à ce sortilège que si vous portez un Anneau de Perles Fines. Si vous possédez cet Anneau et que vous prononciez la formule, vous deviendrez aussitôt complètement invisible aux yeux de toute créature  intelligente. Vous disposerez ainsi d'un avantage considérable lors de certains combats et vous aurez également, en d'autres circonstances, la possibilité de vous enfuir plus facilement. Sachez cependant que les créatures dotées d'un système auditif vous entendront vous déplacer et que les créatures de moindre intelligence se révéleront beaucoup moins sensibles à ce sortilège fondé sur l'illusion. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "LUX",
+            "description": "Pour pouvoir recourir à ce sortilège, vous devrez posséder le Joyau Solaire. D ès que vous aurez prononcé la formule, le Joyau se mettra à resplendir et vous pourrez en contrôler l'éclat à volonté : si, par exemple, vous voulez aveugler une créature, vous ferez briller le Joyau comme un soleil mais, s'il s'agit simplement de vous écl airer dans un endroit sombre, une lueur équivalente à celle d'une torche vous suffira. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "REV",
+            "description": "Cette formule ne peut être utilisée que si vous disposez d'un Bracelet d'Or. En prononçant la formule, vous concentrerez votre esprit su r l'illusion que vous voulez créer, par exemple un sol de charbons ardents, votre propre transformation en un démon, etc. Cette illusion apparaîtra alors comme une réalité aux yeux de la créature que vous aurez choisie pour victime ; vous pourrez ainsi pre ndre la fuite plus facilement ou impressionner suffisamment la créature en question pour qu'elle se montre moins dangereuse à combattre. Il est à noter que ce sortilège reste sans effet sur les êtres dénués d'intelligence. Sachez également que, si vous agi ssez en contradiction avec l'image créée (par exemple, en vous lançant à l'attaque d'un adversaire alors que vous vous êtes transformé en souris), l'illusion disparaîtra aussitôt. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "BLA",
+            "description": "Pour faire usage de ce sortilège, vous devre z porter une Perruque Verte. Grâce à cette Perruque et à la Formule Magique, vous aurez la faculté de cornprendre le langage de créatures non humaines (Gobelins, Orques, etc.) et de communiquer avec elles. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "WAF",
+            "description": "Cette formule néc essite, tout comme la précédente, que vous disposiez d'une Perruque Verte. Le sortilège vous permettra alors de comprendre la plupart des animaux et de communiquer avec eux. Coût 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "ZIP",
+            "description": "Vous ne pourrez vous servir de ce sortilège que si v ous possédez un Anneau constitué d'un Métal Vert provenant du Pic de la Roche. Lorsque vous aurez prononcé la formule en vous concentrant sur l'Anneau Vert, vous aurez la faculté de vous déplacer instantanément de quelques mètres en disparaissant puis en r eparaissant un peu plus loin. Vous pourrez traverser de cette manière certains matériaux tels que le bois et l'argile, mais la pierre et le métal resteront infranchissables. Sachez que ce sortilège peut vous réserver de mauvaises surprises et, parfois même , ses effets se révéleront désastreux. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "VUE",
+            "description": "Vous aurez besoin, pour recourir à cette formule, d'un Globe de Cristal grâce auquel vous pourrez, dans certaines limites, avoir une vision de l'avenir. Vous devrez prononcer la formule  en vous concentrant sur le Globe de Cristal que vous tiendrez dans vos mains. Vous n'aurez guère la faculté de choisir les moments de l'avenir que vous souhaitez connaître, sachez simplement qu'il s'agit, la plupart du temps, d'événements appartenant à un  futur proche. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "RES",
+            "description": "Pour faire usage de cette formule, vous devrez disposer d'Eau Bénite. Le sortilège vous permettra de ramener à la vie le cadavre d'un homme ou d'un humanoïde (c'est -à-dire d'un être possédant deux bras, deux jambes, une tête, etc.). Il vous suffira pour cela de prononcer la formule en aspergeant d'Eau Bénite le corps de la créature. Cette résurrection ne s'opère pas instantanément - ne vous attendez pas à voir le mort se relever d'un bond - et celui qui en bén éficie n'en devient pas invulnérable pour autant, il peut être tué à nouveau. Après être ainsi ressuscitée, la créature restera pendant quelque temps somnolente et engourdie, mais elle aura cependant la force de répondre à vos questions. Coût : 1 point  d'ENDURANCE."
+        },
+        {
+            "code": "ZED",
+            "description": "Seuls les magiciens de première force peuvent jeter ce sort, les autres n'ont pas suffisamment de facultés de concentration. En fait, dans toute l'histoire de la sorcellerie, cette formule n'a été employée qu'une seule fois. Celui qui en a f ait usage était un Nécromancien aux pouvoirs considérables : on ne Ta jamais revu, cependant, et nul ne peut dire quels effets ce sortilège a entraînés. Les notes de ce Nécromancien ont été retrouvées par la suite, mais elles ne comportaient que de vagues indications et aucun magicien vivant ne peut décrire les conséquences de cette formule. Sachez seulement que c'est sans doute le sortilège le plus puissant dont on ait jamais entendu parler dans la tradition des grands sorciers. Coût : 7 points  d'ENDURANC E. Achevé d'imprimer le 17 mars 1987 sur les presses de l'Imprimerie Hérissey à Évreux (Eure) N° d'imprimeur : 42181 Dépôt légal : Mars 1987 1er dépôt légal dans la même collection : Mai 1985 ISBN 2-07-033293 -4 Imprimé en France"
+        }
+    ]
+}
