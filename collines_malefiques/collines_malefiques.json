@@ -2,7 +2,7 @@
     "chapters": [
         {
             "id": 0,
-            "text": "Vous êtes un aventurier courageux qui s'apprête à explorer les mystérieuses Collines Maléfiques. Armé de votre épée et de votre courage, vous vous lancez dans cette quête périlleuse. Prenez vos objets de départ et préparez-vous à l'aventure !",
+            "text": "Il y a des siècles de cela, en un temps que l'on appelle la Nuit des Ages, des régions entières de la planète restaient inconnues. Des civilisations cependant s'y étaient développées çà et là, avec chacune son peuple et sa culture. Le Kalkhabad était l'une de ces régions, une terre obscure aux confins du monde. <br>  Bien que plusieurs seigneurs de la guerre s'y fussent essayés, le pays du Kalkhabad s'était révélé impossible à gouverner. <strong> Toutes sortes de créatures maléfiques, chassées des contrées plus civilisées qui s'étendaient au-delà des Monts Zanunu, avaient peu à peu envahi le Kalkhabad qui devint célèbre sous le surnom de « Repaire des Vermines du Bout du Monde ». </strong> <br>  <br>  <strong> Dans le même temps, l'ordre et la civilisation se répandirent dans le reste du monde connu, dès lors que Chalanna le Réformateur, Roi de Femphry, eut découvert la Couronne des Rois. Grâce à elle, Chalanna se trouva, quelques années plus tard, à la tête du plus grand empire jamais constitué dans le monde d'orient. Cette Couronne Magique était en effet dotée de mystérieux pouvoirs qui accordaient à son possesseur des dons exceptionnels en matière de justice et de commandement. </strong> Par bonheur, les ambitions de Chalanna n'étaient pas de conquérir la terre, il préférait aider à l'établissement de la paix dans des nations organisées à l'image de Femphry. <br>  <br>  Aussi, dans sa grande sagesse, confia-t-il la Couronne de Légende à tous les souverains des royaumes proches, chacun à son tour ; par le miracle de la magie, ces pays devinrent alors, l'un après l'autre, prospères et pacifiques. Chaque monarque se voyait confier la Couronne pour une période de quatre ans durant laquelle il faisait triompher la paix et la justice dans son royaume, puis il entrait dans l'Alliance de Femphry. Les royaumes d'Ocrepierre, de Vastelande, de Gallantaria et d'Arthebrice bénéficièrent ainsi à tour de rôle de la Couronne et en tirèrent aussitôt grand profit : guerres et dissensions disparurent en effet presque entièrement. Le roi d'Analand reçut, lui aussi, la Couronne au cours d'une cérémonie solennelle et, de ce jour, le pays se développa pour connaître bientôt l'abondance. Nul ne pouvait dire par quel prodige la Couronne des Rois permettait de faire prospérer les nations ; certains affirmaient qu'elle était d'essence divine, d'autres que son pouvoir résidait en fait dans l'esprit de celui qui la portait. Une chose en tout cas était certaine : elle produisait des effets spectaculaires. <strong> Tout allait donc bien dans le royaume d'Analand jusqu'à ce que survînt la nuit de la Lune Noire. <br>  <br>  Lorsque l'aube se leva, le jour suivant, le roi fut le premier à s'apercevoir que la Couronne avait disparu. Des Hommes-Oiseaux venus du pays de Xamen, l'avaient emportée par cette nuit sans étoiles jusqu'à la ville de Mampang située dans les contrées anarchiques du Kalkhabad.  </strong> Des nouvelles en provenance de la Terre des Fins Fonds révélèrent que la Couronne avait été remise à l'Archimage de Mampang qui manifestait l'ambition de devenir roi du Kalkhabad. <br>  <br>  Bien que le Kalkhabad fût une région dangereuse en elle-même, rien n'y menaçait les royaumes avoisinants. Le pays n'était soumis à aucune loi, il ne disposait donc pas d'armée et les luttes internes qui s'y déroulaient sans cesse suffisaient à occuper population. La Couronne des Rois, cependant, allait permettre d'y faire régner l'ordre et le Kalkhabad pouvait désormais devenir un ennemi mortel pour tous les pays réunis dans l'Alliance de Femphry. <br>  <br>  Au royaume d'Analand, on ressentait une telle honte d'avoir laissé échapper la Couronne que les conséquences bénéfiques des deux années passées sous l'égide de son pouvoir magique se trouvèrent bientôt réduites à néant. La loi et l'ordre cessèrent d'être respectés et la population se laissa aller à la morosité. Le roi perdit la confiance de ses sujets et les royaumes voisins manifestèrent quelque suspicion. On alla même jusqu'à colporter des rumeurs d'invasion. Ces derniers temps, la situation s'est à tel point dégradée qu'un seul espoir subsiste dorénavant de sauver le pays : il faut que quelqu'un - un simple citoyen solitaire, car une armée ne survivrait pas à un tel voyage - aille jusqu'à Mampang pour y reprendre la Couronne des Rois. Seul son retour pourrait lever la terrible malédiction qui pèse actuellement sur Analand. Or, <strong> ce citoyen solitaire, ce sera vous : vous êtes en effet le premier à vous être porté volontaire pour cette mission et vous savez parfaitement en quoi elle consistera : il vous faudra traverser le Kalkhabad jusqu'à la Forteresse de Mampang et vous emparer de la précieuse Couronne... </strong> ",
             "illustration": "images_collines/page_garde_collines.jpg",
             "items": [
                 {
@@ -10,51 +10,33 @@
                     "category": "equipment"
                 },
                 {
-                    "name": "armure de cuir",
-                    "category": "equipment"
-                },
-                {
-                    "name": "lanterne",
+                    "name": "sac à dos",
                     "category": "equipment"
                 },
                 {
                     "name": "or",
                     "category": "gold",
                     "quantity": 20
-                },
+                }, 
                 {
-                    "name": "potion d'adresse",
-                    "category": "potions",
-                    "description": "rend les points d'habileté"
-                },
-                {
-                    "name": "potion de vigueur",
-                    "category": "potions",
-                    "description": "rend les points d'endurance"
-                },
-                {
-                    "name": "potion de bonne fortune",
-                    "category": "potions",
-                    "description": "rend les points de chance + 1"
+                    "name": "repas",
+                    "category": "food",
+                    "quantity": 2
                 }
             ],
             "choices": [
                 {
-                    "text": "Commencer l'aventure en vous dirigeant vers les Collines Maléfiques...",
+                    "text": " Maintenant, Tournez la page ... ",
                     "nextId": 1
                 }
             ]
         },
         {
             "id": 1,
-            "text": "Vous vous éveillez à l'aube. Aprè s vous être habillé, vous prenez un petit déjeuner composé de pain et de lait de chèvre, puis vous ramassez vos affaires. Au -dehors, l'Avant -Poste commence à s'agiter: les femmes se lèvent et préparent à manger tandis que la sentinelle de jour prend son t our de garde. Des regards vous accompagnent lorsque vous quittez votre hutte pour vous diriger vers le Mur de Shamutanti. Les frontaliers n'ignorent rien de votre mission et un petit groupe vous suit à quelque distance en vous prodiguant des encouragements. Devant vous se dresse la Porte de Cantopani. Gardée en permanence par des Guerriers aux Yeux de Lynx, sélectionnés spécialement en raison de leur vue perçante, cette porte est l'ultime point de passage qui sépare Analand du Kalkhabad. Une dernière fois, vous vérifiez votre équipement: tout est en ordre et vous adressez un signe de tête au Sergent à l'Œil de Lynx. Celui -ci lève le regard vers le guetteur posté au sommet de la porte. Le guetteur signale que la voie est libre et le Sergent ordonne qu'on vou s laisse sortir. Une porte s'ouvre alors devant vous et vous apercevez pour la première fois les collines de Shamutanti, première étape de votre voyage. Le Sergent à l'Œil de Lynx s'avance vers vous et vous prend par le bras. « Je ne vous souhaiterai pas un bon voyage, dit -il, car rien de bon ne vous attend au cours de votre route. Le Kalkhabad est un pays plein de dangers, peuplé d'êtres malfaisants. Mais vous le savez déjà, inutile de vous le répéter. Prenez le chemin qui mène tout droit à Cantopani. C' est une petite colonie de marchands. Méfiez -vous, cependant, car la plupart d'entre eux ne sont que fripouilles et voleurs. Vous devriez arriver là -bas dans une heure environ. A partir de Cantopani, trois routes traversent le Birritanti, en direction de Kh aré, une ville portuaire située sur le fleuve Jabaji. Lorsque vous quitterez Kharé, il vous faudra parcourir les Terres des Fins Fonds que personne ici n'a encore explorées. On dit que sur la Terre des Fins Fonds, le jour et la nuit ne dépendent pas de la course du soleil, mais sont soumis à des forces surnaturelles; sachez aussi que, dès votre départ de Kharé, tous vos mouvements seront observés. » Ces avertissements ne sont pas faits pour vous rassurer. « J'ai cependant suivi la progression de votre entraînement, poursuit le Sergent, et je puis vous dire que vous êtes un valeureux guerrier, à n'en pas douter. Je souhaite que votre quête soit couronnée de succès et mes pensées vous accompagneront, ainsi que les vœux des peuples d'Analand. Puissiez -vous, av ec l'aide de Libra, lever la malédiction et mettre fin aux malheurs qui tourmentent notre royaume. » Vous lui serrez la main, vous le remerciez pour ses encouragements et vous vous avancez vers la porte que vous franchissez d'un pas résolu. Les visages des hommes et des femmes qui vous regardent partir expriment tous les espoirs qu'ils mettent en vous et en la réussite de votre mission. Vous leur adressez un dernier signe de la main, puis vous vous tournez face aux collines. L'air du petit matin est sec et vif et le soleil levant colore le paysage de teintes saisissantes dont la beauté cache en fait des forces diaboliques. D'une démarche conquérante, vous avancez sur le chemin qui s'ouvre devant vous: votre aventure vient de commencer! Rendez -vous au 178.",
+            "text": "Vous vous éveillez à l'aube. Après vous être habillé, vous prenez un petit déjeuner composé de pain et de lait de chèvre, puis vous ramassez vos affaires. Au -dehors, l'Avant -Poste commence à s'agiter: les femmes se lèvent et préparent à manger tandis que la sentinelle de jour prend son tour de garde. Des regards vous accompagnent lorsque vous quittez votre hutte pour vous diriger vers le Mur de Shamutanti. Les frontaliers n'ignorent rien de votre mission et un petit groupe vous suit à quelque distance en vous prodiguant des encouragements. Devant vous se dresse la Porte de Cantopani. Gardée en permanence par des Guerriers aux Yeux de Lynx, sélectionnés spécialement en raison de leur vue perçante, cette porte est l'ultime point de passage qui sépare Analand du Kalkhabad. Une dernière fois, vous vérifiez votre équipement: tout est en ordre et vous adressez un signe de tête au Sergent à l'Œil de Lynx. Celui -ci lève le regard vers le guetteur posté au sommet de la porte. Le guetteur signale que la voie est libre et le Sergent ordonne qu'on vou s laisse sortir. Une porte s'ouvre alors devant vous et vous apercevez pour la première fois les collines de Shamutanti, première étape de votre voyage. Le Sergent à l'Œil de Lynx s'avance vers vous et vous prend par le bras. « Je ne vous souhaiterai pas un bon voyage, dit -il, car rien de bon ne vous attend au cours de votre route. Le Kalkhabad est un pays plein de dangers, peuplé d'êtres malfaisants. Mais vous le savez déjà, inutile de vous le répéter. Prenez le chemin qui mène tout droit à Cantopani. C' est une petite colonie de marchands. Méfiez -vous, cependant, car la plupart d'entre eux ne sont que fripouilles et voleurs. Vous devriez arriver là -bas dans une heure environ. A partir de Cantopani, trois routes traversent le Birritanti, en direction de Kh aré, une ville portuaire située sur le fleuve Jabaji. Lorsque vous quitterez Kharé, il vous faudra parcourir les Terres des Fins Fonds que personne ici n'a encore explorées. On dit que sur la Terre des Fins Fonds, le jour et la nuit ne dépendent pas de la course du soleil, mais sont soumis à des forces surnaturelles; sachez aussi que, dès votre départ de Kharé, tous vos mouvements seront observés. » Ces avertissements ne sont pas faits pour vous rassurer. « J'ai cependant suivi la progression de votre entraînement, poursuit le Sergent, et je puis vous dire que vous êtes un valeureux guerrier, à n'en pas douter. Je souhaite que votre quête soit couronnée de succès et mes pensées vous accompagneront, ainsi que les vœux des peuples d'Analand. Puissiez -vous, av ec l'aide de Libra, lever la malédiction et mettre fin aux malheurs qui tourmentent notre royaume. » Vous lui serrez la main, vous le remerciez pour ses encouragements et vous vous avancez vers la porte que vous franchissez d'un pas résolu. Les visages des hommes et des femmes qui vous regardent partir expriment tous les espoirs qu'ils mettent en vous et en la réussite de votre mission. Vous leur adressez un dernier signe de la main, puis vous vous tournez face aux collines. L'air du petit matin est sec et vif et le soleil levant colore le paysage de teintes saisissantes dont la beauté cache en fait des forces diaboliques. D'une démarche conquérante, vous avancez sur le chemin qui s'ouvre devant vous: votre aventure vient de commencer! Rendez -vous au 178.",
             "items": [],
             "monsters": [],
-            "effects": [
-                {
-                    "type": "gameOver"
-                }
-            ],
+            "effects": [],
             "choices": [
                 {
                     "text": "Rendez -vous au 178",
@@ -249,11 +231,11 @@
             ],
             "choices": [
                 {
-                    "text": "Allez -vous pénétrer dans le bois (rendez -vous au 150) ou \npréférez -vous revenir au croisement et marcher à nou veau vers le nord \n(rendez -vous au 46)",
+                    "text": "Allez -vous pénétrer dans le bois (rendez -vous au 150) ou \npréférez -vous revenir au croisement et marcher à nou veau vers le nord <br> (rendez -vous au 46)",
                     "nextId": 150
                 },
                 {
-                    "text": "Allez -vous pénétrer dans le bois (rendez -vous au 150) ou \npréférez -vous revenir au croisement et marcher à nou veau vers le nord \n(rendez -vous au 46)",
+                    "text": "Allez -vous pénétrer dans le bois (rendez -vous au 150) ou \npréférez -vous revenir au croisement et marcher à nou veau vers le nord <br> (rendez -vous au 46)",
                     "nextId": 46
                 }
             ],
@@ -371,7 +353,7 @@
             "effects": [],
             "choices": [
                 {
-                    "text": "Vous \npouvez à présent quitter la pièce et la grotte puis revenir au croisement \n(rendez -vous au 144)",
+                    "text": "Vous \npouvez à présent quitter la pièce et la grotte puis revenir au croisement <br> (rendez -vous au 144)",
                     "nextId": 144
                 }
             ],
@@ -517,19 +499,19 @@
             ],
             "choices": [
                 {
-                    "text": "Si le dé vous a donné \n: \n1 ou 2  Rendez -vous au 245 \n3 ou 4  Rendez -vous au 69  \n5 ou 6  Rendez -vous au 99 \nSi vous avez Tenté votre Chance, et que vous ayez été Chanceux, \nrendez -vous au 167",
+                    "text": "Si le dé vous a donné <br> : \n1 ou 2  Rendez -vous au 245 \n3 ou 4  Rendez -vous au 69  \n5 ou 6  Rendez -vous au 99 \nSi vous avez Tenté votre Chance, et que vous ayez été Chanceux, \nrendez -vous au 167",
                     "nextId": 245
                 },
                 {
-                    "text": "Si le dé vous a donné \n: \n1 ou 2  Rendez -vous au 245 \n3 ou 4  Rendez -vous au 69  \n5 ou 6  Rendez -vous au 99 \nSi vous avez Tenté votre Chance, et que vous ayez été Chanceux, \nrendez -vous au 167",
+                    "text": "Si le dé vous a donné <br> : \n1 ou 2  Rendez -vous au 245 \n3 ou 4  Rendez -vous au 69  \n5 ou 6  Rendez -vous au 99 \nSi vous avez Tenté votre Chance, et que vous ayez été Chanceux, \nrendez -vous au 167",
                     "nextId": 69
                 },
                 {
-                    "text": "Si le dé vous a donné \n: \n1 ou 2  Rendez -vous au 245 \n3 ou 4  Rendez -vous au 69  \n5 ou 6  Rendez -vous au 99 \nSi vous avez Tenté votre Chance, et que vous ayez été Chanceux, \nrendez -vous au 167",
+                    "text": "Si le dé vous a donné <br> : \n1 ou 2  Rendez -vous au 245 \n3 ou 4  Rendez -vous au 69  \n5 ou 6  Rendez -vous au 99 \nSi vous avez Tenté votre Chance, et que vous ayez été Chanceux, \nrendez -vous au 167",
                     "nextId": 99
                 },
                 {
-                    "text": "Si le dé vous a donné \n: \n1 ou 2  Rendez -vous au 245 \n3 ou 4  Rendez -vous au 69  \n5 ou 6  Rendez -vous au 99 \nSi vous avez Tenté votre Chance, et que vous ayez été Chanceux, \nrendez -vous au 167",
+                    "text": "Si le dé vous a donné <br> : \n1 ou 2  Rendez -vous au 245 \n3 ou 4  Rendez -vous au 69  \n5 ou 6  Rendez -vous au 99 \nSi vous avez Tenté votre Chance, et que vous ayez été Chanceux, \nrendez -vous au 167",
                     "nextId": 167
                 }
             ],
@@ -953,11 +935,11 @@
             "effects": [],
             "choices": [
                 {
-                    "text": "» \nPréférez -vous un objet qui vous sera utile dans l'exercice de la magie \n(rendez -vous au 248) ou quelque chose qui vous aidera au cours des \ncombats à venir (rendez -vous au 122)",
+                    "text": "» \nPréférez -vous un objet qui vous sera utile dans l'exercice de la magie <br> (rendez -vous au 248) ou quelque chose qui vous aidera au cours des \ncombats à venir (rendez -vous au 122)",
                     "nextId": 248
                 },
                 {
-                    "text": "» \nPréférez -vous un objet qui vous sera utile dans l'exercice de la magie \n(rendez -vous au 248) ou quelque chose qui vous aidera au cours des \ncombats à venir (rendez -vous au 122)",
+                    "text": "» \nPréférez -vous un objet qui vous sera utile dans l'exercice de la magie <br> (rendez -vous au 248) ou quelque chose qui vous aidera au cours des \ncombats à venir (rendez -vous au 122)",
                     "nextId": 122
                 }
             ],
@@ -1224,11 +1206,11 @@
             "effects": [],
             "choices": [
                 {
-                    "text": "Vous suivez le chemin pendant une bonne partie de la matiné e et vous \natteignez une bifurcation ; vous avez alors le choix entre aller tout droit \n(rendez -vous au 46) ou prendre la direction de l'ou...",
+                    "text": "Vous suivez le chemin pendant une bonne partie de la matiné e et vous \natteignez une bifurcation ; vous avez alors le choix entre aller tout droit <br> (rendez -vous au 46) ou prendre la direction de l'ou...",
                     "nextId": 46
                 },
                 {
-                    "text": "Vous suivez le chemin pendant une bonne partie de la matiné e et vous \natteignez une bifurcation ; vous avez alors le choix entre aller tout droit \n(rendez -vous au 46) ou prendre la direction de l'ou...",
+                    "text": "Vous suivez le chemin pendant une bonne partie de la matiné e et vous \natteignez une bifurcation ; vous avez alors le choix entre aller tout droit <br> (rendez -vous au 46) ou prendre la direction de l'ou...",
                     "nextId": 10
                 }
             ],
@@ -1326,7 +1308,7 @@
                     "magicFormula": "RIS"
                 },
                 {
-                    "text": "Vous avez également la possibilité d'appeler à l'aide la \n\ndéesse Libra, si toutefois vous ne l'avez pas déjà fait depuis le début de \nvotre aventure ; rendez -vous pour cela au 273",
+                    "text": "Vous avez également la possibilité d'appeler à l'aide la <br> \ndéesse Libra, si toutefois vous ne l'avez pas déjà fait depuis le début de \nvotre aventure ; rendez -vous pour cela au 273",
                     "nextId": 273
                 }
             ],
@@ -1474,11 +1456,11 @@
             ],
             "choices": [
                 {
-                    "text": "Ensuite, vous avez le choix entre vous allonger pour dormir (rendez -\nvous au 109) ou rester éveillé et vous préparer à toute éventualité \n(rendez -vous au 140)",
+                    "text": "Ensuite, vous avez le choix entre vous allonger pour dormir (rendez -\nvous au 109) ou rester éveillé et vous préparer à toute éventualité <br> (rendez -vous au 140)",
                     "nextId": 109
                 },
                 {
-                    "text": "Ensuite, vous avez le choix entre vous allonger pour dormir (rendez -\nvous au 109) ou rester éveillé et vous préparer à toute éventualité \n(rendez -vous au 140)",
+                    "text": "Ensuite, vous avez le choix entre vous allonger pour dormir (rendez -\nvous au 109) ou rester éveillé et vous préparer à toute éventualité <br> (rendez -vous au 140)",
                     "nextId": 140
                 }
             ],
@@ -1578,11 +1560,11 @@
             ],
             "choices": [
                 {
-                    "text": "Si vous souhaitez vous faire le plus petit possible dans votre abri \n\nen espérant que les trois créatures ne vous verront pas, rendez -vous au \n281 ; si vous préférez vous lever et les appeler, rendez...",
+                    "text": "Si vous souhaitez vous faire le plus petit possible dans votre abri <br> \nen espérant que les trois créatures ne vous verront pas, rendez -vous au \n281 ; si vous préférez vous lever et les appeler, rendez...",
                     "nextId": 281
                 },
                 {
-                    "text": "Si vous souhaitez vous faire le plus petit possible dans votre abri \n\nen espérant que les trois créatures ne vous verront pas, rendez -vous au \n281 ; si vous préférez vous lever et les appeler, rendez...",
+                    "text": "Si vous souhaitez vous faire le plus petit possible dans votre abri <br> \nen espérant que les trois créatures ne vous verront pas, rendez -vous au \n281 ; si vous préférez vous lever et les appeler, rendez...",
                     "nextId": 12
                 }
             ],
@@ -2207,7 +2189,7 @@
                     "magicFormula": "INV"
                 },
                 {
-                    "text": "Vous \npouvez les combattre tour à tour :  \nHABILETÉ ENDURANCE  \nPremier BANDIT 7 6 \n\nDeuxième BANDIT 7 8 \nSi vous êtes vainqueur, rendez -vous au 56",
+                    "text": "Vous \npouvez les combattre tour à tour :  \nHABILETÉ ENDURANCE  \nPremier BANDIT 7 6 <br> \nDeuxième BANDIT 7 8 \nSi vous êtes vainqueur, rendez -vous au 56",
                     "nextId": 56
                 }
             ],
@@ -2549,11 +2531,11 @@
             "effects": [],
             "choices": [
                 {
-                    "text": "Vous revenez à la bifurcation ; là,  vous pouvez soit prendre l'autre \npassage (rendez -vous au 149), soit retourner à l'entrée de la grotte \n(rendez -vous au 144)",
+                    "text": "Vous revenez à la bifurcation ; là,  vous pouvez soit prendre l'autre \npassage (rendez -vous au 149), soit retourner à l'entrée de la grotte <br> (rendez -vous au 144)",
                     "nextId": 149
                 },
                 {
-                    "text": "Vous revenez à la bifurcation ; là,  vous pouvez soit prendre l'autre \npassage (rendez -vous au 149), soit retourner à l'entrée de la grotte \n(rendez -vous au 144)",
+                    "text": "Vous revenez à la bifurcation ; là,  vous pouvez soit prendre l'autre \npassage (rendez -vous au 149), soit retourner à l'entrée de la grotte <br> (rendez -vous au 144)",
                     "nextId": 144
                 }
             ],
@@ -3152,11 +3134,11 @@
             ],
             "choices": [
                 {
-                    "text": "Vous \navez le choix entre continuer sur le sen tier de ce côté -ci de l'eau \n(rendez -vous au 209) ou traverser le pont et emprunter un chemin qui \nmène au sommet d'une petite colline (rendez -vous au...",
+                    "text": "Vous \navez le choix entre continuer sur le sen tier de ce côté -ci de l'eau <br> (rendez -vous au 209) ou traverser le pont et emprunter un chemin qui \nmène au sommet d'une petite colline (rendez -vous au...",
                     "nextId": 209
                 },
                 {
-                    "text": "Vous \navez le choix entre continuer sur le sen tier de ce côté -ci de l'eau \n(rendez -vous au 209) ou traverser le pont et emprunter un chemin qui \nmène au sommet d'une petite colline (rendez -vous au...",
+                    "text": "Vous \navez le choix entre continuer sur le sen tier de ce côté -ci de l'eau <br> (rendez -vous au 209) ou traverser le pont et emprunter un chemin qui \nmène au sommet d'une petite colline (rendez -vous au...",
                     "nextId": 19
                 }
             ],
@@ -3640,11 +3622,11 @@
             "effects": [],
             "choices": [
                 {
-                    "text": "Vous \nsuivez prudemment un couloir et vous arrivez à une bifurcation où vous \npouvez choisir d'aller  à gauche (rendez -vous au 138) ou à droite \n(rendez -vous au 149)",
+                    "text": "Vous \nsuivez prudemment un couloir et vous arrivez à une bifurcation où vous \npouvez choisir d'aller  à gauche (rendez -vous au 138) ou à droite <br> (rendez -vous au 149)",
                     "nextId": 138
                 },
                 {
-                    "text": "Vous \nsuivez prudemment un couloir et vous arrivez à une bifurcation où vous \npouvez choisir d'aller  à gauche (rendez -vous au 138) ou à droite \n(rendez -vous au 149)",
+                    "text": "Vous \nsuivez prudemment un couloir et vous arrivez à une bifurcation où vous \npouvez choisir d'aller  à gauche (rendez -vous au 138) ou à droite <br> (rendez -vous au 149)",
                     "nextId": 149
                 }
             ],
@@ -4064,7 +4046,7 @@
                     "magicFormula": "FOR"
                 },
                 {
-                    "text": "Allez -vous combattre cet animal \n(rendez -vous au 227) ou préférez -vous recourir à la magie",
+                    "text": "Allez -vous combattre cet animal <br> (rendez -vous au 227) ou préférez -vous recourir à la magie",
                     "nextId": 227
                 }
             ],
@@ -4333,7 +4315,7 @@
                     "magicFormula": "INV"
                 },
                 {
-                    "text": "Vous allez devoir le combattre, soit avec votre arme :  \nGEANT DES  \nCOLLINES HABILETÉ : 9 ENDURANCE : 11 \n\n(si vous êtes vainqueur, rendez -vous au 265), soit à l'aide de la magie :  \nTUE GRO INV OGR...",
+                    "text": "Vous allez devoir le combattre, soit avec votre arme :  \nGEANT DES  \nCOLLINES HABILETÉ : 9 ENDURANCE : 11 <br> (si vous êtes vainqueur, rendez -vous au 265), soit à l'aide de la magie :  \nTUE GRO INV OGR...",
                     "nextId": 265
                 }
             ],
@@ -4539,7 +4521,7 @@
                     "magicFormula": "FIL"
                 },
                 {
-                    "text": "Vous n'avez pas eu de chance et t rois Gobelins vous ont repéré ; ils \ns'avancent aussitôt vers vous, armés de pioches :  \n           HABILETÉ ENDURANCE  \nPremier GOBELIN   5         4 \nDeuxième GOBEL...",
+                    "text": "Vous n'avez pas eu de chance et t rois Gobelins vous ont repéré ; ils \ns'avancent aussitôt vers vous, armés de pioches :  <br>            HABILETÉ ENDURANCE  \nPremier GOBELIN   5         4 \nDeuxième GOBEL...",
                     "nextId": 155
                 }
             ],
@@ -4591,7 +4573,7 @@
                     "magicFormula": "HOU"
                 },
                 {
-                    "text": "Si vous désirez lui parler, rendez -vous au 171 ; si vous \npréférez essayer de vous en débarrasser en ayant recours à la magie, \nvous avez le choix entre les Formules suivantes :  \n \n\nSIX EMU SUR HOU ...",
+                    "text": "Si vous désirez lui parler, rendez -vous au 171 ; si vous \npréférez essayer de vous en débarrasser en ayant recours à la magie, \nvous avez le choix entre les Formules suivantes :  <br>  <br> \nSIX EMU SUR HOU ...",
                     "nextId": 171
                 }
             ],
@@ -4768,7 +4750,7 @@
             "effects": [],
             "choices": [
                 {
-                    "text": "Si cette offre vous intéresse, ren dez-vous au 201 \n; sinon, il vous faut trouver l'auberge du village, rendez -vous pour cela \nau 134",
+                    "text": "Si cette offre vous intéresse, ren dez-vous au 201 <br> ; sinon, il vous faut trouver l'auberge du village, rendez -vous pour cela \nau 134",
                     "nextId": 134
                 }
             ],
@@ -5077,7 +5059,7 @@
             "effects": [],
             "choices": [
                 {
-                    "text": "Si \nvous le désirez, vous pouvez échanger votre tasse avec la sienne en \n\nvous rendant au 48 ; si vous préférez attendre qu'elle revienne et boire \nle contenu de la tas se qu'elle vous a destinée, ren...",
+                    "text": "Si \nvous le désirez, vous pouvez échanger votre tasse avec la sienne en <br> \nvous rendant au 48 ; si vous préférez attendre qu'elle revienne et boire \nle contenu de la tas se qu'elle vous a destinée, ren...",
                     "nextId": 146
                 }
             ],
@@ -5191,11 +5173,11 @@
             ],
             "choices": [
                 {
-                    "text": "L'après -midi touche à sa fin ; vous av ez à \nprésent le choix entre deux chemin : l'un descend le flanc de la colline \n(rendez -vous au 176), l'autre longe le sommet de cette même colline \n(rendez -v...",
+                    "text": "L'après -midi touche à sa fin ; vous av ez à \nprésent le choix entre deux chemin : l'un descend le flanc de la colline <br> (rendez -vous au 176), l'autre longe le sommet de cette même colline <br> (rendez -v...",
                     "nextId": 176
                 },
                 {
-                    "text": "L'après -midi touche à sa fin ; vous av ez à \nprésent le choix entre deux chemin : l'un descend le flanc de la colline \n(rendez -vous au 176), l'autre longe le sommet de cette même colline \n(rendez -v...",
+                    "text": "L'après -midi touche à sa fin ; vous av ez à \nprésent le choix entre deux chemin : l'un descend le flanc de la colline <br> (rendez -vous au 176), l'autre longe le sommet de cette même colline <br> (rendez -v...",
                     "nextId": 188
                 }
             ],
@@ -5537,31 +5519,31 @@
             "effects": [],
             "choices": [
                 {
-                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un \n\nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond \n: \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
+                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un <br> \nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond <br> : \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
                     "nextId": 107
                 },
                 {
-                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un \n\nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond \n: \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
+                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un <br> \nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond <br> : \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
                     "nextId": 214
                 },
                 {
-                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un \n\nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond \n: \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
+                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un <br> \nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond <br> : \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
                     "nextId": 22
                 },
                 {
-                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un \n\nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond \n: \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
+                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un <br> \nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond <br> : \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
                     "nextId": 141
                 },
                 {
-                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un \n\nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond \n: \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
+                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un <br> \nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond <br> : \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
                     "nextId": 5
                 },
                 {
-                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un \n\nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond \n: \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
+                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un <br> \nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond <br> : \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
                     "nextId": 60
                 },
                 {
-                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un \n\nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond \n: \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
+                    "text": "Voici la liste des marchandise s qu'il a à vendre ; si l'un <br> \nde ces objets vous intéresse, rendez -vous au numéro qui lui correspond <br> : \nUne potion d'herboriste  rendez -vous au 107 \nUn glaive à la l...",
                     "nextId": 163
                 }
             ],
@@ -6049,7 +6031,7 @@
                     "magicFormula": "ROC"
                 },
                 {
-                    "text": "Vous pouvez combattre l'Ogre avec votre arme :  \nOGRE HABILETÉ : 8 ENDURANCE : 7 \n(si vous gagnez, rendez -vous au 15), ou en ay ant recours à la magie ; \nchoisissez alors parmi les Formules suivantes...",
+                    "text": "Vous pouvez combattre l'Ogre avec votre arme :  \nOGRE HABILETÉ : 8 ENDURANCE : 7 <br> (si vous gagnez, rendez -vous au 15), ou en ay ant recours à la magie ; \nchoisissez alors parmi les Formules suivantes...",
                     "nextId": 15
                 }
             ],
@@ -8338,11 +8320,11 @@
                     "nextId": 456
                 },
                 {
-                    "text": "Si c'est la Manticore qui l'emporte, vous \npourrez poursuivre le combat vous -même (rendez -vous au 227) ou \nutiliser une autre Formule Magique pour essayer de la neutraliser \n(rendez -vous au 420)",
+                    "text": "Si c'est la Manticore qui l'emporte, vous \npourrez poursuivre le combat vous -même (rendez -vous au 227) ou \nutiliser une autre Formule Magique pour essayer de la neutraliser <br> (rendez -vous au 420)",
                     "nextId": 227
                 },
                 {
-                    "text": "Si c'est la Manticore qui l'emporte, vous \npourrez poursuivre le combat vous -même (rendez -vous au 227) ou \nutiliser une autre Formule Magique pour essayer de la neutraliser \n(rendez -vous au 420)",
+                    "text": "Si c'est la Manticore qui l'emporte, vous \npourrez poursuivre le combat vous -même (rendez -vous au 227) ou \nutiliser une autre Formule Magique pour essayer de la neutraliser <br> (rendez -vous au 420)",
                     "nextId": 420
                 }
             ],
@@ -8772,7 +8754,7 @@
             ],
             "choices": [
                 {
-                    "text": "HABILETÉ ENDURANCE  \nDeuxième GOBE LIN   6        4 \nTroisième GOBELIN  5        5 \n\nSi vous devez les combattre (l'un ou l'autre, ou les deux), rendez -vous \nau 155 en cas de victoire",
+                    "text": "HABILETÉ ENDURANCE  \nDeuxième GOBE LIN   6        4 \nTroisième GOBELIN  5        5 <br> \nSi vous devez les combattre (l'un ou l'autre, ou les deux), rendez -vous \nau 155 en cas de victoire",
                     "nextId": 155
                 },
                 {
@@ -8956,11 +8938,11 @@
             ],
             "choices": [
                 {
-                    "text": "Si vous souhaitez à présent \nl'attaquer en faisant usage d'une Formule Magique, rendez -vous au 364 \n; si vous préférez dégainer votre arme et vous battre, rendez -vous au \n227",
+                    "text": "Si vous souhaitez à présent \nl'attaquer en faisant usage d'une Formule Magique, rendez -vous au 364 <br> ; si vous préférez dégainer votre arme et vous battre, rendez -vous au \n227",
                     "nextId": 364
                 },
                 {
-                    "text": "Si vous souhaitez à présent \nl'attaquer en faisant usage d'une Formule Magique, rendez -vous au 364 \n; si vous préférez dégainer votre arme et vous battre, rendez -vous au \n227",
+                    "text": "Si vous souhaitez à présent \nl'attaquer en faisant usage d'une Formule Magique, rendez -vous au 364 <br> ; si vous préférez dégainer votre arme et vous battre, rendez -vous au \n227",
                     "nextId": 227
                 }
             ],

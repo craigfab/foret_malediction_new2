@@ -52,12 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModalBtn = mapModal ? mapModal.querySelector('.close-modal') : null;
     const mapImage = document.getElementById('mapImage');
     if (mapButton && mapModal && closeModalBtn && mapImage) {
-        // Désactiver par défaut (sera activé via updateAdventureSheet si la carte est dans l'inventaire)
-        mapButton.disabled = true;
-        mapButton.title = "Vous n'avez pas encore la carte";
+        
         mapButton.addEventListener('click', () => {
             // Charger l'image de la carte en couleur et afficher le modal
-            mapImage.src = 'images_collines/map_shamutanti_hills_color.png';
+            mapImage.src = 'images_collines/land_of_kakhabad.jpg';
             mapModal.style.display = 'flex';
         });
         closeModalBtn.addEventListener('click', () => {
@@ -121,17 +119,16 @@ function showChapter(chapters, chapterId) {
         gameState.character = new Character(0,0,0,0,0,0);
         gameState.character.isInitialized = false;
         gameState.inventory = new Inventory();
-        gameState.inventory.addItem("repas", 10,"food")
         updateCharacterStats()
         updateAdventureSheet()
     }
   
     // affiche le texte
-    const chapterTitle = chapterId === 0 ? 'Introduction' : 'Chapitre ' + chapterId;
+    const chapterTitle = chapterId === 0 ? 'La légende de la Couronne des Rois' : 'Chapitre ' + chapterId;
     document.getElementById('chapter_title').innerText = chapterTitle;
-    document.getElementById('text').innerText = chapter.text;
+    document.getElementById('text').innerHTML = chapter.text;
     document.getElementById('illustration').src = chapter.illustration;
-    }
+    
   
     // Affiche le bouton de création de personnage uniquement pour le chapitre 0
     const createCharacterButton = document.getElementById("createCharacterButton");
@@ -404,8 +401,7 @@ function showChapter(chapters, chapterId) {
     // if (chapterId === 400) {
     //     triggerVictory();
     // }
-    
-
+}
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', async () => {

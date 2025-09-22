@@ -869,8 +869,8 @@
             ],
             "items": [
                 {
-                    "name": "Petite clé d'argent",
-                    "type": "key",
+                    "name": "petite clé d'argent",
+                    "category": "equipment",
                     "description": "Une clé mystérieuse trouvée sur l'un des Hommes des Bois."
                 }
             ],
@@ -7046,7 +7046,7 @@
                 "text": "Avez-vous une clé d'argent? Si oui, rendez-vous au 200.",
                 "nextId": 200, 
                 "requiresItem": {
-                  "name": "clé d'argent",
+                  "name": "petite clé d'argent",
                   "category": "equipment"
                 }
               },
