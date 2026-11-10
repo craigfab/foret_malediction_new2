@@ -1,437 +1,289 @@
-//jeu d'aventure
-import { manageMonsters } from "./battle.js";
-import { applyChapterEffects } from "./chapterEffects.js";
-import { updateCharacterStats, triggerGameOver, triggerVictory } from "./character.js";
-import { Character } from "./character.js";
-import { takeItem } from "./inventory.js";
-import { updateAdventureSheet } from "./inventory.js";
-import { useMeal } from "./inventory.js";
-import { revitalisationLibra, escapeLibra, healLibra } from "./inventory.js";
-import { Inventory } from "./inventory.js";
+// Les Collines Maléfiques (Sorcellerie ! / 1) — script principal
+import { manageMonsters, updateMonsterList } from "./battle.js";
+import { applyEffects, choiceState, updateChoiceButtons } from "./chapterEffects.js";
+import { Character, updateCharacterStats, triggerGameOver } from "./character.js";
+import { Inventory, updateAdventureSheet, takeItem, usePotion, revitalisationLibra, healLibra, GOLD, FOOD } from "./inventory.js";
+import { tempt_chance } from "./chance.js";
 import { loadRandomTrack, initializeSoundEffects } from "./music.js";
 
-// Chargement des données JSON
-async function loadChapters() {
-    const response = await fetch('collines_malefiques.json');
-    const data = await response.json();
-    return data.chapters;
+const DEFAULT_ILLUSTRATION = "images_collines/dark_and_gloomy_hills.png";
+
+async function loadJson(file) {
+    const response = await fetch(file);
+    return response.json();
 }
 
-//structure globale monstres / caractéristiques perso / inventaire
+// État global de la partie
 export let gameState = {
+    chapters: [],
     monsters: [],
-    character: null, 
+    character: null,
     inventory: null,
     currentChapterId: 0,
-    currentChapter: null, // Objet chapitre actuel
-    visitedChapters: new Set(), // Ensemble des chapitres visités
-    woundedByLoupGarou: false, // Traçage des blessures du loup-garou
-    isLucky: undefined, // Résultat du test de chance
-    luckResults: [], // Pour les tests multiples de chance
-    skillCheckPassed: undefined, // Résultat du test d'habileté
-    skillChanceCheckPassed: undefined, // Résultat du test d'habileté + chance
-    assaultCount: 0, // Compteur d'assauts pour le chapitre 84
-    fleeMessage: false, // Marqueur pour indiquer qu'une fuite a eu lieu
-    gameOver: false, // Marqueur pour indiquer si le jeu est terminé (Game Over)
-    itemsGiven: 0, // Compteur pour les objets donnés (chapitre 279)
-    effectApplied: false, // Marqueur pour indiquer qu'un effet a été appliqué
-    libra: {
-        available: true, // Libra peut être invoquée
-        used: false // Libra n'a pas encore été utilisée
-    }
+    currentChapter: null,
+    visitedChapters: new Set(),
+    choiceButtons: [],      // [{button, choice}] des choix affichés
+    entryItems: {},         // contenu du Sac à Dos à l'arrivée dans le paragraphe
+    flags: {},              // drapeaux divers posés par les effets "setFlag"
+    isLucky: undefined,     // résultat du dernier « Tentez votre Chance » du paragraphe
+    skillCheckPassed: undefined,
+    conditionMet: undefined,
+    dieResult: undefined,
+    pendingLoss: 0,         // nombre d'objets que le joueur doit encore choisir de perdre
+    ateToday: false,        // a-t-on pris un repas aujourd'hui ?
+    libraUsed: false,       // Libra n'intervient qu'une fois par aventure
+    returnChapter: null,    // paragraphe auquel revenir après une rencontre (paragraphe 123)
+    returned: false,
+    encounter: null,
+    encounterBonus: 0,
+    encounterFought: false,
+    nextCombat: null,       // avantages accordés par une Formule pour le prochain combat
+    combatMods: {},
+    assaultCount: 0,
+    gameOver: false,
 };
 
-// quand le DOM est chargé, choix aléatoire de piste musicale et initialisation des effets sonores
-document.addEventListener('DOMContentLoaded', function() {
-    loadRandomTrack();
-    initializeSoundEffects(); // Initialiser le système d'effets sonores
-    
-    // Initialiser le bouton de carte
-    const mapButton = document.getElementById('mapButton');
-    const mapModal = document.getElementById('mapModal');
-    const closeModalBtn = mapModal ? mapModal.querySelector('.close-modal') : null;
-    const mapImage = document.getElementById('mapImage');
-    if (mapButton && mapModal && closeModalBtn && mapImage) {
-        
-        mapButton.addEventListener('click', () => {
-            // Charger l'image de la carte en couleur et afficher le modal
-            mapImage.src = 'images_collines/land_of_kakhabad.jpg';
-            mapModal.style.display = 'flex';
-        });
-        closeModalBtn.addEventListener('click', () => {
-            mapModal.style.display = 'none';
-        });
-        mapModal.addEventListener('click', (e) => {
-            if (e.target === mapModal) {
-                mapModal.style.display = 'none';
-            }
-        });
-        // Fermer avec Echap
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mapModal.style.display !== 'none') {
-                mapModal.style.display = 'none';
-            }
-        });
+function el(id) {
+    return document.getElementById(id);
+}
+
+// ---------------------------------------------------------------------------
+// Affichage d'un paragraphe
+// ---------------------------------------------------------------------------
+function showChapter(chapterId, options = {}) {
+    if (gameState.gameOver) return;
+    const chapter = gameState.chapters.find(chap => chap.id === chapterId);
+    if (!chapter) return;
+
+    // réinitialisation de l'état propre au paragraphe
+    Object.assign(gameState, {
+        monsters: [], pendingMonsters: [], combatMods: {}, assaultCount: 0,
+        isLucky: undefined, skillCheckPassed: undefined, conditionMet: undefined, dieResult: undefined,
+        pendingLoss: 0, choiceButtons: [], returned: Boolean(options.returning),
+        currentChapterId: chapterId, currentChapter: chapter,
+    });
+    gameState.visitedChapters.add(chapterId);
+    ["action_message", "attack_message", "effect_message", "get_item", "tempt_chance_button",
+        "zone_result_dice", "meal_zone", "MealMessage", "PotionMessage"].forEach(id => { el(id).innerHTML = ""; });
+    ["attackButton", "temptChanceButton", "no_temptChanceButton", "actual_monster"].forEach(id => { el(id).style.display = "none"; });
+
+    if (chapterId === 0) {
+        gameState.character = new Character();
+        gameState.inventory = new Inventory();
     }
-});
+    gameState.entryItems = {};
+    gameState.inventory.items.forEach(i => { gameState.entryItems[i.name] = i.quantity; });
 
+    // texte et illustration
+    el("chapter_title").innerText = chapter.title || "Chapitre " + chapterId;
+    el("text").innerHTML = chapter.text + (chapter.note ? `<p class="note-adaptation">Note d'adaptation : ${chapter.note}</p>` : "");
+    const illustration = el("illustration");
+    illustration.onerror = () => { illustration.onerror = null; illustration.src = DEFAULT_ILLUSTRATION; };
+    illustration.src = chapter.illustration || DEFAULT_ILLUSTRATION;
+    el("characterCreation").style.display = chapterId === 0 ? "block" : "none";
+    el("spellBookButton").style.display = chapterId === 0 ? "inline-block" : "none";
 
-// Afficher un chapitre spécifique
-function showChapter(chapters, chapterId) {
+    // monstres du paragraphe (parfois seulement si l'on possède un objet)
+    if (chapter.monsters && chapter.monsters.length && (!chapter.monstersIf || gameState.entryItems[chapter.monstersIf] > 0)) {
+        gameState.pendingMonsters = chapter.monsters.map(m => ({ ...m, status: "vivant" }));
+    }
 
-    // Empêcher la navigation si le jeu est terminé (Game Over)
+    // effets : ceux du choix qui nous a menés ici, puis ceux du paragraphe
+    applyEffects(options.choiceEffects, false);
+    applyEffects(chapter.effects, Boolean(options.returning));
     if (gameState.gameOver) {
+        renderChoices(chapter);
         return;
     }
 
-    // réinitialisation de gameState pour les monstres
-    gameState.monsters = [];
-    
-    // Réinitialisation des tests de chance et d'habileté
-    gameState.isLucky = undefined;
-    gameState.luckResults = [];
-    gameState.skillCheckPassed = undefined;
-    gameState.skillChanceCheckPassed = undefined;
-    gameState.assaultCount = 0; // Réinitialiser le compteur d'assauts
-    gameState.effectApplied = false; // Réinitialiser l'état des effets appliqués
-
-    // Réinitialise les contenus des divs action_message et attack_message
-    document.getElementById('action_message').innerHTML = '';
-    document.getElementById('attack_message').innerHTML = '';
-    
-    // Réinitialise les boutons d'attaque et de chance
-    document.getElementById('attackButton').style.display = 'none';
-    document.getElementById('temptChanceButton').style.display = 'none';
-    document.getElementById('no_temptChanceButton').style.display = 'none';
-    document.getElementById('actual_monster').innerHTML = '';
-
-    // cherche le chapitre
-    const chapter = chapters.find(chap => chap.id === chapterId);
-    if (!chapter) return;
-    gameState.currentChapterId = chapterId;
-    gameState.currentChapter = chapter;
-    
-    // Enregistrer le chapitre comme visité
-    gameState.visitedChapters.add(chapterId);
-
-    // Création du personnage et de l'inventaire au chapitre 0
-    if (chapterId === 0) {
-        gameState.character = new Character(0,0,0,0,0,0);
-        gameState.character.isInitialized = false;
-        gameState.inventory = new Inventory();
-        updateCharacterStats()
-        updateAdventureSheet()
-    }
-  
-    // affiche le texte
-    const chapterTitle = chapterId === 0 ? 'La légende de la Couronne des Rois' : 'Chapitre ' + chapterId;
-    document.getElementById('chapter_title').innerText = chapterTitle;
-    document.getElementById('text').innerHTML = chapter.text;
-    document.getElementById('illustration').src = chapter.illustration;
-    
-  
-    // Affiche le bouton de création de personnage uniquement pour le chapitre 0
-    const createCharacterButton = document.getElementById("createCharacterButton");
-    if (chapterId === 0) {
-        createCharacterButton.style.display = 'block';
-        // Attacher l'événement click pour initialiser le personnage
-        createCharacterButton.onclick = function(){
-            gameState.character.initialize();
-            gameState.character.isInitialized = true;
-            updateCharacterStats();
-            // Réactiver les boutons de choix une fois le personnage créé
-            const buttons = document.getElementById('choices').getElementsByTagName('Button');
-            for (let button of buttons) {
-                button.disabled = false;
-            }
-        };
-    } else {
-        createCharacterButton.style.display = 'none';
-    };
-
-    // Appliquer les effets du chapitre
-    applyChapterEffects(chapter);
-
-    // Affichage du message de fuite du chapitre précédent (après applyChapterEffects)
-    if (gameState.fleeMessage) {
-        const effectMessageDiv = document.getElementById('effect_message');
-        if (effectMessageDiv) {
-            // Ajouter le message de fuite après les autres effets
-            effectMessageDiv.innerHTML += '<p><strong>Fuite :</strong> Vous avez perdu 2 points d\'endurance en prenant la fuite.</p>';
-        }
-        gameState.fleeMessage = false; // Réinitialiser après affichage
+    if (gameState.pendingMonsters.length) {
+        manageMonsters(gameState.pendingMonsters);
+    } else if (!gameState.monsters.length) {
+        updateMonsterList();
     }
 
-    // Création de boutons pour prendre les objets
-    const itemsContainer = document.getElementById('get_item');
-    itemsContainer.innerHTML = ''; // Efface les boutons précédents
-
-    if (chapter.items) {
-        chapter.items.forEach(item => {
-            const itemButton = document.createElement('Button');
-            itemButton.innerText = `Prendre ${item.name}`;
-            itemButton.addEventListener('click', function() {
-                takeItem(item, this); // "this" fait référence à l'élément bouton actuel
-            });
-            itemsContainer.appendChild(itemButton); // Ajoute le bouton dans la div get_item
-        })
-    };
-
-    // Création bouton pour repas
-    const useMealButton = document.getElementById('useMealButton');
-    if (gameState.inventory.checkItem('repas', 'food') > 0) {
-        useMealButton.style.display = 'block'; 
-        if (!useMealButton.onclick) {
-            useMealButton.onclick = function() {
-                useMeal();
-            };
-        }
-    } else {
-        useMealButton.style.display = 'none'; // Masque le bouton s'il n'y a pas de repas
-    }
-
-    // Création bouton pour invoquer Libra
-    const invokeLibraButton = document.getElementById('invokeLibraButton');
-    if (gameState.libra.available && !gameState.libra.used) {
-        invokeLibraButton.style.display = 'block'; 
-        if (!invokeLibraButton.onclick) {
-            invokeLibraButton.onclick = function() {
-                showLibraModal();
-            };
-        }
-    } else {
-        invokeLibraButton.style.display = 'none'; // Masque le bouton si Libra a déjà été utilisée
-    }
-
-
-    // gestion des monstres
-    if (chapter.monsters) {
-        
-        // Si pas de monstres, afficher "Pas de monstre ici"
-        const monsterContainer = document.getElementById('monsters');
-        monsterContainer.innerHTML = 'Pas de monstre ici';
-        
-        // Cacher les boutons d'attaque et de chance
-        document.getElementById('attackButton').style.display = 'none';
-        document.getElementById('temptChanceButton').style.display = 'none';
-        document.getElementById('no_temptChanceButton').style.display = 'none';
-        document.getElementById('actual_monster').innerHTML = '';
-    };
-
-    //choix
-    const choicesContainer = document.getElementById('choices');
-    choicesContainer.innerHTML = '';
-    
-    // Vérifier si le chapitre a des choix avant de les traiter
-    if (chapter.choices && chapter.choices.length > 0) {
-        chapter.choices.forEach(choice => {
-
-        const choiceButton = document.createElement('Button');
-        choiceButton.innerText = choice.text;
-        
-        // Désactiver les boutons au chapitre 0 si le personnage n'est pas créé
-        if (chapterId === 0 && (!gameState.character || !gameState.character.isInitialized)) {
-            choiceButton.disabled = true;
-            choiceButton.title = "Créez votre personnage d'abord";
-        }
-
-        // Vérifie si le choix requiert un item spécifique
-        if (choice.requiresItem) {
-            // Note : On extrait maintenant `name` et `category` de l'objet `requiresItem`
-            const hasItem = gameState.inventory.checkItem(choice.requiresItem.name);
-            choiceButton.disabled = !hasItem; // Désactive le bouton si l'item requis n'est pas dans l'inventaire
-            if (!hasItem) {
-                choiceButton.title = `Requis : ${choice.requiresItem.name}`; // Ajoute un titre au bouton pour indiquer l'item requis et sa catégorie
-            }
-        }
-
-        // Vérifie si le choix requiert plusieurs items spécifiques
-        if (choice.requiresMultipleItems) {
-            const missingItems = [];
-            let hasAllItems = true;
-            
-            choice.requiresMultipleItems.forEach(item => {
-                const hasItem = gameState.inventory.checkItem(item.name);
-                if (!hasItem) {
-                    hasAllItems = false;
-                    missingItems.push(item.name);
-                }
-            });
-            
-            choiceButton.disabled = !hasAllItems;
-            if (!hasAllItems) {
-                choiceButton.title = `Requis : ${missingItems.join(' et ')}`;
-            }
-        }
-
-        // Vérifie si le choix requiert qu'un chapitre spécifique n'ait pas été visité
-        if (choice.requiresNotVisitedChapter) {
-            const hasVisited = gameState.visitedChapters.has(choice.requiresNotVisitedChapter);
-            choiceButton.disabled = hasVisited;
-            if (hasVisited) {
-                choiceButton.title = `Cette action n'est plus disponible`;
-            }
-        }
-
-        // Désactiver le bouton si les monstres ne sont pas tous vaincus
-        if (choice.requiresAllMonstersDefeated) {
-            choiceButton.setAttribute('data-requiresAllMonstersDefeated', 'true');    
-            const allMonstersDefeated = gameState.monsters.every(monster => monster.status === "vaincu");
-            choiceButton.disabled = !allMonstersDefeated;
-        }
-     
-        // Gestion de chanceCheckPassed
-        if (choice.chanceCheckPassed !== undefined) {
-            choiceButton.setAttribute('data-chanceCheckPassed', choice.chanceCheckPassed);
-            choiceButton.disabled = gameState.isLucky !== choice.chanceCheckPassed; // Active ou désactive en fonction de la chance
-        }
-
-        // Gestion de conditionMet
-        if (choice.requiresConditionMet) {
-            choiceButton.setAttribute('data-requiresConditionMet', 'true');
-            choiceButton.disabled = !gameState.conditionMet;
-        }
-
-            // Ajouter des attributs personnalisés basés sur le choix requis
-        if (choice.skillCheckPassed !== undefined) {
-            choiceButton.setAttribute('data-skillCheckPassed', choice.skillCheckPassed.toString());
-            // Désactiver les boutons par défaut, ils seront activés après le test d'habileté
-            choiceButton.disabled = true; 
-        }
-
-        // Gestion de skillChanceCheckPassed
-        if (choice.skillChanceCheckPassed !== undefined) {
-            choiceButton.setAttribute('data-skillChanceCheckPassed', choice.skillChanceCheckPassed.toString());
-            // Désactiver les boutons par défaut, ils seront activés après le test d'habileté+chance
-            choiceButton.disabled = true; 
-        }
-
-        // Mise à jour basée sur doubleLuckCheck
-        if (choice.doubleLuckCheck !== undefined) {
-            choiceButton.setAttribute('data-doubleLuckCheck', choice.doubleLuckCheck);
-            choiceButton.disabled = true; // Désactivé par défaut jusqu'aux jets de chance
-        }
-
-            // Gestion des conditions d'or 
-        if (Array.isArray(choice.condition)) {
-            // Gestion des conditions sous forme de tableau [resource, operator, value]
-            const [resource, operator, value] = choice.condition;
-            let conditionMet = false;
-            
-            if (resource === "gold") {
-                choiceButton.setAttribute('data-goldCondition', JSON.stringify(choice.condition));
-                const currentGold = gameState.inventory.checkItem('or') || 0;
-                switch (operator) {
-                    case ">=":
-                        conditionMet = currentGold >= value;
-                        break;
-                    case ">":
-                        conditionMet = currentGold > value;
-                        break;
-                    case "<=":
-                        conditionMet = currentGold <= value;
-                        break;
-                    case "<":
-                        conditionMet = currentGold < value;
-                        break;
-                    case "==":
-                    case "===":
-                        conditionMet = currentGold == value;
-                        break;
-                }
-            }
-            choiceButton.disabled = !conditionMet;
-            if (!conditionMet) {
-                choiceButton.title = `Requis : ${value} pièce(s) d'or`;
-            }
-        }
-
-        // Gestion de requiresEffectApplied
-        if (choice.requiresEffectApplied !== undefined) {
-            choiceButton.setAttribute('data-requiresEffectApplied', choice.requiresEffectApplied.toString());
-            // Désactiver le bouton par défaut si l'effet n'a pas encore été appliqué
-            choiceButton.disabled = gameState.effectApplied !== choice.requiresEffectApplied;
-        }
-
-        // Ajouter un tooltip pour les choix de fuite
-        if (choice.text && choice.text.toLowerCase().includes('fuite')) {
-            choiceButton.title = "Attention : la fuite vous fait perdre 2 points d'endurance";
-        }
-
-        choiceButton.addEventListener('click', () => {
-            // Empêcher toute action si le jeu est terminé
-            if (gameState.gameOver) {
-                return;
-            }
-            
-            // Gestion du coût en or
-            if (choice.cost && choice.cost > 0) {
-                gameState.inventory.removeItem('or', choice.cost);
-                updateAdventureSheet();
-            }
-            
-            // Gestion de la fuite
-            if (choice.text && choice.text.toLowerCase().includes('fuite')) {
-                gameState.character.health -= 2;
-                updateCharacterStats();
-                
-                // Si le Game Over s'est déclenché lors de la fuite, arrêter ici
-                if (gameState.gameOver) {
-                    return;
-                }
-                
-                // Marquer qu'une fuite a eu lieu pour afficher le message au prochain chapitre
-                gameState.fleeMessage = true;
-            }
-            
-            // Navigation vers le chapitre suivant
-            showChapter(chapters, choice.nextId);      
-        });
-
-        choicesContainer.appendChild(choiceButton);
+    // objets à prendre ou à acheter
+    (options.returning ? [] : chapter.items || []).forEach(item => {
+        const button = document.createElement("button");
+        const quantity = item.quantity > 1 ? ` (x ${item.quantity})` : "";
+        button.innerText = item.price
+            ? `Acheter : ${item.name}${quantity} — ${item.price} pièce(s) d'or`
+            : (item.name === GOLD ? `Prendre ${item.quantity} pièce(s) d'or` : `Prendre : ${item.name}${quantity}`);
+        button.addEventListener("click", () => takeItem(item, button));
+        el("get_item").appendChild(button);
     });
-    } // Fermeture du bloc if (chapter.choices && chapter.choices.length > 0)
 
-    // Déclencher Game Over automatiquement au chapitre 399 après avoir affiché le contenu
-    // if (chapterId === 666) {
-    //     triggerGameOver();
-    // }
-
-    // Déclencher l'écran de victoire automatiquement au chapitre 400
-    // if (chapterId === 400) {
-    //     triggerVictory();
-    // }
+    if (chapter.meal && !options.returning) renderMeal(chapter.meal);
+    renderChoices(chapter);
+    updateCharacterStats();
+    updateAdventureSheet();
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// Initialisation
-document.addEventListener('DOMContentLoaded', async () => {
-    const chapters = await loadChapters();
-    showChapter(chapters, 0);
-  });
+// Repas : le gain dépend du fait d'avoir déjà mangé ou non dans la journée
+function renderMeal(meal) {
+    const zone = el("meal_zone");
+    const eat = (button, withBomba) => {
+        const inv = gameState.inventory;
+        if (meal.cost && inv.checkItem(GOLD) < meal.cost) {
+            el("MealMessage").innerHTML = `Ce repas coûte ${meal.cost} pièce(s) d'or : vous n'en avez pas assez.`;
+            return;
+        }
+        if (!meal.free && inv.checkItem(FOOD) < 1) {
+            el("MealMessage").innerHTML = "Vous n'avez plus de Provisions.";
+            return;
+        }
+        if (meal.cost) inv.removeItem(GOLD, meal.cost);
+        if (!meal.free) inv.removeItem(FOOD, 1);
+        if (withBomba) inv.removeItem("Bomba", 1);
+        const c = gameState.character;
+        const before = c.health;
+        const value = (gameState.ateToday ? meal.other : meal.first) * (withBomba ? 2 : 1);
+        c.health = Math.min(c.health + value, Math.max(c.baseHealth, c.health));
+        gameState.ateToday = true;
+        el("MealMessage").innerHTML = `Vous prenez un repas${withBomba ? " accompagné de la Bomba" : ""} : +${c.health - before} point(s) d'endurance.`;
+        zone.innerHTML = "";
+        updateCharacterStats();
+        updateAdventureSheet();
+        updateChoiceButtons();
+    };
+    const label = meal.cost ? `Prendre un repas (${meal.cost} pièce(s) d'or)` : (meal.free ? "Prendre le repas offert" : "Prendre un repas (1 Provision)");
+    const button = document.createElement("button");
+    button.innerText = label;
+    button.addEventListener("click", () => eat(button, false));
+    zone.appendChild(button);
+    if (gameState.inventory.checkItem("Bomba") > 0) {
+        const bomba = document.createElement("button");
+        bomba.innerText = label + " avec la Bomba (gain doublé)";
+        bomba.addEventListener("click", () => eat(bomba, true));
+        zone.appendChild(bomba);
+    }
+}
 
+function renderChoices(chapter) {
+    const container = el("choices");
+    container.innerHTML = "";
+    gameState.choiceButtons = [];
+    (chapter.choices || []).forEach(choice => {
+        if (choice.hideOnReturn && gameState.returned) return;
+        const button = document.createElement("button");
+        button.innerText = choice.text;
+        if (choice.magicFormula) button.classList.add("formule");
+        button.addEventListener("click", () => followChoice(choice));
+        container.appendChild(button);
+        gameState.choiceButtons.push({ button, choice });
+    });
+    updateChoiceButtons();
+}
 
-//restart
-document.getElementById('restartButton').addEventListener('click', function() {
-    // Réinitialiser le state du jeu avant de recharger
-    gameState.gameOver = false;
-    location.reload(); 
+function followChoice(choice) {
+    if (gameState.gameOver || !choiceState(choice).enabled) return;
+    if (choice.gameOver) {
+        triggerGameOver(choice.text);
+        return;
+    }
+    if (choice.cost) gameState.inventory.removeItem(GOLD, choice.cost);
+    if (choice.requiresLibra) gameState.libraUsed = true;
+
+    let nextId = choice.nextId;
+    if (choice.luckTest) {
+        const lucky = tempt_chance(gameState.character.chance);
+        nextId = lucky ? choice.luckTest.lucky : choice.luckTest.unlucky;
+    }
+    if (choice.encounter !== undefined) {
+        gameState.returnChapter = gameState.currentChapterId;
+        gameState.encounterBonus = choice.encounter;
+        gameState.encounter = null;
+        gameState.encounterFought = false;
+    }
+    const options = { choiceEffects: choice.effects };
+    if (nextId === "return") {
+        nextId = gameState.returnChapter;
+        gameState.returnChapter = null;
+        gameState.encounter = null;
+        options.returning = true;
+    }
+    showChapter(nextId, options);
+}
+
+// ---------------------------------------------------------------------------
+// Initialisation de la page
+// ---------------------------------------------------------------------------
+function createCharacter(role) {
+    const c = gameState.character;
+    c.initialize(role);
+    gameState.inventory = new Inventory();
+    gameState.inventory.addItem("épée", 1, "equipment");
+    gameState.inventory.addItem(GOLD, 20, "gold");
+    gameState.inventory.addItem(FOOD, 2, "food");
+    el("characterMessage").innerHTML = role === "sorcier"
+        ? "Vous êtes un <strong>Sorcier</strong> : vous pourrez utiliser les Formules Magiques. Étudiez le Livre des Formules avant de partir : vous n'y aurez plus accès ensuite !"
+        : "Vous êtes un <strong>Guerrier</strong> : vous ne pourrez compter que sur votre arme, les Formules Magiques vous sont interdites.";
+    updateCharacterStats();
+    updateAdventureSheet();
+    updateChoiceButtons();
+}
+
+function setupModal(modalId, openButtonId, onOpen) {
+    const modal = el(modalId);
+    const close = () => { modal.style.display = "none"; };
+    if (openButtonId) {
+        el(openButtonId).addEventListener("click", () => {
+            if (onOpen) onOpen();
+            modal.style.display = "flex";
+        });
+    }
+    modal.querySelectorAll(".close-modal").forEach(b => b.addEventListener("click", close));
+    modal.addEventListener("click", e => { if (e.target === modal) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+    return close;
+}
+
+// Ajustements manuels de la Feuille d'Aventure, pour les rares règles non automatisées
+function manualAdjust(target, delta) {
+    const c = gameState.character;
+    const inv = gameState.inventory;
+    if (!c.isInitialized || gameState.gameOver) return;
+    if (target === "gold" || target === "food") {
+        const name = target === "gold" ? GOLD : FOOD;
+        if (delta > 0) inv.addItem(name, delta, target);
+        else inv.removeItem(name, -delta);
+    } else if (target === "health") {
+        c._health = Math.max(0, c._health + delta);
+    } else {
+        c[target] = Math.max(0, c[target] + delta);
+    }
+    updateCharacterStats();
+    updateAdventureSheet();
+    updateChoiceButtons();
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+    loadRandomTrack();
+    initializeSoundEffects();
+
+    setupModal("mapModal", "mapButton", () => { el("mapImage").src = "images_collines/land_of_kakhabad.jpg"; });
+    setupModal("rulesModal", "rulesButton");
+    const closeLibra = setupModal("libraModal", "invokeLibraButton");
+    el("libraRevitalisation").addEventListener("click", () => { revitalisationLibra(); closeLibra(); });
+    el("libraHeal").addEventListener("click", () => { healLibra(); closeLibra(); });
+    el("usePotionButton").addEventListener("click", usePotion);
+    el("createWarriorButton").addEventListener("click", () => createCharacter("guerrier"));
+    el("createSorcererButton").addEventListener("click", () => createCharacter("sorcier"));
+    el("restartButton").addEventListener("click", () => location.reload());
+    document.querySelectorAll("#manualAdjust button").forEach(button => {
+        button.addEventListener("click", () => manualAdjust(button.dataset.target, Number(button.dataset.delta)));
+    });
+
+    // Livre des Formules : consultable uniquement avant le départ
+    const spells = (await loadJson("formules_magiques.json")).magic_formulas;
+    el("spellList").innerHTML = spells.map(s =>
+        `<div class="spell"><h3>${s.code} <span>coût : ${s.cost} point(s) d'endurance</span></h3><p>${s.description}</p></div>`).join("");
+    setupModal("spellBookModal", "spellBookButton");
+
+    gameState.chapters = (await loadJson("collines_malefiques.json")).chapters;
+    showChapter(0);
 });
 
-// Fonction pour afficher la modal de choix de Libra
-function showLibraModal() {
-    const modal = document.getElementById('libraModal');
-    if (modal) {
-        modal.style.display = 'flex';
-    }
-}
-
-// Fonction pour masquer la modal de Libra
-function hideLibraModal() {
-    const modal = document.getElementById('libraModal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
-}
-
-
-
+// Accès pour le débogage dans la console : collines.go(123)
+window.collines = { gameState, go: id => showChapter(id) };

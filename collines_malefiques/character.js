@@ -2,179 +2,145 @@ import { rollDice } from "./chance.js";
 import { gameState } from "./scripts_collines.js";
 import { playGameOverMusic, playVictoryMusic } from "./music.js";
 
+// Armes connues : bonus de Force d'Attaque, dégâts infligés, et si c'est une épée
+// (le Brassard d'Escrime de Ragnar ne fonctionne qu'avec une épée).
+// L'arme utilisée est la première de cette liste présente dans l'inventaire.
+export const WEAPONS = [
+    { name: "glaive", attack: 1, damage: 2, sword: true },
+    { name: "épée finement ciselée", attack: 0, damage: 3, sword: true },
+    { name: "épée", attack: 0, damage: 2, sword: true },
+    { name: "hache de Glandragor", attack: -1, damage: 2, sword: false },
+];
+const NO_WEAPON = { name: "aucune arme", attack: -4, damage: 2, sword: false };
+const BRASSARD = "Brassard d'Escrime de Ragnar";
+export const CURSE_SPIRIT = "malédiction de l'Esprit";
 
 //create a character object
 export class Character {
-    constructor(baseSkill, baseHealth, baseChance, Skill, Health, Chance) {
-        this.baseSkill = baseSkill;
-        this.baseHealth = baseHealth;
-        this.baseChance = baseChance;
-        this.skill = baseSkill; // Initial skill is the same as base skill
-        this.health = baseHealth; // Initial health is the same as base health
-        this.chance = baseChance; // Initial chance is the same as base chance
-        this.isInitialized = false; // Ajout de la propriété d'initialisation
-        
-        // Ajout du système de boost temporaires
-        this.boost = {
-            skillPotionBoost: 0, // Nombre de combats restants avec +1 force d'attaque
-            // Ici on pourra ajouter d'autres boost temporaires comme :
-            // strengthPotionBoost: 0,
-            // defensePotionBoost: 0,
-            // magicBoost: 0,
-            // etc.
-        };
+    constructor() {
+        this.baseSkill = 0;
+        this.baseHealth = 0;
+        this.baseChance = 0;
+        this.skill = 0;
+        this._health = 0;
+        this.chance = 0;
+        this.role = null; // "guerrier" ou "sorcier"
+        this.isInitialized = false;
     }
-    
-    initialize() {
-        this.baseSkill = rollDice() + 6;
-        this.baseHealth = rollDice() * 2 + 6;
+
+    // L'endurance passe par un accesseur : la malédiction de l'Esprit (paragraphe 124)
+    // coûte 1 point de plus à chaque perte, sauf pour le coût d'une Formule Magique.
+    get health() {
+        return this._health;
+    }
+
+    set health(value) {
+        if (value < this._health && !gameState.spellCasting && gameState.inventory
+            && gameState.inventory.checkItem(CURSE_SPIRIT) > 0) {
+            value -= 1;
+        }
+        this._health = value;
+    }
+
+    // Règles de Sorcellerie ! : HABILETÉ = 1 dé + 6 (Guerrier) ou + 4 (Sorcier),
+    // ENDURANCE = 2 dés + 12, CHANCE = 1 dé + 6.
+    initialize(role) {
+        this.role = role;
+        this.baseSkill = rollDice() + (role === "sorcier" ? 4 : 6);
+        this.baseHealth = rollDice() + rollDice() + 12;
         this.baseChance = rollDice() + 6;
         this.skill = this.baseSkill;
-        this.health = this.baseHealth;
+        this._health = this.baseHealth;
         this.chance = this.baseChance;
+        this.isInitialized = true;
     }
 
-  
+    isSorcerer() {
+        return this.role === "sorcier";
+    }
 
-    // Retourne l'habileté courante, en tenant compte des boosts et de l'épée enchantée
+    // Arme utilisée au combat, avec le bonus éventuel du Brassard
+    getWeapon() {
+        const inv = gameState.inventory;
+        const found = WEAPONS.find(w => inv && inv.checkItem(w.name) > 0) || NO_WEAPON;
+        const weapon = { ...found };
+        if (weapon.sword && inv && inv.checkItem(BRASSARD) > 0) {
+            weapon.attack += 2;
+            weapon.brassard = true;
+        }
+        return weapon;
+    }
+
     getCurrentSkill() {
-        let skill = this.skill; // ou this.baseSkill selon la logique souhaitée
-        // Bonus temporaire (ex: potion d'adresse)
-        if (this.hasBoost && this.hasBoost('skillPotionBoost')) {
-            skill += 1;
-        }
-        // Bonus épée enchantée si présente dans l'équipement
-        if (gameState.inventory && typeof gameState.inventory.checkItem === 'function') {
-            if (gameState.inventory.checkItem("épée enchantée") > 0) {
-                skill += 2;
-            }
-        }
-        return skill;
+        return this.skill;
     }
 
-    // Retourne l'affichage détaillé de l'habileté avec tous les bonus
     getSkillDisplay() {
-        let skill = this.skill;
-        let skillDisplay = `<div class="skill-main">Habileté:&nbsp;<strong>${this.getCurrentSkill()}</strong>`;
-        skillDisplay += `</div>`;
-        return skillDisplay;
+        const weapon = this.getWeapon();
+        let html = `<div class="skill-main">Habileté:&nbsp;<strong>${this.skill}</strong></div>`;
+        const sign = weapon.attack > 0 ? "+" + weapon.attack : (weapon.attack < 0 ? String(weapon.attack) : "");
+        const notes = [];
+        if (sign) notes.push(`${sign} en Force d'Attaque`);
+        if (weapon.damage !== 2) notes.push(`${weapon.damage} points de dégâts`);
+        html += `<div class="combat-modifiers"><span class="skill-note">Arme : ${weapon.name}${notes.length ? " (" + notes.join(", ") + ")" : ""}</span></div>`;
+        return html;
+    }
+}
+
+function disableAll(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    for (const button of container.getElementsByTagName("button")) {
+        button.disabled = true;
+        button.style.opacity = "0.5";
     }
 }
 
 // Fonction pour déclencher le Game Over
-export function triggerGameOver() {
-    // Jouer la musique de Game Over
-    playGameOverMusic();
-    
-    // Afficher GAME OVER dans la section Actions avec des emojis de mort
-    const actionMessageDiv = document.getElementById('action_message');
-    if (actionMessageDiv) {
-        actionMessageDiv.innerHTML = '<h1 style="color: black; font-size: 3em; text-align: center; margin: 20px 0;">💀 GAME OVER ☠️</h1><p style="text-align: center; font-size: 1.2em;">💀 Votre endurance est tombée à 0. Votre aventure se termine ici. ☠️</p>';
-    }
-    
-    // Changer l'image d'illustration
-    const illustrationImg = document.getElementById('illustration');
-    if (illustrationImg) {
-        illustrationImg.src = 'images_collines/game_over_image_2.png';
-        illustrationImg.alt = 'Game Over - Vous êtes mort';
-    }
-    
-    // Bloquer tous les boutons de choix
-    const choicesContainer = document.getElementById('choices');
-    if (choicesContainer) {
-        const choiceButtons = choicesContainer.getElementsByTagName('Button');
-        for (let button of choiceButtons) {
-            button.disabled = true;
-            button.style.opacity = '0.5';
-        }
-    }
-    
-    // Bloquer tous les boutons de combat
-    const attackButton = document.getElementById('attackButton');
-    if (attackButton) attackButton.disabled = true;
-    
-    const temptChanceButton = document.getElementById('temptChanceButton');
-    if (temptChanceButton) temptChanceButton.disabled = true;
-    
-    const noTemptChanceButton = document.getElementById('no_temptChanceButton');
-    if (noTemptChanceButton) noTemptChanceButton.disabled = true;
-    
-    const escapeButton = document.getElementById('escapeButton');
-    if (escapeButton) escapeButton.disabled = true;
-    
-    // Bloquer les boutons d'utilisation d'objets
-    const useMealButton = document.getElementById('useMealButton');
-    if (useMealButton) useMealButton.disabled = true;
-    
-    const invokeLibraButton = document.getElementById('invokeLibraButton');
-    if (invokeLibraButton) invokeLibraButton.disabled = true;
-    
-    // Bloquer les boutons de prise d'objets
-    const getItemContainer = document.getElementById('get_item');
-    if (getItemContainer) {
-        const itemButtons = getItemContainer.getElementsByTagName('Button');
-        for (let button of itemButtons) {
-            button.disabled = true;
-            button.style.opacity = '0.5';
-        }
-    }
-    
-    // Marquer le state du jeu comme terminé
+export function triggerGameOver(reason) {
+    if (gameState.gameOver) return;
     gameState.gameOver = true;
+    playGameOverMusic();
+
+    const actionMessageDiv = document.getElementById("action_message");
+    if (actionMessageDiv) {
+        const why = reason || (gameState.character.health <= 0
+            ? "Votre endurance est tombée à 0. Votre aventure se termine ici."
+            : "Votre aventure se termine ici.");
+        actionMessageDiv.innerHTML = `<h1 style="color: black; font-size: 3em; text-align: center; margin: 20px 0;">💀 GAME OVER ☠️</h1><p style="text-align: center; font-size: 1.2em;">💀 ${why} ☠️</p>`;
+    }
+
+    const illustrationImg = document.getElementById("illustration");
+    if (illustrationImg) {
+        illustrationImg.src = "images_collines/game_over_image_2.png";
+        illustrationImg.alt = "Game Over - Vous êtes mort";
+    }
+
+    ["choices", "get_item", "tempt_chance_button", "meal_zone", "manualAdjust"].forEach(disableAll);
+    ["attackButton", "temptChanceButton", "no_temptChanceButton", "roll_dice", "invokeLibraButton", "usePotionButton"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.disabled = true;
+    });
 }
 
 // Fonction pour déclencher l'écran de victoire (fin réussie)
 export function triggerVictory() {
-    // Jouer la musique de victoire
     playVictoryMusic();
-    // Afficher un message de VICTOIRE dans la section Actions avec des emojis positifs
-    const actionMessageDiv = document.getElementById('action_message');
+    const actionMessageDiv = document.getElementById("action_message");
     if (actionMessageDiv) {
-        actionMessageDiv.innerHTML = '<h1 style="color: black; font-size: 3em; text-align: center; margin: 20px 0;">🏆🌟 Vous avez réussi, votre quête est désormais terminée ! 🌟🏆</h1>';
+        actionMessageDiv.innerHTML = '<h1 style="color: black; font-size: 2.2em; text-align: center; margin: 20px 0;">🏆🌟 Vous avez traversé les collines de Shamutanti ! 🌟🏆</h1><p style="text-align: center; font-size: 1.2em;">Notez vos points, votre Or et vos objets : ils vous serviront dans la suite de votre quête, à Kharé.</p>';
     }
-
-    
 }
-
-
-// Fonction pour calculer et formater les modificateurs de combat
-function getCombatModifiersDisplay() {
-    let modifiers = [];
-    let totalModifier = 0;
-    
-    
-    if (modifiers.length > 0) {
-        return `<span class="skill-note">(Combat: ${modifiers.join(', ')})</span>`;
-    }
-    return '';
-}
-
 
 //fonction mise à jour des caractéristiques personnage
 export function updateCharacterStats() {
-    let baliseSkillBox = document.getElementById("skill");
-    let skillDisplay = gameState.character.getSkillDisplay();
-    
-    // Ajouter les modificateurs de combat séparément
-    let combatModifiers = getCombatModifiersDisplay();
-    if (combatModifiers) {
-        // Encapsuler dans un bloc pour pouvoir cibler via CSS et forcer la ligne suivante
-        skillDisplay += `<div class="combat-modifiers">${combatModifiers}</div>`;
-    }
-    
-    baliseSkillBox.innerHTML = skillDisplay;
+    const c = gameState.character;
+    document.getElementById("skill").innerHTML = c.getSkillDisplay();
+    document.getElementById("health").innerHTML = `Endurance:&nbsp;<strong>${c.health}</strong>${c.isInitialized ? `&nbsp;/&nbsp;${c.baseHealth}` : ""}`;
+    document.getElementById("chance").innerHTML = `Chance:&nbsp;<strong>${c.chance}</strong>${c.isInitialized ? `&nbsp;/&nbsp;${c.baseChance}` : ""}`;
 
-    let baliseHealthBox = document.getElementById("health");
-    baliseHealthBox.innerHTML = `Endurance:&nbsp;<strong>${gameState.character.health}</strong>`;
-
-    let baliseChanceBox = document.getElementById("chance");
-    baliseChanceBox.innerHTML = `Chance:&nbsp;<strong>${gameState.character.chance}</strong>`;
-    
-    // Vérifier si l'endurance est à 0 ou inférieur pour déclencher le Game Over
-    // Exception : ne pas déclencher Game Over au chapitre 0 ou si le personnage n'est pas initialisé
-    if (gameState.character.health <= 0 && 
-        gameState.currentChapterId !== 0 && 
-        gameState.character.isInitialized) {
+    // Game Over si l'endurance tombe à 0 (sauf avant la création du personnage)
+    if (c.health <= 0 && gameState.currentChapterId !== 0 && c.isInitialized) {
         triggerGameOver();
     }
 }
