@@ -36,6 +36,9 @@
 
             <!-- Bouton Carte -->
             <button id="mapButton" title="Afficher la carte">🗺️ Carte</button>
+
+            <!-- Bouton Règles -->
+            <button id="rulesButton" title="Rappel des règles">📜 Règles</button>
         </div>
     </nav>
 
@@ -59,18 +62,16 @@
 
             <h2> Actions </h2>
 
-            <!-- get item button -->
+            <!-- objets à prendre / acheter / perdre -->
             <div id="get_item"> </div>
 
-            <!-- tempt chance button -->
-            <div id="tempt_chance_button" >
-            </div>
+            <!-- repas possible dans ce paragraphe -->
+            <div id="meal_zone"> </div>
+            <div id="MealMessage"> </div>
 
-            <!-- throw a dice button -->
-            <div> 
-                <button id="roll_dice" style="display: none"> Lancez le dé </button>
-                <div id="zone_result_dice"> </div> 
-            </div>
+            <!-- tests de chance, lancers de dés... -->
+            <div id="tempt_chance_button"> </div>
+            <div id="zone_result_dice"> </div>
 
             <!-- effect message... -->
             <div id="effect_message">
@@ -89,7 +90,13 @@
             <!-- feuille d'aventure -->
             <section class="aventure"> 
                 <h2> Feuille d'aventure </h2>
-                <button id="createCharacterButton"> Créer un personnage </button>
+                <div id="characterCreation">
+                    <p>Choisissez votre personnage :</p>
+                    <button id="createWarriorButton" title="Habileté : 1 dé + 6. Pas de magie."> ⚔️ Guerrier (Jeu Simple) </button>
+                    <button id="createSorcererButton" title="Habileté : 1 dé + 4. Formules Magiques."> 🔮 Sorcier </button>
+                    <button id="spellBookButton"> 📖 Lire le Livre des Formules Magiques </button>
+                    <div id="characterMessage"> </div>
+                </div>
                 <div class="feuille_aventure">
                     <div id="skill" class="box skill"> Habileté </div>
                     <div id="health" class="box health"> Endurance </div>
@@ -99,13 +106,22 @@
                     <div id="jewelry" class="box jewelry"> Bijoux </div>
                     <div id="potions" class="box potions"> Potions </div>
                     <div id="food" class="box food"> Provisions </div>
-                    
+                    <div id="status" class="box status"> État / compagnons </div>
                 </div>
-                <button id="useMealButton" style="display:none"> Prendre un repas (augmente endurance de 4 points) </button>
-                <div id="MealMessage"> </div>
-                
-                <button id="invokeLibraButton" style="display:block"> Invoquer Libra, déesse de la justice </button>
+
+                <button id="usePotionButton" style="display:none"> Boire la potion de Myrtibelle (+3 endurance) </button>
+                <button id="invokeLibraButton" style="display:none"> Invoquer Libra, déesse de la justice </button>
                 <div id="PotionMessage"> </div>
+
+                <details id="manualAdjust">
+                    <summary>Ajuster la feuille à la main</summary>
+                    <p>Pour les rares règles que le jeu n'applique pas tout seul.</p>
+                    <div>Habileté <button data-target="skill" data-delta="-1">−</button><button data-target="skill" data-delta="1">+</button></div>
+                    <div>Endurance <button data-target="health" data-delta="-1">−</button><button data-target="health" data-delta="1">+</button></div>
+                    <div>Chance <button data-target="chance" data-delta="-1">−</button><button data-target="chance" data-delta="1">+</button></div>
+                    <div>Or <button data-target="gold" data-delta="-1">−</button><button data-target="gold" data-delta="1">+</button></div>
+                    <div>Provisions <button data-target="food" data-delta="-1">−</button><button data-target="food" data-delta="1">+</button></div>
+                </details>
             </section>
         
         
@@ -119,8 +135,7 @@
                 <div id="attack_message"> </div>  
                 <button id="no_temptChanceButton" style="display:none"> Ne pas tenter ma chance. </button>
                 <button id="temptChanceButton" style="display:none"> Tenter ma chance ? </button>
-                <button id="escapeButton" style="display:none"> Choisir la fuite </button>
-            
+                            
             </section>
         
         </div>
@@ -147,26 +162,43 @@
     <!-- Modal Libra -->
     <div id="libraModal" class="modal" style="display:none">
         <div class="modal-content libra-modal">
-            <button class="close-modal" onclick="hideLibraModal()" aria-label="Fermer">×</button>
+            <button class="close-modal" aria-label="Fermer">×</button>
             <h2>Invoquer Libra, déesse de la justice</h2>
-            <p>Choisissez l'aide que vous souhaitez recevoir de Libra (une seule invocation possible) :</p>
-            
+            <p>Libra ne vous aidera qu'une seule fois au cours de cette aventure. Si vous l'invoquez ici, vous ne pourrez plus l'appeler à l'aide lorsque le texte vous le proposera.</p>
             <div class="libra-choices">
-                <button onclick="revitalisationLibra(); hideLibraModal();" class="libra-choice">
+                <button id="libraRevitalisation" class="libra-choice">
                     <strong>Revitalisation</strong><br>
-                    Restaure toutes vos statistiques à leur niveau initial
+                    Vos points d'Habileté, d'Endurance et de Chance retrouvent leur niveau initial
                 </button>
-                
-                <button onclick="escapeLibra(); hideLibraModal();" class="libra-choice">
-                    <strong>Fuite Divine</strong><br>
-                    Vous aide à prendre la fuite avec l'aide divine
-                </button>
-                
-                <button onclick="healLibra(); hideLibraModal();" class="libra-choice">
+                <button id="libraHeal" class="libra-choice">
                     <strong>Guérison</strong><br>
-                    Neutralise les mauvais sorts et guérit vos afflictions
+                    Neutralise les mauvais sorts et guérit vos maladies
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal Livre des Formules -->
+    <div id="spellBookModal" class="modal" style="display:none">
+        <div class="modal-content text-modal">
+            <button class="close-modal" aria-label="Fermer">×</button>
+            <h2>Le Livre des Formules Magiques</h2>
+            <p>Étudiez-le avant de partir : dès que vous aurez commencé votre aventure, vous n'aurez plus le droit de le consulter. Certaines Formules proposées en cours de route n'existent pas : les choisir vous coûtera des points d'Endurance pour rien. Les Formules qui nécessitent un objet restent sans effet si vous ne le possédez pas.</p>
+            <div id="spellList"></div>
+        </div>
+    </div>
+
+    <!-- Modal Règles -->
+    <div id="rulesModal" class="modal" style="display:none">
+        <div class="modal-content text-modal">
+            <button class="close-modal" aria-label="Fermer">×</button>
+            <h2>Rappel des règles</h2>
+            <p><strong>Personnage.</strong> Guerrier : Habileté = 1 dé + 6. Sorcier : Habileté = 1 dé + 4, mais il peut utiliser les Formules Magiques. Endurance = 2 dés + 12. Chance = 1 dé + 6. Vous partez avec une épée, 20 Pièces d'Or et 2 repas de Provisions.</p>
+            <p><strong>Combat.</strong> À chaque Assaut, 2 dés + Habileté pour chacun : la Force d'Attaque la plus élevée inflige 2 points de dégâts. Vous pouvez Tenter votre Chance pour aggraver une blessure que vous infligez (+2 si Chanceux, −1 sinon) ou atténuer celle que vous recevez (−1 si Chanceux, +1 sinon).</p>
+            <p><strong>Chance.</strong> 2 dés inférieurs ou égaux à votre Chance : vous êtes Chanceux. Chaque test vous coûte 1 point de Chance.</p>
+            <p><strong>Repas.</strong> Vous ne pouvez manger que lorsque le texte le permet (un bouton apparaît). Si vous passez une journée sans manger, vous perdrez 3 points d'Endurance le lendemain matin.</p>
+            <p><strong>Magie.</strong> Chaque Formule coûte des points d'Endurance, qu'elle réussisse ou non. Le coût est appliqué au paragraphe où mène la Formule.</p>
+            <p><strong>Libra.</strong> Votre déesse peut vous aider une seule fois : revitalisation, guérison, ou secours lorsque le texte le propose.</p>
         </div>
     </div>
 

@@ -4,249 +4,178 @@ import { updateCharacterStats } from "./character.js";
 import { playAttackSound, playCriticalHitSound, playVictorySound, playDefeatSound } from "./music.js";
 import { updateChoiceButtons } from "./chapterEffects.js";
 
+// Champs optionnels d'un monstre (voir collines_malefiques.json) :
+//   attackModifier        : modificateur de VOTRE Force d'Attaque (Oursconse : -2)
+//   monsterAttackBonus    : modificateur de la Force d'Attaque du monstre (Elvin : +2, bouclier : -2)
+//   playerSkillMultiplier : multiplicateur de votre HABILETÉ (formule GRO : x2)
+//   sting                 : dard de la Manticore (5 ou 6 au dé : 6 points de dégâts)
+// gameState.combatMods contient les effets d'une Formule lancée au paragraphe précédent :
+//   { monsterSkill, monsterAttackBonus, playerSkillMultiplier, damage, rounds }
 
-//fonction manageMonsters
 export function manageMonsters(chapterMonsters) {
-    const monsterContainer = document.getElementById('monsters');
-    monsterContainer.innerHTML = ''; // Réinitialiser le contenu
-
-
-    // Réinitialisation et peuplement du tableau de monstres
-    gameState.monsters = chapterMonsters.map(monsterData => ({
-        ...monsterData,
-        status: "vivant"
-    }));
-
-    // Réinitialiser le compteur de blessures de la goule
-    // if (gameState.currentChapterId === 227) {
-    //     gameState.ghoulWounds = 0;
-    //     gameState.isParalyzed = false;
-    // }
-
+    gameState.monsters = chapterMonsters.map(m => ({ ...m, status: m.status || "vivant" }));
+    gameState.combatMods = gameState.nextCombat || {};
+    gameState.nextCombat = null;
+    gameState.assaultCount = 0;
     updateMonsterList();
-    selectCurrentMonster(0);
+    const first = gameState.monsters.findIndex(m => m.status === "vivant");
+    if (first !== -1) {
+        selectCurrentMonster(first);
+    } else {
+        document.getElementById("attackButton").style.display = "none";
+    }
+    describeMods();
 }
 
-// met à jour la liste des monstres    
-function updateMonsterList() {
-    const monsterContainer = document.getElementById('monsters');
-    monsterContainer.innerHTML = ''; // Réinitialise le contenu pour la mise à jour
+function modsActive() {
+    const mods = gameState.combatMods || {};
+    return !mods.rounds || gameState.assaultCount <= mods.rounds;
+}
 
-    gameState.monsters.forEach((monster, index) => {
-        let monsterInfo = document.createElement('div');
-        monsterInfo.innerHTML = `<strong>${monster.name}</strong>, Habileté : ${monster.skill}, Endurance : ${monster.health}, Statut : ${monster.status}<br>`;
-        
-        // Ajouter une classe CSS pour griser les monstres vaincus
-        if (monster.status === "vaincu") {
-            monsterInfo.classList.add('monster-defeated');
-        }
-        
-        monsterContainer.appendChild(monsterInfo);
+function describeMods() {
+    const mods = gameState.combatMods || {};
+    const notes = [];
+    if (mods.monsterSkill) notes.push(`l'HABILETÉ de votre adversaire est réduite à ${mods.monsterSkill}`);
+    if (mods.monsterAttackBonus) notes.push(`sa Force d'Attaque est modifiée de ${mods.monsterAttackBonus}`);
+    if (mods.playerSkillMultiplier) notes.push(`votre HABILETÉ est multipliée par ${mods.playerSkillMultiplier}`);
+    if (mods.damage) notes.push(`vos coups infligent ${mods.damage} points de dégâts`);
+    if (notes.length) {
+        document.getElementById("attack_message").innerHTML =
+            `<em>Effet de votre Formule : ${notes.join(", ")}${mods.rounds ? ` pendant ${mods.rounds} Assauts` : ""}.</em>`;
+    }
+}
+
+// met à jour la liste des monstres
+export function updateMonsterList() {
+    const monsterContainer = document.getElementById("monsters");
+    monsterContainer.innerHTML = gameState.monsters.length ? "" : "Pas de monstre ici";
+    gameState.monsters.forEach(monster => {
+        const info = document.createElement("div");
+        info.innerHTML = `<strong>${monster.name}</strong>, Habileté : ${monster.skill}, Endurance : ${Math.max(monster.health, 0)}, Statut : ${monster.fled ? "en fuite" : monster.status}<br>`;
+        if (monster.status === "vaincu") info.classList.add("monster-defeated");
+        monsterContainer.appendChild(info);
     });
 }
 
-
-
-// selectionne le monstre actuel
 function selectCurrentMonster(index) {
-    if (index < gameState.monsters.length) {
-        const currentMonster = gameState.monsters[index];
-        const actualMonsterDiv = document.getElementById('actual_monster');
-        actualMonsterDiv.innerHTML = `Monstre actuel : ${currentMonster.name}, Habileté : ${currentMonster.skill}, Endurance : ${currentMonster.health}, Statut : ${currentMonster.status}`;
-
-        // Mise à jour des boutons
-        const attackButton = document.getElementById('attackButton');
-        attackButton.innerText = `Attaquer ${currentMonster.name}`;
-        attackButton.style.display = 'block';
-        attackButton.onclick = () => performAttack(index);
-    }
+    const monster = gameState.monsters[index];
+    document.getElementById("actual_monster").innerHTML = `Adversaire actuel : ${monster.name}`;
+    document.getElementById("actual_monster").style.display = "block";
+    const attackButton = document.getElementById("attackButton");
+    attackButton.innerText = `Attaquer ${monster.name}`;
+    attackButton.style.display = "block";
+    attackButton.disabled = false;
+    attackButton.onclick = () => performAttack(index);
 }
 
-// selectionne le monstre suivant
-function selectNextMonster() {
-    // Trouver l'index du monstre actuellement affiché
-    let currentIndex = gameState.monsters.findIndex(monster => monster.status === "vivant");
-
-    // Marquer le monstre actuel comme vaincu si son endurance est 0 ou moins
-    if (gameState.monsters[currentIndex].health <= 0) {
-        gameState.monsters[currentIndex].status = "vaincu";
-        updateMonsterList(); // Mise à jour de la liste des monstres dans l'UI
-    }
-
-    // Trouver l'index du prochain monstre vivant
-    let nextIndex = gameState.monsters.findIndex((monster, index) => index > currentIndex && monster.status === "vivant");
-
-    // Vérifier s'il y a un prochain monstre à combattre
-    if (nextIndex !== -1) {
-        // Si oui, préparer l'UI pour le combat avec le prochain monstre
-        selectCurrentMonster(nextIndex);
-    } else {
-        // Si non, gérer la fin de la rencontre
-        document.getElementById("attack_message").innerHTML += " Tous les monstres ont été vaincus!";
-        playVictorySound(); // Son de victoire finale quand tous les monstres sont vaincus
-        updateChoiceButtons();
-        // cacher le bouton d'attaque 
-        document.getElementById("attackButton").style.display = "none";
-    }
-}
-
-//combats
 function performAttack(index) {
+    if (gameState.gameOver) return;
+    const character = gameState.character;
+    const monster = gameState.monsters[index];
+    const attackMessageDiv = document.getElementById("attack_message");
+    const weapon = character.getWeapon();
 
-    let character = gameState.character;
-    let monster = gameState.monsters[index];
-
-    let attackMessageDiv = document.getElementById("attack_message");
-
-    // Incrémenter le compteur d'assauts
     gameState.assaultCount++;
+    gameState.encounterFought = true;
+    const mods = modsActive() ? (gameState.combatMods || {}) : {};
 
-    // modificateurs attaque - simplifiés pour les collines maléfiques
-    let attackModifier = 0;
- 
+    const multiplier = (monster.playerSkillMultiplier || 1) * (mods.playerSkillMultiplier || 1);
+    const charAttackForce = rollDice() + rollDice() + character.skill * multiplier + weapon.attack + (monster.attackModifier || 0);
+    const monsterSkill = mods.monsterSkill ? Math.min(mods.monsterSkill, monster.skill) : monster.skill;
+    const monsterAttackForce = rollDice() + rollDice() + monsterSkill + (monster.monsterAttackBonus || 0) + (mods.monsterAttackBonus || 0);
 
-    // Calcul des forces d'attaque
-    let charAttackForce = rollDice() + rollDice() + character.getCurrentSkill() + attackModifier + (monster.attackModifier || 0);
-    let monsterAttackForce = rollDice() + rollDice() + monster.skill;
+    let damageToMonster = 0;
+    let damageToCharacter = 0;
+    let stung = false;
+    let report = `Assaut ${gameState.assaultCount} — votre Force d'Attaque est de <strong>${charAttackForce}</strong>.<br>Celle de ${monster.name} est de <strong>${monsterAttackForce}</strong>.<br>`;
 
-    // Calcul initial des dégâts
-    let potentialDamageToMonster = charAttackForce > monsterAttackForce ? 2 : 0;
-    let potentialDamageToCharacter = charAttackForce < monsterAttackForce ? 2 : 0;
-
-    // Affichage du bonus temporaire dans le message d'attaque
-    let attackReport = `Votre force d'attaque est de <strong>${charAttackForce}</strong>`;
-    
-    attackReport += `.<br> La force d'attaque du ${monster.name} est de <strong>${monsterAttackForce}</strong>.<br> `;
-    
     if (charAttackForce > monsterAttackForce) {
-        attackReport += `Vous pouvez infligez <strong>${potentialDamageToMonster}</strong> points de dégâts à ${monster.name}.<br>`;
-        // Jouer le son d'attaque du joueur quand il va infliger des dégâts
+        damageToMonster = mods.damage || weapon.damage;
+        report += `Vous pouvez infliger <strong>${damageToMonster}</strong> points de dégâts à ${monster.name}.<br>`;
         playAttackSound(true);
     } else if (charAttackForce < monsterAttackForce) {
-        attackReport += `Le ${monster.name} peut vous infliger <strong>${potentialDamageToCharacter}</strong> points de dégâts.<br>`;
-        // Jouer le son d'attaque du monstre quand il va infliger des dégâts
+        damageToCharacter = 2;
+        if (monster.sting) {
+            const die = rollDice();
+            if (die >= 5) {
+                stung = true;
+                damageToCharacter = 6;
+                report += `Dé du dard : ${die}. <strong>La Manticore vous pique avec sa queue de scorpion : 6 points de dégâts</strong>, à moins de Tenter votre Chance avec succès (2 points seulement).<br>`;
+            } else {
+                report += `Dé du dard : ${die}. Le dard vous manque.<br>`;
+            }
+        }
+        report += `${monster.name} peut vous infliger <strong>${damageToCharacter}</strong> points de dégâts.<br>`;
         playAttackSound(false);
     } else {
-        // Si les forces d'attaque sont égales, aucun de vous n'a infligé de dégâts
-        attackReport += "<strong>Aucun de vous n'a infligé de dégâts.</strong>";
+        report += "<strong>Vous esquivez chacun le coup de l'autre.</strong>";
     }
-    attackMessageDiv.innerHTML = attackReport;
+    attackMessageDiv.innerHTML = report;
 
-    
+    const temptChanceButton = document.getElementById("temptChanceButton");
+    const noTemptChanceButton = document.getElementById("no_temptChanceButton");
+    const attackButton = document.getElementById("attackButton");
 
-    // Affichage des boutons selon le résultat de l'attaque
-    let temptChanceButton = document.getElementById("temptChanceButton");
-    let noTemptChanceButton = document.getElementById("no_temptChanceButton");
-    let attackButton = document.getElementById("attackButton");
-
-    // Désactiver le bouton d'attaque pendant la décision
+    if (charAttackForce === monsterAttackForce) {
+        return;
+    }
     attackButton.disabled = true;
+    temptChanceButton.style.display = "block";
+    noTemptChanceButton.style.display = "block";
+    temptChanceButton.disabled = character.chance <= 0;
 
-    if (charAttackForce !== monsterAttackForce) {
-        temptChanceButton.style.display = "block";
-        noTemptChanceButton.style.display = "block";
-
-        temptChanceButton.onclick = () => {
-            attackButton.disabled = false;
-            temptChanceButton.style.display = "none";
-            noTemptChanceButton.style.display = "none";
-            let success = tempt_chance(gameState.character.chance);
-            applyDamage(success, charAttackForce > monsterAttackForce, character, monster, potentialDamageToMonster, potentialDamageToCharacter);
-        };
-
-        noTemptChanceButton.onclick = () => {
-            attackButton.disabled = false;
-            temptChanceButton.style.display = "none";
-            noTemptChanceButton.style.display = "none";
-            applyDirectDamage(character, monster, potentialDamageToMonster, potentialDamageToCharacter);
-        };
-
-    } else {
+    const resolve = (useLuck) => {
         attackButton.disabled = false;
+        temptChanceButton.style.display = "none";
+        noTemptChanceButton.style.display = "none";
+        if (useLuck) {
+            const lucky = tempt_chance(character.chance);
+            attackMessageDiv.innerHTML += lucky ? "Vous êtes <strong>Chanceux</strong> ! " : "Vous êtes <strong>Malchanceux</strong>… ";
+            if (damageToMonster > 0) {
+                // Chanceux : blessure grave (+2) ; Malchanceux : simple écorchure (-1)
+                damageToMonster = lucky ? damageToMonster + 2 : Math.max(damageToMonster - 1, 0);
+                if (lucky) playCriticalHitSound();
+            } else if (stung) {
+                damageToCharacter = lucky ? 2 : 6;
+            } else {
+                // Chanceux : coup atténué (-1) ; Malchanceux : coup plus grave (+1)
+                damageToCharacter = lucky ? damageToCharacter - 1 : damageToCharacter + 1;
+                if (!lucky) playCriticalHitSound();
+            }
+        }
+        if (damageToMonster > 0) {
+            monster.health -= damageToMonster;
+            attackMessageDiv.innerHTML += `<strong>${monster.name} perd ${damageToMonster} point(s) d'endurance.</strong><br>`;
+        } else if (damageToCharacter > 0) {
+            character.health -= damageToCharacter;
+            attackMessageDiv.innerHTML += `<strong>Vous perdez ${damageToCharacter} point(s) d'endurance.</strong><br>`;
+        }
+        updateCharacterStats();
         checkEndOfBattle(character, monster);
-    }
+    };
+    temptChanceButton.onclick = () => resolve(true);
+    noTemptChanceButton.onclick = () => resolve(false);
 }
 
-// fonction pour appliquer des dommages en tentant sa chance
-function applyDamage(success, playerWon, character, monster, potentialDamageToMonster, potentialDamageToCharacter) {
-    let attackMessageDiv = document.getElementById("attack_message");
-    if (playerWon) {
-        let finalDamageToMonster = success ? potentialDamageToMonster + 1 : potentialDamageToMonster - 1; // Modifier les dégâts basés sur la chance
-        monster.health -= Math.max(finalDamageToMonster, 0); // Assurer que les dégâts ne soient pas négatifs
-        attackMessageDiv.innerHTML += `<strong>${monster.name} subit ${finalDamageToMonster} points de dégâts.</strong><br>`;
-        
-        // Jouer le son approprié selon le succès de la chance
-        if (success && finalDamageToMonster > potentialDamageToMonster) {
-            playCriticalHitSound(); // Coup critique avec bonus de chance
-        }
-    } else {
-        let finalDamageToCharacter = success ? potentialDamageToCharacter - 1 : potentialDamageToCharacter + 1;
-        character.health -= Math.max(finalDamageToCharacter, 0);
-        attackMessageDiv.innerHTML += `<strong>Vous subissez ${finalDamageToCharacter} points de dégâts.</strong><br>`;
-        
-        
-        // Si l'échec de la chance aggrave les dégâts, jouer un son critique
-        if (!success && finalDamageToCharacter > potentialDamageToCharacter) {
-            playCriticalHitSound(); // Coup critique du monstre
-        }
-    }
-
-    // Mettre à jour l'affichage des caractéristiques du personnage et du monstre
-    updateCharacterStats();
-    updateMonsterList();
-
-    // Mettre à jour les boutons de choix
-    updateChoiceButtons();
-
-    // Vérifier la fin du combat
-    checkEndOfBattle(character, monster);
-}
-
-// fonction pour appliquer des dommages si on décide de ne pas tenter sa chance
-function applyDirectDamage(character, monster, potentialDamageToMonster, potentialDamageToCharacter) {
-    let attackMessageDiv = document.getElementById("attack_message");
-
-    if (potentialDamageToMonster > 0) {
-        // Appliquer les dégâts au monstre
-        monster.health -= potentialDamageToMonster;
-        attackMessageDiv.innerHTML += `<strong> Vous infligez ${potentialDamageToMonster} points de dégâts à ${monster.name}.</strong><br>`;
-    } else if (potentialDamageToCharacter > 0) {
-        // Appliquer les dégâts au personnage
-        character.health -= potentialDamageToCharacter;
-        attackMessageDiv.innerHTML += `<strong>Le ${monster.name} vous inflige ${potentialDamageToCharacter} points de dégâts.</strong><br>`;
-        
-    }
-
-    // Mettre à jour l'affichage des caractéristiques du personnage et du monstre
-    updateCharacterStats();
-    updateMonsterList();
-
-    // Mettre à jour les boutons de choix
-    updateChoiceButtons();
-
-    // Vérifier la fin du combat
-    checkEndOfBattle(character, monster);
-}
-
-
-// fin du combat?
 function checkEndOfBattle(character, monster) {
-    let attackMessageDiv = document.getElementById("attack_message");
+    const attackMessageDiv = document.getElementById("attack_message");
     if (character.health <= 0) {
-        attackMessageDiv.innerHTML += "<strong> Vous avez été vaincu. Game Over.</strong>";
-        playDefeatSound(); // Son de défaite
+        attackMessageDiv.innerHTML += "<strong> Vous avez été vaincu.</strong>";
+        document.getElementById("attackButton").disabled = true;
+        playDefeatSound();
     } else if (monster.health <= 0) {
-        attackMessageDiv.innerHTML += `<strong> Vous avez vaincu ${monster.name}!</strong>`;
-        
-      
-        updateCharacterStats(); // Mise à jour pour refléter les changements de boost
-        updateMonsterList();
-        updateChoiceButtons();
-        selectNextMonster(); // Cette fonction doit gérer la sélection du prochain monstre à attaquer
-
-    } else {
-        // Si tous les deux sont toujours vivants, afficher le bouton d'attaque pour permettre de relancer une attaque
-        document.getElementById("attackButton").style.display = "block";
-        updateMonsterList();
+        monster.status = "vaincu";
+        attackMessageDiv.innerHTML += `<strong> Vous avez vaincu ${monster.name} !</strong>`;
+        const next = gameState.monsters.findIndex(m => m.status === "vivant");
+        if (next !== -1) {
+            selectCurrentMonster(next);
+        } else {
+            attackMessageDiv.innerHTML += " Tous vos adversaires sont vaincus !";
+            playVictorySound();
+            document.getElementById("attackButton").style.display = "none";
+            document.getElementById("actual_monster").style.display = "none";
+        }
     }
+    updateMonsterList();
+    updateChoiceButtons();
 }
