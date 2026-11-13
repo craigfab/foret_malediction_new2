@@ -106,7 +106,7 @@
      "magicFormula": "FIL"
     },
     {
-     "text": "Rendez-vous pour cela au 142",
+     "text": "Vous avez également la possibilité d'essayer de briser la serrure : rendez-vous pour cela au 142",
      "nextId": 142
     },
     {
@@ -1351,7 +1351,7 @@
      "nextId": 165
     },
     {
-     "text": "Si vous préférez chercher un autre moyen de vous échapper, rendez-vous au 165. Rendez-vous pour cela au 273",
+     "text": "Appeler à l'aide la déesse Libra (rendez-vous au 273)",
      "nextId": 273,
      "requiresLibra": true
     }
@@ -2158,7 +2158,7 @@
    "effects": [],
    "choices": [
     {
-     "text": "Apparemment, il faut payer 3 Pièces d'Or pour visiter l'endroit. Rendez-vous pour cela au 204",
+     "text": "Payer les 3 Pièces d'Or pour visiter les chutes (rendez-vous au 204)",
      "nextId": 204,
      "cost": 3
     },
@@ -2819,7 +2819,7 @@
      "nextId": 24
     },
     {
-     "text": "Si vous souhaitez malgré tout continuer tout droit, rendez-vous au 24. Rendez-vous pour cela au 66",
+     "text": "Sinon, il est encore temps de faire volte-face et de retourner vers la porte : rendez-vous pour cela au 66",
      "nextId": 66
     }
    ],
@@ -2885,7 +2885,7 @@
      "nextId": 64
     },
     {
-     "text": "Si vous pensez pouvoir trouver un autre moyen de vous échapper, rendez-vous au 64. Rendez-vous pour cela au 260",
+     "text": "Faire appel à la déesse Libra (rendez-vous au 260)",
      "nextId": 260,
      "requiresLibra": true
     }
@@ -3676,11 +3676,11 @@
    "effects": [],
    "choices": [
     {
-     "text": "Vous êtes sur la rive droite et vous poursuivez votre marche au fond de cette vallée qui devient de plus en plus étroite. Rendez-vous pour cela au 136",
+     "text": "Vous arrêter sur l'étendue herbeuse pour manger quelques-unes de vos Provisions (rendez-vous au 136)",
      "nextId": 136
     },
     {
-     "text": "Si vous préférez continuer, rendez-vous au 65",
+     "text": "Continuer votre chemin (rendez-vous au 65)",
      "nextId": 65
     }
    ],
@@ -5161,7 +5161,7 @@
      ]
     },
     {
-     "text": "Si le total des trois chiffres obtenus est inférieur à vos points d'HABILETÉ, la porte cède et vous pouvez vous échapper (rendez-vous dans ce cas au 120), mais vous perdrez cependant 1 point d'HABILETÉ. Rendez-vous pour cela au 160",
+     "text": "Échec : faire appel à la déesse Libra (rendez-vous au 160)",
      "nextId": 160,
      "skillCheckPassed": false,
      "requiresLibra": true
@@ -5442,7 +5442,7 @@
      "nextId": 6
     },
     {
-     "text": "Si vous préférez avancer à tâtons le long du tunnel, rendez-vous au 6. Rendez-vous pour cela au 120",
+     "text": "Mais vous pouvez également renoncer à explorer ce passage et revenir à la bifurcation : rendez-vous pour cela au 120",
      "nextId": 120
     }
    ],
@@ -6738,7 +6738,7 @@
    ],
    "choices": [
     {
-     "text": "Avez-vous une Pièce d'Or ? Rendez-vous alors au 85",
+     "text": "Si ce n'est pas le cas, votre Formule restera sans effet : rendez-vous alors au 85",
      "nextId": 85,
      "requiresNoItem": "or"
     },
@@ -7470,7 +7470,7 @@
    ],
    "choices": [
     {
-     "text": "Avez-vous de la Cire d'Abeille dans votre Sac à Dos ? Rendez-vous alors au 47",
+     "text": "Vous n'avez pas de cire : le Gobelin vous attaque, rendez-vous au 47",
      "nextId": 47
     }
    ],
@@ -8590,9 +8590,8 @@
      "requiresAllMonstersDefeated": true
     },
     {
-     "text": "A présent, vous pouvez profiter de son état d'infériorité pour le combattre (il aura 4 points d'HABILETÉ et 7 points d'ENDURANCE) et si vous gagnez, vous vous rendrez au 15. Rendez-vous pour cela au 144",
-     "nextId": 144,
-     "requiresAllMonstersDefeated": true
+     "text": "Vous avez également la possibilité de quitter les lieux sans combattre : rendez-vous pour cela au 144",
+     "nextId": 144
     }
    ],
    "illustration": "images_collines/dark_and_gloomy_hills.png"

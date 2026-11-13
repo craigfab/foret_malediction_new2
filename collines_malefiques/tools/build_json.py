@@ -172,7 +172,9 @@ O = {
     94: {"effects": [luck(1)]},
     97: {"effects": [take(PROV, "food", 3)]},
     100: {"patch": {286: {"requiresItem": JANN}, 197: {"requiresNoItem": JANN}}},
-    102: {"patch": {204: {"cost": 3}}},
+    63: {"patch": {273: {"text": "Appeler à l'aide la déesse Libra (rendez-vous au 273)"}}},
+    130: {"patch": {260: {"text": "Faire appel à la déesse Libra (rendez-vous au 260)"}}},
+    102: {"patch": {204: {"cost": 3, "text": "Payer les 3 Pièces d'Or pour visiter les chutes (rendez-vous au 204)"}}},
     104: {"monsters": [mon("Premier BANDIT", 7, 6), mon("Deuxième BANDIT", 7, 8)],
           "sub": [(r"HABILETÉ ENDURANCE Premier BANDIT 7 6 Deuxième BANDIT 7 8 ",
                    "<br>Premier BANDIT — HABILETÉ : 7, ENDURANCE : 6<br>Deuxième BANDIT — HABILETÉ : 7, ENDURANCE : 8<br><br>")]},
@@ -230,6 +232,8 @@ O = {
     155: {"effects": [{"type": "gainGold", "value": 2}]},
     159: {"items": [it("médaillon au portrait de femme", "jewelry")]},
     161: {"meal": meal(3, 3, cost=2), "patch": {45: {"cost": 3, "effects": [gain(5)]}}},
+    164: {"choices": [ch("Vous arrêter sur l'étendue herbeuse pour manger quelques-unes de vos Provisions (rendez-vous au 136)", 136),
+                      ch("Continuer votre chemin (rendez-vous au 65)", 65)]},
     165: {"effects": [{"type": "luckStreak", "needed": 3, "damage": 3}], "choices": [ch("Chanceux trois fois de suite : vous tuez tous les serpents, rendez-vous au 206", 206, requiresConditionMet=True)]},
     168: {"effects": [{"type": "loseAllFood"}]},
     173: {"effects": [take(PROV, "food", 1)]},
@@ -266,7 +270,7 @@ O = {
     227: {"monsters": [mon("MANTICORE", 12, 18, sting=True)]},
     228: {"effects": [{"type": "skillTest", "dice": 3}],
           "patch": {120: {"skillCheckPassed": True, "effects": [{"type": "reduceSkill", "value": 1}]},
-                    160: {"skillCheckPassed": False, "requiresLibra": True}},
+                    160: {"skillCheckPassed": False, "requiresLibra": True, "text": "Échec : faire appel à la déesse Libra (rendez-vous au 160)"}},
           "add": [dict(GAME_OVER, skillCheckPassed=False, requiresNoLibra=True)]},
     230: {"patch": {191: {"cost": 2}}},
     233: {"effects": [{"type": "removeItem", "itemName": HACHE}, gain(2), luck(3)]},
@@ -316,7 +320,7 @@ O = {
           "note": "Simplification : le Troll garde 4 points d'HABILETÉ pendant tout le combat."},
     318: {"effects": [gain(3)]},
     325: {"effects": [{"type": "nextCombat", "monsterSkill": 6, "rounds": 4}]},
-    328: {"effects": [dict(lose(3), ifNoItem=CIRE), {"type": "nextCombat", "damage": 4, "ifItem": CIRE},
+    328: {"patch": {47: {"text": "Vous n'avez pas de cire : le Gobelin vous attaque, rendez-vous au 47"}}, "effects": [dict(lose(3), ifNoItem=CIRE), {"type": "nextCombat", "damage": 4, "ifItem": CIRE},
                       {"type": "removeItem", "itemName": CIRE}]},
     330: {"effects": [{"type": "setFlag", "flag": "fallModifier", "value": 3}]},
     339: {"effects": [dict(lose(2), ifNoItem=FLUTE)],
@@ -492,7 +496,8 @@ def auto_choices(paras, has_monsters, tests_luck):
             continue
         sents = RE_SENT.split(p)
         for si, sent in enumerate(sents):
-            for seg in re.split(r" ; ", sent):
+            segs = re.split(r" ; ", sent)
+            for gi, seg in enumerate(segs):
                 prev = 0
                 for m in RE_REF.finditer(seg):
                     n = int(m.group(1))
@@ -500,12 +505,20 @@ def auto_choices(paras, has_monsters, tests_luck):
                         continue
                     text = tidy_choice(seg[prev:m.end()])
                     prev = m.end()
-                    if re.match(r"Rendez-vous (pour cela|dans ce cas|alors)", text) and si > 0:
+                    joined = False
+                    if re.match(r"Rendez-vous (pour cela|dans ce cas|alors)", text) and gi > 0:
+                        # « …Provisions ; rendez-vous pour cela au 136 » : l'explication est dans la partie précédente de la phrase
+                        before = tidy_choice(segs[gi - 1])
+                        if len(before) > 110:  # garde la fin de la phrase, plus parlante
+                            before = tidy_choice(before[-110:].split(" ", 1)[1])
+                        text = before + " : " + text[0].lower() + text[1:]
+                        joined = True
+                    elif re.match(r"Rendez-vous (pour cela|dans ce cas|alors)", text) and si > 0:
                         text = tidy_choice(sents[si - 1]) + " " + text
                     elif re.fullmatch(r"Rendez-vous au \d+", text) and si > 0 and sents[si - 1].endswith("?"):
                         question = re.sub(r"^Rendez-vous au \d+ ", "", sents[si - 1])
                         text = question + " " + text
-                    if len(text) > 120 and " : " in text and RE_REF.search(text.rsplit(" : ", 1)[1]):
+                    if not joined and len(text) > 120 and " : " in text and RE_REF.search(text.rsplit(" : ", 1)[1]):
                         text = tidy_choice(text.rsplit(" : ", 1)[1])
                     if n in seen:
                         continue
